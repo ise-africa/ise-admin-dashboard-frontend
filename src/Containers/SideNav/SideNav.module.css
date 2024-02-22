@@ -2,7 +2,7 @@
   padding: 0 2rem;
   height: 100%;
   overflow: auto;
-  background-color: var(--sideNavBackground);
+  background-color: var(--white);
 }
 
 .navSection {
@@ -43,7 +43,7 @@
   font-family: Archivo;
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 26px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
