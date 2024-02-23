@@ -1,5 +1,6 @@
 import React, { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { sideNavItems } from '../Utilities/sideNavItems';
+import { supportTrackingData, supportTrackingDataType } from '../Utilities/supportTracking';
 
 type AppContextProviderProps = {
   children: React.ReactNode
@@ -25,6 +26,9 @@ type AppContextProps = {
   setDisplayShareModal: Dispatch<SetStateAction<boolean>>
   navItmesState: any[]
   setNavItemsState: Dispatch<SetStateAction<any>>
+  supportData: supportTrackingDataType
+  setSupportData: Dispatch<SetStateAction<supportTrackingDataType>>
+
 }
 
 export const AppContext = createContext({} as AppContextProps)
@@ -52,6 +56,8 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     })
   )
 
+  const [supportData, setSupportData] = useState<supportTrackingDataType>(supportTrackingData)
+
   //   Effects
   useEffect(() => {
     setScreenWidthState(screenWidth)
@@ -69,6 +75,8 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         setDisplayShareModal,
         navItmesState,
         setNavItemsState,
+        supportData,
+        setSupportData,
       }}
     >
       {children}

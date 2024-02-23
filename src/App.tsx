@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import ErrorPage from './Containers/404Page/404Page'
-import School from './Pages/School'
+import Schools from './Pages/Schools'
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
           {/* <Route path="/" element={<Navigate to="/dashboard"></Navigate>} />
          <Route path="/dashboard" element={<Dashboard />} /> */}
 
-         <Route path="/schools" element={<School />} />
+         <Route path="/schools" element={<Schools />} />
 
       </Routes>
    )
