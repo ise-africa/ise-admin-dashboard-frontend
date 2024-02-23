@@ -21,8 +21,8 @@ const Breadcrumbs = ({ image, array }: BreadcrumbsProps) => {
           <Link
             to={data.route}
             className={`${classes.link} ${location.pathname === data.route
-                ? classes.active
-                : classes.inActive
+              ? classes.active
+              : classes.inActive
               }`}
             key={data.title}
           >
@@ -36,7 +36,7 @@ const Breadcrumbs = ({ image, array }: BreadcrumbsProps) => {
             >
               <path
                 d="M13 5L20 12L13 19M5 5L12 12L5 19"
-                stroke="#737373"
+                stroke="#664EFE"
                 strokeWidth="2"
                 stroke-linecap="round"
                 strokeLinejoin="round"

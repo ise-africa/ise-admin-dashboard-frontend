@@ -1,11 +1,12 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import HelloUser from '../../../Components/HelloUser/HelloUser'
 import classes from './SupportBoard.module.css'
-import { AppContext } from '../../../Context/AppContext'
 import { Link } from 'react-router-dom'
+import { SupportTrackingData } from '../SupportTrackingData'
 
 const SupportBoard = () => {
-    const { supportData } = useContext(AppContext)
+
+    // const { SupportTrackingId } = useParams();
 
     // States 
     const [searchTerm, setSearchTerm] = useState('')
@@ -21,12 +22,13 @@ const SupportBoard = () => {
         }
     }
 
-    const filteredSupportData = supportData.filter(data => {
+    const filteredSupportTrackingData = SupportTrackingData.filter(data => {
         return (
             data.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
             data.name.toLowerCase().includes(searchTerm.toLowerCase())
         )
     });
+
 
     return (
         <div className={classes.container}>
@@ -67,18 +69,22 @@ const SupportBoard = () => {
                         <span>Status</span>
                         <span>Action</span>
                     </div>
-                    {filteredSupportData.map((data, i) => {
-                        const statusClassName = getStatusClass(data.status)
-                        return (
-                            <div key={i} className={classes.tableBody}>
-                                <span>{data.id}</span>
-                                <span>{data.email}</span>
-                                <span>{data.subject}</span>
-                                <span className={`${statusClassName} ${classes.status}`}>{data.status}</span>
-                                <span><Link to="">View</Link></span>
-                            </div>
-                        )
-                    })}
+                    {filteredSupportTrackingData.length === 0 ? (
+                        <div className={classes.noResult}>No search results for the user "{searchTerm}" available</div>
+                    ) : (
+                        filteredSupportTrackingData.map((data, i) => {
+                            const statusClassName = getStatusClass(data.status)
+                            return (
+                                <div key={i} className={classes.tableBody}>
+                                    <span>{data.id}</span>
+                                    <span>{data.email}</span>
+                                    <span>{data.subject}</span>
+                                    <span className={`${statusClassName} ${classes.status}`}>{data.status}</span>
+                                    <span><Link to={`/support/:SupportTrackingId`}>View</Link></span>
+                                </div>
+                            )
+                        })
+                    )}
                 </div>
             </div>
         </div>

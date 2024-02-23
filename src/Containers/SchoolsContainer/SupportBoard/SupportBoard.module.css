@@ -44,6 +44,7 @@
     margin: auto;
 }
 
+.noResult,
 .tableHeader,
 .tableBody {
     gap: 40px;
@@ -105,6 +106,10 @@
     background: #B9B9B9;
 }
 
+.noResult {
+    margin: 5rem;
+}
+
 @media screen and (min-width: 767px) and (max-width: 1023px) {
     .container {
         padding: 1rem;
@@ -115,5 +120,23 @@
 @media screen and (max-width: 767px) {
     .container {
         padding: 1rem;
+    }
+
+    .tableHeader span:nth-child(2),
+    .tableHeader span:nth-child(3),
+    .tableBody span:nth-child(2),
+    .tableBody span:nth-child(3) {
+        display: none;
+    }
+
+    .tableHeader span:nth-child(1),
+    .tableBody span:nth-child(1) {
+        flex: 1;
+    }
+
+    .tableHeader span:nth-child(5),
+    .tableBody span:nth-child(5) {
+        flex: 1;
+        text-align: right;
     }
 }

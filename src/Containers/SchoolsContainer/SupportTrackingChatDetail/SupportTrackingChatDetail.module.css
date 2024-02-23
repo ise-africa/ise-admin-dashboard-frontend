@@ -1,0 +1,162 @@
+.breadCrumbs {
+    padding: 24px;
+    background: var(--white);
+}
+
+.container {
+    margin: 24px;
+    padding: 40px 32px;
+    background: var(--white);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container>div {
+    padding: 20px 0 40px;
+    border-bottom: 1px solid var(--sectionBorder);
+
+    font-weight: 400;
+    font-style: normal;
+    color: var(--grey);
+    font-family: Archivo;
+}
+
+.container>div:last-child {
+    border: none;
+    padding-bottom: 20px;
+}
+
+.container p,
+.container blockquote {
+    font-size: 16px;
+    line-height: 25px;
+    margin-top: 10px;
+}
+
+.container>div span {
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--grey3);
+}
+
+.container .header {
+    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-block: 10px;
+}
+
+.container .header h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 36px;
+}
+
+.container .header span {
+    font-size: 13px;
+    font-weight: 400;
+    padding: 4px 16px;
+    border-radius: 4px;
+    color: var(--white);
+    background: #C7920B;
+    text-transform: capitalize;
+}
+
+.container .topInfo {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.container .topInfo img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.container .topInfo>div {
+    gap: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .topInfo>div span:nth-child(1) {
+    font-weight: 500;
+    color: var(--grey);
+}
+
+.attachment {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.attachment a {
+    flex: 1;
+    font-size: 16px;
+    line-height: 25px;
+    flex-basis: 100%;
+    color: var(--purple);
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .body {
+        padding: 0 16px;
+        background: var(--white);
+    }
+
+    .breadCrumbs,
+    .container {
+        margin: 0;
+        padding: 16px;
+    }
+
+    .container>div {
+        padding: 10px 0 30px;
+    }
+
+    .container .header h3 {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .container p,
+    .container blockquote {
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 6px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .body {
+        padding: 0 16px;
+        background: var(--white);
+    }
+
+    .breadCrumbs {
+        padding: 16px 0;
+    }
+
+    .container {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container .header h3 {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .container p,
+    .container blockquote {
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 6px;
+    }
+}

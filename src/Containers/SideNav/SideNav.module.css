@@ -65,7 +65,7 @@
 }
 
 .active svg {
-  color: var(--grey);
+  filter: invert(1);
   stroke: var(--grey);
 }
 
