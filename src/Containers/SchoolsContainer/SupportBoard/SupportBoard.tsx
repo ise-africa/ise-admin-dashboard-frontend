@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import HelloUser from '../../../Components/HelloUser/HelloUser'
 import classes from './SupportBoard.module.css'
 import { Link } from 'react-router-dom'
-import { SupportTrackingData } from '../SupportTrackingData'
+import { AppContext } from '../../../Context/AppContext'
 
 const SupportBoard = () => {
+
+    const { supportData, setSupportData } = useContext(AppContext)
 
     // const { SupportTrackingId } = useParams();
 
@@ -22,7 +24,7 @@ const SupportBoard = () => {
         }
     }
 
-    const filteredSupportTrackingData = SupportTrackingData.filter(data => {
+    const filteredSupportTrackingData = supportData.filter(data => {
         return (
             data.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
             data.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -79,7 +81,7 @@ const SupportBoard = () => {
                                     <span>{data.id}</span>
                                     <span>{data.email}</span>
                                     <span>{data.subject}</span>
-                                    <span className={`${statusClassName} ${classes.status}`}>{data.status}</span>
+                                    <span className={`${statusClassName} ${classes.status}`}><mark>{data.status}</mark></span>
                                     <span><Link to={`/support/:SupportTrackingId`}>View</Link></span>
                                 </div>
                             )

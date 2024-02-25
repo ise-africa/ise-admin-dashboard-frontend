@@ -1,11 +1,27 @@
-import senderAvatar from '../../Assets/Images/johnDoeSenderAvatar.svg'
-import responderAvatar from '../../Assets/Images/iseResponderAvatar.svg'
+import senderAvatar from '../Assets/Images/johnDoeSenderAvatar.svg'
+import responderAvatar from '../Assets/Images/iseResponderAvatar.svg'
 
-export const SupportTrackingData = [
+export type SupportChatMessageType = {
+    avatar: string;
+    name: string;
+    date: string;
+    message: string;
+};
+
+export type SupportTrackingDataType = {
+    id: string;
+    status: string;
+    email: string;
+    name: string;
+    subject: string;
+    supportChat: SupportChatMessageType[];
+};
+
+export const SupportTrackingData: SupportTrackingDataType[] = [
     {
         id: "#005",
         status: 'open',
-        email: 'johndoe@gmail.com',
+        email: 'jamessmith@gmail.com',
         name: 'James Smith',
         subject: 'Issue with Gig Position',
         supportChat: [
@@ -42,7 +58,7 @@ export const SupportTrackingData = [
     {
         id: "#004",
         status: 'resolved',
-        email: 'johndoe@gmail.com',
+        email: 'ginnalacell@gmail.com',
         name: 'Ginna Lacell',
         subject: 'Not seeing my videos1, The course progress is not updated',
         supportChat: [
@@ -64,7 +80,7 @@ export const SupportTrackingData = [
     {
         id: "#003",
         status: 'closed',
-        email: 'johndoe@gmail.com',
+        email: 'sarahgreen@gmail.com',
         name: 'Sarah Green',
         subject: 'Not seeing my videos2, The course progress is not updated',
         supportChat: [
@@ -93,7 +109,7 @@ export const SupportTrackingData = [
     {
         id: "#002",
         status: 'closed',
-        email: 'johndoe@gmail.com',
+        email: 'willliamsbrown@gmail.com',
         name: 'Willliams Brown',
         subject: 'Not seeing my videos3, The course progress is not updated',
         supportChat: [
@@ -116,7 +132,7 @@ export const SupportTrackingData = [
     {
         id: "#001",
         status: 'closed',
-        email: 'johndoe@gmail.com',
+        email: 'dennistoughly@gmail.com',
         name: 'Dennis Toughly',
         subject: 'Not seeing my videos, The course progress is not updated',
         supportChat: [
@@ -127,6 +143,7 @@ export const SupportTrackingData = [
                 message: `Hi Dennis,
                     Thank you for bringing this to our attention. We're aware of the issue with video visibility and course progress. Our team is actively working on a resolution and will update you as soon as the problem is resolved. We appreciate your patience and understanding.`
             },
+
             {
                 avatar: responderAvatar,
                 name: 'ise Support team',
@@ -143,4 +160,5 @@ export const SupportTrackingData = [
         ],
     },
 ];
+
 
