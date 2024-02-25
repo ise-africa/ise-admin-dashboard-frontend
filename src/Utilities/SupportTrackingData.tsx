@@ -6,6 +6,7 @@ export type SupportChatMessageType = {
     name: string;
     date: string;
     message: string;
+    attachmentFile?: string;
 };
 
 export type SupportTrackingDataType = {
@@ -19,7 +20,7 @@ export type SupportTrackingDataType = {
 
 export const SupportTrackingData: SupportTrackingDataType[] = [
     {
-        id: "#005",
+        id: "005",
         status: 'open',
         email: 'jamessmith@gmail.com',
         name: 'James Smith',
@@ -36,6 +37,7 @@ export const SupportTrackingData: SupportTrackingDataType[] = [
                 avatar: senderAvatar,
                 name: 'John Doe',
                 date: 'Aug 26, 2023, 4:06 PM GMT+3',
+                attachmentFile: "Screen Shot 2023-12-12 at 4.01.22 PM.png",
                 message: `Hi there,
                     Thank you for reaching out about your Gig, Gigs shift their position daily and we cannot guarantee search positions and impressions. Gigs may also be removed from our Search feature due to poor performance. You can continue working with your existing buyers. We are here if you have additional questions.`
             },
@@ -56,7 +58,7 @@ export const SupportTrackingData: SupportTrackingDataType[] = [
         ],
     },
     {
-        id: "#004",
+        id: "004",
         status: 'resolved',
         email: 'ginnalacell@gmail.com',
         name: 'Ginna Lacell',
@@ -73,12 +75,13 @@ export const SupportTrackingData: SupportTrackingDataType[] = [
                 avatar: senderAvatar,
                 name: 'Ginna Lacell',
                 date: 'Aug 26, 2023, 4:15 PM GMT+3',
+                attachmentFile: "Screen Shot 2023-12-12 at 4.01.22 PM.png",
                 message: `Thank you for your prompt response. I can now see my videos and the course progress has been updated correctly. I appreciate your help!`
             },
         ],
     },
     {
-        id: "#003",
+        id: "003",
         status: 'closed',
         email: 'sarahgreen@gmail.com',
         name: 'Sarah Green',
@@ -95,6 +98,7 @@ export const SupportTrackingData: SupportTrackingDataType[] = [
                 avatar: responderAvatar,
                 name: 'ise Support team',
                 date: 'Aug 25, 2023, 5:45 PM GMT+3',
+                attachmentFile: "Screen Shot 2023-12-12 at 4.01.22 PM.png",
                 message: `Sarah,
                     We've identified the problem causing the issue with video visibility and course progress. A fix has been implemented, and you should now be able to access your videos and see the updated course progress. Please check and let us know if everything is working as expected.`
             },
@@ -107,7 +111,7 @@ export const SupportTrackingData: SupportTrackingDataType[] = [
         ],
     },
     {
-        id: "#002",
+        id: "002",
         status: 'closed',
         email: 'willliamsbrown@gmail.com',
         name: 'Willliams Brown',
@@ -130,7 +134,7 @@ export const SupportTrackingData: SupportTrackingDataType[] = [
         ],
     },
     {
-        id: "#001",
+        id: "001",
         status: 'closed',
         email: 'dennistoughly@gmail.com',
         name: 'Dennis Toughly',
@@ -148,6 +152,7 @@ export const SupportTrackingData: SupportTrackingDataType[] = [
                 avatar: responderAvatar,
                 name: 'ise Support team',
                 date: 'Aug 24, 2023, 3:30 PM GMT+3',
+                attachmentFile: "Screen Shot 2023-12-12 at 4.01.22 PM.png",
                 message: `Dennis,
                     We've successfully fixed the issue causing the problem with video visibility and course progress. Please check your account now, and everything should be functioning as expected. If you need any further assistance, feel free to reach out to us.`
             },

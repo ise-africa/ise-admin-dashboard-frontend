@@ -6,9 +6,7 @@ import { AppContext } from '../../../Context/AppContext'
 
 const SupportBoard = () => {
 
-    const { supportData, setSupportData } = useContext(AppContext)
-
-    // const { SupportTrackingId } = useParams();
+    const { supportData } = useContext(AppContext)
 
     // States 
     const [searchTerm, setSearchTerm] = useState('')
@@ -78,11 +76,11 @@ const SupportBoard = () => {
                             const statusClassName = getStatusClass(data.status)
                             return (
                                 <div key={i} className={classes.tableBody}>
-                                    <span>{data.id}</span>
+                                    <span>#{data.id}</span>
                                     <span>{data.email}</span>
                                     <span>{data.subject}</span>
                                     <span className={`${statusClassName} ${classes.status}`}><mark>{data.status}</mark></span>
-                                    <span><Link to={`/support/:SupportTrackingId`}>View</Link></span>
+                                    <span><Link to={`/support/${data.id}`}>View</Link></span>
                                 </div>
                             )
                         })

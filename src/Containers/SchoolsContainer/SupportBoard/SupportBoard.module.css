@@ -64,18 +64,26 @@
     border-bottom: 1px solid var(--grey);
 }
 
+.tableHeader>span:last-child {
+    opacity: 0;
+}
+
 .tableBody {
     padding: 40px 0 15px;
     border-bottom: 1px solid var(--sectionBorder);
 }
 
+.tableBody>span:nth-child(3) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
 .tableBody:last-child {
     border-bottom: none;
     padding-bottom: 40px;
-}
-
-.tableHeader>span:last-child {
-    opacity: 0;
 }
 
 .tableBody>span a:last-child {

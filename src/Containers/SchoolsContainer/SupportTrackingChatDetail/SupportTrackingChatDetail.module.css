@@ -54,14 +54,26 @@
     line-height: 36px;
 }
 
-.container .header span {
+.status {
     font-size: 13px;
     font-weight: 400;
-    padding: 4px 16px;
+    padding: 8px 16px;
     border-radius: 4px;
-    color: var(--white);
-    background: #C7920B;
     text-transform: capitalize;
+    color: var(--white) !important;
+}
+
+.open {
+    background: #C7920B;
+}
+
+.resolved {
+    background: #4A820B;
+}
+
+.closed {
+    color: var(--grey) !important;
+    background: #B9B9B9;
 }
 
 .container .topInfo {
