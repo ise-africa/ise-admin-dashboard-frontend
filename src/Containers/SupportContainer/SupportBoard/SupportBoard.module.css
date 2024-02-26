@@ -123,24 +123,24 @@
 @media screen and (min-width: 767px) and (max-width: 1023px) {
     .container {
         gap: 0;
-        padding: 0 1rem;
+        padding: 0;
         background: var(--white);
     }
 
     .subContainer {
-        padding: 0;
+        padding: 1rem;
     }
 }
 
 @media screen and (max-width: 767px) {
     .container {
         gap: 0;
-        padding: 0 1rem;
+        padding: 0;
         background: var(--white);
     }
 
     .subContainer {
-        padding: 0;
+        padding: 1rem;
     }
 
     .tableHeader span:nth-child(2),

@@ -1,5 +1,5 @@
 import Layout from '../Components/Layout/Layout'
-import SupportTrackingChatDetail from '../Containers/SchoolsContainer/SupportTrackingChatDetail/SupportTrackingChatDetail'
+import SupportTrackingChatDetail from '../Containers/SupportContainer/SupportTrackingChatDetail/SupportTrackingChatDetail'
 
 const SupportTrackingChatDetailPage = () => {
     return (
