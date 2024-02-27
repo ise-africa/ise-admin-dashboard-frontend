@@ -1,6 +1,7 @@
 import React, { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { sideNavItems } from '../Utilities/sideNavItems';
 import { SupportTrackingData, SupportTrackingDataType } from '../Utilities/SupportTrackingData';
+import { adminsData, adminsDataType } from '../Utilities/admins';
 
 type AppContextProviderProps = {
   children: React.ReactNode
@@ -28,6 +29,8 @@ type AppContextProps = {
   setNavItemsState: Dispatch<SetStateAction<any>>
   supportData: SupportTrackingDataType[];
   setSupportData: Dispatch<SetStateAction<SupportTrackingDataType[]>>
+  adminData: adminsDataType[];
+  setAdminData: Dispatch<SetStateAction<adminsDataType[]>>
 }
 
 export const AppContext = createContext({} as AppContextProps)
@@ -55,6 +58,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     })
   )
   const [supportData, setSupportData] = useState<SupportTrackingDataType[]>(SupportTrackingData);
+  const [adminData, setAdminData] = useState<adminsDataType[]>(adminsData);
 
   //   Effects
   useEffect(() => {
@@ -74,7 +78,9 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         navItmesState,
         setNavItemsState,
         supportData,
-        setSupportData
+        setSupportData,
+        adminData,
+        setAdminData
       }}
     >
       {children}

@@ -1,7 +1,7 @@
 .container {
     gap: 2rem;
     display: flex;
-    padding: 40px 2rem;
+    padding: 24px;
     flex-direction: column;
 
     font-style: normal;
