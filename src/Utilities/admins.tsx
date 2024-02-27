@@ -32,7 +32,7 @@ export const adminsData: adminsDataType[] = [
         adminRole: "Support administrator",
         emailAddress: "alice.johnson@example.com",
         joinedDate: "02 Aug, 2022",
-        displayOptions: true
+        displayOptions: false
     },
     {
         adminImage: amirahTemi,
@@ -40,7 +40,7 @@ export const adminsData: adminsDataType[] = [
         adminRole: "Community manager",
         emailAddress: "michael.brown@example.com",
         joinedDate: "pending",
-        displayOptions: true
+        displayOptions: false
     },
     {
         adminImage: amirahTemi,

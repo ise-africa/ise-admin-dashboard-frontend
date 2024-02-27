@@ -14,24 +14,24 @@ const ActionsModal = ({
    const modalOptions = [
       {
          action: onClick,
-         title: 'Reschedule session',
-         svg: <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.9166 8.08333L16.2505 9.75L14.5833 8.08333M16.4542 9.33333C16.4845 9.05972 16.5 8.78167 16.5 8.5C16.5 4.35786 13.1421 1 9 1C4.85786 1 1.5 4.35786 1.5 8.5C1.5 12.6421 4.85786 16 9 16C11.3561 16 13.4584 14.9136 14.8333 13.2144M9 4.33333V8.5L11.5 10.1667" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+         title: 'View Permission',
+         svg: <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1H17M1 5H17M1 9H17M1 13H17" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
          </svg>
       },
       {
          action: onClick2,
-         title: 'Request reschedule',
-         svg: <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.2686 10.5555C18.3122 10.2102 18.3346 9.85838 18.3346 9.5013C18.3346 4.89893 14.6037 1.16797 10.0013 1.16797C5.39893 1.16797 1.66797 4.89893 1.66797 9.5013C1.66797 14.1037 5.39893 17.8346 10.0013 17.8346C10.3641 17.8346 10.7216 17.8114 11.0722 17.7665M10.0013 4.5013V9.5013L13.1166 11.059M15.8346 17.8346V12.8346M13.3346 15.3346H18.3346" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+         title: 'View user details',
+         svg: <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5C12 7.20914 10.2091 9 8 9C5.79086 9 4 7.20914 4 5C4 2.79086 5.79086 1 8 1C10.2091 1 12 2.79086 12 5Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8 12C4.13401 12 1 15.134 1 19H15C15 15.134 11.866 12 8 12Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
          </svg>
       },
       {
          action: onClick3,
-         title: 'Edit location',
-         svg: <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.7127 12.3807C11.9852 13.1083 10.5176 14.5758 9.41213 15.6813C8.63108 16.4624 7.36629 16.4623 6.58524 15.6813C5.49962 14.5957 4.05916 13.1552 3.28465 12.3807C0.681157 9.77722 0.681157 5.55612 3.28465 2.95262C5.88815 0.349126 10.1092 0.349126 12.7127 2.95262C15.3162 5.55612 15.3162 9.77722 12.7127 12.3807Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M10.4987 7.66667C10.4987 9.04738 9.37941 10.1667 7.9987 10.1667C6.61799 10.1667 5.4987 9.04738 5.4987 7.66667C5.4987 6.28596 6.61799 5.16667 7.9987 5.16667C9.37941 5.16667 10.4987 6.28596 10.4987 7.66667Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+         title: 'Resend invite',
+         svg: <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H18C18.5304 0 19.0391 0.210714 19.4142 0.585786C19.7893 0.960859 20 1.46957 20 2V14C20 14.5304 19.7893 15.0391 19.4142 15.4142C19.0391 15.7893 18.5304 16 18 16H2C1.46957 16 0.960859 15.7893 0.585786 15.4142C0.210714 15.0391 0 14.5304 0 14V2ZM3.519 2L10 7.671L16.481 2H3.519ZM18 3.329L10.659 9.753C10.4766 9.91278 10.2424 10.0009 10 10.0009C9.75755 10.0009 9.52336 9.91278 9.341 9.753L2 3.329V14H18V3.329Z" fill="#2E2E2E" />
          </svg>
       },
    ];

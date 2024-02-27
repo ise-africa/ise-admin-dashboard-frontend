@@ -21,7 +21,7 @@
 
 .role p,
 .role button {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 500;
     font-style: normal;
     line-height: 26px;
@@ -30,8 +30,8 @@
 }
 
 .role button {
-    padding: 8px 16px;
-    border-radius: 3px;
+    padding: 4px 8px;
+    border-radius: 2px;
     color: var(--grey);
     background: var(--greyWhite);
     border: 1px solid var(--purple);
@@ -98,6 +98,21 @@
 
 .pending mark {
     color: #C7920B;
+}
+
+.moreOptionsContainer {
+    cursor: pointer;
+    position: relative;
+}
+
+.moreOptions {
+    top: 20px;
+    z-index: 20;
+    left: -158px;
+    position: absolute;
+    border-radius: 10px;
+    animation: appear 0.3s ease-in-out;
+    border: 1px solid var(--sectionBorder);
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
