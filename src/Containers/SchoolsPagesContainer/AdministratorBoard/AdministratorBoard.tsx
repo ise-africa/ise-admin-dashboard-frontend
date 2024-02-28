@@ -176,7 +176,7 @@ const AdministratorBoard = () => {
                                                 }}
                                                 onClick2={() => {
                                                     optionsChangeHandler(index);
-                                                    // setDisplayViewPermissionModal(true);
+                                                    navigate('/schools/admins/:AdminName');
                                                 }}
                                                 onClick3={() => {
                                                     optionsChangeHandler(index);

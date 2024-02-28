@@ -24,7 +24,7 @@ export const adminsData: adminsDataType[] = [
         adminRole: "User administrator",
         emailAddress: "jane.smith@example.com",
         dateJoined: "02 Aug, 2022",
-        displayOptions: true
+        displayOptions: false
     },
     {
         adminImage: amirahTemi,
@@ -32,7 +32,7 @@ export const adminsData: adminsDataType[] = [
         adminRole: "Support administrator",
         emailAddress: "alice.johnson@example.com",
         dateJoined: "02 Aug, 2022",
-        displayOptions: true
+        displayOptions: false
     },
     {
         adminImage: amirahTemi,
@@ -40,7 +40,7 @@ export const adminsData: adminsDataType[] = [
         adminRole: "Community manager",
         emailAddress: "michael.brown@example.com",
         dateJoined: "pending",
-        displayOptions: true
+        displayOptions: false
     },
     {
         adminImage: amirahTemi,
@@ -48,6 +48,6 @@ export const adminsData: adminsDataType[] = [
         adminRole: "Course/content administrator",
         emailAddress: "emily.williams@example.com",
         dateJoined: "pending",
-        displayOptions: true
+        displayOptions: false
     }
 ];

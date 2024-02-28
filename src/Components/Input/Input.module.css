@@ -2,15 +2,17 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
+
 .container {
   margin-bottom: 24px;
 }
 
-.container > label {
+.container>label {
   color: var(--grey);
   font-family: Archivo;
   font-size: 18px;
@@ -19,7 +21,7 @@
   line-height: 27px;
 }
 
-.container > span:nth-child(2) {
+.container>span:nth-child(2) {
   color: var(--red);
   font-family: Archivo;
   font-size: 18px;
@@ -28,7 +30,7 @@
   line-height: 27px;
 }
 
-.container > input {
+.container>input {
   display: block;
   width: 100%;
   padding: 18px 15px;
@@ -43,7 +45,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.container > input:focus {
+.container>input:focus {
   outline: 1px solid rgba(102, 78, 254, 1);
 }
 
@@ -58,7 +60,7 @@
   color: var(--red);
 }
 
-.container > input::placeholder {
+.container>input::placeholder {
   color: var(--grey3);
   font-family: Archivo;
   font-size: 16px;
@@ -88,7 +90,7 @@
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
-  .container > input {
+  .container>input {
     padding: 12px;
     font-family: Archivo;
     font-size: 14px;
@@ -96,7 +98,7 @@
     border-radius: 5px;
   }
 
-  .container > label {
+  .container>label {
     font-size: 16px;
     line-height: 25px;
   }
@@ -107,20 +109,24 @@
   }
 }
 
-@media screen and (max-width: 767px) and (max-width: 1023px) {
-  .container > input {
+@media screen and (max-width: 767px) {
+  .container {
+    margin-bottom: 16px;
+  }
+
+  .container>input {
     padding: 12px;
-    font-family: Archivo;
     font-size: 14px;
     line-height: 23px;
     border-radius: 5px;
   }
 
-  .container > label {
+  .container>label {
     font-size: 16px;
     line-height: 25px;
   }
 
+  .tip,
   .errorMessage {
     font-size: 10px;
     line-height: 18px;
