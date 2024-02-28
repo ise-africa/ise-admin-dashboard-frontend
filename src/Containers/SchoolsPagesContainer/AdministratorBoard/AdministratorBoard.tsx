@@ -9,17 +9,20 @@ import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModa
 import ViewPermissionModal from "./ViewPermissionModal/ViewPermissionModal";
 import SendInviteModal from "./SendInviteModal/SendInviteModal";
 import SendInviteSuccessfulModal from "./SendInviteModal/SendInviteSuccessfulModal";
+import ClosingAdminAccountModal from "./ClosingAdminAccountModal";
 
 const AdministratorBoard = () => {
     const { adminData } = useContext(AppContext)
 
     const navigate = useNavigate();
+    const { AdminName } = useParams();
 
     // States
     const [adminOptions, setAdminOptions] = useState(adminData)
     const [displayViewPermissionModal, setDisplayViewPermissionModal] = useState(false)
     const [displaySendInviteModal, setDisplaySendInviteModal] = useState(false)
     const [displaySendInviteSuccessfulModal, setDisplaySendInviteSuccessfulModal] = useState(false)
+    const [displayClosingAdminAccountModal, setDisplayClosingAdminAccountModal] = useState(false)
 
     // Refs
     const optionsRef = useRef<HTMLDivElement | null>(null)
@@ -113,6 +116,20 @@ const AdministratorBoard = () => {
                     }
                 />
             )}
+            {displayClosingAdminAccountModal && (
+                <AcceptedModal
+                    onClick={() => {
+                        setDisplayClosingAdminAccountModal(false)
+                    }}
+                    body={
+                        <ClosingAdminAccountModal
+                            onClick={() => {
+                                setDisplayClosingAdminAccountModal(false)
+                            }}
+                        />
+                    }
+                />
+            )}
             <div className={classes.container} ref={containerRef}>
                 <HelloUser
                     includeButton={true}
@@ -181,6 +198,10 @@ const AdministratorBoard = () => {
                                                 onClick3={() => {
                                                     optionsChangeHandler(index);
                                                     setDisplaySendInviteModal(true);
+                                                }}
+                                                onClick4={() => {
+                                                    optionsChangeHandler(index);
+                                                    setDisplayClosingAdminAccountModal(true);
                                                 }}
                                             />
                                         </div>

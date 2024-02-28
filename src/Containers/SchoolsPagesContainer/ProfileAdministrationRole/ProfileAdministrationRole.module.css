@@ -1,0 +1,56 @@
+.listContainer {
+    padding: 24px 16px;
+    border-radius: 5px;
+    background: #F7F7F7;
+}
+
+.listContainer h4,
+.listContainer p,
+.numberList li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--grey);
+    font-style: normal;
+    font-family: Archivo;
+}
+
+.listContainer h4 {
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.listContainer p {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--grey3);
+}
+
+.numberList {
+    list-style: decimal;
+    padding-left: 20px;
+}
+
+.discList {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.modifyButton {
+    padding: 0;
+    margin-top: 2rem;
+    justify-content: flex-start;
+}
+
+@media screen and (max-width: 767px) {
+
+    .listContainer h4 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .numberList li {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}

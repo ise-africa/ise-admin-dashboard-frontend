@@ -6,6 +6,35 @@ type ViewPermissionModalProps = {
 };
 
 const ViewPermissionModal = ({ onClick }: ViewPermissionModalProps) => {
+    const permissionsData = [
+        {
+            title: "Platform control and Administration",
+            details: ["Total control over the entire platform."]
+        },
+        {
+            title: "User account management",
+            details: [
+                "Assign roles and permissions to other admins.",
+                "Oversee user management for both students and tutors."
+            ]
+        },
+        {
+            title: "School management",
+            details: ["Create and manage schools within the platform."]
+        },
+        {
+            title: "Payment management",
+            details: ["Oversee platform payment processes and transactions."]
+        },
+        {
+            title: "API integration and management",
+            details: ["Supervise and set up third-party integrations and APIs."]
+        },
+        {
+            title: "Platform settings and preference management",
+            details: ["Configuration and maintenance of system settings and preferences."]
+        }
+    ];
 
     return (
         <div className={classes.container}>
@@ -25,45 +54,17 @@ const ViewPermissionModal = ({ onClick }: ViewPermissionModalProps) => {
             <div className={classes.listContainer}>
                 <p>Permissions</p>
                 <ol className={classes.numberList}>
-                    <li>
-                        Platform control and Administration:
-                        <ul className={classes.discList}>
-                            <li>Total control over the entire platform.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        User account management:
-                        <ul className={classes.discList}>
-                            <li>Assign roles and permissions to other admins.</li>
-                            <li>Oversee user management for both students and tutors.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        School management:
-                        <ul className={classes.discList}>
-                            <li>Create and manage schools within the platform.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Payment management:
-                        <ul className={classes.discList}>
-                            <li>Oversee platform payment processes and transactions.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        API integration and management:
-                        <ul className={classes.discList}>
-                            <li>Supervise and set up third-party integrations and APIs.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Platform settings and preference management:
-                        <ul className={classes.discList}>
-                            <li>Configuration and maintenance of system settings and preferences.</li>
-                        </ul>
-                    </li>
+                    {permissionsData.map((permission, index) => (
+                        <li key={index}>
+                            {permission.title}
+                            <ul className={classes.discList}>
+                                {permission.details.map((detail, idx) => (
+                                    <li key={idx}>{detail}</li>
+                                ))}
+                            </ul>
+                        </li>
+                    ))}
                 </ol>
-
             </div>
 
             <div className={classes.footer}>
