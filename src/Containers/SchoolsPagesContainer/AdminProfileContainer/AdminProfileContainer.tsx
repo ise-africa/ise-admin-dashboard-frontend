@@ -2,6 +2,7 @@ import { useState } from "react";
 import classes from "./AdminProfileContainer.module.css";
 import AdminProfileTabContainer from "../AdminProfileTabContainer/AdminProfileTabContainer";
 import SectionsNav4 from "../../../Components/SectionsNav4/SectionsNav4";
+import AdminActivitiesTab from "../AdminActivitiesTab/AdminActivitiesTab";
 
 const AdminProfileContainer = () => {
   // States
@@ -14,7 +15,7 @@ const AdminProfileContainer = () => {
     {
       title: "Activities",
       isActive: false,
-      activeComponent: null, //<AdminActivitiesTab />
+      activeComponent: <AdminActivitiesTab />,
     },
   ]);
 
