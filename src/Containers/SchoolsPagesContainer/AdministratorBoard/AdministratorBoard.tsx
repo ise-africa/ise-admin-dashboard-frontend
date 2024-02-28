@@ -7,18 +7,19 @@ import ActionsModal from "./ActionsModal/ActionsModal";
 import { useNavigate, useParams } from "react-router-dom";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import ViewPermissionModal from "./ViewPermissionModal/ViewPermissionModal";
+import SendInviteModal from "./SendInviteModal/SendInviteModal";
+import SendInviteSuccessfulModal from "./SendInviteModal/SendInviteSuccessfulModal";
 
 const AdministratorBoard = () => {
     const { adminData } = useContext(AppContext)
 
+    const navigate = useNavigate();
+
     // States
     const [adminOptions, setAdminOptions] = useState(adminData)
     const [displayViewPermissionModal, setDisplayViewPermissionModal] = useState(false)
-    const [displayReadyToSubmitModal, setDisplayReadyToSubmitModal] = useState(false)
-    const [displaySubmissionSuccessfulModal, setDisplaySubmissionSuccessfulModal] = useState(false)
-
-    // Router
-    const navigate = useNavigate()
+    const [displaySendInviteModal, setDisplaySendInviteModal] = useState(false)
+    const [displaySendInviteSuccessfulModal, setDisplaySendInviteSuccessfulModal] = useState(false)
 
     // Refs
     const optionsRef = useRef<HTMLDivElement | null>(null)
@@ -80,6 +81,38 @@ const AdministratorBoard = () => {
                     }
                 />
             )}
+            {displaySendInviteModal && (
+                <AcceptedModal
+                    onClick={() => {
+                        setDisplaySendInviteModal(false)
+                    }}
+                    body={
+                        <SendInviteModal
+                            onClick={() => {
+                                setDisplaySendInviteModal(false)
+                            }}
+                            onClick2={() => {
+                                setDisplaySendInviteModal(false)
+                                setDisplaySendInviteSuccessfulModal(true)
+                            }}
+                        />
+                    }
+                />
+            )}
+            {displaySendInviteSuccessfulModal && (
+                <AcceptedModal
+                    onClick={() => {
+                        setDisplaySendInviteSuccessfulModal(false)
+                    }}
+                    body={
+                        <SendInviteSuccessfulModal
+                            onClick={() => {
+                                setDisplaySendInviteSuccessfulModal(false)
+                            }}
+                        />
+                    }
+                />
+            )}
             <div className={classes.container} ref={containerRef}>
                 <HelloUser
                     includeButton={true}
@@ -110,7 +143,7 @@ const AdministratorBoard = () => {
                     </div>
 
                     {adminData.map((data, index) => {
-                        const statusClassName = getStatusClass(data.joinedDate)
+                        const statusClassName = getStatusClass(data.dateJoined)
                         return (
                             <div key={index} className={classes.tableBody}>
                                 <div>
@@ -124,7 +157,7 @@ const AdministratorBoard = () => {
                                     <span>{data.adminRole}</span>
                                 </div>
                                 <div className={`${statusClassName} ${classes.status}`}>
-                                    <mark>{data.joinedDate}</mark>
+                                    <mark>{data.dateJoined}</mark>
                                 </div>
                                 <div className={classes.moreOptionsContainer}>
                                     <svg
@@ -147,7 +180,7 @@ const AdministratorBoard = () => {
                                                 }}
                                                 onClick3={() => {
                                                     optionsChangeHandler(index);
-                                                    // setDisplayRejectSubmissionModal(true);
+                                                    setDisplaySendInviteModal(true);
                                                 }}
                                             />
                                         </div>

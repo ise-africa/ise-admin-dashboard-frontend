@@ -11,6 +11,7 @@ const ActionsModal = ({
    onClick2,
    onClick3
 }: ActionsModalProps) => {
+
    const modalOptions = [
       {
          action: onClick,
@@ -35,6 +36,7 @@ const ActionsModal = ({
          </svg>
       },
    ];
+
    return (
       <div className={classes.container}>
          {modalOptions.map((data, i) => (
