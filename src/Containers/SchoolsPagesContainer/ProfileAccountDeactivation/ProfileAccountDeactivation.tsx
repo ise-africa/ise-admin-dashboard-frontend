@@ -13,16 +13,15 @@ const ProfileAccountDeactivation = () => {
   const [displayDeletedModal, setDisplayDeletedModal] = useState(false);
   // Utils
   const closeDisclaimers = [
-    "Deactivating your account is a temporary action.You can undo it.",
-    "If you intend to close your account permanently, we will deactivate it after three months.",
-    "If you have any active subscriptions, we will only cancel them if your account is permanently deleted.",
-    "If you have any questions, please get in touch with us.",
+    "This disables administrator's access to the platform.",
+    "Prevents them from logging in and performing any actions.",
+    "Revokes all assigned roles and permissions."
   ];
 
   return (
     <ProfileSectionContainer
-      header="Deactivate account"
-      paragraph="Put your account on hold temporarily."
+      header="Deactivate administrator"
+      paragraph="Restrict access to an administrator's account."
     >
       {displayDeleteDisclaimerModal && (
         <AcceptedModal
@@ -50,7 +49,7 @@ const ProfileAccountDeactivation = () => {
           body={
             <DeleteSuccessfulModalBody
               onClick={() => {
-                setDisplauDeleteDisclaimeeModal(false);
+                setDisplayDeletedModal(false);
               }}
             />
           }
@@ -65,7 +64,7 @@ const ProfileAccountDeactivation = () => {
         </ul>
 
         <Button
-          type="invalid"
+          type="delete"
           onClick={() => {
             setDisplauDeleteDisclaimeeModal(true);
           }}

@@ -13,12 +13,9 @@ const DeleteSuccessfulModalBody = ({
     <div className={classes.modalContainer}>
       <div className={classes.modalInnerContainer2}>
         <img src={success} alt="Success" />
-        <h4>Account closed successfully</h4>
-        <p>
-          Your account has been successfully closed. We appreciate your time
-          with us and wish you all the best in your future endeavors.
-        </p>
-        <Button onClick={onClick}>Return to homepage</Button>
+        <h4>[User administrator] account deactivated successfully</h4>
+        <p>[User administrator] will be logged out and their administrator access revoked. They will receive an email with more details.</p>
+        <Button onClick={onClick}>Done</Button>
       </div>
     </div>
   );

@@ -1,8 +1,15 @@
 import React from 'react'
+import ProfileSectionContainer from '../../../Components/ProfileSectionContainer/ProfileSectionContainer';
 
 const ProfileAdministrationRole = () => {
     return (
-        <div>ProfileAdministrationRole</div>
+        <ProfileSectionContainer
+            header="Administrator roles"
+            paragraph="Learn about the responsibilities, and tasks of the user administrator."
+        >
+            <div>Learn about the responsibilities, and tasks of the user administrator.</div>
+        </ProfileSectionContainer>
+
     )
 }
 

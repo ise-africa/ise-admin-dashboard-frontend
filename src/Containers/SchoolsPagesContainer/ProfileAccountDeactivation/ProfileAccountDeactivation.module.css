@@ -1,4 +1,4 @@
-.container > h4 {
+.container>h4 {
   color: var(--red);
   font-family: Archivo;
   font-size: 18px;
@@ -8,7 +8,7 @@
   margin-bottom: 1rem;
 }
 
-.container > ul {
+.container>ul {
   color: var(--grey);
   font-family: Archivo;
   font-size: 15px;
@@ -18,9 +18,13 @@
   margin-left: -20px;
 }
 
-.container > button {
-  width: 177px;
+.container>button {
   margin-top: 24px;
+  color: var(--red);
+  width: fit-content;
+  padding: 10px 30px;
+  background: var(--white);
+  border: 2px solid var(--red);
 }
 
 .modalContainer {
@@ -31,18 +35,22 @@
   flex-direction: column;
 }
 
-.modalInnerContainer,
-.modalInnerContainer2 {
+.modalInnerContainer {
   width: 80%;
+  padding: 1rem 0;
 }
 
 .modalInnerContainer2 {
+  width: 80%;
+  display: flex;
+  padding: 1rem 0;
   text-align: center;
-  width: 80%;
+  align-items: center;
+  flex-direction: column;
 }
 
-.modalInnerContainer > h4,
-.modalInnerContainer2 > h4 {
+.modalInnerContainer>h4,
+.modalInnerContainer2>h4 {
   color: var(--grey);
   font-family: Archivo;
   font-size: 25px;
@@ -52,8 +60,8 @@
   margin-bottom: 0.5rem;
 }
 
-.modalInnerContainer > p,
-.modalInnerContainer2 > p {
+.modalInnerContainer>p,
+.modalInnerContainer2>p {
   color: var(--grey3);
   font-family: Archivo;
   font-size: 16px;
@@ -64,53 +72,65 @@
 }
 
 .modalButtonSection {
+  gap: 1rem;
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
   align-items: center;
   justify-content: flex-end;
-  gap: 1.5rem;
-  margin-top: 40px;
 }
 
-.modalButtonSection > button {
-  max-width: 177px;
-}
-
-.modalInnerContainer2 > button {
-  width: 100%;
-  margin: auto;
-  max-width: 226px;
+.modalButtonSection>button,
+.modalInnerContainer2>button {
+  padding: 10px 30px;
+  width: fit-content;
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
-  .container > h4 {
+
+  .container h4,
+  .modalContainer h4 {
     font-size: 16px;
     line-height: 25px;
     margin-bottom: 0.5rem;
   }
 
-  .container > ul {
-    font-size: 14px;
-    line-height: 23px;
+  .modalContainer p {
+    font-size: 13px;
+    line-height: 20px;
   }
 
-  .container > button {
-    width: 154px;
+  .container>ul {
+    font-size: 14px;
+    line-height: 23px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .container > h4 {
+  .modalInnerContainer {
+    width: 90%;
+    padding: 1rem 0;
+  }
+
+  .container h4,
+  .modalContainer h4 {
     font-size: 16px;
     line-height: 25px;
     margin-bottom: 0.5rem;
   }
 
-  .container > ul {
-    font-size: 14px;
-    line-height: 23px;
+  .modalContainer p {
+    font-size: 13px;
+    line-height: 20px;
   }
 
-  .container > button {
-    width: 154px;
+  .modalButtonSection>button,
+  .modalInnerContainer2>button {
+    width: 100%;
+  }
+
+  .container>ul {
+    font-size: 14px;
+    line-height: 23px;
   }
 }

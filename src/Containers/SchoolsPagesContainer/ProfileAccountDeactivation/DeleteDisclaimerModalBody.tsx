@@ -14,19 +14,15 @@ const DeleteDisclaimerModalBody = ({
   return (
     <section className={classes.modalContainer}>
       <div className={classes.modalInnerContainer}>
-        <h4>Are you sure you want to close your account?</h4>
-        <p>
-          Closing your account is irreversible and will result in the permanent
-          deletion of all your data, including your profile, saved preferences,
-          and any associated content.
-        </p>
+        <h4>Deactivate [user admin] account?</h4>
+        <p>This action will disable John Doe's access to the iṣẹ́ School administrator dashboard and revoke their administrative permissions. </p>
         <TextArea
-          label="Reason (optional)"
-          placeholder="Kindly let us know why you want to close your account"
+          label="Reason for deactivation"
+          placeholder="Tell us why you want to deactivate this account"
         />
 
         <div className={classes.modalButtonSection}>
-          <Button type="secondary" onClick={onClick}>
+          <Button type="invalid" onClick={onClick}>
             Cancel
           </Button>
           <Button type="delete" onClick={onClick2}>

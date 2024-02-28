@@ -1,10 +1,13 @@
 .container {
-  display: flex;
-  align-items: flex-start;
   gap: 1.5rem;
+  display: flex;
+  padding: 40px 32px;
+  border-radius: 10px;
+  background: var(--white);
+  align-items: flex-start;
 }
 
-.container > div:nth-child(1) {
+.container>div:nth-child(1) {
   top: 0px;
   z-index: 1;
   width: 100%;
@@ -14,7 +17,7 @@
   background-color: var(--white);
 }
 
-.container > div:nth-child(1) > h4 {
+.container>div:nth-child(1)>h4 {
   color: var(--grey);
   font-family: Archivo;
   font-size: 25px;
@@ -24,7 +27,7 @@
   margin-bottom: 0.5rem;
 }
 
-.container > div:nth-child(1) > p {
+.container>div:nth-child(1)>p {
   color: var(--grey);
   font-family: Archivo;
   font-size: 16px;
@@ -34,35 +37,37 @@
   width: 100%;
 }
 
-.container > div:nth-child(2) {
+.container>div:nth-child(2) {
   flex: 1;
 }
 
 @media screen and (min-width: 767px) and (max-width: 1240px) {
   .container {
+    border-radius: 0;
+    padding: 20px 20px 36px;
     flex-direction: column;
   }
 
-  .container > div {
+  .container>div {
     width: 100%;
   }
 
-  .container > div:nth-child(1) {
-    width: 100%;
-    max-width: unset;
-  }
-
-  .container > div:nth-child(1) > p {
+  .container>div:nth-child(1) {
     width: 100%;
     max-width: unset;
   }
 
-  .container > div:nth-child(1) > h4 {
+  .container>div:nth-child(1)>p {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .container>div:nth-child(1)>h4 {
     font-size: 18px;
     line-height: 27px;
   }
 
-  .container > div:nth-child(1) > p {
+  .container>div:nth-child(1)>p {
     font-size: 14px;
     line-height: 23px;
   }
@@ -70,24 +75,26 @@
 
 @media screen and (max-width: 767px) {
   .container {
+    padding: 0 0 32px;
+    border-radius: 0;
     flex-direction: column;
   }
 
-  .container > div {
+  .container>div {
     width: 100%;
   }
 
-  .container > div:nth-child(1) {
+  .container>div:nth-child(1) {
     width: 100%;
     max-width: unset;
   }
 
-  .container > div:nth-child(1) > h4 {
+  .container>div:nth-child(1)>h4 {
     font-size: 18px;
     line-height: 27px;
   }
 
-  .container > div:nth-child(1) > p {
+  .container>div:nth-child(1)>p {
     font-size: 14px;
     line-height: 23px;
   }
