@@ -5,11 +5,13 @@ import { useState } from 'react';
 import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
 import ModifyRoleFirstModal from './ModifyRoleModals/ModifyRoleFirstModal';
 import ModifyRoleSecondModal from './ModifyRoleModals/ModifyRoleSecondModal';
+import ModifyRoleThirdModal from './ModifyRoleModals/ModifyRoleThirdModal';
 
 const ProfileAdministrationRole = () => {
 
     const [displayModifyRoleFirstModal, setDisplayModifyRoleFirstModal] = useState(false)
     const [displayModifyRoleSecondModal, setDisplayModifyRoleSecondModal] = useState(false)
+    const [displayModifyRoleThirdModal, setDisplayModifyRoleThirdModal] = useState(false)
 
     const permissionsData = [
         {
@@ -54,8 +56,24 @@ const ProfileAdministrationRole = () => {
                     onClick={() => { setDisplayModifyRoleSecondModal(false) }}
                     body={
                         <ModifyRoleSecondModal
-                            onClick={() => { setDisplayModifyRoleSecondModal(false) }}
-                            onClick2={() => { setDisplayModifyRoleSecondModal(false) }}
+                            onClick={() => {
+                                setDisplayModifyRoleFirstModal(true)
+                                setDisplayModifyRoleSecondModal(false)
+                            }}
+                            onClick2={() => {
+                                setDisplayModifyRoleSecondModal(false)
+                                setDisplayModifyRoleThirdModal(true)
+                            }}
+                        />
+                    }
+                />
+            )}
+            {displayModifyRoleThirdModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayModifyRoleThirdModal(false) }}
+                    body={
+                        <ModifyRoleThirdModal
+                            onClick={() => { setDisplayModifyRoleThirdModal(false) }}
                         />
                     }
                 />
