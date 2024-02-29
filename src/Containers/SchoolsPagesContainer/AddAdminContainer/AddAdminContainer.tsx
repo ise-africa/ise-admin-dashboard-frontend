@@ -1,10 +1,40 @@
+import { useState } from 'react';
 import Button from '../../../Components/Button/Button';
 import Input from '../../../Components/Input/Input';
 import ProfileSectionContainer from '../../../Components/ProfileSectionContainer/ProfileSectionContainer';
 import classes from './AddAdminContainer.module.css'
+import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
+import RoleCreatedModal from './AddAdminContainerModals/RoleCreatedModal';
+import ConfirmAdministratorDetailsModal from './AddAdminContainerModals/ConfirmAdministratorDetailsModal';
 const AddAdminContainer = () => {
+  const [displayConfirmAdministratorDetailsModal, setDisplayConfirmAdministratorDetailsModal] = useState(false)
+  const [displayRoleCreatedModal, setDisplayRoleCreatedModal] = useState(false)
   return (
     <>
+      {displayConfirmAdministratorDetailsModal && (
+        <AcceptedModal
+          onClick={() => { setDisplayConfirmAdministratorDetailsModal(false) }}
+          body={
+            <ConfirmAdministratorDetailsModal
+              onClick={() => { setDisplayConfirmAdministratorDetailsModal(false) }}
+              onClick2={() => {
+                setDisplayConfirmAdministratorDetailsModal(false)
+                setDisplayRoleCreatedModal(true)
+              }}
+            />
+          }
+        />
+      )}
+      {displayRoleCreatedModal && (
+        <AcceptedModal
+          onClick={() => { setDisplayRoleCreatedModal(false) }}
+          body={
+            <RoleCreatedModal
+              onClick={() => { setDisplayRoleCreatedModal(false) }}
+            />
+          }
+        />
+      )}
       <section className={classes.container}>
         <div className={classes.header}>
           <h1>Add new administrator</h1>
@@ -54,7 +84,9 @@ const AddAdminContainer = () => {
           </ProfileSectionContainer>
           <div className={classes.buttonContainer}>
             <Button type='secondary'>Cancel</Button>
-            <Button type='primary'>Continue</Button>
+            <Button
+              type='primary'
+              onClick={() => { setDisplayConfirmAdministratorDetailsModal(true) }}>Continue</Button>
           </div>
         </div>
       </section>
