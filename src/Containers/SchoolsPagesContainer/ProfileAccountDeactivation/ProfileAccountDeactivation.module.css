@@ -90,13 +90,13 @@
 
   .container h4,
   .modalContainer h4 {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 25px;
     margin-bottom: 0.5rem;
   }
 
   .modalContainer p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
   }
 

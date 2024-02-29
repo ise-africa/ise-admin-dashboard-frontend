@@ -5,6 +5,7 @@ import Support from './Pages/Support'
 import SupportTrackingChatDetailPage from './Pages/SupportTrackingChatDetailPage'
 import Schools from './Pages/Schools'
 import AdminProfilePage from './Utilities/AdminProfilePage'
+import AddAdminPage from './Pages/AddAdminPage'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
          <Route path="/schools" element={<Schools />} />
          <Route path="/schools/admins/:AdminName" element={<AdminProfilePage />} />
+         <Route path="/schools/add-admin" element={<AddAdminPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

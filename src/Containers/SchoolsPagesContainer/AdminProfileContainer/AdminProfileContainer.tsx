@@ -27,7 +27,7 @@ const AdminProfileContainer = () => {
     array: [
       {
         title: "Super administrator",
-        route: ``,
+        route: "/schools",
       },
       {
         title: "John Doe",

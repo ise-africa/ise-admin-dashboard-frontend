@@ -136,7 +136,7 @@ const AdministratorBoard = () => {
                     header='Administrator board'
                     paragraph='Invite, assign, collaborate, and manage permissions for platform administrators.'
                 >
-                    <Button>
+                    <Button onClick={() => { navigate('/schools/add-admin') }}>
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 1V17M17 9L1 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
