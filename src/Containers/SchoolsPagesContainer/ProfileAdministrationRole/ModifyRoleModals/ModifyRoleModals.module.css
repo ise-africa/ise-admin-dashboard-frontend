@@ -48,6 +48,11 @@
     border: 1px solid var(--purple);
 }
 
+.newRole button {
+    background: var(--lightGreen);
+    border: 1px solid var(--timerGreen);
+}
+
 .container>div:nth-child(4) {
     gap: 10px;
     display: flex;
@@ -103,5 +108,9 @@
 
     .selectRole {
         padding: 8px;
+    }
+
+    .buttonContainer {
+        gap: 1rem;
     }
 }

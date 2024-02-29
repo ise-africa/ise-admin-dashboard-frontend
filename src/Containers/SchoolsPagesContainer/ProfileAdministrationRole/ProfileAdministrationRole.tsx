@@ -4,10 +4,12 @@ import Button from '../../../Components/Button/Button';
 import { useState } from 'react';
 import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
 import ModifyRoleFirstModal from './ModifyRoleModals/ModifyRoleFirstModal';
+import ModifyRoleSecondModal from './ModifyRoleModals/ModifyRoleSecondModal';
 
 const ProfileAdministrationRole = () => {
 
     const [displayModifyRoleFirstModal, setDisplayModifyRoleFirstModal] = useState(false)
+    const [displayModifyRoleSecondModal, setDisplayModifyRoleSecondModal] = useState(false)
 
     const permissionsData = [
         {
@@ -39,7 +41,21 @@ const ProfileAdministrationRole = () => {
                     body={
                         <ModifyRoleFirstModal
                             onClick={() => { setDisplayModifyRoleFirstModal(false) }}
-                            onClick2={() => { setDisplayModifyRoleFirstModal(false) }}
+                            onClick2={() => {
+                                setDisplayModifyRoleFirstModal(false)
+                                setDisplayModifyRoleSecondModal(true)
+                            }}
+                        />
+                    }
+                />
+            )}
+            {displayModifyRoleSecondModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayModifyRoleSecondModal(false) }}
+                    body={
+                        <ModifyRoleSecondModal
+                            onClick={() => { setDisplayModifyRoleSecondModal(false) }}
+                            onClick2={() => { setDisplayModifyRoleSecondModal(false) }}
                         />
                     }
                 />
