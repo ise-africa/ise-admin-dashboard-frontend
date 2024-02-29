@@ -1,8 +1,14 @@
 import classes from './ProfileAdministrationRole.module.css'
 import ProfileSectionContainer from '../../../Components/ProfileSectionContainer/ProfileSectionContainer';
 import Button from '../../../Components/Button/Button';
+import { useState } from 'react';
+import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
+import ModifyRoleFirstModal from './ModifyRoleModals/ModifyRoleFirstModal';
 
 const ProfileAdministrationRole = () => {
+
+    const [displayModifyRoleFirstModal, setDisplayModifyRoleFirstModal] = useState(false)
+
     const permissionsData = [
         {
             title: "User account management:",
@@ -26,29 +32,46 @@ const ProfileAdministrationRole = () => {
     ];
 
     return (
-        <ProfileSectionContainer
-            header="Administrator roles"
-            paragraph="Learn about the responsibilities, and tasks of the user administrator."
-        >
-            <div className={classes.listContainer}>
-                <p>Role</p>
-                <h4>User admin</h4>
-                <p>Permissions</p>
-                <ol className={classes.numberList}>
-                    {permissionsData.map((permission, index) => (
-                        <li key={index}>
-                            {permission.title}
-                            <ul className={classes.discList}>
-                                {permission.details.map((detail, idx) => (
-                                    <li key={idx}>{detail}</li>
-                                ))}
-                            </ul>
-                        </li>
-                    ))}
-                </ol>
-            </div>
-            <Button className={classes.modifyButton} type='null'>Modify role</Button>
-        </ProfileSectionContainer>
+        <>
+            {displayModifyRoleFirstModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayModifyRoleFirstModal(false) }}
+                    body={
+                        <ModifyRoleFirstModal
+                            onClick={() => { setDisplayModifyRoleFirstModal(false) }}
+                            onClick2={() => { setDisplayModifyRoleFirstModal(false) }}
+                        />
+                    }
+                />
+            )}
+            <ProfileSectionContainer
+                header="Administrator roles"
+                paragraph="Learn about the responsibilities, and tasks of the user administrator."
+            >
+                <div className={classes.listContainer}>
+                    <p>Role</p>
+                    <h4>User admin</h4>
+                    <p>Permissions</p>
+                    <ol className={classes.numberList}>
+                        {permissionsData.map((permission, index) => (
+                            <li key={index}>
+                                {permission.title}
+                                <ul className={classes.discList}>
+                                    {permission.details.map((detail, idx) => (
+                                        <li key={idx}>{detail}</li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
+                <Button
+                    type='null'
+                    className={classes.modifyButton}
+                    onClick={() => { setDisplayModifyRoleFirstModal(true) }}
+                >Modify role</Button>
+            </ProfileSectionContainer>
+        </>
 
     )
 }
