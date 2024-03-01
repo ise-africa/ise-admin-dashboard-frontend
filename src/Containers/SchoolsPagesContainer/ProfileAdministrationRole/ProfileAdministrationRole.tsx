@@ -1,11 +1,13 @@
 import classes from './ProfileAdministrationRole.module.css'
 import ProfileSectionContainer from '../../../Components/ProfileSectionContainer/ProfileSectionContainer';
 import Button from '../../../Components/Button/Button';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
 import ModifyRoleFirstModal from './ModifyRoleModals/ModifyRoleFirstModal';
 import ModifyRoleSecondModal from './ModifyRoleModals/ModifyRoleSecondModal';
 import ModifyRoleThirdModal from './ModifyRoleModals/ModifyRoleThirdModal';
+import { AppContext } from '../../../Context/AppContext';
+import { useParams } from 'react-router-dom';
 
 const ProfileAdministrationRole = () => {
 
@@ -13,27 +15,15 @@ const ProfileAdministrationRole = () => {
     const [displayModifyRoleSecondModal, setDisplayModifyRoleSecondModal] = useState(false)
     const [displayModifyRoleThirdModal, setDisplayModifyRoleThirdModal] = useState(false)
 
-    const permissionsData = [
-        {
-            title: "User account management:",
-            details: ["Creation, modification, and deletion of student and tutor accounts."]
-        },
-        {
-            title: "Students' enrollment:",
-            details: ["Manage the enrollment process for students."]
-        },
-        {
-            title: "Data reports and insights:",
-            details: ["Generate reports from the dashboard to support decision-making."]
-        },
-        {
-            title: "Communication management:",
-            details: [
-                "Handle email notifications, messaging, and announcements.",
-                "Manage user registration, account activation, and password resets."
-            ]
-        },
-    ];
+    // Context
+    const { adminData } = useContext(AppContext)
+
+    // Router
+    const { AdminId } = useParams()
+
+    const activeAdmin = adminData.find((data) => {
+        return data.adminFullName.replace(' ', '-').toLowerCase() === AdminId
+    })
 
     return (
         <>
@@ -84,10 +74,10 @@ const ProfileAdministrationRole = () => {
             >
                 <div className={classes.listContainer}>
                     <p>Role</p>
-                    <h4>User admin</h4>
+                    <h4>{activeAdmin?.adminRole}</h4>
                     <p>Permissions</p>
                     <ol className={classes.numberList}>
-                        {permissionsData.map((permission, index) => (
+                        {activeAdmin && activeAdmin.permissionsData.map((permission, index) => (
                             <li key={index}>
                                 {permission.title}
                                 <ul className={classes.discList}>

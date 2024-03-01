@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import classes from "./AdminProfileContainer.module.css";
 import AdminProfileTabContainer from "../AdminProfileTabContainer/AdminProfileTabContainer";
 import SectionsNav4 from "../../../Components/SectionsNav4/SectionsNav4";
 import AdminActivitiesTab from "../AdminActivitiesTab/AdminActivitiesTab";
 import Breadcrumbs from "../../../Components/Breadcrumbs/Breadcrumbs";
 import breadcrumbsBack from "../../../Assets/Images/breadcrumbsBack.svg";
+import { AppContext } from "../../../Context/AppContext";
+import { useParams } from "react-router-dom";
 
 const AdminProfileContainer = () => {
+  // Context
+  const { adminData } = useContext(AppContext)
+
+  // Router
+  const { AdminId } = useParams()
+
+  const activeAdmin = adminData.find((data) => {
+    return data.adminFullName.replace(' ', '-').toLowerCase() === AdminId
+  })
+
   // States
   const [navItems, setNavItems] = useState<any[]>([
     {
@@ -26,12 +38,12 @@ const AdminProfileContainer = () => {
     image: breadcrumbsBack,
     array: [
       {
-        title: "Super administrator",
+        title: `${activeAdmin?.adminRole}`,
         route: "/schools",
       },
       {
-        title: "John Doe",
-        route: "",
+        title: `${activeAdmin?.adminFullName}`,
+        route: `/schools/admins/${activeAdmin?.adminFullName.toLowerCase().replace(' ', '-')}`,
       },
     ],
   };

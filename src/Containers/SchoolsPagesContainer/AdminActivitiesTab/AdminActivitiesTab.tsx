@@ -1,23 +1,19 @@
+import { useContext } from "react"
 import classes from "./AdminActivitiesTab.module.css"
+import { AppContext } from "../../../Context/AppContext"
+import { useParams } from "react-router-dom"
 
 const AdminActivitiesTab = () => {
-    const activitiesData = [
-        {
-            time: "11:01AM",
-            date: "12 Oct, 2023",
-            action: `Modified roles and permissions for "Bob Johnson"`,
-        },
-        {
-            time: "11:01AM",
-            date: "12 Oct, 2023",
-            action: `Modified roles and permissions for "Bob Johnson"`,
-        },
-        {
-            time: "11:01AM",
-            date: "12 Oct, 2023",
-            action: `Modified roles and permissions for "Bob Johnson"`,
-        },
-    ]
+    // Context
+    const { adminData } = useContext(AppContext)
+
+    // Router
+    const { AdminId } = useParams()
+
+    const activeAdmin = adminData.find((data) => {
+        return data.adminFullName.replace(' ', '-').toLowerCase() === AdminId
+    })
+
     return (
         <div className={classes.container}>
             <div className={classes.tableHeader}>
@@ -25,7 +21,7 @@ const AdminActivitiesTab = () => {
                 <span>Time</span>
                 <span>Actions</span>
             </div>
-            {activitiesData.map((data, i) => (
+            {activeAdmin?.activitiesData.map((data, i) => (
                 <div className={classes.tableBody}>
                     <span>
                         <p>{data.date}</p>

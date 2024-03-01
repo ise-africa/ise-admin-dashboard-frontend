@@ -11,6 +11,7 @@ const ProfileAccountDeactivation = () => {
   const [displayDeleteDisclaimerModal, setDisplauDeleteDisclaimeeModal] =
     useState(false);
   const [displayDeletedModal, setDisplayDeletedModal] = useState(false);
+
   // Utils
   const closeDisclaimers = [
     "This disables administrator's access to the platform.",

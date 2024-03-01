@@ -1,10 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import classes from "./AdministratorBoard.module.css"
 import HelloUser from "../../../Components/HelloUser/HelloUser";
 import Button from "../../../Components/Button/Button";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../../Context/AppContext";
 import ActionsModal from "./ActionsModal/ActionsModal";
-import { useNavigate, useParams } from "react-router-dom";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import ViewPermissionModal from "./ViewPermissionModal/ViewPermissionModal";
 import SendInviteModal from "./SendInviteModal/SendInviteModal";
@@ -15,7 +15,6 @@ const AdministratorBoard = () => {
     const { adminData } = useContext(AppContext)
 
     const navigate = useNavigate();
-    const { AdminName } = useParams();
 
     // States
     const [adminOptions, setAdminOptions] = useState(adminData)
@@ -164,10 +163,10 @@ const AdministratorBoard = () => {
                         return (
                             <div key={index} className={classes.tableBody}>
                                 <div>
-                                    <img src={data.adminImage} alt={data.adminName} />
+                                    <img src={data.adminImage} alt={data.adminFullName} />
                                 </div>
                                 <div className={classes.adminInfo}>
-                                    <span>{data.adminName}</span>
+                                    <span>{data.adminFullName}</span>
                                     <span>{data.emailAddress}</span>
                                 </div>
                                 <div>
@@ -193,7 +192,11 @@ const AdministratorBoard = () => {
                                                 }}
                                                 onClick2={() => {
                                                     optionsChangeHandler(index);
-                                                    navigate('/schools/admins/:AdminName');
+                                                    navigate(
+                                                        `/schools/admins/${data.adminFullName
+                                                            .replaceAll(' ', '-')
+                                                            .toLowerCase()}`
+                                                    )
                                                 }}
                                                 onClick3={() => {
                                                     optionsChangeHandler(index);

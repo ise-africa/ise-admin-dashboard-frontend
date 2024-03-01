@@ -1,10 +1,23 @@
+import { useContext } from 'react'
 import classes from './AdminProfileDetails.module.css'
 import ProfileSectionContainer from '../../../Components/ProfileSectionContainer/ProfileSectionContainer'
 import amdimImage from '../../../Assets/Images/johnDoeSenderAvatar.svg'
 import emailIcon from '../../../Assets/Images/emailIconImage.png'
 import linkedInIcon from '../../../Assets/Images/linkedInIconImage.png'
+import { useParams } from 'react-router-dom'
+import { AppContext } from '../../../Context/AppContext'
 
 const AdminProfileDetails = () => {
+    // Context
+    const { adminData } = useContext(AppContext)
+
+    // Router
+    const { AdminId } = useParams()
+
+    const activeAdmin = adminData.find((data) => {
+        return data.adminFullName.replace(' ', '-').toLowerCase() === AdminId
+    })
+
     return (
         <ProfileSectionContainer
             header="Profile"
@@ -13,19 +26,19 @@ const AdminProfileDetails = () => {
             <div className={classes.userDetails}>
                 <div className={classes.userInfo}>
                     <img src={amdimImage} alt="User" />
-                    <h3>Kenneth Uwakwe</h3>
+                    <h3>{activeAdmin?.adminFullName}</h3>
                 </div>
                 <div className={classes.about}>
                     <h4>About</h4>
-                    <p>I love helping people navigate the UX world – it can be tough out there, and we all need some guidance. Everyone deserves an opportunity to get a step closer to their dreams.</p>
+                    <p>{activeAdmin?.adminAbout}</p>
                 </div>
                 <div className={classes.links}>
                     <h4>Links</h4>
                     <div>
-                        <a href="/" target="_blank" rel="noopener noreferrer">
+                        <a href={`mailto:${activeAdmin?.emailAddress}`} target="_blank" rel="noopener noreferrer">
                             <img src={emailIcon} alt="Email" />
                         </a>
-                        <a href="/" target="_blank" rel="noopener noreferrer">
+                        <a href={activeAdmin?.linkedInUrl} target="_blank" rel="noopener noreferrer">
                             <img src={linkedInIcon} alt="Linkedin url" />
                         </a>
                     </div>

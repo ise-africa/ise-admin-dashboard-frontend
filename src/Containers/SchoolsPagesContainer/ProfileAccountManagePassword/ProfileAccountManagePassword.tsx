@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import classes from "./ProfileAccountManagePassword.module.css";
 import ChangeEmailComformedModalBody from "./ChangeEmailComformedModalBody";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
@@ -6,12 +6,24 @@ import ProfileSectionContainer from "../../../Components/ProfileSectionContainer
 import Input from "../../../Components/Input/Input";
 import Button from "../../../Components/Button/Button";
 import ChangePasswordModal from "./ChangeEmailModalWarning";
+import { AppContext } from "../../../Context/AppContext";
+import { useParams } from "react-router-dom";
 
 const ProfileAccountManagePassword = () => {
   // States
   const [displayChangePasswordModal, setDisplayChangePasswordModal] = useState(false);
   const [displayEmailChangeConfirmModal, setDisplayEmailChangeConfirmModal] =
     useState(false);
+
+  // Context
+  const { adminData } = useContext(AppContext)
+
+  // Router
+  const { AdminId } = useParams()
+
+  const activeAdmin = adminData.find((data) => {
+    return data.adminFullName.replace(' ', '-').toLowerCase() === AdminId
+  })
 
   return (
     <ProfileSectionContainer
@@ -54,22 +66,22 @@ const ProfileAccountManagePassword = () => {
         <Input
           type="text"
           label="First name *"
-          placeholder="John"
+          placeholder={activeAdmin?.adminFirstName}
         />
         <Input
           type="text"
           label="Last name *"
-          placeholder="Doe"
+          placeholder={activeAdmin?.adminLastName}
         />
         <Input
           type="email"
           label="Email address *"
-          placeholder="johndoe@gmail.com"
+          placeholder={activeAdmin?.emailAddress}
         />
         <Input
           type="password"
           label="Password *"
-          placeholder="xxxxxxxxxxxxxxxxx"
+          placeholder={activeAdmin?.password}
         />
 
         <Button
