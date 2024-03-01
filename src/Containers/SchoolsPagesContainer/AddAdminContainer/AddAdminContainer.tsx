@@ -6,7 +6,9 @@ import classes from './AddAdminContainer.module.css'
 import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
 import RoleCreatedModal from './AddAdminContainerModals/RoleCreatedModal';
 import ConfirmAdministratorDetailsModal from './AddAdminContainerModals/ConfirmAdministratorDetailsModal';
+import { useNavigate } from 'react-router-dom';
 const AddAdminContainer = () => {
+  const navigate = useNavigate();
   const [displayConfirmAdministratorDetailsModal, setDisplayConfirmAdministratorDetailsModal] = useState(false)
   const [displayRoleCreatedModal, setDisplayRoleCreatedModal] = useState(false)
   return (
@@ -83,7 +85,9 @@ const AddAdminContainer = () => {
             />
           </ProfileSectionContainer>
           <div className={classes.buttonContainer}>
-            <Button type='secondary'>Cancel</Button>
+            <Button
+              type='secondary'
+              onClick={() => { navigate('/schools') }}>Cancel</Button>
             <Button
               type='primary'
               onClick={() => { setDisplayConfirmAdministratorDetailsModal(true) }}>Continue</Button>
