@@ -43,6 +43,61 @@
   width: fit-content;
 }
 
+.selectRole {
+  gap: 1rem;
+  display: flex;
+  padding: 1rem;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  background: var(--veryVeryLightPurple);
+}
+
+.selectRole p {
+  flex: 1;
+  color: var(--grey);
+  font-size: 16px !important;
+}
+
+.selectRole svg {
+  cursor: pointer;
+}
+
+.listContainer {
+  flex-basis: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  padding: 0 16px;
+  background-color: rgba(247, 245, 255, 1);
+  color: var(--grey);
+  font-family: Archivo;
+  font-style: normal;
+  line-height: 26px;
+  scrollbar-width: none;
+  margin-top: 10px;
+}
+
+.listContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.numberList {
+  list-style: decimal;
+  padding-left: 0;
+}
+
+.numberList li {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.discList {
+  list-style: disc;
+  padding-left: 20px;
+}
+
 @media screen and (max-width: 1023px) {
   .container {
     margin: 0;
@@ -69,4 +124,14 @@
     gap: 1rem;
     margin: 24px 0 0;
   }
+
+  .selectRole {
+    padding: 8px;
+  }
+
+  .numberList li {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
 }
