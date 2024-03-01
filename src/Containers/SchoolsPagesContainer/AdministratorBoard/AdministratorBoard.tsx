@@ -16,6 +16,7 @@ const AdministratorBoard = () => {
 
     const navigate = useNavigate();
 
+
     // States
     const [adminOptions, setAdminOptions] = useState(adminData)
     const [displayViewPermissionModal, setDisplayViewPermissionModal] = useState(false)
@@ -37,6 +38,8 @@ const AdministratorBoard = () => {
 
         setAdminOptions(adminOptionCopy);
     };
+
+
 
     useEffect(() => {
         const removeOptions = (e: any) => {
@@ -178,7 +181,7 @@ const AdministratorBoard = () => {
                                 <div className={classes.moreOptionsContainer}>
                                     <svg
                                         onClick={() => {
-                                            optionsChangeHandler(index)
+                                            optionsChangeHandler(index);
                                         }}
                                         width="4" height="19" viewBox="0 0 4 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 2.05859L2 2.06859M2 9.05859L2 9.06859M2 16.0586L2 16.0686M2 3.05859C1.44772 3.05859 1 2.61088 1 2.05859C1 1.50631 1.44772 1.05859 2 1.05859C2.55228 1.05859 3 1.50631 3 2.05859C3 2.61088 2.55228 3.05859 2 3.05859ZM2 10.0586C1.44771 10.0586 1 9.61088 1 9.05859C1 8.50631 1.44771 8.05859 2 8.05859C2.55228 8.05859 3 8.50631 3 9.05859C3 9.61088 2.55228 10.0586 2 10.0586ZM2 17.0586C1.44771 17.0586 0.999999 16.6109 0.999999 16.0586C0.999999 15.5063 1.44771 15.0586 2 15.0586C2.55228 15.0586 3 15.5063 3 16.0586C3 16.6109 2.55228 17.0586 2 17.0586Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -209,6 +212,7 @@ const AdministratorBoard = () => {
                                             />
                                         </div>
                                     )}
+
                                 </div>
                             </div>
                         )
