@@ -3,8 +3,8 @@ import classes from "./TutorsManagementModules.module.css";
 import HelloUser from "../../../Components/HelloUser/HelloUser";
 import Button from "../../../Components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import EmptyTabComponent from "../../../Components/EmptyTabComponent/EmptyTabComponent";
 import TutorDataTable from "../TutorDataTable/TutorDataTable";
+import TutorsManagementModulesEmptyTab from "./TutorsManagementModulesEmptyTab";
 
 
 const TutorsManagementModules = () => {
@@ -15,16 +15,7 @@ const TutorsManagementModules = () => {
         {
             isActive: true,
             activeComponent: <TutorDataTable />,
-            activeNullStateComponent: (
-                <EmptyTabComponent
-                    image='{noResult}'
-                    firstParagraph="You have no schedule at the moment."
-                    secondParagraph=""
-                    route="/courses"
-                    buttontext="Explore classes"
-                    showButton={true}
-                />
-            ),
+            activeNullStateComponent: <TutorsManagementModulesEmptyTab />
         },
     ]);
 
