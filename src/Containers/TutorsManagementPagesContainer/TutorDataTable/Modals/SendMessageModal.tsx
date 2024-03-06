@@ -61,10 +61,10 @@ const SendMessageModal = ({ onClick, onClick2 }: SendMessageModalProps) => {
             </div>
 
             <div className={classes.footer}>
-                <Button onClick={onClick}>
+                <Button type="secondary" onClick={onClick}>
                     <span>Cancel</span>
                 </Button>
-                <Button onClick={onClick2}>
+                <Button type="primary" onClick={onClick2}>
                     <span>Send Message</span>
                 </Button>
             </div>

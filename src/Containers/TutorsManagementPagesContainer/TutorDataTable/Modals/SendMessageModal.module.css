@@ -4,6 +4,11 @@
   background: var(--white);
 }
 
+.container button,
+.modalContainer button {
+  width: auto;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -22,6 +27,7 @@
   cursor: pointer;
 }
 
+.modalContainer>p,
 .recipient {
   gap: 2rem;
   display: flex;
@@ -59,15 +65,25 @@
   margin-top: calc(40px - 1rem);
 }
 
-.footer>button:nth-child(1) {
-  background: var(--white);
-  color: var(--purple);
-  width: 130px;
+.modalContainer {
+  gap: 1rem;
+  width: 90%;
+  display: flex;
+  text-align: center;
+  margin: 2rem auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.footer>button {
-  width: 180px;
-  border: 2px solid var(--purple);
+.modalContainer h4 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.modalContainer button {
+  margin-top: 1rem;
 }
 
 @media screen and (max-width: 1023px) {

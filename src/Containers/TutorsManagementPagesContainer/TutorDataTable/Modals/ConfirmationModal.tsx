@@ -9,14 +9,12 @@ type ConfirmationModalProps = {
 const ConfirmationModal = ({ onClick }: ConfirmationModalProps) => {
   return (
     <div className={classes.modalContainer}>
-      <div className={classes.modalInner2}>
-        <img src={success} alt="Email sent" />
-        <h4>Message sent successfully!</h4>
-        <p>
-          Your message has been successfully sent to the selected student(s).
-        </p>
-        <Button onClick={onClick}>Close</Button>
-      </div>
+      <img src={success} alt="Email sent" />
+      <h4>Message sent successfully!</h4>
+      <p>
+        Your message has been successfully sent to the selected student(s).
+      </p>
+      <Button onClick={onClick}>Close</Button>
     </div>
   );
 };
