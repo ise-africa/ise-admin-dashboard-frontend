@@ -19,11 +19,14 @@ const TutorDataTable = () => {
    const [displaySendMessageModal, setDisplaySendMessageModal] = useState(false)
    const [displayConfirmationModal, setDisplayConfirmationModal] =
       useState(false)
+   const [searchTerm, setSearchTerm] = useState('')
 
-   // Utils
-   const allStudentsInactive = tutors.filter((data) => {
-      return !data.isActive
-   })
+   const filteredTutor = tutors.filter(data => {
+      return (
+         data.emailAddress.toLowerCase().includes(searchTerm.toLowerCase()) ||
+         data.tutorName.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+   });
 
    return (
       <section className={classes.container}>
@@ -63,7 +66,7 @@ const TutorDataTable = () => {
             <div className={classes.headerItem}>
                <div>
                   <Checkbox
-                     isChecked={allStudentsInactive.length === 0 ? true : false}
+                     isChecked={filteredTutor.length === 0 ? true : false}
                      onChange={() => {
                         activeToggleSetAll(tutors, setTutors)
                      }}
@@ -85,8 +88,8 @@ const TutorDataTable = () => {
                   <input
                      type="text"
                      placeholder="Search by name or email"
-                     value=""
-                     onChange={(e) => { }}
+                     value={searchTerm}
+                     onChange={e => setSearchTerm(e.target.value)}
                   />
                   <svg
                      xmlns="http://www.w3.org/2000/svg"
@@ -152,36 +155,39 @@ const TutorDataTable = () => {
                   <span>Courses</span>
                   <span></span>
                </div>
-
-               {tutors.map((data, i) => {
-                  return (
-                     <div key={Math.random()} className={classes.tableBody}>
-                        <Checkbox
-                           isChecked={data.isActive}
-                           onChange={() => {
-                              activeTogglerRestAll(i, tutors, setTutors)
-                           }}
-                        />
-                        <span>
-                           <p>{data.tutorName}</p>
-                           <p>{data.emailAddress}</p>
-                        </span>
-                        <span>{data.emailAddress}</span>
-                        <span>{data.course}</span>
-                        <span
-                           onClick={() => {
-                              navigate(
-                                 `/tutor/details/${data.tutorName
-                                    .replaceAll(' ', '-')
-                                    .toLowerCase()}`
-                              )
-                           }}
-                        >
-                           View
-                        </span>
-                     </div>
-                  )
-               })}
+               {filteredTutor.length === 0 ? (
+                  <div className={classes.noResult}>No search results for the user "{searchTerm}" available</div>
+               ) : (
+                  filteredTutor.map((data, i) => {
+                     return (
+                        <div key={Math.random()} className={classes.tableBody}>
+                           <Checkbox
+                              isChecked={data.isActive}
+                              onChange={() => {
+                                 activeTogglerRestAll(i, tutors, setTutors)
+                              }}
+                           />
+                           <span>
+                              <p>{data.tutorName}</p>
+                              <p>{data.emailAddress}</p>
+                           </span>
+                           <span>{data.emailAddress}</span>
+                           <span>{data.course}</span>
+                           <span
+                              onClick={() => {
+                                 navigate(
+                                    `/tutor/details/${data.tutorName
+                                       .replaceAll(' ', '-')
+                                       .toLowerCase()}`
+                                 )
+                              }}
+                           >
+                              View
+                           </span>
+                        </div>
+                     )
+                  })
+               )}
             </div>
             <div className={classes.pageButtons}>
                <span>

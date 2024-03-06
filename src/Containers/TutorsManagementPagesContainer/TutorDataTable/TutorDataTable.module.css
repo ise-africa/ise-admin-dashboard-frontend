@@ -7,6 +7,12 @@
     font-family: Archivo;
 }
 
+.noResult {
+    font-size: 18px;
+    line-height: 29px;
+    margin: 4rem auto;
+}
+
 .header {
     gap: 2rem;
     width: 100%;
