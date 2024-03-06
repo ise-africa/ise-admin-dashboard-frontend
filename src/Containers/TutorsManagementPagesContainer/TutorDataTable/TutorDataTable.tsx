@@ -176,7 +176,7 @@ const TutorDataTable = () => {
                            <span
                               onClick={() => {
                                  navigate(
-                                    `/tutor/details/${data.tutorName
+                                    `/tutor/${data.tutorName
                                        .replaceAll(' ', '-')
                                        .toLowerCase()}`
                                  )

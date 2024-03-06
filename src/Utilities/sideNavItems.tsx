@@ -42,7 +42,7 @@ export const sideNavItems: sideNavItemsType = [
 
   {
     title: "Schools",
-    route: "/schools",
+    route: "/admins",
     keywords: ["schools"],
     otherOptions: null,
     isVisible: true,
@@ -50,7 +50,7 @@ export const sideNavItems: sideNavItemsType = [
 
   {
     title: "Profile",
-    route: "/profile",
+    route: "/tutors",
     keywords: ["profile"],
     otherOptions: null,
     isVisible: true,

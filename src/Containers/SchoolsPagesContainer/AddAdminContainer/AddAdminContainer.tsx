@@ -196,7 +196,7 @@ const AddAdminContainer = () => {
           <div className={classes.buttonContainer}>
             <Button
               type='secondary'
-              onClick={() => { navigate('/schools') }}>Cancel</Button>
+              onClick={() => { navigate('/admins') }}>Cancel</Button>
             <Button
               type='primary'
               onClick={() => { setDisplayConfirmAdministratorDetailsModal(true) }}>Continue</Button>
