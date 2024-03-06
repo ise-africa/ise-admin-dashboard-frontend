@@ -1,9 +1,9 @@
 import amirahTemi from '../Assets/Images/amirahTemi.svg'
 
-export type studentsDataType = {
+export type tutorsDataType = {
   isActive: boolean
-  studentImage: string
-  studentName: string
+  tutorImage: string
+  tutorName: string
   emailAddress: string
   fileName: string
   status: string
@@ -18,11 +18,11 @@ export type studentsDataType = {
   displayOptions: boolean
 }[]
 
-export const studentsData = [
+export const tutorsData = [
   {
     isActive: false,
-    studentImage: amirahTemi,
-    studentName: 'Olivia Davis',
+    tutorImage: amirahTemi,
+    tutorName: 'Olivia Davis',
     emailAddress: 'olivia.davis@example.com',
     fileName: 'Assignment3.txt',
     status: 'Pending',
@@ -34,12 +34,12 @@ export const studentsData = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/oliviadavis',
     profileImage: 'https://example.com/images/oliviadavis.jpg',
-    course: 'Frontend development course',
+    course: 'Not assigned',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Daniel Wilson',
+    tutorName: 'Daniel Wilson',
     emailAddress: 'daniel.wilson@example.com',
     fileName: 'Assignment3.json',
     status: 'Approved',
@@ -51,12 +51,12 @@ export const studentsData = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/danielwilson',
     profileImage: 'https://example.com/images/danielwilson.jpg',
-    course: 'Frontend development course',
+    course: 'Frontend development',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Sophia Moore',
+    tutorName: 'Sophia Moore',
     emailAddress: 'sophia.moore@example.com',
     fileName: 'Assignment3.csv',
     status: 'Approved',
@@ -68,12 +68,12 @@ export const studentsData = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/sophiamoore',
     profileImage: 'https://example.com/images/sophiamoore.jpg',
-    course: 'Backend development course',
+    course: 'Backend development',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Liam Taylor',
+    tutorName: 'Liam Taylor',
     emailAddress: 'liam.taylor@example.com',
     fileName: 'Assignment3.sql',
     status: 'Pending',
@@ -85,12 +85,12 @@ export const studentsData = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/liamtaylor',
     profileImage: 'https://example.com/images/liamtaylor.jpg',
-    course: 'Backend development course',
+    course: 'Not assigned',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Ava Jackson',
+    tutorName: 'Ava Jackson',
     emailAddress: 'ava.jackson@example.com',
     fileName: 'Assignment3.xml',
     status: 'Approved',
@@ -102,12 +102,12 @@ export const studentsData = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/avajackson',
     profileImage: 'https://example.com/images/avajackson.jpg',
-    course: 'Backend development course',
+    course: 'Backend development',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Sophie Adams',
+    tutorName: 'Sophie Adams',
     emailAddress: 'sophie.adams@example.com',
     fileName: 'Assignment4.docx',
     status: 'Approved',
@@ -119,12 +119,12 @@ export const studentsData = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/sophieadams',
     profileImage: 'https://example.com/images/sophieadams.jpg',
-    course: 'Backend development course',
+    course: 'Not assigned',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Ryan Carter',
+    tutorName: 'Ryan Carter',
     emailAddress: 'ryan.carter@example.com',
     fileName: 'Assignment4.pdf',
     status: 'Pending',
@@ -136,12 +136,12 @@ export const studentsData = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/ryancarter',
     profileImage: 'https://example.com/images/ryancarter.jpg',
-    course: 'Frontend development course',
+    course: 'Frontend development',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Zara Patel',
+    tutorName: 'Zara Patel',
     emailAddress: 'zara.patel@example.com',
     fileName: 'Assignment4.pptx',
     status: 'Approved',
@@ -153,12 +153,12 @@ export const studentsData = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/zarapatel',
     profileImage: 'https://example.com/images/zarapatel.jpg',
-    course: 'Frontend development course',
+    course: 'Frontend development',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Lucas Rodriguez',
+    tutorName: 'Lucas Rodriguez',
     emailAddress: 'lucas.rodriguez@example.com',
     fileName: 'Assignment4.csv',
     status: 'Pending',
@@ -170,12 +170,12 @@ export const studentsData = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/lucasrodriguez',
     profileImage: 'https://example.com/images/lucasrodriguez.jpg',
-    course: 'Frontend development course',
+    course: 'Not assigned',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Mia Kim',
+    tutorName: 'Mia Kim',
     emailAddress: 'mia.kim@example.com',
     fileName: 'Assignment4.xlsx',
     status: 'Approved',
@@ -187,12 +187,12 @@ export const studentsData = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/miakim',
     profileImage: 'https://example.com/images/miakim.jpg',
-    course: 'Frontend development course',
+    course: 'Frontend development',
     displayOptions: false,
   },
   {
     isActive: false,
-    studentName: 'Elijah Wright',
+    tutorName: 'Elijah Wright',
     emailAddress: 'elijah.wright@example.com',
     fileName: 'Assignment4.doc',
     status: 'Pending',
@@ -204,7 +204,7 @@ export const studentsData = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/elijahwright',
     profileImage: 'https://example.com/images/elijahwright.jpg',
-    course: 'Frontend development course',
+    course: 'Not assigned',
     displayOptions: false,
   },
 ]

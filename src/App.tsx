@@ -6,6 +6,7 @@ import SupportTrackingChatDetailPage from './Pages/SupportTrackingChatDetailPage
 import Schools from './Pages/Schools'
 import AdminProfilePage from './Pages/AdminProfilePage'
 import AddAdminPage from './Pages/AddAdminPage'
+import TutorsManagementPage from './Pages/TutorsManagementPage'
 
 
 function App() {
@@ -17,7 +18,10 @@ function App() {
 
          <Route path="/schools" element={<Schools />} />
          <Route path="/schools/admins/:AdminId" element={<AdminProfilePage />} />
+         <Route path="/schools/#:AdminInfo" element={<AdminProfilePage />} />
          <Route path="/schools/add-admin" element={<AddAdminPage />} />
+
+         <Route path="/profile" element={<TutorsManagementPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

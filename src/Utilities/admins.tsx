@@ -118,7 +118,7 @@ export const adminsData: adminsDataType[] = [
         linkedInUrl: "https://www.linkedin.com/in/janesmith/",
         emailAddress: "jane.smith@example.com",
         dateJoined: "02 Aug, 2022",
-        displayOptions: false,
+        displayOptions: true,
         permissionsData: userAdminData,
         activitiesData: [
             {
@@ -170,7 +170,7 @@ export const adminsData: adminsDataType[] = [
         linkedInUrl: "https://www.linkedin.com/in/michaelbrown/",
         emailAddress: "michael.brown@example.com",
         dateJoined: "pending",
-        displayOptions: false,
+        displayOptions: true,
         permissionsData: userAdminData,
         activitiesData: [
             {

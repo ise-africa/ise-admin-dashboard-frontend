@@ -192,6 +192,11 @@ const AdministratorBoard = () => {
                                                 onClick={() => {
                                                     optionsChangeHandler(index);
                                                     setDisplayViewPermissionModal(true);
+                                                    navigate(
+                                                        `/schools/#${data.adminFullName
+                                                            .replaceAll(' ', '-')
+                                                            .toLowerCase()}`
+                                                    )
                                                 }}
                                                 onClick2={() => {
                                                     optionsChangeHandler(index);

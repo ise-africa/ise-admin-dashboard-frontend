@@ -15,8 +15,8 @@
     position: relative;
     top: 0;
     left: 0;
-    height: 1.2em;
-    width: 1.2em;
+    height: 1.1em;
+    width: 1.1em;
     background-color: #2196F300;
     border-radius: 0.25em;
     transition: all 0.25s;
@@ -40,10 +40,10 @@
 }
 
 .container input:checked~.checkmark:after {
-    left: 0.45em;
-    top: 0.2em;
-    width: 0.25em;
-    height: 0.5em;
+    left: 0.4em;
+    top: 0.17em;
+    width: 0.2em;
+    height: 0.45em;
     border-color: #fff0 white white #fff0;
     border-width: 0 0.15em 0.15em 0;
     border-radius: 0em;

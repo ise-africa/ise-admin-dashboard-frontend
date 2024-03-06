@@ -1,0 +1,14 @@
+.container {
+    gap: 2rem;
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+
+    font-style: normal;
+    font-family: Archivo;
+}
+
+.container button {
+    width: fit-content;
+    padding: 10px 30px;
+}
