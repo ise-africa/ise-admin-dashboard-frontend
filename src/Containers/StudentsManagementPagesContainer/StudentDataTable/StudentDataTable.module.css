@@ -13,6 +13,91 @@
     margin: 4rem auto;
 }
 
+.engagement {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.engagement>div::-webkit-scrollbar {
+    display: none;
+}
+
+.engagement>div {
+    gap: 1rem;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.engagementCard {
+    width: 366px;
+    padding: 1rem;
+    display: flex;
+    flex-shrink: 0;
+    cursor: pointer;
+    text-align: start;
+    border-width: 1px;
+    border-radius: 12px;
+    border-style: solid;
+    box-sizing: border-box;
+    align-items: flex-start;
+    background: var(--white);
+    border-color: transparent;
+    transition: var(--transition);
+    justify-content: space-between;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.engagementCard:active {
+    border-color: var(--purple);
+}
+
+.engagementCard>div:nth-child(1) {
+    flex: 1;
+    padding-right: 8px;
+}
+
+.engagementCard>div:nth-child(2) {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.engagementCard img {
+    width: 49px;
+    height: 49px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.engagementCard .number {
+    font-size: 39px;
+    font-weight: 500;
+    line-height: 50px;
+}
+
+.engagementCard .title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.engagementCard>div span {
+    font-family: Archivo;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+
 .header {
     gap: 2rem;
     width: 100%;
@@ -102,9 +187,9 @@
     background: var(--white);
 }
 
-.body>div:nth-child(1) {
+.body .tableBodyContainer {
+    height: 536px;
     overflow: auto;
-    position: relative;
 }
 
 .tableHeader,
@@ -112,7 +197,7 @@
     gap: 40px;
     width: 100%;
     display: grid;
-    min-width: 500px;
+    min-width: 100%;
     grid-template-columns: 40px 2fr 1fr 1fr 70px;
     align-items: center;
     justify-content: space-between;
@@ -132,7 +217,7 @@
 }
 
 .tableBody {
-    padding: 40px 0 15px;
+    padding: 32px 0 10px;
     border-bottom: 1px solid var(--sectionBorder);
 }
 
@@ -285,9 +370,9 @@
     .tableHeader,
     .tableBody {
         gap: 20px;
-        font-size: 14px;
+        font-size: 10px;
         line-height: 22px;
-        grid-template-columns: 20px 3fr 2fr 2fr 50px;
+        grid-template-columns: 15px 3fr 2fr 2fr 30px;
     }
 
     .header {
@@ -320,5 +405,25 @@
 
     .tableBody div img {
         display: none;
+    }
+
+    .engagementCard {
+        width: 252px;
+        border: 1px solid var(--black);
+    }
+
+    .engagementCard .number {
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    .engagementCard .title {
+        font-size: 14px;
+        line-height: 23px;
+    }
+
+    .engagement span {
+        font-size: 10px;
+        line-height: 18px;
     }
 }

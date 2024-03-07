@@ -8,6 +8,8 @@ import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModa
 import SendMessageModal from './Modals/SendMessageModal'
 import ConfirmationModal from './Modals/ConfirmationModal'
 import email from '../../../Assets/Images/emailIcon.svg'
+import greenBar from '../../../Assets/Images/greenBar.svg'
+import yellowBar from '../../../Assets/Images/yellowBar.svg'
 
 const StudentDataTable = () => {
    const navigate = useNavigate()
@@ -27,6 +29,30 @@ const StudentDataTable = () => {
          data.studentName.toLowerCase().includes(searchTerm.toLowerCase())
       )
    });
+
+   const engagement = [
+      {
+         status: 'Up',
+         statusFigure: 2.1,
+         totalNumber: 854,
+         image: greenBar,
+         title: 'All students',
+      },
+      {
+         status: 'Dn',
+         statusFigure: 5.1,
+         totalNumber: 342,
+         image: yellowBar,
+         title: 'Active students',
+      },
+      {
+         status: 'Up',
+         statusFigure: 2.1,
+         totalNumber: 5,
+         image: greenBar,
+         title: 'New students',
+      },
+   ]
 
    return (
       <section className={classes.container}>
@@ -62,6 +88,24 @@ const StudentDataTable = () => {
                }
             />
          )}
+         <div className={classes.engagement}>
+            <div>
+               {engagement.map((data, i) => {
+                  return (
+                     <div key={i} className={classes.engagementCard}>
+                        <div>
+                           <h3 className={classes.title}>{data.title}</h3>
+                           <h1 className={classes.number}>{data.totalNumber.toString()}</h1>
+                        </div>
+                        <div>
+                           <img src={data.image} alt={data.title} />
+                           <span>{data.status} {data.statusFigure}%</span>
+                        </div>
+                     </div>
+                  )
+               })}
+            </div>
+         </div>
          <div className={classes.header}>
             <div className={classes.headerItem}>
                <div>
@@ -109,7 +153,7 @@ const StudentDataTable = () => {
                </div>
             </div>
             <div className={classes.pagination}>
-               <p>1-10 of 10</p>
+               <p>1-20 of {students.length}</p>
                <div className={`${classes.pageButtons} ${classes.headerPageButton}`}>
                   <span>
                      <svg
@@ -146,14 +190,14 @@ const StudentDataTable = () => {
          </div>
 
          <div className={classes.body}>
-            <div>
-               <div className={classes.tableHeader}>
-                  <span></span>
-                  <span>Name of Student</span>
-                  <span>Student Id</span>
-                  <span>Status</span>
-                  <span></span>
-               </div>
+            <div className={classes.tableHeader}>
+               <span></span>
+               <span>Name of Student</span>
+               <span>Student Id</span>
+               <span>Status</span>
+               <span></span>
+            </div>
+            <div className={classes.tableBodyContainer}>
                {filteredStudent.length === 0 ? (
                   <div className={classes.noResult}>No search results for the user "{searchTerm}" available</div>
                ) : (
@@ -175,7 +219,7 @@ const StudentDataTable = () => {
                            <span
                               onClick={() => {
                                  navigate(
-                                    `/tutors/${data.studentName
+                                    `/students/${data.studentName
                                        .replaceAll(' ', '-')
                                        .toLowerCase()}`
                                  )
