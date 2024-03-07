@@ -1,5 +1,10 @@
 import amirahTemi from '../Assets/Images/amirahTemi.svg';
 
+export type courseAssignedType = {
+  course: string;
+  school: string;
+};
+
 export type tutorsDataType = {
   isActive: boolean;
   tutorImage: string;
@@ -17,7 +22,7 @@ export type tutorsDataType = {
   schoolLevel: string;
   linkedinProfile: string;
   profileImage: string;
-  course: string;
+  courseAssigned: courseAssignedType[];
   displayOptions: boolean;
 }[];
 
@@ -40,12 +45,17 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/oliviadavis',
     profileImage: 'https://example.com/images/oliviadavis.jpg',
-    course: 'Not assigned',
+    courseAssigned: [
+      {
+        course: "Not assigned",
+        school: "Nil",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor2-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Daniel Wilson',
     tutorFirstName: 'Daniel',
     tutorLastName: 'Wilson',
@@ -61,12 +71,21 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/danielwilson',
     profileImage: 'https://example.com/images/danielwilson.jpg',
-    course: 'Frontend development',
+    courseAssigned: [
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor3-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Sophia Moore',
     tutorFirstName: 'Sophia',
     tutorLastName: 'Moore',
@@ -82,12 +101,21 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/sophiamoore',
     profileImage: 'https://example.com/images/sophiamoore.jpg',
-    course: 'Backend development',
+    courseAssigned: [
+      {
+        course: "Backend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor4-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Liam Taylor',
     tutorFirstName: 'Liam',
     tutorLastName: 'Taylor',
@@ -103,12 +131,17 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/liamtaylor',
     profileImage: 'https://example.com/images/liamtaylor.jpg',
-    course: 'Not assigned',
+    courseAssigned: [
+      {
+        course: "Not assigned",
+        school: "Nil",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor5-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Ava Jackson',
     tutorFirstName: 'Ava',
     tutorLastName: 'Jackson',
@@ -124,12 +157,29 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/avajackson',
     profileImage: 'https://example.com/images/avajackson.jpg',
-    course: 'Backend development',
+    courseAssigned: [
+      {
+        course: "Backend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Backend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor6-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Sophie Adams',
     tutorFirstName: 'Sophie',
     tutorLastName: 'Adams',
@@ -145,12 +195,17 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/sophieadams',
     profileImage: 'https://example.com/images/sophieadams.jpg',
-    course: 'Not assigned',
+    courseAssigned: [
+      {
+        course: "Not assigned",
+        school: "Nil",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor7-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Ryan Carter',
     tutorFirstName: 'Ryan',
     tutorLastName: 'Carter',
@@ -166,12 +221,21 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/ryancarter',
     profileImage: 'https://example.com/images/ryancarter.jpg',
-    course: 'Frontend development',
+    courseAssigned: [
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor8-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Zara Patel',
     tutorFirstName: 'Zara',
     tutorLastName: 'Patel',
@@ -187,12 +251,21 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/zarapatel',
     profileImage: 'https://example.com/images/zarapatel.jpg',
-    course: 'Frontend development',
+    courseAssigned: [
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor9-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Lucas Rodriguez',
     tutorFirstName: 'Lucas',
     tutorLastName: 'Rodriguez',
@@ -208,12 +281,17 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/lucasrodriguez',
     profileImage: 'https://example.com/images/lucasrodriguez.jpg',
-    course: 'Not assigned',
+    courseAssigned: [
+      {
+        course: "Not assigned",
+        school: "Nil",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor10-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Mia Kim',
     tutorFirstName: 'Mia',
     tutorLastName: 'Kim',
@@ -229,12 +307,25 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Undergraduate',
     linkedinProfile: 'https://www.linkedin.com/in/miakim',
     profileImage: 'https://example.com/images/miakim.jpg',
-    course: 'Frontend development',
+    courseAssigned: [
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+      {
+        course: "Frontend development",
+        school: "School of Engineering",
+      },
+    ],
     displayOptions: false,
   },
   {
     isActive: false,
-    tutorImage: 'tutor11-image-url',
+    tutorImage: amirahTemi,
     tutorFullName: 'Elijah Wright',
     tutorFirstName: 'Elijah',
     tutorLastName: 'Wright',
@@ -250,7 +341,12 @@ export const tutorsData: tutorsDataType = [
     schoolLevel: 'Postgraduate',
     linkedinProfile: 'https://www.linkedin.com/in/elijahwright',
     profileImage: 'https://example.com/images/elijahwright.jpg',
-    course: 'Not assigned',
+    courseAssigned: [
+      {
+        course: "Not assigned",
+        school: "Nil",
+      },
+    ],
     displayOptions: false,
   },
 ];

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import DeleteDisclaimerModalBody from "./DeleteDisclaimerModalBody";
 import DeleteSuccessfulModalBody from "./DeleteSuccessfulModalBody";
-import classes from "./ProfileAccountDeactivation.module.css";
+import classes from "./AdminProfileAccountDeactivation.module.css";
 import ProfileSectionContainer from "../../../Components/ProfileSectionContainer/ProfileSectionContainer";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import Button from "../../../Components/Button/Button";
 
-const ProfileAccountDeactivation = () => {
+const AdminProfileAccountDeactivation = () => {
   // States
   const [displayDeleteDisclaimerModal, setDisplauDeleteDisclaimeeModal] =
     useState(false);
@@ -77,4 +77,4 @@ const ProfileAccountDeactivation = () => {
   );
 };
 
-export default ProfileAccountDeactivation;
+export default AdminProfileAccountDeactivation;

@@ -172,7 +172,13 @@ const TutorDataTable = () => {
                               <p>{data.emailAddress}</p>
                            </span>
                            <span>{data.emailAddress}</span>
-                           <span>{data.course}</span>
+                           <span>
+                              {data.courseAssigned.length > 0 && (
+                                 <>
+                                    {data.courseAssigned[0].course}
+                                 </>
+                              )}
+                           </span>
                            <span
                               onClick={() => {
                                  navigate(

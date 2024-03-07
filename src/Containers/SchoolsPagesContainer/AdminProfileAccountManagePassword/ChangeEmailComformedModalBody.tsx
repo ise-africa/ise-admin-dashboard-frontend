@@ -1,5 +1,5 @@
 import Button from "../../../Components/Button/Button";
-import classes from "./ProfileAccountManagePassword.module.css";
+import classes from "./AdminProfileAccountManagePassword.module.css";
 import success from '../../../Assets/Gifs/success.gif'
 type ChangeEmailComformedModalBodyProps = {
   onClick: () => void;

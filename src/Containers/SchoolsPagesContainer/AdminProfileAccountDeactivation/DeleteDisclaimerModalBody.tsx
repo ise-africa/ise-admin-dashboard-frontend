@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Button from "../../../Components/Button/Button";
 import TextArea from "../../../Components/TextArea/TextArea";
-import classes from "./ProfileAccountDeactivation.module.css";
+import classes from "./AdminProfileAccountDeactivation.module.css";
 import { AppContext } from "../../../Context/AppContext";
 import { useParams } from "react-router-dom";
 

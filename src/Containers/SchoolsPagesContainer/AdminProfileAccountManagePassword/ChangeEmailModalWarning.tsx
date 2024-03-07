@@ -1,6 +1,6 @@
 import Button from "../../../Components/Button/Button";
 import Input from "../../../Components/Input/Input";
-import classes from "./ProfileAccountManagePassword.module.css";
+import classes from "./AdminProfileAccountManagePassword.module.css";
 
 type ChangePasswordModalprops = {
   onClick: () => void;

@@ -1,4 +1,4 @@
-import classes from "./ProfileAccountDeactivation.module.css";
+import classes from "./AdminProfileAccountDeactivation.module.css";
 import success from "../../../Assets/Gifs/success.gif";
 import Button from "../../../Components/Button/Button";
 import { useContext } from "react";

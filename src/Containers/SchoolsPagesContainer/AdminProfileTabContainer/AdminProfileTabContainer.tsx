@@ -1,6 +1,6 @@
 import AdminProfileDetails from "../AdminProfileDetails/AdminProfileDetails";
-import ProfileAccountDeactivation from "../ProfileAccountDeactivation/ProfileAccountDeactivation";
-import ProfileAccountManagePassword from "../ProfileAccountManagePassword/ProfileAccountManagePassword";
+import ProfileAccountDeactivation from "../AdminProfileAccountDeactivation/AdminProfileAccountDeactivation";
+import ProfileAccountManagePassword from "../AdminProfileAccountManagePassword/AdminProfileAccountManagePassword";
 import ProfileAdministrationRole from "../ProfileAdministrationRole/ProfileAdministrationRole";
 import classes from "./AdminProfileTabContainer.module.css";
 

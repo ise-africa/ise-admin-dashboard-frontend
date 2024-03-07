@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import classes from "./ProfileAccountManagePassword.module.css";
+import classes from "./AdminProfileAccountManagePassword.module.css";
 import ChangeEmailComformedModalBody from "./ChangeEmailComformedModalBody";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import ProfileSectionContainer from "../../../Components/ProfileSectionContainer/ProfileSectionContainer";
@@ -9,7 +9,7 @@ import ChangePasswordModal from "./ChangeEmailModalWarning";
 import { AppContext } from "../../../Context/AppContext";
 import { useParams } from "react-router-dom";
 
-const ProfileAccountManagePassword = () => {
+const AdminProfileAccountManagePassword = () => {
   // States
   const [displayChangePasswordModal, setDisplayChangePasswordModal] = useState(false);
   const [displayEmailChangeConfirmModal, setDisplayEmailChangeConfirmModal] =
@@ -98,4 +98,4 @@ const ProfileAccountManagePassword = () => {
   );
 };
 
-export default ProfileAccountManagePassword;
+export default AdminProfileAccountManagePassword;

@@ -1,6 +1,6 @@
 import Button from "../../../Components/Button/Button";
 import TextArea from "../../../Components/TextArea/TextArea";
-import classes from "../ProfileAccountDeactivation/ProfileAccountDeactivation.module.css";
+import classes from "../AdminProfileAccountDeactivation/AdminProfileAccountDeactivation.module.css";
 
 type ClosingAdminAccountModalProps = {
     onClick: () => void;
