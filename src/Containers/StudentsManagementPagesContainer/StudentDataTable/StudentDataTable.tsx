@@ -66,9 +66,9 @@ const StudentDataTable = () => {
             <div className={classes.headerItem}>
                <div>
                   <Checkbox
-                     isChecked={filteredStudent.length === 0 ? true : false}
-                     onChange={() => {
-                        activeToggleSetAll(students, setStudents)
+                     isChecked={students.length > 0 && students.every(student => student.isActive)}
+                     onChange={(isChecked) => {
+                        activeToggleSetAll(students, setStudents, isChecked);
                      }}
                   />
                   <span>Select</span>
@@ -163,7 +163,7 @@ const StudentDataTable = () => {
                            <Checkbox
                               isChecked={data.isActive}
                               onChange={() => {
-                                 activeTogglerRestAll(i, students, setStudents)
+                                 activeTogglerRestAll(i, students, setStudents);
                               }}
                            />
                            <div>

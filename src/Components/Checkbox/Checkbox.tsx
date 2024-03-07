@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import classes from './Checkbox.module.css';
 
 type CheckboxProps = {

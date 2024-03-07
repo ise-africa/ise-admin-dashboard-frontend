@@ -66,9 +66,9 @@ const TutorDataTable = () => {
             <div className={classes.headerItem}>
                <div>
                   <Checkbox
-                     isChecked={filteredTutor.length === 0 ? true : false}
-                     onChange={() => {
-                        activeToggleSetAll(tutors, setTutors)
+                     isChecked={tutors.length > 0 && tutors.every(tutor => tutor.isActive)}
+                     onChange={(isChecked) => {
+                        activeToggleSetAll(tutors, setTutors, isChecked)
                      }}
                   />
                   <span>Select</span>
