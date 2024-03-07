@@ -1,0 +1,56 @@
+.breadCrumbs {
+  padding: 1.5rem 2rem;
+  background: var(--white);
+}
+
+.subContainer {
+  gap: 2rem;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+}
+
+.subContainer>div:first-child,
+.subContainer>section:first-child {
+  padding-bottom: 2rem;
+}
+
+.subContainer>div:not(:last-child),
+.subContainer>section:not(:last-child) {
+  border-radius: 10px;
+  border-bottom: 1px solid var(--sectionBorder);
+}
+
+@media screen and (min-width: 737px) and (max-width: 1023px) {
+  .container {
+    background: var(--white);
+  }
+
+  .subContainer>div:not(:last-child),
+  .subContainer>section:not(:last-child) {
+    border-radius: 0;
+    border-bottom: 1px solid var(--sectionBorder);
+  }
+
+  .breadCrumbs {
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin-top: 1rem;
+    background: var(--white);
+  }
+
+  .breadCrumbs {
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  .subContainer>div:not(:last-child),
+  .subContainer>section:not(:last-child) {
+    border-radius: 0;
+    border-bottom: 1px solid var(--sectionBorder);
+  }
+}

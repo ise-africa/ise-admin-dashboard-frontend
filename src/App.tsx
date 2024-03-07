@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import ErrorPage from './Containers/404Page/404Page'
 import Support from './Pages/Support'
 import SupportTrackingChatDetailPage from './Pages/SupportTrackingChatDetailPage'
@@ -8,14 +8,13 @@ import AdminProfilePage from './Pages/AdminProfilePage'
 import AddAdminPage from './Pages/AddAdminPage'
 import TutorsManagementPage from './Pages/TutorsManagementPage'
 import AddTutorPage from './Pages/AddTutorPage'
+import TutorProfilePage from './Pages/TutorProfilePage'
 
 
 function App() {
    return (
       <Routes>
          <Route path="*" element={<ErrorPage />} />
-         {/* <Route path="/" element={<Navigate to="/dashboard"></Navigate>} />
-         <Route path="/dashboard" element={<Dashboard />} /> */}
 
          <Route path="/admins" element={<Schools />} />
          <Route path="/admins/:AdminId" element={<AdminProfilePage />} />
@@ -23,6 +22,7 @@ function App() {
          <Route path="/admins/add-admin" element={<AddAdminPage />} />
 
          <Route path="/tutors" element={<TutorsManagementPage />} />
+         <Route path="/tutors/:TutorId" element={<TutorProfilePage />} />
          <Route path="/tutors/add-tutor" element={<AddTutorPage />} />
 
          <Route path="/support" element={<Support />} />

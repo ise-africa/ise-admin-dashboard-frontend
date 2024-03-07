@@ -146,6 +146,10 @@
     display: none;
 }
 
+.tableBody span:last-child {
+    cursor: pointer;
+}
+
 .pagination {
     justify-content: flex-end;
 }

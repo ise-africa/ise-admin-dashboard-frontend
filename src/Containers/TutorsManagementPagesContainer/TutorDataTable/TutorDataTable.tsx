@@ -24,7 +24,7 @@ const TutorDataTable = () => {
    const filteredTutor = tutors.filter(data => {
       return (
          data.emailAddress.toLowerCase().includes(searchTerm.toLowerCase()) ||
-         data.tutorName.toLowerCase().includes(searchTerm.toLowerCase())
+         data.tutorFullName.toLowerCase().includes(searchTerm.toLowerCase())
       )
    });
 
@@ -168,7 +168,7 @@ const TutorDataTable = () => {
                               }}
                            />
                            <span>
-                              <p>{data.tutorName}</p>
+                              <p>{data.tutorFullName}</p>
                               <p>{data.emailAddress}</p>
                            </span>
                            <span>{data.emailAddress}</span>
@@ -176,7 +176,7 @@ const TutorDataTable = () => {
                            <span
                               onClick={() => {
                                  navigate(
-                                    `/tutor/${data.tutorName
+                                    `/tutors/${data.tutorFullName
                                        .replaceAll(' ', '-')
                                        .toLowerCase()}`
                                  )

@@ -1,28 +1,34 @@
-import amirahTemi from '../Assets/Images/amirahTemi.svg'
+import amirahTemi from '../Assets/Images/amirahTemi.svg';
 
 export type tutorsDataType = {
-  isActive: boolean
-  tutorImage: string
-  tutorName: string
-  emailAddress: string
-  fileName: string
-  status: string
-  grade: string
-  enrolledDate: string
-  about: string
-  country: string
-  schoolLevel: string
-  linkedinProfile: string
-  profileImage: string
-  course: string
-  displayOptions: boolean
-}[]
+  isActive: boolean;
+  tutorImage: string;
+  tutorFullName: string;
+  tutorFirstName: string;
+  tutorLastName: string;
+  password: string;
+  emailAddress: string;
+  fileName: string;
+  status: string;
+  grade: string;
+  enrolledDate: string;
+  about: string;
+  country: string;
+  schoolLevel: string;
+  linkedinProfile: string;
+  profileImage: string;
+  course: string;
+  displayOptions: boolean;
+}[];
 
-export const tutorsData = [
+export const tutorsData: tutorsDataType = [
   {
     isActive: false,
     tutorImage: amirahTemi,
-    tutorName: 'Olivia Davis',
+    tutorFullName: 'Olivia Davis',
+    tutorFirstName: 'Olivia',
+    tutorLastName: 'Davis',
+    password: 'password1',
     emailAddress: 'olivia.davis@example.com',
     fileName: 'Assignment3.txt',
     status: 'Pending',
@@ -39,7 +45,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Daniel Wilson',
+    tutorImage: 'tutor2-image-url',
+    tutorFullName: 'Daniel Wilson',
+    tutorFirstName: 'Daniel',
+    tutorLastName: 'Wilson',
+    password: 'password2',
     emailAddress: 'daniel.wilson@example.com',
     fileName: 'Assignment3.json',
     status: 'Approved',
@@ -56,7 +66,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Sophia Moore',
+    tutorImage: 'tutor3-image-url',
+    tutorFullName: 'Sophia Moore',
+    tutorFirstName: 'Sophia',
+    tutorLastName: 'Moore',
+    password: 'password3',
     emailAddress: 'sophia.moore@example.com',
     fileName: 'Assignment3.csv',
     status: 'Approved',
@@ -73,7 +87,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Liam Taylor',
+    tutorImage: 'tutor4-image-url',
+    tutorFullName: 'Liam Taylor',
+    tutorFirstName: 'Liam',
+    tutorLastName: 'Taylor',
+    password: 'password4',
     emailAddress: 'liam.taylor@example.com',
     fileName: 'Assignment3.sql',
     status: 'Pending',
@@ -90,7 +108,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Ava Jackson',
+    tutorImage: 'tutor5-image-url',
+    tutorFullName: 'Ava Jackson',
+    tutorFirstName: 'Ava',
+    tutorLastName: 'Jackson',
+    password: 'password5',
     emailAddress: 'ava.jackson@example.com',
     fileName: 'Assignment3.xml',
     status: 'Approved',
@@ -107,7 +129,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Sophie Adams',
+    tutorImage: 'tutor6-image-url',
+    tutorFullName: 'Sophie Adams',
+    tutorFirstName: 'Sophie',
+    tutorLastName: 'Adams',
+    password: 'password6',
     emailAddress: 'sophie.adams@example.com',
     fileName: 'Assignment4.docx',
     status: 'Approved',
@@ -124,7 +150,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Ryan Carter',
+    tutorImage: 'tutor7-image-url',
+    tutorFullName: 'Ryan Carter',
+    tutorFirstName: 'Ryan',
+    tutorLastName: 'Carter',
+    password: 'password7',
     emailAddress: 'ryan.carter@example.com',
     fileName: 'Assignment4.pdf',
     status: 'Pending',
@@ -141,7 +171,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Zara Patel',
+    tutorImage: 'tutor8-image-url',
+    tutorFullName: 'Zara Patel',
+    tutorFirstName: 'Zara',
+    tutorLastName: 'Patel',
+    password: 'password8',
     emailAddress: 'zara.patel@example.com',
     fileName: 'Assignment4.pptx',
     status: 'Approved',
@@ -158,7 +192,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Lucas Rodriguez',
+    tutorImage: 'tutor9-image-url',
+    tutorFullName: 'Lucas Rodriguez',
+    tutorFirstName: 'Lucas',
+    tutorLastName: 'Rodriguez',
+    password: 'password9',
     emailAddress: 'lucas.rodriguez@example.com',
     fileName: 'Assignment4.csv',
     status: 'Pending',
@@ -175,7 +213,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Mia Kim',
+    tutorImage: 'tutor10-image-url',
+    tutorFullName: 'Mia Kim',
+    tutorFirstName: 'Mia',
+    tutorLastName: 'Kim',
+    password: 'password10',
     emailAddress: 'mia.kim@example.com',
     fileName: 'Assignment4.xlsx',
     status: 'Approved',
@@ -192,7 +234,11 @@ export const tutorsData = [
   },
   {
     isActive: false,
-    tutorName: 'Elijah Wright',
+    tutorImage: 'tutor11-image-url',
+    tutorFullName: 'Elijah Wright',
+    tutorFirstName: 'Elijah',
+    tutorLastName: 'Wright',
+    password: 'password11',
     emailAddress: 'elijah.wright@example.com',
     fileName: 'Assignment4.doc',
     status: 'Pending',
@@ -207,4 +253,4 @@ export const tutorsData = [
     course: 'Not assigned',
     displayOptions: false,
   },
-]
+];

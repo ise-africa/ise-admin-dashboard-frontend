@@ -43,7 +43,7 @@ const SendMessageModal = ({ onClick, onClick2 }: SendMessageModalProps) => {
                         <p>Please select a tutor</p>
                     ) : (
                         activeStudents.map((student, i) => (
-                            <span key={i}>{student.tutorName}</span>
+                            <span key={i}>{student.tutorFullName}</span>
                         ))
                     )}
                 </div>
