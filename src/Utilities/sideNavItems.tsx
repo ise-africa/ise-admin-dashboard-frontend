@@ -32,11 +32,11 @@ export const sideNavItems: sideNavItemsType = [
 
   {
     title: "Student",
-    route: "/student",
-    keywords: ["student"],
+    route: "/students",
+    keywords: ["students"],
     otherOptions: null,
     isVisible: true,
-    children: [{ title: "Quiz", route: "/student/quiz" }, { title: "Assignment", route: "/student/assignment" }]
+    children: [{ title: "Quiz", route: "/students/quiz" }, { title: "Assignment", route: "/students/assignment" }]
 
   },
 

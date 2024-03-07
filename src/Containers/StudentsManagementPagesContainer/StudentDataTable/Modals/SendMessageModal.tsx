@@ -11,8 +11,8 @@ type SendMessageModalProps = {
 };
 
 const SendMessageModal = ({ onClick, onClick2 }: SendMessageModalProps) => {
-    const { tutors } = useContext(AppContext);
-    const activeTutor = tutors.filter((tutors) => tutors.isActive);
+    const { students } = useContext(AppContext);
+    const activeStudents = students.filter((tutors) => tutors.isActive);
 
     return (
         <div className={classes.container}>
@@ -39,11 +39,11 @@ const SendMessageModal = ({ onClick, onClick2 }: SendMessageModalProps) => {
             <div className={classes.recipient}>
                 <h4>Recipient(s)</h4>
                 <div>
-                    {activeTutor.length === 0 ? (
-                        <p>Please select a tutor</p>
+                    {activeStudents.length === 0 ? (
+                        <p>Please select a student</p>
                     ) : (
-                        activeTutor.map((student, i) => (
-                            <span key={i}>{student.tutorFullName}</span>
+                        activeStudents.map((student, i) => (
+                            <span key={i}>{student.studentName}</span>
                         ))
                     )}
                 </div>

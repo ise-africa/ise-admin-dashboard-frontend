@@ -12,7 +12,7 @@ const ConfirmationModal = ({ onClick }: ConfirmationModalProps) => {
       <img src={success} alt="Email sent" />
       <h4>Message sent successfully!</h4>
       <p>
-        Your message has been successfully sent to the selected tutor(s).
+        Your message has been successfully sent to the selected student(s).
       </p>
       <Button onClick={onClick}>Close</Button>
     </div>

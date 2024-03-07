@@ -3,6 +3,7 @@ import { sideNavItems } from '../Utilities/sideNavItems';
 import { SupportTrackingData, SupportTrackingDataType } from '../Utilities/SupportTrackingData';
 import { adminsData, adminsDataType } from '../Utilities/admins';
 import { tutorsData, tutorsDataType } from '../Utilities/tutors';
+import { studentsData, studentsDataType } from '../Utilities/students';
 
 type AppContextProviderProps = {
   children: React.ReactNode
@@ -34,6 +35,8 @@ type AppContextProps = {
   setAdminData: Dispatch<SetStateAction<adminsDataType[]>>
   tutors: tutorsDataType
   setTutors: Dispatch<SetStateAction<tutorsDataType>>
+  students: studentsDataType
+  setStudents: Dispatch<SetStateAction<studentsDataType>>
 }
 
 export const AppContext = createContext({} as AppContextProps)
@@ -67,6 +70,10 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     tutorsData as tutorsDataType
   )
 
+  const [students, setStudents] = useState<studentsDataType>(
+    studentsData as studentsDataType
+  )
+
   //   Effects
   useEffect(() => {
     setScreenWidthState(screenWidth)
@@ -89,7 +96,9 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         adminData,
         setAdminData,
         tutors,
-        setTutors
+        setTutors,
+        students,
+        setStudents,
       }}
     >
       {children}

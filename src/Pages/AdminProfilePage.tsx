@@ -1,6 +1,6 @@
 import React from 'react'
-import AdminProfileContainer from '../Containers/SchoolsPagesContainer/AdminProfileContainer/AdminProfileContainer'
 import Layout from '../Components/Layout/Layout'
+import AdminProfileContainer from '../Containers/AdminPagesContainer/AdminProfileContainer/AdminProfileContainer'
 
 const AdminProfilePage = () => {
     return (
