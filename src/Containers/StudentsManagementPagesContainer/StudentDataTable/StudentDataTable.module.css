@@ -13,6 +13,36 @@
     margin: 4rem auto;
 }
 
+.filterButton {
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.filterButton span,
+.filterButton button {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.filterButton div {
+    width: 100%;
+    gap: 1.5rem;
+    display: flex;
+    overflow: auto;
+    align-items: center;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.filterButton button {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid #CAC2FE;
+}
+
 .engagement {
     width: 100%;
     display: flex;
@@ -21,12 +51,13 @@
     justify-content: center;
 }
 
+.filterButton div::-webkit-scrollbar,
 .engagement>div::-webkit-scrollbar {
     display: none;
 }
 
 .engagement>div {
-    gap: 1rem;
+    gap: 1.5rem;
     width: 100%;
     display: flex;
     overflow-x: auto;
@@ -190,6 +221,22 @@
 .body .tableBodyContainer {
     height: 536px;
     overflow: auto;
+    padding-right: 1.5rem;
+}
+
+.body .tableBodyContainer::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px;
+}
+
+.body .tableBodyContainer::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 10px;
+}
+
+.body .tableBodyContainer::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 10px;
 }
 
 .tableHeader,
@@ -365,6 +412,21 @@
     .body,
     .container {
         padding: 0;
+    }
+
+    .filterButton {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .filterButton div {
+        gap: 16px;
+    }
+
+    .filterButton span,
+    .filterButton button {
+        font-size: 14px;
+        line-height: 22px;
     }
 
     .tableHeader,

@@ -88,6 +88,15 @@ const StudentDataTable = () => {
                }
             />
          )}
+         <div className={classes.filterButton}>
+            <span>Filter by:</span>
+            <div>
+               <button type="button">School</button>
+               <button type="button">Cohort</button>
+               <button type="button">Course</button>
+            </div>
+         </div>
+
          <div className={classes.engagement}>
             <div>
                {engagement.map((data, i) => {
@@ -106,6 +115,7 @@ const StudentDataTable = () => {
                })}
             </div>
          </div>
+
          <div className={classes.header}>
             <div className={classes.headerItem}>
                <div>

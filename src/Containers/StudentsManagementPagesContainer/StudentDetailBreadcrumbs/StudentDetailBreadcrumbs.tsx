@@ -3,34 +3,35 @@ import breadcrumbsBack from "../../../Assets/Images/breadcrumbsBack.svg";
 import classes from "./StudentDetailBreadcrumbs.module.css";
 import Breadcrumbs from "../../../Components/Breadcrumbs/Breadcrumbs";
 import { AppContext } from "../../../Context/AppContext";
+import { useParams } from "react-router-dom";
 
 const StudentDetailBreadcrumbs = () => {
   const { students } = useContext(AppContext);
+  // Router
+  const { StudentId } = useParams()
 
-  const activeStudents = students.filter((student) => student.isActive);
+  const activeStudent = students.find((data) => {
+    return data.studentName.replace(' ', '-').toLowerCase() === StudentId
+  })
 
-  const breadCrumbsArrayProps = {
+  // Utils
+  const breadCrumbs = {
     image: breadcrumbsBack,
     array: [
       {
         title: "Back to students",
         route: "/students",
       },
+      {
+        title: `${activeStudent?.studentName}`,
+        route: `/students/${activeStudent?.studentName.toLowerCase().replace(' ', '-')}`,
+      },
     ],
   };
 
-  const studentBreadcrumbs = activeStudents.map((student) => ({
-    title: student.studentName,
-    route: `/student/details/${student.studentName
-      .replaceAll(' ', '-')
-      .toLowerCase()}`,
-  }));
-
-  breadCrumbsArrayProps.array = [...breadCrumbsArrayProps.array, ...studentBreadcrumbs];
-
   return (
     <div className={classes.container}>
-      <Breadcrumbs {...breadCrumbsArrayProps} />
+      <Breadcrumbs {...breadCrumbs} />
     </div>
   );
 };

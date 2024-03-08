@@ -1,23 +1,27 @@
 import { useState } from "react";
 import classes from "./StudentDetailsModules.module.css"
-import StudentDetailPageDetail from "../StudentDetailPageDetail/StudentDetailPageDetail";
-import StudentDetailQuizDataTable from "../StudentDetailQuizDataTable/StudentDetailQuizDataTable";
 import StudentDetailGradeDataTable from "../StudentDetailGradeDataTable/StudentDetailGradeDataTable";
 import StudentDetailFeedBackDataTable from "../StudentDetailFeedBackDataTable/StudentDetailFeedBackDataTable";
 import SectionsNav4 from "../../../Components/SectionsNav4/SectionsNav4";
+import StudentDetailPageProfile from "../StudentDetailPageProfile/StudentDetailPageProfile";
 
 const StudentDetailsModules = () => {
     // States
     const [navItems, setNavItems] = useState<any[]>([
         {
-            title: "Details",
+            title: "Profile",
             isActive: true,
-            activeComponent: <StudentDetailPageDetail />,
+            activeComponent: <StudentDetailPageProfile />,
         },
         {
-            title: "Quizzes",
+            title: "Payment",
             isActive: false,
-            activeComponent: <StudentDetailQuizDataTable />,
+            activeComponent: null,
+        },
+        {
+            title: "Courses",
+            isActive: false,
+            activeComponent: null,
         },
         {
             title: "Grade",

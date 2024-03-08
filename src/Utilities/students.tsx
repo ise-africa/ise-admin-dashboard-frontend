@@ -16,6 +16,7 @@ export type studentsDataType = {
   linkedinProfile: string
   profileImage: string
   course: string
+  referralLevel: string
   displayOptions: boolean
 }[]
 
@@ -37,6 +38,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/oliviadavis',
     profileImage: 'https://example.com/images/oliviadavis.jpg',
     course: 'Frontend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -56,6 +58,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/danielwilson',
     profileImage: 'https://example.com/images/danielwilson.jpg',
     course: 'Frontend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -75,6 +78,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/sophiamoore',
     profileImage: 'https://example.com/images/sophiamoore.jpg',
     course: 'Backend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -94,6 +98,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/liamtaylor',
     profileImage: 'https://example.com/images/liamtaylor.jpg',
     course: 'Backend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -113,6 +118,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/avajackson',
     profileImage: 'https://example.com/images/avajackson.jpg',
     course: 'Backend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -132,6 +138,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/sophieadams',
     profileImage: 'https://example.com/images/sophieadams.jpg',
     course: 'Backend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -151,6 +158,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/ryancarter',
     profileImage: 'https://example.com/images/ryancarter.jpg',
     course: 'Frontend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -170,6 +178,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/zarapatel',
     profileImage: 'https://example.com/images/zarapatel.jpg',
     course: 'Frontend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -189,6 +198,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/lucasrodriguez',
     profileImage: 'https://example.com/images/lucasrodriguez.jpg',
     course: 'Frontend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -208,6 +218,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/miakim',
     profileImage: 'https://example.com/images/miakim.jpg',
     course: 'Frontend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -227,6 +238,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/elijahwright',
     profileImage: 'https://example.com/images/elijahwright.jpg',
     course: 'Frontend development course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -246,6 +258,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/emilyjohnson',
     profileImage: 'https://example.com/images/emilyjohnson.jpg',
     course: 'Creative Writing course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -265,6 +278,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/mohammedali',
     profileImage: 'https://example.com/images/mohammedali.jpg',
     course: 'Cybersecurity course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -284,6 +298,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/mariagarcia',
     profileImage: 'https://example.com/images/mariagarcia.jpg',
     course: 'Environmental Science course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -303,6 +318,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/isabellamartinez',
     profileImage: 'https://example.com/images/isabellamartinez.jpg',
     course: 'Data Science course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -322,6 +338,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/alexanderthompson',
     profileImage: 'https://example.com/images/alexanderthompson.jpg',
     course: 'Cultural Studies course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -341,6 +358,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/lunahernandez',
     profileImage: 'https://example.com/images/lunahernandez.jpg',
     course: 'Music Theory course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -360,6 +378,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/emmawhite',
     profileImage: 'https://example.com/images/emmawhite.jpg',
     course: 'Astrophysics course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -379,6 +398,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/nathanlee',
     profileImage: 'https://example.com/images/nathanlee.jpg',
     course: 'Software Engineering course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -398,6 +418,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/sophiabrown',
     profileImage: 'https://example.com/images/sophiabrown.jpg',
     course: 'Environmental Studies course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -417,6 +438,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/jacobwright',
     profileImage: 'https://example.com/images/jacobwright.jpg',
     course: 'Creative Writing course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -436,6 +458,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/elenarodriguez',
     profileImage: 'https://example.com/images/elenarodriguez.jpg',
     course: 'Psychology course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -455,6 +478,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/davidkim',
     profileImage: 'https://example.com/images/davidkim.jpg',
     course: 'Graphic Design course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -474,6 +498,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/annanguyen',
     profileImage: 'https://example.com/images/annanguyen.jpg',
     course: 'Public Health course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -493,6 +518,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/michaelchen',
     profileImage: 'https://example.com/images/michaelchen.jpg',
     course: 'Entrepreneurship course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -512,6 +538,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/sarahsmith',
     profileImage: 'https://example.com/images/sarahsmith.jpg',
     course: 'Environmental Sustainability course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
   {
@@ -531,6 +558,7 @@ export const studentsData: studentsDataType = [
     linkedinProfile: 'https://www.linkedin.com/in/thomaswilson',
     profileImage: 'https://example.com/images/thomaswilson.jpg',
     course: 'Artificial Intelligence course',
+    referralLevel: 'Pioneer',
     displayOptions: false,
   },
 ];

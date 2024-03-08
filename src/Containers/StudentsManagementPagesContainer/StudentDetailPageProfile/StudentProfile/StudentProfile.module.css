@@ -1,0 +1,98 @@
+.userDetails,
+.userDetails>div:nth-child(1) {
+    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.userDetails>div:nth-child(1) {
+    width: 100%;
+    max-width: 500px;
+    flex-direction: column;
+}
+
+.links div,
+.userDetails .userInfo,
+.iconTextContainer,
+.iconTextContainer div {
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.userDetails .userInfo {
+    flex-wrap: nowrap;
+}
+
+.iconTextContainer {
+    gap: 20px;
+}
+
+.iconTextContainer div {
+    gap: 8px;
+}
+
+.userDetails .userInfo img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.about h4,
+.links h4 {
+    color: var(--grey3);
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.iconTextContainer span,
+.about p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.iconTextContainer span {
+    color: var(--grey3);
+}
+
+.links div {
+    gap: 1rem;
+}
+
+.userDetails .userInfo h3 {
+    color: var(--grey);
+    font-weight: 500;
+    line-height: 30px;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+
+@media screen and (max-width: 767px) {
+    .userDetails .userInfo {
+        flex-wrap: wrap;
+    }
+
+    .userDetails .userInfo h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .about h4,
+    .links h4 {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .iconTextContainer span,
+    .about p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
