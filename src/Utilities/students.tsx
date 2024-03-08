@@ -17,6 +17,8 @@ export type studentsDataType = {
   profileImage: string
   course: string
   referralLevel: string
+  referralInvite: number
+  referralInviteSuccessful: number
   displayOptions: boolean
 }[]
 
@@ -39,6 +41,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/oliviadavis.jpg',
     course: 'Frontend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -59,6 +63,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/danielwilson.jpg',
     course: 'Frontend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -79,6 +85,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/sophiamoore.jpg',
     course: 'Backend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -99,6 +107,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/liamtaylor.jpg',
     course: 'Backend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -119,6 +129,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/avajackson.jpg',
     course: 'Backend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -139,6 +151,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/sophieadams.jpg',
     course: 'Backend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -159,6 +173,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/ryancarter.jpg',
     course: 'Frontend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -179,6 +195,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/zarapatel.jpg',
     course: 'Frontend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -199,6 +217,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/lucasrodriguez.jpg',
     course: 'Frontend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -219,6 +239,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/miakim.jpg',
     course: 'Frontend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -239,6 +261,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/elijahwright.jpg',
     course: 'Frontend development course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -259,6 +283,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/emilyjohnson.jpg',
     course: 'Creative Writing course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -279,6 +305,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/mohammedali.jpg',
     course: 'Cybersecurity course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -299,6 +327,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/mariagarcia.jpg',
     course: 'Environmental Science course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -319,6 +349,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/isabellamartinez.jpg',
     course: 'Data Science course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -339,6 +371,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/alexanderthompson.jpg',
     course: 'Cultural Studies course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -359,6 +393,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/lunahernandez.jpg',
     course: 'Music Theory course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -379,6 +415,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/emmawhite.jpg',
     course: 'Astrophysics course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -399,6 +437,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/nathanlee.jpg',
     course: 'Software Engineering course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -419,6 +459,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/sophiabrown.jpg',
     course: 'Environmental Studies course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -439,6 +481,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/jacobwright.jpg',
     course: 'Creative Writing course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -459,6 +503,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/elenarodriguez.jpg',
     course: 'Psychology course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -479,6 +525,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/davidkim.jpg',
     course: 'Graphic Design course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -499,6 +547,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/annanguyen.jpg',
     course: 'Public Health course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -519,6 +569,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/michaelchen.jpg',
     course: 'Entrepreneurship course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -539,6 +591,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/sarahsmith.jpg',
     course: 'Environmental Sustainability course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
   {
@@ -559,6 +613,8 @@ export const studentsData: studentsDataType = [
     profileImage: 'https://example.com/images/thomaswilson.jpg',
     course: 'Artificial Intelligence course',
     referralLevel: 'Pioneer',
+    referralInvite: 10,
+    referralInviteSuccessful: 5,
     displayOptions: false,
   },
 ];
