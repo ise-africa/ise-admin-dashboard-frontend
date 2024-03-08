@@ -16,7 +16,7 @@ export type tutorsDataType = {
   about: string;
   country: string;
   schoolLevel: string;
-  linkedinProfile: string;
+  linkedinProfileUrl: string;
   profileImage: string;
   courseAssigned: courseAssignedType[];
   displayOptions: boolean;
@@ -35,7 +35,7 @@ export const tutorsData: tutorsDataType = [
       'Future entrepreneur with a passion for business and innovation. Always looking for opportunities to learn and create.',
     country: 'South Africa',
     schoolLevel: 'Postgraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/oliviadavis',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/oliviadavis',
     profileImage: 'https://example.com/images/oliviadavis.jpg',
     courseAssigned: [
       {
@@ -57,7 +57,7 @@ export const tutorsData: tutorsDataType = [
       'Art enthusiast exploring the world of digital art and design. Striving to bring creativity and imagination to life through visual storytelling.',
     country: 'Kenya',
     schoolLevel: 'Undergraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/danielwilson',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/danielwilson',
     profileImage: 'https://example.com/images/danielwilson.jpg',
     courseAssigned: [
       {
@@ -83,7 +83,7 @@ export const tutorsData: tutorsDataType = [
       'Advocate for social justice and equality. Committed to making a positive impact in the community through activism and awareness.',
     country: 'Nigeria',
     schoolLevel: 'Undergraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/sophiamoore',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/sophiamoore',
     profileImage: 'https://example.com/images/sophiamoore.jpg',
     courseAssigned: [
       {
@@ -109,7 +109,7 @@ export const tutorsData: tutorsDataType = [
       'Sports enthusiast with a love for soccer. Whether playing or watching, the passion for the game is always at the forefront.',
     country: 'Ghana',
     schoolLevel: 'Postgraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/liamtaylor',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/liamtaylor',
     profileImage: 'https://example.com/images/liamtaylor.jpg',
     courseAssigned: [
       {
@@ -131,7 +131,7 @@ export const tutorsData: tutorsDataType = [
       'Science and technology enthusiast. Eager to explore the frontiers of knowledge and contribute to advancements in the field.',
     country: 'South Africa',
     schoolLevel: 'Undergraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/avajackson',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/avajackson',
     profileImage: 'https://example.com/images/avajackson.jpg',
     courseAssigned: [
       {
@@ -165,7 +165,7 @@ export const tutorsData: tutorsDataType = [
       'Tech enthusiast with a focus on artificial intelligence. Constantly exploring ways to apply AI to solve real-world problems.',
     country: 'United Kingdom',
     schoolLevel: 'Undergraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/sophieadams',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/sophieadams',
     profileImage: 'https://example.com/images/sophieadams.jpg',
     courseAssigned: [
       {
@@ -187,7 +187,7 @@ export const tutorsData: tutorsDataType = [
       'Passionate about data science and analytics. Aspiring to make data-driven decisions and uncover meaningful insights.',
     country: 'United States',
     schoolLevel: 'Postgraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/ryancarter',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/ryancarter',
     profileImage: 'https://example.com/images/ryancarter.jpg',
     courseAssigned: [
       {
@@ -213,7 +213,7 @@ export const tutorsData: tutorsDataType = [
       'Entrepreneurial spirit with a focus on startups and innovation. Dedicated to creating positive change through business ventures.',
     country: 'India',
     schoolLevel: 'Undergraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/zarapatel',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/zarapatel',
     profileImage: 'https://example.com/images/zarapatel.jpg',
     courseAssigned: [
       {
@@ -239,7 +239,7 @@ export const tutorsData: tutorsDataType = [
       'Passionate about sustainable energy and environmental conservation. Striving to make a positive impact on the planet.',
     country: 'Brazil',
     schoolLevel: 'Postgraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/lucasrodriguez',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/lucasrodriguez',
     profileImage: 'https://example.com/images/lucasrodriguez.jpg',
     courseAssigned: [
       {
@@ -261,7 +261,7 @@ export const tutorsData: tutorsDataType = [
       'Aspiring UX/UI designer with a passion for creating user-centric and visually appealing digital experiences.',
     country: 'South Korea',
     schoolLevel: 'Undergraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/miakim',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/miakim',
     profileImage: 'https://example.com/images/miakim.jpg',
     courseAssigned: [
       {
@@ -291,7 +291,7 @@ export const tutorsData: tutorsDataType = [
       'Sports enthusiast and fitness advocate. Believes in maintaining a healthy lifestyle and inspiring others to do the same.',
     country: 'Australia',
     schoolLevel: 'Postgraduate',
-    linkedinProfile: 'https://www.linkedin.com/in/elijahwright',
+    linkedinProfileUrl: 'https://www.linkedin.com/in/elijahwright',
     profileImage: 'https://example.com/images/elijahwright.jpg',
     courseAssigned: [
       {

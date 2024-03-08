@@ -73,6 +73,40 @@
     margin-bottom: 8px;
 }
 
+.editModal {
+    gap: 1rem;
+    width: 90%;
+    display: flex;
+    margin: 2rem auto;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.editModal>h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 35px;
+    color: var(--grey);
+}
+
+.editModal>p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--grey3);
+}
+
+.editModal>.buttonContainer {
+    gap: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.editModal>.buttonContainer>button {
+    width: auto;
+    padding: 8px 30px;
+}
 
 @media screen and (max-width: 767px) {
     .userDetails .userInfo {
@@ -92,6 +126,16 @@
 
     .iconTextContainer span,
     .about p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .editModal>h3 {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .editModal>p {
         font-size: 14px;
         line-height: 22px;
     }
