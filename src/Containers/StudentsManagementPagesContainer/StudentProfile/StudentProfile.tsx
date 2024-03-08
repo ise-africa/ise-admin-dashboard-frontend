@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import { AppContext } from '../../../../Context/AppContext'
-import Button from '../../../../Components/Button/Button'
+import { AppContext } from '../../../Context/AppContext'
+import Button from '../../../Components/Button/Button'
 import classes from './StudentProfile.module.css'
-import ProfileSectionContainer from '../../../../Components/ProfileSectionContainer/ProfileSectionContainer'
-import emailIconImage from '../../../../Assets/Images/emailIconImage.png'
-import linkedInIcon from '../../../../Assets/Images/linkedInIconImage.png'
+import ProfileSectionContainer from '../../../Components/ProfileSectionContainer/ProfileSectionContainer'
+import emailIconImage from '../../../Assets/Images/emailIconImage.png'
+import linkedInIcon from '../../../Assets/Images/linkedInIconImage.png'
 
 const StudentProfile = () => {
     // Context
