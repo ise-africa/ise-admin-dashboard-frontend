@@ -10,13 +10,16 @@
 }
 
 .body p {
+    display: none;
     text-align: start;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 23px;
     font-weight: normal;
     color: var(--grey3);
-    font-style: italic;
-    margin-bottom: 2rem;
+    font-style: normal;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--sectionBorder);
 }
 
 .tableHeader,
@@ -25,7 +28,7 @@
     align-items: center;
     gap: 1rem;
     color: var(--grey);
-    padding: 20px 0;
+    padding: 30px 0;
 }
 
 .tableHeader {
@@ -70,11 +73,11 @@
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
-    border-bottom: 1px solid var(--disabled);
+    border-bottom: 1px solid var(--sectionBorder);
 }
 
 .tableBody:last-child {
-    border-bottom: 0px solid var(--disabled);
+    border-bottom: none;
 }
 
 .pass {
@@ -89,6 +92,26 @@
     color: var(--deleteRed);
 }
 
+.overallRating {
+    padding: 1rem;
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--veryVeryLightPurple);
+}
+
+.overallRating>div {
+    flex: 2;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.overallRating>span {
+    flex: 1;
+}
+
 .pageButtons {
     display: flex;
     align-items: center;
@@ -99,8 +122,8 @@
 
 
 .pageButtons button {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     border: var(--border);
     display: flex;
     align-items: center;
@@ -183,7 +206,7 @@
     }
 
     .body p {
-        font-style: normal;
+        display: block;
     }
 
     .tableHeader,
@@ -219,10 +242,5 @@
     .tableBody>span:last-child {
         color: var(--deleteRed);
         cursor: pointer;
-    }
-
-    .pageButtons button {
-        height: 50px;
-        width: 50px;
     }
 }
