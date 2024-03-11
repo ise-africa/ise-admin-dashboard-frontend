@@ -29,6 +29,7 @@ function App() {
 
          <Route path="/students" element={<StudentsManagementPage />} />
          <Route path="/students/:StudentId" element={<StudentProfilePage />} />
+         <Route path="/students/add-student" element={<AddTutorPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

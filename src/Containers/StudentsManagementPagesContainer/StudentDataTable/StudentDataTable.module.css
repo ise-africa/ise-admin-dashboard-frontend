@@ -38,9 +38,17 @@
 }
 
 .filterButton button {
+    cursor: pointer;
     padding: 12px 24px;
     border-radius: 10px;
+    background: var(--white);
     border: 1px solid #CAC2FE;
+    transition: var(--transition);
+}
+
+.filterButton button:hover {
+    border: 1px solid transparent;
+    background: var(--veryLightPurple);
 }
 
 .engagement {
