@@ -12,6 +12,7 @@ type ButtonPropTypes = {
    | 'delete'
    | 'black'
    | 'white'
+   | 'deleteSecondary'
    className?: string
    disabled?: boolean
    onClick?: React.MouseEventHandler<HTMLButtonElement>
@@ -29,19 +30,21 @@ const Button = ({
    return (
       <button
          className={`${classes.button} ${type === 'secondary'
-               ? classes.secondary
-               : type === 'tertiary'
-                  ? classes.tertiary
-                  : type === 'null'
-                     ? classes.null
-                     : type === 'invalid'
-                        ? classes.invalidx
-                        : type === 'delete'
-                           ? classes.delete
-                           : type === 'black'
-                              ? classes.black
-                              : type === 'white'
-                                 ? classes.white
+            ? classes.secondary
+            : type === 'tertiary'
+               ? classes.tertiary
+               : type === 'null'
+                  ? classes.null
+                  : type === 'invalid'
+                     ? classes.invalidx
+                     : type === 'delete'
+                        ? classes.delete
+                        : type === 'black'
+                           ? classes.black
+                           : type === 'white'
+                              ? classes.white
+                              : type === 'deleteSecondary'
+                                 ? classes.deleteSecondary
                                  : classes.primary
             } ${className}`}
          onClick={onClick}

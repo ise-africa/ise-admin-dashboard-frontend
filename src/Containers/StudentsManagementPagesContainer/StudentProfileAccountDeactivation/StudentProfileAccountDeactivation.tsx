@@ -27,9 +27,29 @@ const StudentProfileAccountDeactivation = () => {
     "It allows them login and performing any actions."
   ];
 
+  const handleEnableAccount = () => {
+    setDisplayEnableAccountModal(true);
+  };
+
+  const handleDisableAccount = () => {
+    setDisplayDeleteDisclaimerModal(true);
+  };
+
+  const handleConfirmDisableAccount = () => {
+    setDisplayDeleteDisclaimerModal(false);
+    setDisplayDeletedModal(true);
+    setDisableSuccess(true);
+  };
+
+  const handleConfirmEnableAccount = () => {
+    setDisplayEnableAccountModal(false);
+    setDisplayDeletedModal(true);
+    setEnableSuccess(true);
+  };
+
   return (
     <>
-      {/* Delete Account Modals */}
+      {/* Delete Disclaimer Modal */}
       {displayDeleteDisclaimerModal && (
         <AcceptedModal
           onClick={() => {
@@ -37,37 +57,14 @@ const StudentProfileAccountDeactivation = () => {
           }}
           body={
             <DeleteDisclaimerModalBody
-              onClick={() => {
-                setDisplayDeleteDisclaimerModal(false);
-              }}
-              onClick2={() => {
-                setDisplayDeleteDisclaimerModal(false);
-                setDisplayDeletedModal(true);
-                setDisableSuccess(true);
-              }}
-            />
-          }
-        />
-      )}
-      {displayDeletedModal && disableSuccess && (
-        <AcceptedModal
-          onClick={() => {
-            setDisplayDeletedModal(false);
-            setDisableSuccess(false);
-          }}
-          body={
-            <DeleteSuccessfulModalBody
-              paragraph="The student's account status has been successfully updated. The student's access has been disabled"
-              onClick={() => {
-                setDisplayDeletedModal(false);
-                navigate('/students')
-              }}
+              onClick={() => setDisplayDeleteDisclaimerModal(false)}
+              onClick2={handleConfirmDisableAccount}
             />
           }
         />
       )}
 
-      {/* Enable Account Modals */}
+      {/* Enable Account Modal */}
       {displayEnableAccountModal && (
         <AcceptedModal
           onClick={() => {
@@ -75,27 +72,28 @@ const StudentProfileAccountDeactivation = () => {
           }}
           body={
             <EnableAccountModalBody
-              onClick={() => {
-                setDisplayEnableAccountModal(false);
-              }}
-              onClick2={() => {
-                setDisplayEnableAccountModal(false);
-                setDisplayDeletedModal(true);
-                setEnableSuccess(true);
-              }}
+              onClick={() => setDisplayEnableAccountModal(false)}
+              onClick2={handleConfirmEnableAccount}
             />
           }
         />
       )}
-      {displayDeletedModal && enableSuccess && (
+
+      {/* Delete Successful Modal */}
+      {displayDeletedModal && (disableSuccess || enableSuccess) && (
         <AcceptedModal
           onClick={() => {
             setDisplayDeletedModal(false);
+            setDisableSuccess(false);
             setEnableSuccess(false);
           }}
           body={
             <DeleteSuccessfulModalBody
-              paragraph="The student's account status has been successfully updated. The student's access has been enabled."
+              paragraph={
+                disableSuccess
+                  ? "The student's account status has been successfully updated. The student's access has been disabled."
+                  : "The student's account status has been successfully updated. The student's access has been enabled."
+              }
               onClick={() => {
                 setDisplayDeletedModal(false);
                 navigate('/students')
@@ -106,43 +104,19 @@ const StudentProfileAccountDeactivation = () => {
       )}
 
       <ProfileSectionContainer
-        header="Disable account"
-        paragraph="Restrict access to a student’s account."
+        header={disableSuccess ? "Enable account" : "Disable account"}
+        paragraph={disableSuccess ? "Allow access to a student’s account." : "Restrict access to a student’s account."}
       >
-        <div className={`${classes.container} ${classes.disable}`}>
+        <div className={`${classes.container} ${disableSuccess ? classes.enable : classes.disable}`}>
           <h4>Warning</h4>
-          <ul>
-            {closeDisclaimers.map((data, i) => {
-              return <li key={i}>{data}</li>;
-            })}
-          </ul>
+          <ul>{disableSuccess ? enableDisclaimers.map((data, i) => <li key={i}>{data}</li>) : closeDisclaimers.map((data, i) => <li key={i}>{data}</li>)}</ul>
 
           <Button
-            type="delete"
-            className={classes.delete}
-            onClick={() => {
-              setDisplayDeleteDisclaimerModal(true);
-            }}
+            type={disableSuccess ? "secondary" : "deleteSecondary"}
+            className={disableSuccess ? classes.delete : undefined}
+            onClick={disableSuccess ? handleEnableAccount : handleDisableAccount}
           >
-            Disable account
-          </Button>
-        </div>
-
-        <div className={`${classes.container} ${classes.enable}`}>
-          <h4>Warning</h4>
-          <ul>
-            {enableDisclaimers.map((data, i) => {
-              return <li key={i}>{data}</li>;
-            })}
-          </ul>
-
-          <Button
-            type="secondary"
-            onClick={() => {
-              setDisplayEnableAccountModal(true);
-            }}
-          >
-            Enable account
+            {disableSuccess ? "Enable account" : "Disable account"}
           </Button>
         </div>
       </ProfileSectionContainer>
