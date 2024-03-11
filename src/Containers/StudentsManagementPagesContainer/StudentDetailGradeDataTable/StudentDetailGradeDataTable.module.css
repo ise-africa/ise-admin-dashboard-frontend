@@ -1,9 +1,7 @@
 .container {
     display: flex;
-    margin-block: 24px;
+    margin: 32px 0 16px;
     border-radius: 10px;
-    padding: 1.5rem 2rem;
-    margin-inline: 1.5rem;
     flex-direction: column;
     background: var(--white);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
@@ -93,6 +91,7 @@
 }
 
 .overallRating {
+    gap: 2rem;
     padding: 1rem;
     display: flex;
     font-size: 16px;
@@ -149,7 +148,6 @@
     transition: var(--threeSecTransition);
 }
 
-
 .pageButtons>span:hover {
     background: var(--purple);
 }
@@ -161,10 +159,6 @@
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
-    .container {
-        padding: 16px;
-        margin-inline: 0;
-    }
 
     .tableHeader,
     .tableBody {
@@ -188,23 +182,17 @@
         gap: 1rem;
     }
 
-    .tableBody>div:nth-child(1)>span:nth-child(2)>span:nth-child(2) {
-        font-size: 13px;
-        line-height: 22px;
+    .tableHeader>span:nth-child(1),
+    .tableBody>span:nth-child(1) {
+        flex: 4;
     }
 
-    .tableBody>span:last-child {
-        color: var(--deleteRed);
-        cursor: pointer;
+    .overallRating>div {
+        flex: 6;
     }
 }
 
 @media screen and (max-width: 767px) {
-    .container {
-        padding: 16px;
-        margin-inline: 0;
-    }
-
     .body p {
         display: block;
     }

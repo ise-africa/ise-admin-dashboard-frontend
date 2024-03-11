@@ -30,21 +30,21 @@ const EditStudentProfileModal = ({ onClick, onClick2 }: EditStudentProfileModalP
                 <Input
                     type="text"
                     label="Full Name"
-                    value={activeStudent?.studentName}
+                    placeholder={activeStudent?.studentName}
                 />
                 <Input
                     type="email"
                     label="Email address"
-                    value={activeStudent?.emailAddress}
+                    placeholder={activeStudent?.emailAddress}
                 />
                 <TextArea
                     label='About'
-                    value={activeStudent?.about}
+                    placeholder={activeStudent?.about}
                 />
                 <Input
-                    type="text"
+                    type="url"
                     label="LinkedIn URL"
-                    value={activeStudent?.linkedinProfileUrl}
+                    placeholder={activeStudent?.linkedinProfileUrl}
                 />
             </div>
             <div className={classes.buttonContainer}>
