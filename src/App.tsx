@@ -11,6 +11,7 @@ import TutorProfilePage from './Pages/TutorProfilePage'
 import StudentsManagementPage from './Pages/StudentsManagementPage'
 import AdminsManagementPage from './Pages/AdminsManagementPage'
 import StudentProfilePage from './Pages/StudentProfilePage'
+import AddStudentPage from './Pages/AddStudentPage'
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
 
          <Route path="/students" element={<StudentsManagementPage />} />
          <Route path="/students/:StudentId" element={<StudentProfilePage />} />
-         <Route path="/students/add-student" element={<AddTutorPage />} />
+         <Route path="/students/add-student" element={<AddStudentPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

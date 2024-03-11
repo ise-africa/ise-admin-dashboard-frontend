@@ -1,5 +1,8 @@
 .sectionsNavSection {
+    margin: 1.5rem;
     padding: 1.5rem 2rem;
+    border-radius: 10px;
+    background: var(--white);
 }
 
 @media screen and (max-width: 1023px) {
@@ -8,6 +11,7 @@
     }
 
     .sectionsNavSection {
-        padding: 0 1rem;
+        margin: 0 0 1rem;
+        padding: 1rem;
     }
 }

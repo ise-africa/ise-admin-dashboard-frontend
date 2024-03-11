@@ -2,27 +2,27 @@ import { useState } from 'react';
 import Button from '../../../Components/Button/Button';
 import Input from '../../../Components/Input/Input';
 import ProfileSectionContainer from '../../../Components/ProfileSectionContainer/ProfileSectionContainer';
-import classes from './AddTutorContainer.module.css'
+import classes from './AddStudentContainer.module.css'
 import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
-import ConfirmAdministratorDetailsModal from './AddTutorContainerModals/ConfirmTutorDetailsModal';
 import { useNavigate } from 'react-router-dom';
-import TutorAccountCreatedModal from './AddTutorContainerModals/TutorAccountCreatedModal';
+import ConfirmStudentDetailsModal from './AddStudentContainerModals/ConfirmStudentDetailsModal';
+import StudentAccountCreatedModal from './AddStudentContainerModals/StudentAccountCreatedModal';
 
-const AddTutorContainer = () => {
+const AddStudentContainer = () => {
   const navigate = useNavigate();
-  const [displayConfirmAdministratorDetailsModal, ConfirmTutorDetailsModal] = useState(false)
+  const [displayConfirmAdministratorDetailsModal, setDisplayConfirmStudentDetailsModal] = useState(false)
   const [displayTutorAccountCreatedModal, setDisplayTutorAccountCreatedModal] = useState(false)
 
   return (
     <>
       {displayConfirmAdministratorDetailsModal && (
         <AcceptedModal
-          onClick={() => { ConfirmTutorDetailsModal(false) }}
+          onClick={() => { setDisplayConfirmStudentDetailsModal(false) }}
           body={
-            <ConfirmAdministratorDetailsModal
-              onClick={() => { ConfirmTutorDetailsModal(false) }}
+            <ConfirmStudentDetailsModal
+              onClick={() => { setDisplayConfirmStudentDetailsModal(false) }}
               onClick2={() => {
-                ConfirmTutorDetailsModal(false)
+                setDisplayConfirmStudentDetailsModal(false)
                 setDisplayTutorAccountCreatedModal(true)
               }}
             />
@@ -33,10 +33,10 @@ const AddTutorContainer = () => {
         <AcceptedModal
           onClick={() => { setDisplayTutorAccountCreatedModal(false) }}
           body={
-            <TutorAccountCreatedModal
+            <StudentAccountCreatedModal
               onClick={() => {
                 setDisplayTutorAccountCreatedModal(false)
-                navigate('/tutors')
+                navigate('/students')
               }}
             />
           }
@@ -44,13 +44,13 @@ const AddTutorContainer = () => {
       )}
       <section className={classes.container}>
         <div className={classes.header}>
-          <h1>Add new tutor</h1>
-          <p>Add new tutor to the platform. Input their details and assign roles for specific permissions.</p>
+          <h1>Add new student</h1>
+          <p> Input student details and assign a username and password to them.</p>
         </div>
 
         <div className={classes.body}>
           <ProfileSectionContainer
-            header="Tutor information"
+            header="Student information"
             paragraph="Add personal details to create an account."
           >
             <Input
@@ -73,10 +73,10 @@ const AddTutorContainer = () => {
           <div className={classes.buttonContainer}>
             <Button
               type='secondary'
-              onClick={() => { navigate('/tutors') }}>Cancel</Button>
+              onClick={() => { navigate('/students') }}>Cancel</Button>
             <Button
               type='primary'
-              onClick={() => { ConfirmTutorDetailsModal(true) }}>Continue</Button>
+              onClick={() => { setDisplayConfirmStudentDetailsModal(true) }}>Continue</Button>
           </div>
         </div>
       </section>
@@ -84,4 +84,4 @@ const AddTutorContainer = () => {
   );
 };
 
-export default AddTutorContainer;
+export default AddStudentContainer;

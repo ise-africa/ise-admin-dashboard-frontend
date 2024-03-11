@@ -1,6 +1,6 @@
 .container {
+    margin: 24px;
     display: flex;
-    margin: 32px 0 16px;
     border-radius: 10px;
     flex-direction: column;
     background: var(--white);
@@ -18,6 +18,10 @@
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--sectionBorder);
+}
+
+.body>div:nth-child(2) {
+    padding: 1rem 2rem;
 }
 
 .tableHeader,
@@ -159,6 +163,13 @@
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
+    .container {
+        margin: 16px;
+    }
+
+    .body>div:nth-child(2) {
+        padding: 1rem 0;
+    }
 
     .tableHeader,
     .tableBody {
@@ -193,6 +204,14 @@
 }
 
 @media screen and (max-width: 767px) {
+    .container {
+        margin: 16px;
+    }
+
+    .body>div:nth-child(2) {
+        padding: 1rem 0;
+    }
+
     .body p {
         display: block;
     }
