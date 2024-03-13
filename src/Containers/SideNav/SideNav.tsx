@@ -100,7 +100,7 @@ const SideNav = () => {
                   return <Link
                     to={datum.route}
                     key={j}
-                    className={location.pathname === datum.route ? `${classes.otherOptionsLinkInactive} ${classes.otherOptionsLinkActive}` : classes.link}
+                    className={location.pathname === datum.route ? `${classes.otherOptionsLinkActive}` : classes.link}
                   >
                     {datum.title}
                   </Link>

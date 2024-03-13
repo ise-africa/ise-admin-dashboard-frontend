@@ -136,6 +136,10 @@
   transition: all .3s ease-in-out
 }
 
+.otherOptionsLinkActive {
+  color: var(--purple) !important;
+}
+
 .active {
   background-color: var(--veryLightPurple);
   color: var(--grey);
