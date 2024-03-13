@@ -4,135 +4,55 @@ import courseImg2 from '../Assets/Images/CoursesSubmittedForReviewImage2.png';
 export type studentCoursesType = {
   id: string;
   status: string;
-  // totalAmount: number;
-  // paymentData: string;
-  // accontStatus: string;
-  // paymentStatus: string;
-  // enrollProgressPercent: string;
-  // enrollProgressStatus: string;
+  totalAmount: number;
+  paymentData: string;
+  accontStatus: string;
+  paymentStatus: string;
+  enrollProgressPercent: string;
+  enrollProgressStatus: string;
   courseImage: string;
   courseTitle: string;
-  courseTopic: string;
-  courseReminder: number;
-  courseModules: number;
-  uploadedModules: number;
-  approvedModules: number;
-  declinedModules: number;
-  isUnderReview: boolean;
   courseDescription: string;
 }[];
 
 export const studentCourses: studentCoursesType = [
   {
     id: "1",
-    status: 'Pending',
-    courseImage: courseImg1,
-    courseTitle: 'Frontend Development',
-    courseTopic: 'Cohort 1.0',
-    courseReminder: 2,
-    courseModules: 10,
-    uploadedModules: 5,
-    approvedModules: 3,
-    declinedModules: 2,
-    isUnderReview: true,
-    courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
-  },
-  {
-    id: "2",
-    status: 'Draft',
-    courseImage: courseImg2,
-    courseTitle: 'Backend Development',
-    courseTopic: 'Cohort 1.0',
-    courseReminder: 3,
-    courseModules: 15,
-    uploadedModules: 7,
-    approvedModules: 5,
-    declinedModules: 1,
-    isUnderReview: true,
-    courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
-  },
-  {
-    id: "3",
-    status: 'Published',
-    courseImage: courseImg1,
-    courseTitle: 'Frontend Development',
-    courseTopic: 'Cohort 1.0',
-    courseReminder: 2,
-    courseModules: 10,
-    uploadedModules: 7,
-    approvedModules: 7,
-    declinedModules: 0,
-    isUnderReview: false,
-    courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
-  },
-  {
-    id: "4",
     status: 'Paid',
-    courseImage: courseImg2,
-    courseTitle: 'Backend Development',
-    courseTopic: 'Cohort 1.0',
-    courseReminder: 3,
-    courseModules: 15,
-    uploadedModules: 8,
-    approvedModules: 8,
-    declinedModules: 0,
-    isUnderReview: false,
-    courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
-  },
-  {
-    id: "5",
-    status: 'Pending',
+    totalAmount: 20.00,
+    paymentData: "19th Oct 2023",
+    accontStatus: 'closed',
+    paymentStatus: '1st installment paid 2nd upcoming',
+    enrollProgressPercent: '50',
+    enrollProgressStatus: 'withdrawn',
     courseImage: courseImg1,
-    courseTitle: 'Frontend Development',
-    courseTopic: 'Cohort 1.0',
-    courseReminder: 2,
-    courseModules: 10,
-    uploadedModules: 6,
-    approvedModules: 4,
-    declinedModules: 2,
-    isUnderReview: false,
+    courseTitle: 'Machine Learning',
     courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
   },
   {
-    id: "6",
-    status: 'Draft',
-    courseImage: courseImg2,
-    courseTitle: 'Backend Development',
-    courseTopic: 'Cohort 1.0',
-    courseReminder: 3,
-    courseModules: 15,
-    uploadedModules: 5,
-    approvedModules: 3,
-    declinedModules: 2,
-    isUnderReview: false,
-    courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
-  },
-  {
-    id: "7",
-    status: 'Published',
-    courseImage: courseImg1,
-    courseTitle: 'Frontend Development',
-    courseTopic: 'Cohort 1.0',
-    courseReminder: 2,
-    courseModules: 10,
-    uploadedModules: 9,
-    approvedModules: 9,
-    declinedModules: 0,
-    isUnderReview: false,
-    courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
-  },
-  {
-    id: "8",
+    id: "1",
     status: 'Paid',
+    totalAmount: 75.00,
+    paymentData: "19th Oct 2023",
+    accontStatus: 'closed',
+    paymentStatus: '1st installment paid 2nd upcoming',
+    enrollProgressPercent: '75',
+    enrollProgressStatus: 'withdrawn',
     courseImage: courseImg2,
-    courseTitle: 'Backend Development',
-    courseTopic: 'Cohort 1.0',
-    courseReminder: 3,
-    courseModules: 15,
-    uploadedModules: 6,
-    approvedModules: 5,
-    declinedModules: 1,
-    isUnderReview: false,
+    courseTitle: 'Customer Success Management',
+    courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
+  },
+  {
+    id: "1",
+    status: 'Free',
+    totalAmount: 25.55,
+    paymentData: "19th Oct 2023",
+    accontStatus: 'closed',
+    paymentStatus: '1st installment paid 2nd upcoming',
+    enrollProgressPercent: '100',
+    enrollProgressStatus: 'withdrawn',
+    courseImage: courseImg1,
+    courseTitle: 'Frontend Development',
     courseDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills.',
   },
 ];
