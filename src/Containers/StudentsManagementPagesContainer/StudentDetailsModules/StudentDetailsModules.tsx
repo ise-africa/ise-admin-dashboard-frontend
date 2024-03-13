@@ -4,6 +4,8 @@ import StudentDetailGradeDataTable from "../StudentDetailGradeDataTable/StudentD
 import StudentDetailFeedBackDataTable from "../StudentDetailFeedBackDataTable/StudentDetailFeedBackDataTable";
 import SectionsNav4 from "../../../Components/SectionsNav4/SectionsNav4";
 import StudentDetailPageProfile from "../StudentDetailPageProfile/StudentDetailPageProfile";
+import StudentCoursePayment from "../StudentCoursePayment/StudentCoursePayment";
+import StudentCourseEnrolled from "../StudentCourseEnrolled/StudentCourseEnrolled";
 
 const StudentDetailsModules = () => {
     // States
@@ -16,12 +18,12 @@ const StudentDetailsModules = () => {
         {
             title: "Payment",
             isActive: false,
-            activeComponent: null,
+            activeComponent: <StudentCoursePayment />,
         },
         {
             title: "Courses",
             isActive: false,
-            activeComponent: null,
+            activeComponent: <StudentCourseEnrolled />,
         },
         {
             title: "Grade",

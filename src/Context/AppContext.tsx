@@ -35,8 +35,8 @@ type AppContextProps = {
   setAdminData: Dispatch<SetStateAction<adminsDataType[]>>
   tutors: tutorsDataType
   setTutors: Dispatch<SetStateAction<tutorsDataType>>
-  students: studentsDataType
-  setStudents: Dispatch<SetStateAction<studentsDataType>>
+  students: studentsDataType[]
+  setStudents: Dispatch<SetStateAction<studentsDataType[]>>
 }
 
 export const AppContext = createContext({} as AppContextProps)
@@ -70,9 +70,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     tutorsData as tutorsDataType
   )
 
-  const [students, setStudents] = useState<studentsDataType>(
-    studentsData as studentsDataType
-  )
+  const [students, setStudents] = useState<studentsDataType[]>(studentsData)
 
   //   Effects
   useEffect(() => {
