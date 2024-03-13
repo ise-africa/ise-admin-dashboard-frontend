@@ -36,7 +36,7 @@ const AddStudentContainer = () => {
             <StudentAccountCreatedModal
               onClick={() => {
                 setDisplayTutorAccountCreatedModal(false)
-                navigate('/students')
+                navigate('/users/students')
               }}
             />
           }
@@ -73,7 +73,7 @@ const AddStudentContainer = () => {
           <div className={classes.buttonContainer}>
             <Button
               type='secondary'
-              onClick={() => { navigate('/students') }}>Cancel</Button>
+              onClick={() => { navigate('/users/students') }}>Cancel</Button>
             <Button
               type='primary'
               onClick={() => { setDisplayConfirmStudentDetailsModal(true) }}>Continue</Button>

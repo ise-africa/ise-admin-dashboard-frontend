@@ -52,7 +52,7 @@ const TutorProfileAccountDeactivation = () => {
             <DeleteSuccessfulModalBody
               onClick={() => {
                 setDisplayDeletedModal(false);
-                navigate('/tutors')
+                navigate('/users/tutors')
               }}
             />
           }

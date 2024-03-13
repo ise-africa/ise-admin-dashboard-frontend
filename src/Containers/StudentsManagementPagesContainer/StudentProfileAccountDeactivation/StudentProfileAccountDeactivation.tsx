@@ -96,7 +96,7 @@ const StudentProfileAccountDeactivation = () => {
               }
               onClick={() => {
                 setDisplayDeletedModal(false);
-                navigate('/students')
+                navigate('/users/students')
               }}
             />
           }

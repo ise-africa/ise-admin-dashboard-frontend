@@ -1,9 +1,15 @@
 import courseImg1 from '../Assets/Images/CoursesSubmittedForReviewImage1.png';
 import courseImg2 from '../Assets/Images/CoursesSubmittedForReviewImage2.png';
 
-export type coursesDataType = {
+export type studentCoursesType = {
   id: string;
   status: string;
+  // totalAmount: number;
+  // paymentData: string;
+  // accontStatus: string;
+  // paymentStatus: string;
+  // enrollProgressPercent: string;
+  // enrollProgressStatus: string;
   courseImage: string;
   courseTitle: string;
   courseTopic: string;
@@ -16,7 +22,7 @@ export type coursesDataType = {
   courseDescription: string;
 }[];
 
-export const coursesData: coursesDataType = [
+export const studentCourses: studentCoursesType = [
   {
     id: "1",
     status: 'Pending',

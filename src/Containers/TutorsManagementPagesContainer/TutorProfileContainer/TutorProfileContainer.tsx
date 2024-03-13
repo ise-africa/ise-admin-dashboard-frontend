@@ -25,11 +25,11 @@ const TutorProfileContainer = () => {
     array: [
       {
         title: "Tutor",
-        route: "/tutors",
+        route: "/users/tutors",
       },
       {
         title: `${activeTutor?.tutorFullName}`,
-        route: `/tutors/${activeTutor?.tutorFullName.toLowerCase().replace(' ', '-')}`,
+        route: `/users/tutors/${activeTutor?.tutorFullName.toLowerCase().replace(' ', '-')}`,
       },
     ],
   };

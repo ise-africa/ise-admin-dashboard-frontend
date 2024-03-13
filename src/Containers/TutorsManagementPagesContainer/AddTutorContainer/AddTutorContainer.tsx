@@ -36,7 +36,7 @@ const AddTutorContainer = () => {
             <TutorAccountCreatedModal
               onClick={() => {
                 setDisplayTutorAccountCreatedModal(false)
-                navigate('/tutors')
+                navigate('/users/tutors')
               }}
             />
           }
@@ -73,7 +73,7 @@ const AddTutorContainer = () => {
           <div className={classes.buttonContainer}>
             <Button
               type='secondary'
-              onClick={() => { navigate('/tutors') }}>Cancel</Button>
+              onClick={() => { navigate('/users/tutors') }}>Cancel</Button>
             <Button
               type='primary'
               onClick={() => { ConfirmTutorDetailsModal(true) }}>Continue</Button>

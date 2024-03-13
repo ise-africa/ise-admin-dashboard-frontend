@@ -19,18 +19,18 @@ function App() {
       <Routes>
          <Route path="*" element={<ErrorPage />} />
 
-         <Route path="/admins" element={<AdminsManagementPage />} />
-         <Route path="/admins/:AdminId" element={<AdminProfilePage />} />
-         <Route path="/admins/#:AdminInfo" element={<AdminProfilePage />} />
-         <Route path="/admins/add-admin" element={<AddAdminPage />} />
+         <Route path="/users/admins" element={<AdminsManagementPage />} />
+         <Route path="/users/admins/:AdminId" element={<AdminProfilePage />} />
+         <Route path="/users/admins/#:AdminInfo" element={<AdminProfilePage />} />
+         <Route path="/users/admins/add-admin" element={<AddAdminPage />} />
 
-         <Route path="/tutors" element={<TutorsManagementPage />} />
-         <Route path="/tutors/:TutorId" element={<TutorProfilePage />} />
-         <Route path="/tutors/add-tutor" element={<AddTutorPage />} />
+         <Route path="/users/tutors" element={<TutorsManagementPage />} />
+         <Route path="/users/tutors/:TutorId" element={<TutorProfilePage />} />
+         <Route path="/users/tutors/add-tutor" element={<AddTutorPage />} />
 
-         <Route path="/students" element={<StudentsManagementPage />} />
-         <Route path="/students/:StudentId" element={<StudentProfilePage />} />
-         <Route path="/students/add-student" element={<AddStudentPage />} />
+         <Route path="/users/students" element={<StudentsManagementPage />} />
+         <Route path="/users/students/:StudentId" element={<StudentProfilePage />} />
+         <Route path="/users/students/add-student" element={<AddStudentPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

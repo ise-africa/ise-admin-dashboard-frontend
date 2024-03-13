@@ -117,7 +117,10 @@ const AddAdminContainer = () => {
           onClick={() => { setDisplayRoleCreatedModal(false) }}
           body={
             <RoleCreatedModal
-              onClick={() => { setDisplayRoleCreatedModal(false) }}
+              onClick={() => {
+                navigate('/users/admins')
+                setDisplayRoleCreatedModal(false)
+              }}
             />
           }
         />
@@ -196,7 +199,7 @@ const AddAdminContainer = () => {
           <div className={classes.buttonContainer}>
             <Button
               type='secondary'
-              onClick={() => { navigate('/admins') }}>Cancel</Button>
+              onClick={() => { navigate('/users/admins') }}>Cancel</Button>
             <Button
               type='primary'
               onClick={() => { setDisplayConfirmAdministratorDetailsModal(true) }}>Continue</Button>

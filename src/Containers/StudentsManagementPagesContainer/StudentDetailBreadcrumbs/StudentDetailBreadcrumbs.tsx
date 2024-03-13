@@ -20,11 +20,11 @@ const StudentDetailBreadcrumbs = () => {
     array: [
       {
         title: "Back to students",
-        route: "/students",
+        route: "/users/students",
       },
       {
         title: `${activeStudent?.studentName}`,
-        route: `/students/${activeStudent?.studentName.toLowerCase().replace(' ', '-')}`,
+        route: `/users/students/${activeStudent?.studentName.toLowerCase().replace(' ', '-')}`,
       },
     ],
   };

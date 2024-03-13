@@ -215,7 +215,7 @@ const StudentDataTable = () => {
                      image={noResultFound}
                      header={`No results for “${searchTerm}”`}
                      firstParagraph='Try a new search'
-                     route='/students'
+                     route='/users/students'
                      imageHeight={280}
                      buttontext='Retry  search'
                      buttonType='null'
@@ -243,7 +243,7 @@ const StudentDataTable = () => {
                            <span
                               onClick={() => {
                                  navigate(
-                                    `/students/${data.studentName
+                                    `/users/students/${data.studentName
                                        .replaceAll(' ', '-')
                                        .toLowerCase()}`
                                  )

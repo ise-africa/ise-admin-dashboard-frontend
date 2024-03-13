@@ -39,11 +39,11 @@ const AdminProfileContainer = () => {
     array: [
       {
         title: `${activeAdmin?.adminRole}`,
-        route: "/admins",
+        route: "/users/admins",
       },
       {
         title: `${activeAdmin?.adminFullName}`,
-        route: `/admins/${activeAdmin?.adminFullName.toLowerCase().replace(' ', '-')}`,
+        route: `/users/admins/${activeAdmin?.adminFullName.toLowerCase().replace(' ', '-')}`,
       },
     ],
   };
