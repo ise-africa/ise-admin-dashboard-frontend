@@ -12,6 +12,7 @@ import StudentsManagementPage from './Pages/StudentsManagementPage'
 import AdminsManagementPage from './Pages/AdminsManagementPage'
 import StudentProfilePage from './Pages/StudentProfilePage'
 import AddStudentPage from './Pages/AddStudentPage'
+import SchoolManagementPage from './Pages/SchoolManagementPage'
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
          <Route path="/users/students" element={<StudentsManagementPage />} />
          <Route path="/users/students/:StudentId" element={<StudentProfilePage />} />
          <Route path="/users/students/add-student" element={<AddStudentPage />} />
+
+         <Route path="/schools" element={<SchoolManagementPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />
