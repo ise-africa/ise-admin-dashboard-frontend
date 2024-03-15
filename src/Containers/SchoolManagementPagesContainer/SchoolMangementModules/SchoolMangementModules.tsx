@@ -10,19 +10,28 @@ const SchoolMangementModules = () => {
             title: "All schools",
             isActive: true,
             activeComponent: null,
-            activeNullStateComponent: <SchoolMangementModulesEmptyTab />,
+            activeNullStateComponent: <SchoolMangementModulesEmptyTab
+                header="No school created"
+                paragraph=" Schools are the foundation where courses come to life. Click the button below to create a new school and kickstart your administrative journey."
+            />,
         },
         {
             title: "Active schools",
             isActive: false,
             activeComponent: null,
-            activeNullStateComponent: <SchoolMangementModulesEmptyTab />,
+            activeNullStateComponent: <SchoolMangementModulesEmptyTab
+                header="No active school yet"
+                paragraph="Active schools will appear here once they are live for students to enrol in."
+            />,
         },
         {
             title: "Inactive schools",
             isActive: false,
             activeComponent: null,
-            activeNullStateComponent: <SchoolMangementModulesEmptyTab />,
+            activeNullStateComponent: <SchoolMangementModulesEmptyTab
+                header="No inactive school yet"
+                paragraph="Once a school is deactivated school it will appear here and students won't have access to enrol in a course."
+            />,
         },
     ]);
 

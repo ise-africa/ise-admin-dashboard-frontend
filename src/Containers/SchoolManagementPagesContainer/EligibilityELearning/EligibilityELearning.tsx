@@ -1,4 +1,4 @@
-import classes from "../EligibilityTechnical/EligibilityTechnical.module.css";
+import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
 import Button from "../../../Components/Button/Button";
 import { useSearchParams } from "react-router-dom";
 import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
