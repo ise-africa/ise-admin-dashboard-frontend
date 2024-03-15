@@ -13,7 +13,7 @@ const CreateSchoolAddDetails = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <SchoolCreatingLayout notShowHeader>
+    <SchoolCreatingLayout>
       <section className={classes.container}>
         <h2>Create a new school</h2>
 

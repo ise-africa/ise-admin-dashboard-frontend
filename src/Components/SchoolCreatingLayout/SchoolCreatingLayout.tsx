@@ -4,7 +4,6 @@ import classes from "./SchoolCreatingLayout.module.css";
 
 type SchoolCreatingLayoutProps = {
   children: React.ReactNode;
-  notShowHeader?: boolean;
 };
 
 const SchoolCreatingLayout = ({

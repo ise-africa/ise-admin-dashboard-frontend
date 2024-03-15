@@ -1,4 +1,6 @@
-.container {
+.container,
+.textSection,
+.textSection>div {
     gap: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -27,6 +29,11 @@
     border-top: 1px solid var(--sectionBorder);
 }
 
+.buttonSectionThree button:nth-child(1) {
+    padding: 0;
+    margin-right: auto;
+}
+
 .flexButtonSection {
     display: flex;
     align-items: center;
@@ -43,12 +50,37 @@
     background: var(--progressBarYellow);
 }
 
+.textSection span,
 .fileUploadInfo li {
     font-size: 13px;
     list-style: none;
     font-weight: 400;
     line-height: 20px;
     color: var(--grey);
+}
+
+.textSection span {
+    color: var(--grey3);
+}
+
+.textSection p,
+.textSection li {
+    font-size: 16px;
+    list-style: disc;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--grey);
+}
+
+.textSection img {
+    width: 500px;
+    height: 500px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.textSection>div {
+    gap: 8px;
 }
 
 .schoolImportanceLabel {
@@ -70,7 +102,28 @@
         line-height: 26px;
     }
 
+    .textSection p,
+    .textSection li {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .textSection img {
+        width: 230px;
+        height: 250px;
+    }
+
     .container .buttonSection {
         gap: 1rem;
+    }
+
+    .buttonSectionThree {
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+    }
+
+    .buttonSectionThree button:nth-child(1) {
+        flex-basis: 100%;
+        margin-right: 0;
     }
 }
