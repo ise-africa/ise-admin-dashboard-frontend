@@ -1,3 +1,9 @@
+.container {
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .container h2 {
     font-size: 31px;
     font-weight: 500;
@@ -14,9 +20,25 @@
 .container .buttonSection {
     gap: 1.5rem;
     display: flex;
+    margin-top: 40px;
+    padding-top: 24px;
     align-items: center;
     justify-content: flex-end;
-    margin-top: calc(40px + 16px);
+    border-top: 1px solid var(--sectionBorder);
+}
+
+.fileUploadInfo {
+    padding: 8px;
+    margin-top: -1.125rem;
+    background: var(--progressBarYellow);
+}
+
+.fileUploadInfo li {
+    font-size: 13px;
+    list-style: none;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--grey);
 }
 
 @media screen and (max-width: 768px) {
@@ -28,6 +50,5 @@
 
     .container .buttonSection {
         gap: 1rem;
-        margin-top: 40px;
     }
 }
