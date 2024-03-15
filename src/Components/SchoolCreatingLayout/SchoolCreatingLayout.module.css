@@ -20,8 +20,18 @@
 .stepIndicator {
   gap: 1rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.stepIndicator p {
+  flex-basis: 100%;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--grey);
+  font-style: normal;
 }
 
 .step:nth-child(1)>hr {
@@ -135,5 +145,9 @@
   .step>div {
     font-size: 14px;
     line-height: 23px;
+  }
+
+  .children {
+    margin-top: 24px;
   }
 }

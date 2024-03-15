@@ -18,6 +18,9 @@ const SchoolCreatingLayout = ({
 
   const userStep = searchParams.get("step");
 
+  // Calculate progress
+  const progress = userStep ? steps.indexOf(parseInt(userStep)) + 1 : 0;
+
   return (
     <section className={classes.container}>
       <div className={classes.innerContainer}>
@@ -36,6 +39,7 @@ const SchoolCreatingLayout = ({
                 </div>
               );
             })}
+            <p>Progress {progress} of {steps.length}</p>
           </div>
           <div className={classes.children}>{children}</div>
         </div>

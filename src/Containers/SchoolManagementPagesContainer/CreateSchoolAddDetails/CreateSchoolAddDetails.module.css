@@ -2,6 +2,7 @@
     font-size: 31px;
     font-weight: 500;
     line-height: 49px;
+    color: var(--grey);
     margin-bottom: 16px;
 }
 
@@ -16,4 +17,17 @@
     align-items: center;
     justify-content: flex-end;
     margin-top: calc(40px + 16px);
+}
+
+@media screen and (max-width: 768px) {
+    .container h2 {
+        font-size: 25px;
+        line-height: 35px;
+        margin-bottom: 10px;
+    }
+
+    .container .buttonSection {
+        gap: 1rem;
+        margin-top: 40px;
+    }
 }
