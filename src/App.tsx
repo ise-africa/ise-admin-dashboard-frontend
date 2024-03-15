@@ -13,6 +13,7 @@ import AdminsManagementPage from './Pages/AdminsManagementPage'
 import StudentProfilePage from './Pages/StudentProfilePage'
 import AddStudentPage from './Pages/AddStudentPage'
 import SchoolManagementPage from './Pages/SchoolManagementPage'
+import AddSchoolsPage from './Pages/AddSchoolsPage'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
          <Route path="/users/students/add-student" element={<AddStudentPage />} />
 
          <Route path="/schools" element={<SchoolManagementPage />} />
+         <Route path="/schools/add-school" element={<AddSchoolsPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

@@ -11,8 +11,7 @@ const StudentDataTable = () => {
    const [navItems] = useState<any[]>([
       {
          isActive: true,
-         activeComponent: null,
-         // activeComponent: <StudentDataTableContent />,
+         activeComponent: <StudentDataTableContent />,
          activeNullStateComponent: <StudentsManagementModulesEmptyTab />,
       },
    ]);

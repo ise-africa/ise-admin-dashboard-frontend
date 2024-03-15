@@ -1,0 +1,139 @@
+.container {
+  padding: 40px 32px;
+  position: relative;
+}
+
+.innerContainer {
+  display: flex;
+  align-items: center;
+}
+
+.body {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--white);
+  padding: 4rem 32px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.stepIndicator {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step:nth-child(1)>hr {
+  display: none;
+}
+
+.step {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.step:nth-child(1),
+.step:nth-child(2),
+.step:nth-child(3) {
+  flex: 1;
+}
+
+.step>hr {
+  flex: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.step>div {
+  flex-shrink: 0;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  transition: all 0.3s ease-in-out;
+}
+
+.active>div {
+  width: 100%;
+  height: 10px;
+  max-width: 285px;
+  color: transparent;
+  border-radius: 10px;
+  background: var(--progressBarIndicatorYellow);
+}
+
+.inActive>div {
+  width: 100%;
+  height: 10px;
+  max-width: 285px;
+  color: transparent;
+  border-radius: 10px;
+  background: var(--progressBarYellow);
+}
+
+.children {
+  margin-top: 40px;
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    padding: 40px 0;
+    background: var(--white);
+  }
+
+  .step:nth-child(1) {
+    width: 26px;
+  }
+
+  .innerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc((100vh - 98px));
+    padding: 0 1rem;
+  }
+
+  .body {
+    padding: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .step>div {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 40px 0;
+    background: var(--white);
+  }
+
+  .innerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc((100vh - 98px));
+    padding: 0 1rem;
+  }
+
+  .body {
+    padding: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .step>div {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}
