@@ -3,7 +3,7 @@ import Button from "../../../Components/Button/Button";
 import HelloUser from "../../../Components/HelloUser/HelloUser";
 import classes from "./SchoolManagementBoard.module.css";
 import { useNavigate } from "react-router-dom";
-import SchoolsModules from "../SchoolsModules/SchoolsModules";
+import SchoolMangementModules from "../SchoolMangementModules/SchoolMangementModules";
 
 
 const SchoolManagementBoard = () => {
@@ -23,7 +23,7 @@ const SchoolManagementBoard = () => {
                     <span>Create school</span>
                 </Button>
             </HelloUser>
-            <SchoolsModules />
+            <SchoolMangementModules />
             <div className={classes.footer}>
                 <p>Need help creating a school?</p>
                 <Link to='/support'>Read guide here</Link>

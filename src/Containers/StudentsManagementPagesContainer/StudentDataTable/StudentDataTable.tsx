@@ -10,9 +10,9 @@ const StudentDataTable = () => {
    // States
    const [navItems] = useState<any[]>([
       {
-         title: "Live class Sessions",
          isActive: true,
-         activeComponent: <StudentDataTableContent />,
+         activeComponent: null,
+         // activeComponent: <StudentDataTableContent />,
          activeNullStateComponent: <StudentsManagementModulesEmptyTab />,
       },
    ]);

@@ -98,14 +98,14 @@
   width: 100%;
   gap: 10px;
   display: flex;
-  padding: 8px;
+  padding: 10px;
 }
 
 .moreMenuContentActive {
   background-color: var(--veryLightPurple);
   color: var(--grey);
   border-radius: 5px;
-  padding: 8px;
+  padding: 10px;
   width: 100%;
   gap: 10px;
   display: flex;
