@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
 import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
 import Button from "../../../Components/Button/Button";
@@ -6,8 +7,20 @@ import Input from "../../../Components/Input/Input";
 import DragAndDropInput from "../../../Components/DragAndDropInput/DragAndDropInput";
 
 const CreateSchoolUploadFile = () => {
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const [additionalInputs, setAdditionalInputs] = useState(1);
+
+  const addInput = () => {
+    setAdditionalInputs(prev => prev + 1);
+  };
+
+  const removeInput = () => {
+    if (additionalInputs > 1) {
+      setAdditionalInputs(prev => prev - 1);
+    }
+  };
+
   return (
     <SchoolCreatingLayout notShowHeader>
       <section className={classes.container}>
@@ -28,17 +41,29 @@ const CreateSchoolUploadFile = () => {
             label="School name"
             placeholder="E.g School of Business"
           />
-          <Input
-            label="List the importance of joining this school"
-            placeholder="E. g Master the art of talent acquisition for business success."
-          />
-
-          <Button type="null">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 1V17M17 9L1 9" stroke="#664EFE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span>Add more</span>
-          </Button>
+          <label className={classes.schoolImportanceLabel}>List the importance of joining this school</label>
+          {[...Array(additionalInputs)].map((_, index) => (
+            <Input
+              key={index}
+              placeholder="E.g Master the art of talent acquisition for business success."
+            />
+          ))}
+          <div className={classes.flexButtonSection}>
+            <Button type="null" onClick={addInput}>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 1V17M17 9L1 9" stroke="#664EFE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span>Add more</span>
+            </Button>
+            {additionalInputs > 1 && (
+              <Button type="null" onClick={removeInput}>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 9L17 9" stroke="#664EFE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>Remove</span>
+              </Button>
+            )}
+          </div>
         </div>
 
         <div className={classes.buttonSection}>
