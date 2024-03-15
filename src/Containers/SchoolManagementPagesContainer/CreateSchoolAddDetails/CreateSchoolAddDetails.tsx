@@ -15,7 +15,7 @@ const CreateSchoolAddDetails = () => {
   return (
     <SchoolCreatingLayout notShowHeader>
       <section className={classes.container}>
-        <p className={classes.header}>Create a new school</p>
+        <h2>Create a new school</h2>
 
         <div>
           <Input
@@ -39,18 +39,14 @@ const CreateSchoolAddDetails = () => {
               navigate("/schools");
             }}
           >
-            <span className={classes.buttonInner}>
-              <span>Cancel</span>
-            </span>
+            <span>Cancel</span>
           </Button>
           <Button
             onClick={() => {
               setSearchParams({ step: "2" });
             }}
           >
-            <span className={classes.buttonInner}>
-              <span>Next</span>
-            </span>
+            <span>Next</span>
           </Button>
         </div>
       </section>

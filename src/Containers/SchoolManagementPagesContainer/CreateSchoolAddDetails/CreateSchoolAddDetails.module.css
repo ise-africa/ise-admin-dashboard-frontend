@@ -1,0 +1,19 @@
+.container h2 {
+    font-size: 31px;
+    font-weight: 500;
+    line-height: 49px;
+    margin-bottom: 16px;
+}
+
+.container button {
+    width: fit-content;
+    padding: 10px 30px;
+}
+
+.container .buttonSection {
+    gap: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: calc(40px + 16px);
+}
