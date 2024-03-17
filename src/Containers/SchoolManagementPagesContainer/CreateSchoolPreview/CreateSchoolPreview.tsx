@@ -55,9 +55,11 @@ const CreateSchoolPreview = () => {
             <SchoolCreatedSuccessfulModal
               onClick={() => {
                 setDisplaySchoolCreatedSuccessfulModal(false)
+                navigate('/schools/school-created')
               }}
               onClick2={() => {
                 setDisplaySchoolCreatedSuccessfulModal(false)
+                navigate('/schools/add-course')
               }}
             />
           }

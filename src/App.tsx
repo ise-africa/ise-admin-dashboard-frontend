@@ -14,6 +14,7 @@ import StudentProfilePage from './Pages/StudentProfilePage'
 import AddStudentPage from './Pages/AddStudentPage'
 import SchoolManagementPage from './Pages/SchoolManagementPage'
 import AddSchoolsPage from './Pages/AddSchoolsPage'
+import SchoolCreatedPage from './Pages/SchoolCreatedPage'
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 
          <Route path="/schools" element={<SchoolManagementPage />} />
          <Route path="/schools/add-school" element={<AddSchoolsPage />} />
+         <Route path="/schools/school-created" element={<SchoolCreatedPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />
