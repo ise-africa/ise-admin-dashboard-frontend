@@ -7,6 +7,7 @@ import { useState } from "react";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import CancelSchoolCreationModal from "./PreviewModals/CancelSchoolCreationModal";
 import CancelSchoolSuccessfulModal from "./PreviewModals/CancelSchoolSuccessfulModal";
+import SchoolCreatedSuccessfulModal from "./PreviewModals/SchoolCreatedSuccessfulModal";
 const CreateSchoolPreview = () => {
 
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const CreateSchoolPreview = () => {
 
   const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
   const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
+  const [displaySchoolCreatedSuccessfulModal, setDisplaySchoolCreatedSuccessfulModal] = useState(false)
 
   return (
     <>
@@ -41,6 +43,21 @@ const CreateSchoolPreview = () => {
               onClick={() => {
                 setDisplayCancelSchoolSuccessfulModal(false)
                 navigate('/schools/add-school?step=1')
+              }}
+            />
+          }
+        />
+      )}
+      {displaySchoolCreatedSuccessfulModal && (
+        <AcceptedModal
+          onClick={() => { setDisplaySchoolCreatedSuccessfulModal(false) }}
+          body={
+            <SchoolCreatedSuccessfulModal
+              onClick={() => {
+                setDisplaySchoolCreatedSuccessfulModal(false)
+              }}
+              onClick2={() => {
+                setDisplaySchoolCreatedSuccessfulModal(false)
               }}
             />
           }
@@ -100,7 +117,7 @@ const CreateSchoolPreview = () => {
               <span>Edit Information</span>
             </Button>
             <Button
-              onClick={() => { }}
+              onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
             >
               <span>Create School</span>
             </Button>
