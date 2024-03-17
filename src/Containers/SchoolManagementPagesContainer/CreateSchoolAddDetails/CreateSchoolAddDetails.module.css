@@ -115,6 +115,7 @@
 
     .container .buttonSection {
         gap: 1rem;
+        justify-content: space-between;
     }
 
     .buttonSectionThree {

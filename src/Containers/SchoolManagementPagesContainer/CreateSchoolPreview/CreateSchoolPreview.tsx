@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../../Components/Button/Button";
 import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
 import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
@@ -6,12 +6,16 @@ import schoolImage from '../../../Assets/Images/schoolImage.svg'
 import { useState } from "react";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import CancelSchoolCreationModal from "./PreviewModals/CancelSchoolCreationModal";
+import CancelSchoolSuccessfulModal from "./PreviewModals/CancelSchoolSuccessfulModal";
 const CreateSchoolPreview = () => {
+
+  const navigate = useNavigate();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
+  const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
 
   return (
     <>
@@ -23,12 +27,26 @@ const CreateSchoolPreview = () => {
               onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
               onClick2={() => {
                 setDisplayCancelSchoolCreationModal(false)
-                // setDisplayRoleCreatedModal(true)
+                setDisplayCancelSchoolSuccessfulModal(true)
               }}
             />
           }
         />
       )}
+      {displayCancelSchoolSuccessfulModal && (
+        <AcceptedModal
+          onClick={() => { setDisplayCancelSchoolSuccessfulModal(false) }}
+          body={
+            <CancelSchoolSuccessfulModal
+              onClick={() => {
+                setDisplayCancelSchoolSuccessfulModal(false)
+                navigate('/schools/add-school?step=1')
+              }}
+            />
+          }
+        />
+      )}
+
       <SchoolCreatingLayout>
 
         <section className={classes.container}>
