@@ -100,4 +100,12 @@ export const sideNavItems: sideNavItemsType = [
     otherOptions: null,
     isVisible: true,
   },
+
+  {
+    title: "Integrations",
+    route: "/integrations",
+    keywords: ["integrations"],
+    otherOptions: null,
+    isVisible: true,
+  },
 ];
