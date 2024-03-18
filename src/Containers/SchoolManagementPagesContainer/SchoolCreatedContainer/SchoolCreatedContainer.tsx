@@ -4,6 +4,7 @@ import classes from './SchoolCreatedContainer.module.css'
 import addButton from '../../../Assets/Images/addButtonWithPurpleBackgroundAndRoundedCorners.svg'
 import { AppContext } from '../../../Context/AppContext'
 import ellipse from '../../../Assets/Images/ellipses.svg'
+import ActionsModal from './ActionsModal/ActionsModal'
 
 const SchoolCreatedContainer = () => {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ const SchoolCreatedContainer = () => {
                     <p>Set up and manage schools, courses and cohorts easily.</p>
                 </div>
             </div>
+            <ActionsModal />
             {schools.map((data, i) => {
                 const statusClassName = getStatusClass(data.status)
                 return (
