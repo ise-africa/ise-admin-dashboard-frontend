@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import classes from './SchoolCreatedContainer.module.css'
-import addButton from '../../../Assets/Images/addButtonWithPurpleBackgroundAndRoundedCorners.svg'
-import { AppContext } from '../../../Context/AppContext'
-import ellipse from '../../../Assets/Images/ellipses.svg'
-import ActionsModal from './ActionsModal/ActionsModal'
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import classes from './SchoolCreatedContainer.module.css';
+import addButton from '../../../Assets/Images/addButtonWithPurpleBackgroundAndRoundedCorners.svg';
+import { AppContext } from '../../../Context/AppContext';
+import SchoolCard from '../../../Components/SchoolCard/SchoolCard';
 
 const SchoolCreatedContainer = () => {
     const navigate = useNavigate();
@@ -14,11 +13,13 @@ const SchoolCreatedContainer = () => {
     const getStatusClass = (status: string) => {
         switch (status) {
             case 'Active':
-                return classes.active
+                return classes.active;
             case 'Inactive':
-                return classes.inactive
+                return classes.inactive;
+            default:
+                return '';
         }
-    }
+    };
 
     return (
         <div className={classes.container}>
@@ -29,32 +30,22 @@ const SchoolCreatedContainer = () => {
                     <p>Set up and manage schools, courses and cohorts easily.</p>
                 </div>
             </div>
-            <ActionsModal />
             {schools.map((data, i) => {
-                const statusClassName = getStatusClass(data.status)
+                const statusClassName = getStatusClass(data.status);
                 return (
-                    <div className={classes.school}>
-                        <img src={data.schoolImage} alt={data.schoolName} />
-                        <div>
-                            <h4>{data.schoolName}</h4>
-                            <div className={classes.schoolInfo}>
-                                <div>
-                                    <span>Courses:</span> <span>{data.totalCourse}</span>
-                                </div>
-                                <div>
-                                    <span>Status:</span> <span className={statusClassName}>{data.status}</span>
-                                </div>
-                                <p>{data.schoolDescription}</p>
-                            </div>
-                        </div>
-                        <div className={classes.ellipse}>
-                            <img src={ellipse} alt="more options" />
-                        </div>
-                    </div>
-                )
+                    <SchoolCard
+                        key={i}
+                        image={data.schoolImage}
+                        title={data.schoolName}
+                        description={data.schoolDescription}
+                        status={data.status}
+                        className={statusClassName}
+                        courseNumber={data.totalCourse}
+                    />
+                );
             })}
         </div>
-    )
-}
+    );
+};
 
-export default SchoolCreatedContainer
+export default SchoolCreatedContainer;

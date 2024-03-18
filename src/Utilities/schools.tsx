@@ -8,7 +8,6 @@ export type schoolsDataType = {
     schoolDescription: string
     status: string
     totalCourse: number
-    displayOptions: boolean
 };
 
 export const schoolsData: schoolsDataType[] = [
@@ -20,7 +19,6 @@ export const schoolsData: schoolsDataType[] = [
         schoolDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive',
         status: 'Active',
         totalCourse: 1,
-        displayOptions: false
     },
     {
         isActive: false,
@@ -30,6 +28,5 @@ export const schoolsData: schoolsDataType[] = [
         schoolDescription: 'Ignite your Software Development potential with our resources at ise School of Software Development. Gain the knowledge and skills to thrive, Gain the knowledge and skills to thrive',
         status: 'Inactive',
         totalCourse: 0,
-        displayOptions: false
     },
 ]
