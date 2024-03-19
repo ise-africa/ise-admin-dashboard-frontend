@@ -12,6 +12,15 @@ const AddSchoolsPage = () => {
     const location = useLocation();
     const userStep = new URLSearchParams(location.search).get("step");
 
+    const schoolImportance = [
+        { list: "Embark on a transformative learning journey with our courses in talent acquisition, customer success and project management." },
+        { list: "Master the art of talent acquisition for business success." },
+        { list: "Develop practical skills in managing customer expectations and supporting business goals." },
+        { list: "Acquire expertise in managing projects and delivering results." },
+        { list: "Gain valuable skills for real-world projects" },
+        { list: "Choose between a free short course or a comprehensive paid program" },
+    ];
+
     return (
         <Layout>
             {userStep === "1" ? (
@@ -19,7 +28,7 @@ const AddSchoolsPage = () => {
             ) : userStep === "2" ? (
                 <CreateSchoolUploadFile />
             ) : userStep === "3" ? (
-                <CreateSchoolPreview />
+                <CreateSchoolPreview showIndicator={true} importanceItems={schoolImportance.map(importance => importance.list)} />
             ) : (
                 <SchoolManagementBoard />
             )}

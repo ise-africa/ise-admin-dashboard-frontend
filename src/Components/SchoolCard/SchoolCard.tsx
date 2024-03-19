@@ -10,6 +10,7 @@ import ActivateSchoolSuccessfulModal from './Modals/ActivateSchoolSuccessfulModa
 import DeactivateSchoolSuccessfulModal from './Modals/DeactivateSchoolSuccessfulModal';
 
 type SchoolCardProps = {
+    id: string;
     image: string;
     title: string;
     description: string;
@@ -19,6 +20,7 @@ type SchoolCardProps = {
 }
 
 const SchoolCard = ({
+    id,
     image,
     title,
     description,
@@ -154,9 +156,7 @@ const SchoolCard = ({
                     {showOptions && (
                         <div className={classes.popover} ref={optionsRef}>
                             <ActionsModal
-                                onClick={() => {
-                                    navigate('');
-                                }}
+                                onClick={() => { navigate(`/schools/${id}`); }}
                                 onClick2={() => { }}
                                 onClick3={() => { }}
                                 onClick4={() => { }}

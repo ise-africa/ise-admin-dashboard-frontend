@@ -35,12 +35,13 @@ const SchoolCreatedContainer = () => {
                 return (
                     <SchoolCard
                         key={i}
+                        id={data.schoolId}
                         image={data.schoolImage}
                         title={data.schoolName}
-                        description={data.schoolDescription}
                         status={data.status}
                         className={statusClassName}
                         courseNumber={data.totalCourse}
+                        description={data.schoolDescription}
                     />
                 );
             })}
