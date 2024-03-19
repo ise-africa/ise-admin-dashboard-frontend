@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Button from "../../../Components/Button/Button";
 import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
 import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
@@ -31,7 +31,9 @@ const CreateSchoolPreview = ({
   importanceItems = []
 }: CreateSchoolPreviewProp) => {
 
+  // Router
   const navigate = useNavigate();
+  const { SchoolId } = useParams()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
@@ -80,7 +82,7 @@ const CreateSchoolPreview = ({
               }}
               onClick2={() => {
                 setDisplaySchoolCreatedSuccessfulModal(false)
-                navigate('/schools/add-course')
+                navigate(`/schools/${SchoolId}/add-course`)
               }}
             />
           }

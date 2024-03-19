@@ -42,6 +42,7 @@ function App() {
          <Route path="/schools/school-created" element={<SchoolCreatedPage />} />
          <Route path="/schools/:SchoolId" element={<SchoolViewDetailsPage />} />
          <Route path="/schools/:SchoolId/courses" element={<SchoolCoursesPage />} />
+         <Route path="/schools/:SchoolId/add-course" element={<SchoolCoursesPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />
