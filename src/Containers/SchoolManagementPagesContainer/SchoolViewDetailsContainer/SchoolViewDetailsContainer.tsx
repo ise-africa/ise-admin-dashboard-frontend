@@ -21,7 +21,7 @@ const SchoolViewDetailsContainer = () => {
         array: [
             {
                 title: 'Schools',
-                route: "/schools/school-created",
+                route: "/schools",
             },
             {
                 title: `${activeSchool?.schoolName}`,

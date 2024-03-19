@@ -109,7 +109,7 @@ export const schoolsData: SchoolDataType[] = [
             { list: "Be part of a community driving technological advancements and societal impact." }
         ],
         nameOfSchool: 'iṣẹ́ School of Engineering',
-        status: 'Active',
+        status: 'Inactive',
         totalCourse: 3,
         displayOptions: true
     },
