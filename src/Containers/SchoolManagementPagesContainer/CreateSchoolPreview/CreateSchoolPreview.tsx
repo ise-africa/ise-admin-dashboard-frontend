@@ -89,7 +89,7 @@ const CreateSchoolPreview = ({
         />
       )}
 
-      <SchoolCreatingLayout showProgress={showIndicator}>
+      <SchoolCreatingLayout steps={[1, 2, 3]} showProgress={showIndicator}>
 
         <section className={classes.container}>
           <h2>{title || "Review school information"}</h2>

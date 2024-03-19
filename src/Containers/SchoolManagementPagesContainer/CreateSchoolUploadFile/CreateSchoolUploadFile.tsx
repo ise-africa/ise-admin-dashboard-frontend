@@ -22,7 +22,7 @@ const CreateSchoolUploadFile = () => {
   };
 
   return (
-    <SchoolCreatingLayout>
+    <SchoolCreatingLayout steps={[1, 2, 3]}>
       <section className={classes.container}>
         <h2>Create a new school</h2>
 

@@ -5,17 +5,16 @@ import classes from "./SchoolCreatingLayout.module.css";
 type SchoolCreatingLayoutProps = {
   children: React.ReactNode;
   showProgress?: boolean;
+  steps: number[];
 };
 
 const SchoolCreatingLayout = ({
   children,
   showProgress = true,
+  steps,
 }: SchoolCreatingLayoutProps) => {
   // Context
   const { searchParams } = useContext(AuthUserContext);
-
-  // Steps
-  const steps = [1, 2, 3];
 
   const userStep = searchParams.get("step");
 
