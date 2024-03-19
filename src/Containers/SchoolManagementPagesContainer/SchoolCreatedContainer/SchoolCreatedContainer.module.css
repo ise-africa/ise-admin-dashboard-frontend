@@ -1,8 +1,11 @@
+.containerPadding {
+    padding: 40px 32px;
+}
+
 .container {
     gap: 33px;
     display: flex;
     flex-wrap: wrap;
-    padding: 40px 32px;
     color: var(--grey);
     align-items: center;
 }
@@ -103,8 +106,11 @@
 }
 
 @media screen and (max-width: 768px) {
-    .container {
+    .containerPadding {
         padding: 16px;
+    }
+
+    .container {
         background: var(--white);
     }
 

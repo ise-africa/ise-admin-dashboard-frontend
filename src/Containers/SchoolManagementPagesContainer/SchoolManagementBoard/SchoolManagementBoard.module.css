@@ -15,6 +15,7 @@
 
 .footer {
     gap: 1rem;
+    flex-wrap: wrap;
     padding: 16px 32px;
     border-radius: 10px;
     display: inline-flex;
@@ -42,6 +43,11 @@
     .container {
         padding: 16px;
         background: var(--white);
+    }
+
+    .footer {
+        gap: 5px;
+        padding: 16px;
     }
 
     .footer p,

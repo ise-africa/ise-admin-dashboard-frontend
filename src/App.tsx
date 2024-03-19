@@ -16,6 +16,7 @@ import SchoolManagementPage from './Pages/SchoolManagementPage'
 import AddSchoolsPage from './Pages/AddSchoolsPage'
 import SchoolCreatedPage from './Pages/SchoolCreatedPage'
 import SchoolViewDetailsPage from './Pages/SchoolViewDetailsPage'
+import SchoolCoursesPage from './Pages/SchoolCoursesPage'
 
 
 function App() {
@@ -38,8 +39,9 @@ function App() {
 
          <Route path="/schools" element={<SchoolManagementPage />} />
          <Route path="/schools/add-school" element={<AddSchoolsPage />} />
-         <Route path="/schools/:SchoolId" element={<SchoolViewDetailsPage />} />
          <Route path="/schools/school-created" element={<SchoolCreatedPage />} />
+         <Route path="/schools/:SchoolId" element={<SchoolViewDetailsPage />} />
+         <Route path="/schools/:SchoolId/courses" element={<SchoolCoursesPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />
