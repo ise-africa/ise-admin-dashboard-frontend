@@ -18,6 +18,7 @@ import SchoolCreatedPage from './Pages/SchoolCreatedPage'
 import SchoolViewDetailsPage from './Pages/SchoolViewDetailsPage'
 import SchoolCoursesPage from './Pages/SchoolCoursesPage'
 import AddSchoolCoursePage from './Pages/AddSchoolCoursePage'
+import AddSchoolCourseCohortPage from './Pages/AddSchoolCourseCohortPage'
 
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
          <Route path="/schools/add-school" element={<AddSchoolsPage />} />
          <Route path="/schools/school-created" element={<SchoolCreatedPage />} />
          <Route path="/schools/:SchoolId" element={<SchoolViewDetailsPage />} />
+         <Route path="/schools/:SchoolId/courses/:CourseId" element={<SchoolViewDetailsPage />} />
+         <Route path="/schools/:SchoolId/courses/:CourseId/add-cohort" element={<AddSchoolCourseCohortPage />} />
          <Route path="/schools/:SchoolId/courses" element={<SchoolCoursesPage />} />
          <Route path="/schools/:SchoolId/add-course" element={<AddSchoolCoursePage />} />
 

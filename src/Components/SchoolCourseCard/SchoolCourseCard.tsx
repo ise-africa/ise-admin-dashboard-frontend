@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import classes from './SchoolCourseCard.module.css';
 import ellipse from '../../Assets/Images/ellipses.svg';
 import ActionsModal from './ActionsModal/ActionsModal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import AcceptedModal from '../Modals/AcceptedModal/AcceptedModal';
 import ActivateSchoolModal from './Modals/ActivateSchoolModal';
 import DeactivateSchoolModal from './Modals/DeactivateSchoolModal';
@@ -26,6 +26,7 @@ const SchoolCourseCard = ({
 }: SchoolCourseCardProps) => {
 
     const navigate = useNavigate();
+    const { SchoolId } = useParams();
 
     // State
     const [showOptions, setShowOptions] = useState(false);
@@ -149,10 +150,10 @@ const SchoolCourseCard = ({
                     {showOptions && (
                         <div className={classes.popover} ref={optionsRef}>
                             <ActionsModal
-                                onClick={() => { navigate(`/schools/${id}`); }}
+                                onClick={() => { navigate(`/schools/${SchoolId}/courses/${id}`); }}
                                 onClick2={() => { }}
-                                onClick3={() => { navigate(`/schools/${id}/add-course?step=1`) }}
-                                onClick4={() => { navigate(`/schools/${id}/courses`); }}
+                                onClick3={() => { navigate(`/schools/${SchoolId}/courses/${id}/add-cohort`) }}
+                                onClick4={() => { navigate(`/schools/${SchoolId}/courses/${id}/cohort`); }}
                             />
                         </div>
                     )}

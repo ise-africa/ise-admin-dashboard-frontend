@@ -7,12 +7,22 @@ import Input from "../../../../Components/Input/Input";
 import DropdownWithSearch from "../../../../Components/DropdownWithSearch/DropdownWithSearch";
 import calendarIcon from '../../../../Assets/Images/calendar.svg'
 
-const CreateCourseThirdStep = () => {
+type CreateCourseThirdStepProp = {
+  showIndicator?: boolean
+  firstButtonText?: string;
+  secondButtonText?: string;
+}
+
+const CreateCourseThirdStep = ({
+  showIndicator,
+  firstButtonText,
+  secondButtonText,
+}: CreateCourseThirdStepProp) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <SchoolCreatingLayout steps={[1, 2, 3, 4]}>
+    <SchoolCreatingLayout steps={[1, 2, 3, 4]} showProgress={showIndicator}>
       <section className={classes.container}>
         <h2>Create a cohort for this course</h2>
 
@@ -76,14 +86,14 @@ const CreateCourseThirdStep = () => {
               setSearchParams({ step: "2" });
             }}
           >
-            <span>Back</span>
+            <span>{firstButtonText || "Back"}</span>
           </Button>
           <Button
             onClick={() => {
               setSearchParams({ step: "4" });
             }}
           >
-            <span>Preview</span>
+            <span>{secondButtonText || "Preview"}</span>
           </Button>
         </div>
       </section>

@@ -41,7 +41,7 @@ const AddSchoolCoursePage = () => {
         array: [
             {
                 title: `${activeSchool?.schoolName}`,
-                route: "/schools",
+                route: `/schools/${SchoolId}/courses`,
             },
             {
                 title: 'Courses',
@@ -58,7 +58,7 @@ const AddSchoolCoursePage = () => {
             ) : userStep === "2" ? (
                 <CreateCourseSecondStep />
             ) : userStep === "3" ? (
-                <CreateCourseThirdStep />
+                <CreateCourseThirdStep showIndicator={true} />
             ) : userStep === "4" ? (
                 <CreateCourseFourthStep showIndicator={true} objectives={courseObjective.map(importance => importance.list)} />
             ) : (
