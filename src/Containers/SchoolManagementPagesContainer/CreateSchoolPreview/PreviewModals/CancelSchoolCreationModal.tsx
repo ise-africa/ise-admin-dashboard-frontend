@@ -6,14 +6,16 @@ import image from '../../../../Assets/Images/CancelSchoolCreationImage.svg'
 type CancelSchoolCreationModalProps = {
     onClick: () => void;
     onClick2: () => void;
+    header: string;
+    paragraph: string;
 }
 
-const CancelSchoolCreationModal = ({ onClick, onClick2 }: CancelSchoolCreationModalProps) => {
+const CancelSchoolCreationModal = ({ onClick, onClick2, header, paragraph }: CancelSchoolCreationModalProps) => {
     return (
         <div className={classes.container}>
             <img src={image} alt="Cancel School" />
-            <h4>Cancel school creation?</h4>
-            <p>You'll lose all information and start over if you cancel.</p>
+            <h4>{header}</h4>
+            <p>{paragraph}</p>
             <div className={classes.buttonContainer}>
                 <Button
                     type='invalid'
@@ -22,7 +24,7 @@ const CancelSchoolCreationModal = ({ onClick, onClick2 }: CancelSchoolCreationMo
                 <Button
                     type='delete'
                     onClick={onClick2}
-                >Yes, cancel</Button>
+                >Yes, discard</Button>
             </div>
         </div>
     )

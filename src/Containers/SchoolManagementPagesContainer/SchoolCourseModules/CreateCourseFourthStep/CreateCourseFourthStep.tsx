@@ -5,9 +5,9 @@ import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/Sc
 import schoolImage from '../../../../Assets/Images/courseImage.svg'
 import { useState } from "react";
 import AcceptedModal from "../../../../Components/Modals/AcceptedModal/AcceptedModal";
-import CancelSchoolCreationModal from "./PreviewModals/CancelSchoolCreationModal";
-import CancelSchoolSuccessfulModal from "./PreviewModals/CancelSchoolSuccessfulModal";
-import SchoolCreatedSuccessfulModal from "./PreviewModals/SchoolCreatedSuccessfulModal";
+import CancelSchoolCreationModal from "../../CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
+import CancelSchoolSuccessfulModal from "../../CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal";
+import SchoolCreatedSuccessfulModal from "../../CreateSchoolPreview/PreviewModals/SchoolCreatedSuccessfulModal";
 
 type CreateCourseFourthStepProp = {
   showIndicator?: boolean
@@ -47,6 +47,8 @@ const CreateCourseFourthStep = ({
           onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
           body={
             <CancelSchoolCreationModal
+              header="Cancel adding course?"
+              paragraph="Are you sure you want to discard the course  information? Canceling will discard all entered information and you'll need to start over. Confirm?"
               onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
               onClick2={() => {
                 setDisplayCancelSchoolCreationModal(false)
@@ -61,9 +63,12 @@ const CreateCourseFourthStep = ({
           onClick={() => { setDisplayCancelSchoolSuccessfulModal(false) }}
           body={
             <CancelSchoolSuccessfulModal
+              buttonText="Cancel course"
+              header="Course creation canceled. "
+              paragraph="Click “Create course” to start again."
               onClick={() => {
                 setDisplayCancelSchoolSuccessfulModal(false)
-                navigate('/schools/add-school?step=1')
+                navigate(`/schools/${SchoolId}/add-course?step=1`)
               }}
             />
           }
@@ -74,13 +79,12 @@ const CreateCourseFourthStep = ({
           onClick={() => { setDisplaySchoolCreatedSuccessfulModal(false) }}
           body={
             <SchoolCreatedSuccessfulModal
-              onClick={() => {
-                setDisplaySchoolCreatedSuccessfulModal(false)
-                navigate('/schools/school-created')
-              }}
+              buttonText="Done"
+              header="Course cohort created "
+              paragraph="You've successfully created the [Cohort Name] cohort for [Course Name]. The cohort is live and ready to help learners begin their journeys."
               onClick2={() => {
                 setDisplaySchoolCreatedSuccessfulModal(false)
-                navigate(`/schools/${SchoolId}/add-course?step=1`)
+                navigate(`/schools/${SchoolId}/courses`)
               }}
             />
           }

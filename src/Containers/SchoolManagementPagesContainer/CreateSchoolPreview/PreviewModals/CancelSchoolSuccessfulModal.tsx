@@ -5,19 +5,22 @@ import image from '../../../../Assets/Gifs/success.gif'
 
 type CancelSchoolSuccessfulModalProps = {
     onClick: () => void;
+    header: string;
+    paragraph: string;
+    buttonText: string;
 }
 
-const CancelSchoolSuccessfulModal = ({ onClick }: CancelSchoolSuccessfulModalProps) => {
+const CancelSchoolSuccessfulModal = ({ onClick, header, paragraph, buttonText }: CancelSchoolSuccessfulModalProps) => {
     return (
         <div className={classes.container}>
             <img src={image} alt="Cancel School" />
-            <h4>School creation canceled. </h4>
-            <p>Click <strong>‘Create School'</strong> to start again.</p>
+            <h4>{header}</h4>
+            <p>{paragraph}</p>
             <div className={classes.buttonContainer}>
                 <Button
                     type='primary'
                     onClick={onClick}
-                >Create school</Button>
+                >{buttonText}</Button>
             </div>
         </div>
     )

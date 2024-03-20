@@ -4,25 +4,30 @@ import Button from '../../../../Components/Button/Button';
 import image from '../../../../Assets/Gifs/success.gif'
 
 type SchoolCreatedSuccessfulModalProps = {
-    onClick: () => void;
+    onClick?: () => void;
     onClick2: () => void;
+    header: string;
+    paragraph: string;
+    buttonText: string;
 }
 
-const SchoolCreatedSuccessfulModal = ({ onClick, onClick2 }: SchoolCreatedSuccessfulModalProps) => {
+const SchoolCreatedSuccessfulModal = ({ onClick, onClick2, header, paragraph, buttonText }: SchoolCreatedSuccessfulModalProps) => {
     return (
         <div className={classes.container}>
             <img src={image} alt="Cancel School" />
-            <h4>School created</h4>
-            <p>You've created <strong>[School name]</strong> on <strong>iṣẹ́ School</strong>. You can now proceed to add courses and customise the learning environment.</p>
+            <h4>{header}</h4>
+            <p>{paragraph}</p>
             <div className={classes.buttonContainer}>
-                <Button
-                    type='secondary'
-                    onClick={onClick}
-                >Done</Button>
+                {onClick && (
+                    <Button
+                        type='secondary'
+                        onClick={onClick}
+                    >Done</Button>
+                )}
                 <Button
                     type='primary'
                     onClick={onClick2}
-                >Add course</Button>
+                >{buttonText}</Button>
             </div>
         </div>
     )

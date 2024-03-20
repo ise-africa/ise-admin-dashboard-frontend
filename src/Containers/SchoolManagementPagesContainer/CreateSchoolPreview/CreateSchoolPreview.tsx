@@ -49,6 +49,8 @@ const CreateSchoolPreview = ({
           onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
           body={
             <CancelSchoolCreationModal
+              header="Cancel school creation?"
+              paragraph="You'll lose all information and start over if you cancel."
               onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
               onClick2={() => {
                 setDisplayCancelSchoolCreationModal(false)
@@ -63,6 +65,9 @@ const CreateSchoolPreview = ({
           onClick={() => { setDisplayCancelSchoolSuccessfulModal(false) }}
           body={
             <CancelSchoolSuccessfulModal
+              buttonText="Cancel school"
+              header="School creation canceled."
+              paragraph="Click ‘Create School' to start again."
               onClick={() => {
                 setDisplayCancelSchoolSuccessfulModal(false)
                 navigate('/schools/add-school?step=1')
@@ -76,7 +81,9 @@ const CreateSchoolPreview = ({
           onClick={() => { setDisplaySchoolCreatedSuccessfulModal(false) }}
           body={
             <SchoolCreatedSuccessfulModal
-              onClick={() => {
+              buttonText="Add course"
+              header="School created"
+              paragraph="You've created [School name] on iṣẹ́ School. You can now proceed to add courses and customise the learning environment." onClick={() => {
                 setDisplaySchoolCreatedSuccessfulModal(false)
                 navigate('/schools/school-created')
               }}
