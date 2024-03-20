@@ -2,8 +2,7 @@ import React from "react";
 import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
 import classes from "../CreateCourseFirstStep/CreateCourseFirstStep.module.css";
 import Button from "../../../../Components/Button/Button";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import Input from "../../../../Components/Input/Input";
+import { useSearchParams } from "react-router-dom";
 import TextArea from "../../../../Components/TextArea/TextArea";
 import DragAndDropInput from "../../../../Components/DragAndDropInput/DragAndDropInput";
 
@@ -11,16 +10,13 @@ const CreateCourseSecondStep = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Navigate
-  const navigate = useNavigate();
-
   return (
     <SchoolCreatingLayout steps={[1, 2, 3, 4]}>
       <section className={classes.container}>
         <h2>Create a new school</h2>
 
         <DragAndDropInput
-          labelText="Upload cover image"
+          labelText="Upload course image *"
           acceptedFileTypes=".svg,.png"
           performFIleValidation={true}
         />
@@ -30,14 +26,6 @@ const CreateCourseSecondStep = () => {
         </ul>
 
         <div>
-          <Input
-            label="Name of school"
-            placeholder="E.g iṣẹ́ School of Business"
-          />
-          <Input
-            label="School motto"
-            placeholder="E.g Help businesses grow"
-          />
           <TextArea
             label="School description"
             placeholder="Start typing..."
@@ -48,14 +36,14 @@ const CreateCourseSecondStep = () => {
           <Button
             type="secondary"
             onClick={() => {
-              navigate("/schools");
+              setSearchParams({ step: "1" });
             }}
           >
-            <span>Cancel</span>
+            <span>Back</span>
           </Button>
           <Button
             onClick={() => {
-              setSearchParams({ step: "2" });
+              setSearchParams({ step: "3" });
             }}
           >
             <span>Next</span>
