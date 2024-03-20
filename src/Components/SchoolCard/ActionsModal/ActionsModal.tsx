@@ -1,6 +1,4 @@
-import { useContext } from 'react'
 import classes from './ActionsModal.module.css'
-import { AppContext } from '../../../Context/AppContext'
 
 type ActionsModalProps = {
    onClick: () => void
@@ -19,8 +17,6 @@ const ActionsModal = ({
    onClick5,
    onClick6
 }: ActionsModalProps) => {
-
-   const { schools } = useContext(AppContext)
 
    const modalOptions = [
       {

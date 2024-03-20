@@ -44,7 +44,7 @@ const AddSchoolCoursePage = () => {
                 route: "/schools",
             },
             {
-                title: 'Course',
+                title: 'Courses',
                 route: `/schools/${SchoolId}/add-course`,
             },
         ],

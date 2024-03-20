@@ -7,6 +7,7 @@ import { AppContext } from "../../../Context/AppContext";
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import SchoolCourseModulesEmptyTab from './SchoolCourseModulesEmptyTab';
+import SchoolCourseCreatedContainer from '../SchoolCourseCreatedContainer/SchoolCourseCreatedContainer';
 
 const SchoolCourseModules = () => {
     // Context
@@ -23,7 +24,7 @@ const SchoolCourseModules = () => {
     const [navItems] = useState<any[]>([
         {
             isActive: true,
-            activeComponent: null,
+            activeComponent: <SchoolCourseCreatedContainer />,
             activeNullStateComponent: <SchoolCourseModulesEmptyTab />,
         },
     ]);
@@ -54,10 +55,12 @@ const SchoolCourseModules = () => {
                 {activeCOmponent.activeComponent
                     ? activeCOmponent.activeComponent
                     : activeCOmponent.activeNullStateComponent}
-                <div className={classes.footer}>
-                    <p>Need help creating a school?</p>
-                    <Link to='/support'>Read guide here</Link>
-                </div>
+                {!activeCOmponent && (
+                    <div className={classes.footer}>
+                        <p>Need help creating a school?</p>
+                        <Link to='/support'>Read guide here</Link>
+                    </div>
+                )}
                 <div className={classes.subContainer}></div>
             </div>
         </>
