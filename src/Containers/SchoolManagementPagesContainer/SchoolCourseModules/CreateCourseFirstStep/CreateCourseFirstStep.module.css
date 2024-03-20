@@ -90,6 +90,71 @@
     color: var(--grey);
 }
 
+.date {
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.date label {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    font-style: normal;
+    color: var(--grey);
+    font-family: Archivo;
+}
+
+.date input {
+    width: 100%;
+    height: 60px;
+    outline: none;
+    padding: 0 12px;
+    user-select: none;
+    position: relative;
+    border-radius: 5px;
+    font-family: Archivo;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    border: 1px solid var(--grey3);
+}
+
+.date input[type=date]:before {
+    color: var(--grey3);
+    font-family: Archivo;
+    content: attr(placeholder);
+}
+
+.date input[type=date]:focus,
+.date input[type=date]:valid {
+    color: var(--grey3);
+    font-family: Archivo;
+}
+
+.date input[type=date]:focus:before,
+.date input[type=date]:valid:before {
+    content: "" !important;
+    font-family: Archivo;
+}
+
+.date input[type="date"]::-webkit-calendar-picker-indicator {
+    background: none;
+}
+
+.selectDate {
+    position: relative;
+}
+
+.date img {
+    top: 20px;
+    right: 2%;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    pointer-events: none;
+}
+
 @media screen and (max-width: 768px) {
     .container h2 {
         font-size: 25px;
@@ -126,5 +191,23 @@
     .buttonSectionThree .canelButton {
         flex-basis: 100%;
         margin-right: 0;
+    }
+
+    .date {
+        margin-bottom: 25px;
+    }
+
+    .date label {
+        font-size: 14px;
+        line-height: 23px;
+    }
+
+    .date input {
+        height: 50px;
+    }
+
+    .date img {
+        top: 15px;
+        right: 3%;
     }
 }

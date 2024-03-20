@@ -1,83 +1,86 @@
-import React, { useState } from "react";
+import React from "react";
 import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
 import classes from "../CreateCourseFirstStep/CreateCourseFirstStep.module.css";
 import Button from "../../../../Components/Button/Button";
 import { useSearchParams } from "react-router-dom";
 import Input from "../../../../Components/Input/Input";
-import DragAndDropInput from "../../../../Components/DragAndDropInput/DragAndDropInput";
+import DropdownWithSearch from "../../../../Components/DropdownWithSearch/DropdownWithSearch";
+import calendarIcon from '../../../../Assets/Images/calendar.svg'
 
 const CreateCourseThirdStep = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
-  const [additionalInputs, setAdditionalInputs] = useState(1);
-
-  const addInput = () => {
-    setAdditionalInputs(prev => prev + 1);
-  };
-
-  const removeInput = () => {
-    if (additionalInputs > 1) {
-      setAdditionalInputs(prev => prev - 1);
-    }
-  };
 
   return (
     <SchoolCreatingLayout steps={[1, 2, 3, 4]}>
       <section className={classes.container}>
-        <h2>Create a new school</h2>
-
-        <DragAndDropInput
-          labelText="Upload cover image"
-          acceptedFileTypes=".svg,.png"
-          performFIleValidation={true}
-        />
-        <ul className={classes.fileUploadInfo}>
-          <li>You can upload: <strong>.svg or .png</strong> files </li>
-          <li> File size: <strong>1MB</strong> with maximum width and height of 750 X 600px</li>
-        </ul>
+        <h2>Create a cohort for this course</h2>
 
         <div>
           <Input
-            label="School name"
-            placeholder="E.g School of Business"
+            label="Enter cohort name *"
+            placeholder="E.g Talent Acquisition May Cohort"
           />
-          <label className={classes.schoolImportanceLabel}>List the importance of joining this school</label>
-          {[...Array(additionalInputs)].map((_, index) => (
-            <Input
-              key={index}
-              placeholder="E.g Master the art of talent acquisition for business success."
-            />
-          ))}
-          <div className={classes.flexButtonSection}>
-            <Button type="null" onClick={addInput}>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 1V17M17 9L1 9" stroke="#664EFE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span>Add more</span>
-            </Button>
-            {additionalInputs > 1 && (
-              <Button type="null" onClick={removeInput}>
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 9L17 9" stroke="#664EFE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Remove</span>
-              </Button>
-            )}
+          <div className={classes.date}>
+            <label htmlFor="cohortApplication">Cohort application deadline * </label>
+            <div className={classes.selectDate}>
+              <input
+                type="text"
+                id="cohortApplication"
+                placeholder="Select option"
+                onFocus={(e) => (e.target.type = 'date')}
+              />
+              <img src={calendarIcon} alt="select a date" />
+            </div>
           </div>
+          <div className={classes.date}>
+            <label htmlFor="cohortStartDate">Cohort start date *</label>
+            <div className={classes.selectDate}>
+              <input
+                type="text"
+                id="cohortStartDate"
+                placeholder="Select option"
+                onFocus={(e) => (e.target.type = 'date')}
+              />
+              <img src={calendarIcon} alt="select a date" />
+            </div>
+          </div>
+          <DropdownWithSearch
+            label="Cohort duration"
+            title="Select option"
+            options={[]}
+          />
+          <DropdownWithSearch
+            label="Assign a tutor to this cohort *"
+            title="Select option"
+            options={[]}
+            tip="Ensure you select the right tutor for this cohort"
+          />
+          <DropdownWithSearch
+            label="Enter course price *"
+            title="E.g ₦90,0000"
+            options={[]}
+            tip=" Price is in Naira specific to this cohort"
+          />
+          <Input
+            label="Enter cohort capacity"
+            placeholder="E.g 35"
+            tip="Enter  the maximum of students that should be in this cohort"
+          />
         </div>
 
         <div className={classes.buttonSection}>
           <Button
             type="secondary"
             onClick={() => {
-              setSearchParams({ step: "1" });
+              setSearchParams({ step: "2" });
             }}
           >
             <span>Back</span>
           </Button>
           <Button
             onClick={() => {
-              setSearchParams({ step: "3" });
+              setSearchParams({ step: "4" });
             }}
           >
             <span>Preview</span>
