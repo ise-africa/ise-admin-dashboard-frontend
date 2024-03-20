@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 24px;
+  background: var(--white);
 }
 
 .container>img {
@@ -53,6 +55,10 @@
 }
 
 @media screen and (max-width: 737px) {
+  .container {
+    padding: 16px;
+  }
+
   .container>img {
     width: 24px;
     height: 24px;

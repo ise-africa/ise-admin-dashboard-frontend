@@ -36,9 +36,7 @@ const TutorProfileContainer = () => {
 
   return (
     <section className={classes.container}>
-      <div className={classes.breadCrumbs}>
-        <Breadcrumbs {...breadCrumbs} />
-      </div>
+      <Breadcrumbs {...breadCrumbs} />
       <section className={classes.subContainer}>
         <TutorProfileAccountManagePassword />
         <TutorProfileCourseAssigned />

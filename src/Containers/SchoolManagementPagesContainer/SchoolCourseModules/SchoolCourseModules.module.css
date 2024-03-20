@@ -13,11 +13,6 @@
     padding: 10px 30px;
 }
 
-.breadCrumbs {
-    padding: 24px;
-    background: var(--white);
-}
-
 .footer {
     gap: 1rem;
     flex-wrap: wrap;
@@ -81,10 +76,6 @@
     .container {
         padding: 40px 16px 16px;
         background: var(--white);
-    }
-
-    .breadCrumbs {
-        padding: 24px 16px 0;
     }
 
     .footer {

@@ -3,7 +3,6 @@ import CreateSchoolPreview from '../CreateSchoolPreview/CreateSchoolPreview'
 import Breadcrumbs from '../../../Components/Breadcrumbs/Breadcrumbs'
 import breadcrumbsBack from "../../../Assets/Images/breadcrumbsBack.svg";
 import { AppContext } from '../../../Context/AppContext';
-import classes from './SchoolViewDetailsContainer.module.css'
 import { useParams } from 'react-router-dom';
 
 const SchoolViewDetailsContainer = () => {
@@ -31,9 +30,7 @@ const SchoolViewDetailsContainer = () => {
     };
     return (
         <div>
-            <div className={classes.breadCrumbs}>
-                <Breadcrumbs {...breadCrumbs} />
-            </div>
+            <Breadcrumbs {...breadCrumbs} />
             <CreateSchoolPreview
                 showIndicator={false}
                 title='View school information'
