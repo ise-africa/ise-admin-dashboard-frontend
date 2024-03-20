@@ -1,15 +1,15 @@
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import Button from "../../../Components/Button/Button";
+import Button from "../../../../Components/Button/Button";
 import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
-import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
-import schoolImage from '../../../Assets/Images/schoolImage.svg'
+import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
+import schoolImage from '../../../../Assets/Images/schoolImage.svg'
 import { useState } from "react";
-import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
+import AcceptedModal from "../../../../Components/Modals/AcceptedModal/AcceptedModal";
 import CancelSchoolCreationModal from "./PreviewModals/CancelSchoolCreationModal";
 import CancelSchoolSuccessfulModal from "./PreviewModals/CancelSchoolSuccessfulModal";
 import SchoolCreatedSuccessfulModal from "./PreviewModals/SchoolCreatedSuccessfulModal";
 
-type CreateSchoolPreviewProp = {
+type CreateCourseFourthStepProp = {
   showIndicator?: boolean
   title?: string;
   name?: string;
@@ -20,7 +20,7 @@ type CreateSchoolPreviewProp = {
   importanceItems?: string[];
 }
 
-const CreateSchoolPreview = ({
+const CreateCourseFourthStep = ({
   showIndicator,
   title,
   name,
@@ -29,7 +29,7 @@ const CreateSchoolPreview = ({
   school,
   image,
   importanceItems = []
-}: CreateSchoolPreviewProp) => {
+}: CreateCourseFourthStepProp) => {
 
   // Router
   const navigate = useNavigate();
@@ -155,4 +155,4 @@ const CreateSchoolPreview = ({
   );
 };
 
-export default CreateSchoolPreview;
+export default CreateCourseFourthStep;

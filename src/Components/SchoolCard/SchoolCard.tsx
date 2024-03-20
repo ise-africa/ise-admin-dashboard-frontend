@@ -158,7 +158,7 @@ const SchoolCard = ({
                             <ActionsModal
                                 onClick={() => { navigate(`/schools/${id}`); }}
                                 onClick2={() => { }}
-                                onClick3={() => { navigate(`/schools/${id}/add-course`) }}
+                                onClick3={() => { navigate(`/schools/${id}/add-course?step=1`) }}
                                 onClick4={() => { navigate(`/schools/${id}/courses`); }}
                                 onClick5={() => { setDisplayActivateSchoolModal(true); }}
                                 onClick6={() => { setDisplayDeactivateSchoolModal(true) }}
