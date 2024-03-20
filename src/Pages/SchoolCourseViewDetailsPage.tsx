@@ -1,12 +1,12 @@
 import React from 'react'
 import Layout from '../Components/Layout/Layout'
-import SchoolViewDetailsContainer from '../Containers/SchoolManagementPagesContainer/SchoolViewDetailsContainer/SchoolViewDetailsContainer'
+import SchoolCourseViewDetailsContainer from '../Containers/SchoolManagementPagesContainer/SchoolCourseViewDetailsContainer/SchoolCourseViewDetailsContainer'
 
 
 const SchoolCourseViewDetailsPage = () => {
     return (
         <Layout>
-            <SchoolViewDetailsContainer />
+            <SchoolCourseViewDetailsContainer />
         </Layout>
     )
 }

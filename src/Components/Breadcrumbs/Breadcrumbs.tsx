@@ -35,8 +35,12 @@ const Breadcrumbs = ({ image, array }: BreadcrumbsProps) => {
               fill="none"
             >
               <path
+                className={`${location.pathname === data.route
+                  ? classes.active
+                  : classes.inActive
+                  }`}
                 d="M13 5L20 12L13 19M5 5L12 12L5 19"
-                stroke="#664EFE"
+                stroke="#2E2E2E"
                 strokeWidth="2"
                 stroke-linecap="round"
                 strokeLinejoin="round"

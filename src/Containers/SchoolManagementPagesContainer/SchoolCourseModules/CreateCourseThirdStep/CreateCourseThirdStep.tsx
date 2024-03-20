@@ -9,12 +9,14 @@ import calendarIcon from '../../../../Assets/Images/calendar.svg'
 
 type CreateCourseThirdStepProp = {
   showIndicator?: boolean
+  courseName?: string;
   firstButtonText?: string;
   secondButtonText?: string;
 }
 
 const CreateCourseThirdStep = ({
   showIndicator,
+  courseName,
   firstButtonText,
   secondButtonText,
 }: CreateCourseThirdStepProp) => {
@@ -25,6 +27,8 @@ const CreateCourseThirdStep = ({
     <SchoolCreatingLayout steps={[1, 2, 3, 4]} showProgress={showIndicator}>
       <section className={classes.container}>
         <h2>Create a cohort for this course</h2>
+
+        {courseName && <p>Course name: <strong>{courseName}</strong></p>}
 
         <div>
           <Input

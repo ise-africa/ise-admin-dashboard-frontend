@@ -17,6 +17,12 @@ type CreateCourseFourthStepProp = {
   description?: string;
   image?: string;
   objectives?: string[];
+  cohortName?: string;
+  cohortDeadline?: string;
+  cohortStart?: string;
+  cohortDuration?: string;
+  cohortTutor?: string;
+  cohortPrice?: string;
 }
 
 const CreateCourseFourthStep = ({
@@ -27,6 +33,12 @@ const CreateCourseFourthStep = ({
   description,
   image,
   objectives = [],
+  cohortName,
+  cohortDeadline,
+  cohortStart,
+  cohortDuration,
+  cohortTutor,
+  cohortPrice,
 }: CreateCourseFourthStepProp) => {
 
   // Router
@@ -126,27 +138,27 @@ const CreateCourseFourthStep = ({
               <div className={classes.textSection}>
                 <div>
                   <span>Cohort name</span>
-                  <p>{name || "Talent Acquisition May Cohort"}</p>
+                  <p>{cohortName || "Talent Acquisition May Cohort"}</p>
                 </div>
                 <div>
                   <span>Application deadline</span>
-                  <p>{name || "12 Feb, 2024"}</p>
+                  <p>{cohortDeadline || "12 Feb, 2024"}</p>
                 </div>
                 <div>
                   <span>Start date</span>
-                  <p>{name || "12 May, 2024"}</p>
+                  <p>{cohortStart || "12 May, 2024"}</p>
                 </div>
                 <div>
                   <span>Cohort duration</span>
-                  <p>{name || "4 months"}</p>
+                  <p>{cohortDuration || "4 months"}</p>
                 </div>
                 <div>
                   <span>Cohort tutor</span>
-                  <p>{name || "Olawuyi Justus"}</p>
+                  <p>{cohortTutor || "Olawuyi Justus"}</p>
                 </div>
                 <div>
                   <span>Course price </span>
-                  <p>{name || "₦110,000"}</p>
+                  <p>{cohortPrice || "₦110,000"}</p>
                 </div>
               </div>
             </div>

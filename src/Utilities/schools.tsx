@@ -21,7 +21,7 @@ export type SchoolDataType = {
         courseDescription: string;
         courseImage: string;
         difficultyLevel: string;
-        cohortNames: string;
+        cohortName: string;
         applicationDeadLine: string;
         startDate: string;
         cohortDuration: string;
@@ -60,7 +60,7 @@ export const schoolsData: SchoolDataType[] = [
                 courseDescription: 'Our Introduction to Talent Acquisition course is designed for beginners. This course covers fundamental principles, strategies, and best practices in recruiting top talent. Learn how to create effective job postings, conduct interviews, and make informed hiring decisions. Acquire the essential knowledge and tools to excel in your talent acquisition journey.',
                 courseImage: courseImage,
                 difficultyLevel: 'Beginner level course',
-                cohortNames: 'Talent Acquisition May Cohort',
+                cohortName: 'Talent Acquisition May Cohort',
                 applicationDeadLine: '12 Feb, 2024',
                 startDate: '12 May, 2024',
                 cohortDuration: '4 months',

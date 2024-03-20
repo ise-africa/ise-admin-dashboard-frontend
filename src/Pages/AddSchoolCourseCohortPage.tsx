@@ -8,20 +8,19 @@ import { AppContext } from '../Context/AppContext';
 
 const AddSchoolCourseCohortPage = () => {
 
-    // Context
-    const { schools } = useContext(AppContext)
+    // Context 
+    const { schools } = useContext(AppContext);
 
     // Router
-    const { CourseId } = useParams()
+    const { SchoolId, CourseId } = useParams();
 
-    // const activeSchool = schools.find((data) => {
-    //     return data.courseId === CourseId
-    // })
+    const activeSchool = schools.find(data => data.schoolId === SchoolId)
+    const activeCourse = activeSchool?.schoolCourses.find(data => data.courseId === CourseId)
 
 
     return (
         <Layout>
-            <CreateCourseThirdStep showIndicator={false} firstButtonText="Cancel" secondButtonText="Create cohort" />
+            <CreateCourseThirdStep courseName={activeCourse?.courseName} showIndicator={false} firstButtonText="Cancel" secondButtonText="Create cohort" />
         </Layout>
     )
 }
