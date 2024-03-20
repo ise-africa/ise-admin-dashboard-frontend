@@ -3,9 +3,9 @@ import Layout from '../Components/Layout/Layout'
 import { useLocation } from "react-router-dom";
 import CreateCourseFirstStep from '../Containers/SchoolManagementPagesContainer/SchoolCourseModules/CreateCourseFirstStep/CreateCourseFirstStep';
 import CreateCourseSecondStep from '../Containers/SchoolManagementPagesContainer/SchoolCourseModules/CreateCourseSecondStep/CreateCourseSecondStep';
-import CreateCourseFourthStep from '../Containers/SchoolManagementPagesContainer/SchoolCourseModules/CreateSchoolPreview/CreateCourseFourthStep';
-import SchoolCreatedPage from './SchoolCreatedPage';
 import CreateCourseThirdStep from '../Containers/SchoolManagementPagesContainer/SchoolCourseModules/CreateCourseThirdStep/CreateCourseThirdStep';
+import CreateCourseFourthStep from '../Containers/SchoolManagementPagesContainer/SchoolCourseModules/CreateCourseFourthStep/CreateCourseFourthStep';
+import SchoolCreatedPage from './SchoolCreatedPage';
 
 
 const AddSchoolCoursePage = () => {

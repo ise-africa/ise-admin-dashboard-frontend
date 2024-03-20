@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './PreviewModals.module.css'
-import Button from '../../../../Components/Button/Button';
-import image from '../../../../Assets/Gifs/success.gif'
+import Button from '../../../../../Components/Button/Button';
+import image from '../../../../../Assets/Gifs/success.gif'
 
 type SchoolCreatedSuccessfulModalProps = {
     onClick: () => void;

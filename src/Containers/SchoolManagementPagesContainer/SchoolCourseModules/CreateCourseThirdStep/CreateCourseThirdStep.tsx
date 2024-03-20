@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
-import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
+import classes from "../CreateCourseFirstStep/CreateCourseFirstStep.module.css";
 import Button from "../../../../Components/Button/Button";
 import { useSearchParams } from "react-router-dom";
 import Input from "../../../../Components/Input/Input";

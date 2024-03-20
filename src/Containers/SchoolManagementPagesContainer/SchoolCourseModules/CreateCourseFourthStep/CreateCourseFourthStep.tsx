@@ -1,6 +1,6 @@
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Button from "../../../../Components/Button/Button";
-import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
+import classes from "../CreateCourseFirstStep/CreateCourseFirstStep.module.css";
 import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
 import schoolImage from '../../../../Assets/Images/schoolImage.svg'
 import { useState } from "react";

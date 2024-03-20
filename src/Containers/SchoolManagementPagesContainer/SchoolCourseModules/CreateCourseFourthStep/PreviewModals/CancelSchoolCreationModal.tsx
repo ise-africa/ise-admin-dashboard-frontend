@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './PreviewModals.module.css'
-import Button from '../../../../Components/Button/Button';
-import image from '../../../../Assets/Images/CancelSchoolCreationImage.svg'
+import Button from '../../../../../Components/Button/Button';
+import image from '../../../../../Assets/Images/CancelSchoolCreationImage.svg'
 
 type CancelSchoolCreationModalProps = {
     onClick: () => void;
