@@ -32,6 +32,7 @@ export type SchoolDataType = {
             list: string
         }[];
         cohorts: {
+            cohortId: string;
             cohortName: string;
             dateCreated: string;
             status: string;
@@ -83,16 +84,19 @@ export const schoolsData: SchoolDataType[] = [
                 ],
                 cohorts: [
                     {
+                        cohortId: "01",
                         cohortName: "Frontend Jan Cohort",
                         dateCreated: "Jan 1, 2024",
                         status: "upcoming",
                     },
                     {
+                        cohortId: "02",
                         cohortName: "Frontend Jan Cohort",
                         dateCreated: "Jan 1, 2024",
                         status: "closed",
                     },
                     {
+                        cohortId: "03",
                         cohortName: "Frontend Jan Cohort",
                         dateCreated: "Jan 1, 2024",
                         status: "active",

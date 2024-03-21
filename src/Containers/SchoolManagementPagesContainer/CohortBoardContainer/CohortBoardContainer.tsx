@@ -2,7 +2,7 @@ import classes from "./CohortBoardContainer.module.css";
 import HelloUser from "../../../Components/HelloUser/HelloUser";
 import Button from "../../../Components/Button/Button";
 import { useNavigate, useParams } from "react-router-dom";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../../../Context/AppContext";
 import ellipse from "../../../Assets/Images/ellipses.svg"
 import ActionsModal from "./ActionsModal/ActionsModal";
@@ -40,36 +40,8 @@ const CohortBoardContainer = () => {
         ],
     };
     // States 
-    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTerm, setSearchTerm] = useState('');
 
-    // State
-    const [showOptions, setShowOptions] = useState(false);
-
-    // Refs
-    const containerRef = useRef<HTMLDivElement>(null);
-    const optionsRef = useRef<HTMLDivElement>(null);
-
-    const toggleOptions = () => {
-        setShowOptions(!showOptions);
-    };
-
-    const closeOptions = (event: MouseEvent) => {
-        if (
-            containerRef.current &&
-            !containerRef.current.contains(event.target as Node) &&
-            optionsRef.current &&
-            !optionsRef.current.contains(event.target as Node)
-        ) {
-            setShowOptions(false);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', closeOptions);
-        return () => {
-            document.removeEventListener('mousedown', closeOptions);
-        };
-    }, []);
 
     const getStatusClass = (status: string) => {
         switch (status) {
@@ -149,20 +121,18 @@ const CohortBoardContainer = () => {
                         filteredCourseCohortData?.map((data, i) => {
                             const statusClassName = getStatusClass(data.status)
                             return (
-                                <div key={i} className={classes.tableBody} ref={containerRef}>
+                                <div key={i} className={classes.tableBody}>
                                     <span>{data.cohortName}</span>
                                     <span>{data.dateCreated}</span>
                                     <span className={statusClassName}>{data.status}</span>
                                     <div className={classes.popover}>
-                                        <img onClick={toggleOptions} src={ellipse} alt="more options" />
-                                        {showOptions && (
-                                            <div ref={optionsRef}>
-                                                <ActionsModal
-                                                    onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}`); }}
-                                                    onClick2={() => { }}
-                                                />
-                                            </div>
-                                        )}
+                                        <img onClick={() => { }} src={ellipse} alt="more options" />
+                                        <div>
+                                            <ActionsModal
+                                                onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}`); }}
+                                                onClick2={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}/edit-cohort`); }}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             )

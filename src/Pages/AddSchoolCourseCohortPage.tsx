@@ -23,7 +23,7 @@ const AddSchoolCourseCohortPage = () => {
             <CreateCourseThirdStep
                 courseName={activeCourse?.courseName}
                 showIndicator={false}
-                createCohort={true}
+                addCohort={true}
             />
         </Layout>
     )

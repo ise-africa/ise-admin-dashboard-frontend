@@ -58,7 +58,7 @@ const AddSchoolCoursePage = () => {
             ) : userStep === "2" ? (
                 <CreateCourseSecondStep />
             ) : userStep === "3" ? (
-                <CreateCourseThirdStep showIndicator={true} />
+                <CreateCourseThirdStep showIndicator={true} createCohort={true} />
             ) : userStep === "4" ? (
                 <CreateCourseFourthStep showIndicator={true} createCourse={true} objectives={courseObjective.map(importance => importance.list)} />
             ) : (

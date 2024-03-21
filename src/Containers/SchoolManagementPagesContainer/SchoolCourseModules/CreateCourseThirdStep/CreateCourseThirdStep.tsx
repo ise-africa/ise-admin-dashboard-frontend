@@ -13,6 +13,7 @@ type CreateCourseThirdStepProp = {
   courseName?: string;
   createCohort?: boolean;
   editCohort?: boolean;
+  addCohort?: boolean;
   name?: string;
   dealine?: string;
   startDate?: string;
@@ -28,6 +29,7 @@ const CreateCourseThirdStep = ({
   courseName,
   createCohort,
   editCohort,
+  addCohort,
   name,
   dealine,
   startDate,
@@ -116,6 +118,25 @@ const CreateCourseThirdStep = ({
               <Button
                 type="secondary"
                 onClick={() => {
+                  navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts`)
+                }}
+              >
+                <span>Cancel</span>
+              </Button>
+              <Button
+                onClick={() => {
+                  navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts`)
+                }}
+              >
+                <span>Save</span>
+              </Button>
+            </>
+          )}
+          {createCohort && (
+            <>
+              <Button
+                type="secondary"
+                onClick={() => {
                   setSearchParams({ step: "2" });
                 }}
               >
@@ -130,7 +151,7 @@ const CreateCourseThirdStep = ({
               </Button>
             </>
           )}
-          {createCohort && (
+          {addCohort && (
             <>
               <Button
                 type="secondary"

@@ -49,6 +49,7 @@ const EditSchoolCoursePage = () => {
             ) : userStep === "3" ? (
                 <CreateCourseThirdStep
                     showIndicator={true}
+                    editCohort={true}
                     title='Edit Course Cohort'
                     name={activeCourse?.cohortName}
                     dealine={activeCourse?.applicationDeadLine}
