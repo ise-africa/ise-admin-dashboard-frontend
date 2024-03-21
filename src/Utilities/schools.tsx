@@ -27,6 +27,7 @@ export type SchoolDataType = {
         cohortDuration: string;
         cohortTutor: string;
         cohortPrice: string;
+        cohortCapacity: string;
         objectives: {
             list: string
         }[];
@@ -71,6 +72,7 @@ export const schoolsData: SchoolDataType[] = [
                 cohortDuration: '4 months',
                 cohortTutor: 'Olawuyi Justus',
                 cohortPrice: '₦110,000',
+                cohortCapacity: '55',
                 objectives: [
                     { list: "Develop a deep understanding of Talent Acquisition strategies and practices" },
                     { list: "Beginner-friendly program- no experience needed" },

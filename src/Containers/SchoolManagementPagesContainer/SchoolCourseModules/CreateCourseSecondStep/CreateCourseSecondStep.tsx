@@ -6,14 +6,22 @@ import { useSearchParams } from "react-router-dom";
 import TextArea from "../../../../Components/TextArea/TextArea";
 import DragAndDropInput from "../../../../Components/DragAndDropInput/DragAndDropInput";
 
-const CreateCourseSecondStep = () => {
+type CreateCourseSecondStepProps = {
+  title?: string;
+  description?: string;
+}
+
+const CreateCourseSecondStep = ({
+  title,
+  description,
+}: CreateCourseSecondStepProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <SchoolCreatingLayout steps={[1, 2, 3, 4]}>
       <section className={classes.container}>
-        <h2>Create a new school</h2>
+        <h2>{title || "Create a new course"}</h2>
 
         <DragAndDropInput
           labelText="Upload course image *"
@@ -27,6 +35,7 @@ const CreateCourseSecondStep = () => {
 
         <div>
           <TextArea
+            value={description}
             label="School description"
             placeholder="Start typing..."
           />

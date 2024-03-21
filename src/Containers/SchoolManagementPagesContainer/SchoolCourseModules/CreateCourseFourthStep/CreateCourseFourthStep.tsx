@@ -10,7 +10,10 @@ import CancelSchoolSuccessfulModal from "../../CreateSchoolPreview/PreviewModals
 import SchoolCreatedSuccessfulModal from "../../CreateSchoolPreview/PreviewModals/SchoolCreatedSuccessfulModal";
 
 type CreateCourseFourthStepProp = {
-  showIndicator?: boolean
+  createCourse?: boolean;
+  showIndicator?: boolean;
+  editInformation?: boolean;
+  updateInformation?: boolean;
   title?: string;
   name?: string;
   tagline?: string;
@@ -26,7 +29,10 @@ type CreateCourseFourthStepProp = {
 }
 
 const CreateCourseFourthStep = ({
+  createCourse,
   showIndicator,
+  editInformation,
+  updateInformation,
   title,
   name,
   tagline,
@@ -43,13 +49,14 @@ const CreateCourseFourthStep = ({
 
   // Router
   const navigate = useNavigate();
-  const { SchoolId } = useParams()
+  const { SchoolId, CourseId } = useParams()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
   const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
+  const [displaySchoolCourseUpdateSuccessfulModal, setDisplaySchoolCourseUpdateSuccessfulModal] = useState(false)
   const [displaySchoolCreatedSuccessfulModal, setDisplaySchoolCreatedSuccessfulModal] = useState(false)
 
   return (
@@ -81,6 +88,22 @@ const CreateCourseFourthStep = ({
               onClick={() => {
                 setDisplayCancelSchoolSuccessfulModal(false)
                 navigate(`/schools/${SchoolId}/add-course?step=1`)
+              }}
+            />
+          }
+        />
+      )}
+      {displaySchoolCourseUpdateSuccessfulModal && (
+        <AcceptedModal
+          onClick={() => { setDisplaySchoolCourseUpdateSuccessfulModal(false) }}
+          body={
+            <CancelSchoolSuccessfulModal
+              buttonText="Done"
+              header="Course information updated!"
+              paragraph="Your edits to the course information have been saved. The changes will reflect on the platform."
+              onClick={() => {
+                setDisplaySchoolCourseUpdateSuccessfulModal(false)
+                navigate(`/schools/${SchoolId}/courses`)
               }}
             />
           }
@@ -174,18 +197,46 @@ const CreateCourseFourthStep = ({
                 <span>Cancel</span>
               </Button>
             )}
-            <Button
-              type="secondary"
-              onClick={() => { setSearchParams({ step: "3" }); }}
-            >
-              <span>Edit Information</span>
-            </Button>
-            {showIndicator && (
+            {editInformation && (
               <Button
-                onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
+                type="secondary"
+                onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/edit-course?step=1`) }}
               >
-                <span>Create Course</span>
+                <span>Edit Information</span>
               </Button>
+            )}
+            {updateInformation && (
+              <>
+                <Button
+                  type="secondary"
+                  onClick={() => { setSearchParams({ step: "3" }); }}
+                >
+                  <span>Back</span>
+                </Button>
+                <Button
+                  type="primary"
+                  onClick={() => { setDisplaySchoolCourseUpdateSuccessfulModal(true) }}
+                >
+                  <span>Update course information</span>
+                </Button>
+              </>
+            )}
+            {createCourse && (
+              <>
+                <Button
+                  type="secondary"
+                  onClick={() => { setSearchParams({ step: "3" }); }}
+                >
+                  <span>Edit Information</span>
+                </Button>
+
+                <Button
+                  type="primary"
+                  onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
+                >
+                  <span>Create course</span>
+                </Button>
+              </>
             )}
           </div>
         </section>

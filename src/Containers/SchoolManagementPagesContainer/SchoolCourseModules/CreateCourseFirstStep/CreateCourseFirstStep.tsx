@@ -1,18 +1,29 @@
 import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
 import classes from "./CreateCourseFirstStep.module.css";
 import Button from "../../../../Components/Button/Button";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Input from "../../../../Components/Input/Input";
 import { useState } from "react";
 import DropdownWithSearch from "../../../../Components/DropdownWithSearch/DropdownWithSearch";
 
-const CreateCourseFirstStep = () => {
+type CreateCourseFirstStepProps = {
+  title?: string;
+  name?: string;
+  level?: string;
+}
+
+const CreateCourseFirstStep = ({
+  title,
+  name,
+  level
+}: CreateCourseFirstStepProps) => {
 
   // eslint-disable-next-line
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Navigate
+  // Router
   const navigate = useNavigate();
+  const { SchoolId } = useParams();
 
   const [additionalInputs, setAdditionalInputs] = useState(1);
 
@@ -29,16 +40,18 @@ const CreateCourseFirstStep = () => {
   return (
     <SchoolCreatingLayout steps={[1, 2, 3, 4]}>
       <section className={classes.container}>
-        <h2>Create a new course</h2>
+        <h2>{title || "Create a new course"}</h2>
 
         <div>
           <Input
+            value={name}
             label="Name of course"
             placeholder="E.g Talent Acquisition Course"
           />
           <DropdownWithSearch
             title="Select option"
             label="Course difficulty level"
+            selected={level}
             options={[]}
           />
           <label className={classes.schoolImportanceLabel}>List the objectives of this course </label>
@@ -70,7 +83,7 @@ const CreateCourseFirstStep = () => {
           <Button
             type="secondary"
             onClick={() => {
-              navigate("/schools");
+              navigate(`/schools/${SchoolId}/courses`);
             }}
           >
             <span>Cancel</span>

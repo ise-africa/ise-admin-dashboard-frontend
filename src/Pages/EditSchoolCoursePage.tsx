@@ -6,13 +6,11 @@ import CreateCourseSecondStep from '../Containers/SchoolManagementPagesContainer
 import CreateCourseThirdStep from '../Containers/SchoolManagementPagesContainer/SchoolCourseModules/CreateCourseThirdStep/CreateCourseThirdStep';
 import CreateCourseFourthStep from '../Containers/SchoolManagementPagesContainer/SchoolCourseModules/CreateCourseFourthStep/CreateCourseFourthStep';
 import SchoolCreatedPage from './SchoolCreatedPage';
-import Breadcrumbs from '../Components/Breadcrumbs/Breadcrumbs';
-import breadcrumbsBack from "../Assets/Images/breadcrumbsBack.svg";
 import { AppContext } from '../Context/AppContext';
 
 
 
-const AddSchoolCoursePage = () => {
+const EditSchoolCoursePage = () => {
     // Router
     const location = useLocation();
     const userStep = new URLSearchParams(location.search).get("step");
@@ -25,42 +23,48 @@ const AddSchoolCoursePage = () => {
         { list: "Gain valuable skills for real-world projects" },
         { list: "Complete course in 4 months at 10hrs/week" },
     ];
-    // Context
-    const { schools } = useContext(AppContext)
 
     // Router
-    const { SchoolId } = useParams()
+    const { SchoolId, CourseId } = useParams();
 
-    const activeSchool = schools.find((data) => {
-        return data.schoolId === SchoolId
-    })
+    // Context 
+    const { schools } = useContext(AppContext);
 
-    // Utils
-    const breadCrumbs = {
-        image: breadcrumbsBack,
-        array: [
-            {
-                title: `${activeSchool?.schoolName}`,
-                route: `/schools/${SchoolId}/courses`,
-            },
-            {
-                title: 'Courses',
-                route: `/schools/${SchoolId}/add-course`,
-            },
-        ],
-    };
+    const activeSchool = schools.find(data => data.schoolId === SchoolId)
+    const activeCourse = activeSchool?.courses.find(data => data.courseId === CourseId)
 
     return (
         <Layout>
-            <Breadcrumbs {...breadCrumbs} />
             {userStep === "1" ? (
-                <CreateCourseFirstStep />
+                <CreateCourseFirstStep
+                    title='Edit Course'
+                    name={activeCourse?.courseName}
+                    level={activeCourse?.difficultyLevel}
+                />
             ) : userStep === "2" ? (
-                <CreateCourseSecondStep />
+                <CreateCourseSecondStep
+                    title='Edit Course'
+                    description={activeCourse?.courseDescription}
+                />
             ) : userStep === "3" ? (
-                <CreateCourseThirdStep showIndicator={true} />
+                <CreateCourseThirdStep
+                    showIndicator={true}
+                    title='Edit Course Cohort'
+                    name={activeCourse?.cohortName}
+                    dealine={activeCourse?.applicationDeadLine}
+                    startDate={activeCourse?.startDate}
+                    duration={activeCourse?.cohortDuration}
+                    tutor={activeCourse?.cohortTutor}
+                    price={activeCourse?.cohortPrice}
+                    capacity={activeCourse?.cohortCapacity}
+
+                />
             ) : userStep === "4" ? (
-                <CreateCourseFourthStep showIndicator={true} createCourse={true} objectives={courseObjective.map(importance => importance.list)} />
+                <CreateCourseFourthStep
+                    showIndicator={true}
+                    updateInformation={true}
+                    objectives={courseObjective.map(importance => importance.list)}
+                />
             ) : (
                 <SchoolCreatedPage />
             )}
@@ -68,4 +72,4 @@ const AddSchoolCoursePage = () => {
     )
 }
 
-export default AddSchoolCoursePage
+export default EditSchoolCoursePage

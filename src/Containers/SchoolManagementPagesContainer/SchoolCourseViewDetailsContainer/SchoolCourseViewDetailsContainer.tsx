@@ -40,6 +40,7 @@ const SchoolCourseViewDetailsContainer = () => {
             <Breadcrumbs {...breadCrumbs} />
             <CreateCourseFourthStep
                 showIndicator={false}
+                editInformation={true}
                 title='View course cohort information '
                 name={activeCourse?.courseName}
                 tagline={activeCourse?.difficultyLevel}

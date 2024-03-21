@@ -3,11 +3,6 @@ import classes from './SchoolCourseCard.module.css';
 import ellipse from '../../Assets/Images/ellipses.svg';
 import ActionsModal from './ActionsModal/ActionsModal';
 import { useNavigate, useParams } from 'react-router-dom';
-import AcceptedModal from '../Modals/AcceptedModal/AcceptedModal';
-import ActivateSchoolModal from './Modals/ActivateSchoolModal';
-import DeactivateSchoolModal from './Modals/DeactivateSchoolModal';
-import ActivateSchoolSuccessfulModal from './Modals/ActivateSchoolSuccessfulModal';
-import DeactivateSchoolSuccessfulModal from './Modals/DeactivateSchoolSuccessfulModal';
 
 type SchoolCourseCardProps = {
     id: string;
@@ -30,10 +25,6 @@ const SchoolCourseCard = ({
 
     // State
     const [showOptions, setShowOptions] = useState(false);
-    const [displayActivateSchoolModal, setDisplayActivateSchoolModal] = useState(false);
-    const [displayActivateSchoolSuccessfulModal, setDisplayActivateSchoolSuccessfulModal] = useState(false);
-    const [displayDeactivateSchoolModal, setDisplayDeactivateSchoolModal] = useState(false);
-    const [displayDeactivateSchoolSuccessfulModal, setDisplayDeactivateSchoolSuccessfulModal] = useState(false);
 
     // Refs
     const containerRef = useRef<HTMLDivElement>(null);
@@ -63,72 +54,6 @@ const SchoolCourseCard = ({
 
     return (
         <>
-            {displayActivateSchoolModal && (
-                <AcceptedModal
-                    onClick={() => {
-                        setDisplayActivateSchoolModal(false);
-                    }}
-                    body={
-                        <ActivateSchoolModal
-                            onClick={() => {
-                                setDisplayActivateSchoolModal(false);
-                            }}
-                            onClick2={() => {
-                                setDisplayActivateSchoolModal(false);
-                                setDisplayActivateSchoolSuccessfulModal(true);
-                            }}
-                        />
-                    }
-                />
-            )}
-            {displayActivateSchoolSuccessfulModal && (
-                <AcceptedModal
-                    onClick={() => {
-                        setDisplayActivateSchoolSuccessfulModal(false);
-                    }}
-                    body={
-                        <ActivateSchoolSuccessfulModal
-                            onClick={() => {
-                                setDisplayActivateSchoolSuccessfulModal(false);
-                            }}
-                        />
-                    }
-                />
-            )}
-            {displayDeactivateSchoolModal && (
-                <AcceptedModal
-                    onClick={() => {
-                        setDisplayDeactivateSchoolModal(false);
-                    }}
-                    body={
-                        <DeactivateSchoolModal
-                            onClick={() => {
-                                setDisplayDeactivateSchoolModal(false);
-                            }}
-                            onClick2={() => {
-                                setDisplayDeactivateSchoolModal(false);
-                                setDisplayDeactivateSchoolSuccessfulModal(true);
-                            }}
-                        />
-                    }
-                />
-            )}
-            {displayDeactivateSchoolSuccessfulModal && (
-                <AcceptedModal
-                    onClick={() => {
-                        setDisplayDeactivateSchoolSuccessfulModal(false);
-                        navigate('/schools')
-                    }}
-                    body={
-                        <DeactivateSchoolSuccessfulModal
-                            onClick={() => {
-                                setDisplayDeactivateSchoolSuccessfulModal(false);
-                                navigate('/schools')
-                            }}
-                        />
-                    }
-                />
-            )}
             <div className={classes.school}>
                 <img src={image} alt={title} />
                 <div>
@@ -151,7 +76,7 @@ const SchoolCourseCard = ({
                         <div className={classes.popover} ref={optionsRef}>
                             <ActionsModal
                                 onClick={() => { navigate(`/schools/${SchoolId}/courses/${id}`); }}
-                                onClick2={() => { }}
+                                onClick2={() => { navigate(`/schools/${SchoolId}/courses/${id}/edit-course?step=1`); }}
                                 onClick3={() => { navigate(`/schools/${SchoolId}/courses/${id}/add-cohort`) }}
                                 onClick4={() => { navigate(`/schools/${SchoolId}/courses/${id}/cohort`); }}
                             />
