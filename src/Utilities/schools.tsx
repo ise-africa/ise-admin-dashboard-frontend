@@ -15,7 +15,7 @@ export type SchoolDataType = {
     status: string;
     totalCourse: number;
     displayOptions: boolean;
-    schoolCourses: {
+    courses: {
         courseId: string;
         courseName: string;
         courseDescription: string;
@@ -29,6 +29,11 @@ export type SchoolDataType = {
         cohortPrice: string;
         objectives: {
             list: string
+        }[];
+        cohorts: {
+            cohortName: string;
+            dateCreated: string;
+            status: string;
         }[];
     }[];
 };
@@ -53,7 +58,7 @@ export const schoolsData: SchoolDataType[] = [
         status: 'Active',
         totalCourse: 1,
         displayOptions: false,
-        schoolCourses: [
+        courses: [
             {
                 courseId: '1',
                 courseName: 'Talent Acquisition Course',
@@ -74,6 +79,23 @@ export const schoolsData: SchoolDataType[] = [
                     { list: "Gain valuable skills for real-world projects" },
                     { list: "Complete course in 4 months at 10hrs/week" },
                 ],
+                cohorts: [
+                    {
+                        cohortName: "Frontend Jan Cohort",
+                        dateCreated: "Jan 1, 2024",
+                        status: "upcoming",
+                    },
+                    {
+                        cohortName: "Frontend Jan Cohort",
+                        dateCreated: "Jan 1, 2024",
+                        status: "closed",
+                    },
+                    {
+                        cohortName: "Frontend Jan Cohort",
+                        dateCreated: "Jan 1, 2024",
+                        status: "active",
+                    },
+                ]
             }
         ]
     },

@@ -13,7 +13,7 @@ const SchoolCourseViewDetailsContainer = () => {
     const { SchoolId, CourseId } = useParams();
 
     const activeSchool = schools.find(data => data.schoolId === SchoolId)
-    const activeCourse = activeSchool?.schoolCourses.find(data => data.courseId === CourseId)
+    const activeCourse = activeSchool?.courses.find(data => data.courseId === CourseId)
 
     // Utils
     const breadCrumbs = {

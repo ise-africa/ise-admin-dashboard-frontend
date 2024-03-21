@@ -25,7 +25,7 @@ const SchoolCourseCreatedContainer = () => {
                 </div>
             </div>
 
-            {activeSchool?.schoolCourses.map((data, i) => {
+            {activeSchool?.courses.map((data, i) => {
                 return (
                     <SchoolCourseCard
                         key={i}

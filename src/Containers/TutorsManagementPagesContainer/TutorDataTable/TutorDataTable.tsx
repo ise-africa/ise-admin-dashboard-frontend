@@ -156,7 +156,7 @@ const TutorDataTable = () => {
                   <span></span>
                </div>
                {filteredTutor.length === 0 ? (
-                  <div className={classes.noResult}>No search results for the user "{searchTerm}" available</div>
+                  <div className={classes.noResult}>No search results for the tutor "{searchTerm}" available</div>
                ) : (
                   filteredTutor.map((data, i) => {
                      return (
