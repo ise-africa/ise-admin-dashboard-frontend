@@ -157,7 +157,7 @@ const SchoolCard = ({
                         <div className={classes.popover} ref={optionsRef}>
                             <ActionsModal
                                 onClick={() => { navigate(`/schools/${id}`); }}
-                                onClick2={() => { }}
+                                onClick2={() => { navigate(`/schools/${id}/edit-school?step=1`) }}
                                 onClick3={() => { navigate(`/schools/${id}/add-course?step=1`) }}
                                 onClick4={() => { navigate(`/schools/${id}/courses`); }}
                                 onClick5={() => { setDisplayActivateSchoolModal(true); }}

@@ -33,6 +33,7 @@ const SchoolViewDetailsContainer = () => {
             <Breadcrumbs {...breadCrumbs} />
             <CreateSchoolPreview
                 showIndicator={false}
+                editInformation={true}
                 title='View school information'
                 name={activeSchool?.nameOfSchool}
                 tagline={activeSchool?.schoolTagline}

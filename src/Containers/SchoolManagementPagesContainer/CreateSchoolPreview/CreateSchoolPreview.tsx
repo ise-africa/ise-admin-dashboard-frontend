@@ -11,6 +11,9 @@ import SchoolCreatedSuccessfulModal from "./PreviewModals/SchoolCreatedSuccessfu
 
 type CreateSchoolPreviewProp = {
   showIndicator?: boolean
+  editInformation?: boolean;
+  updateInformation?: boolean;
+  createSchool?: boolean;
   title?: string;
   name?: string;
   tagline?: string;
@@ -22,6 +25,9 @@ type CreateSchoolPreviewProp = {
 
 const CreateSchoolPreview = ({
   showIndicator,
+  editInformation,
+  updateInformation,
+  createSchool,
   title,
   name,
   tagline,
@@ -40,6 +46,7 @@ const CreateSchoolPreview = ({
 
   const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
   const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
+  const [displaySchoolUpdateSuccessfulModal, setDisplaySchoolUpdateSuccessfulModal] = useState(false)
   const [displaySchoolCreatedSuccessfulModal, setDisplaySchoolCreatedSuccessfulModal] = useState(false)
 
   return (
@@ -71,6 +78,22 @@ const CreateSchoolPreview = ({
               onClick={() => {
                 setDisplayCancelSchoolSuccessfulModal(false)
                 navigate('/schools/add-school?step=1')
+              }}
+            />
+          }
+        />
+      )}
+      {displaySchoolUpdateSuccessfulModal && (
+        <AcceptedModal
+          onClick={() => { setDisplaySchoolUpdateSuccessfulModal(false) }}
+          body={
+            <CancelSchoolSuccessfulModal
+              buttonText="Done"
+              header="School information updated!"
+              paragraph="Your edits to the school information have been saved. The changes will reflect on the platform."
+              onClick={() => {
+                setDisplaySchoolUpdateSuccessfulModal(false)
+                navigate('/schools')
               }}
             />
           }
@@ -142,18 +165,46 @@ const CreateSchoolPreview = ({
                 <span>Cancel</span>
               </Button>
             )}
-            <Button
-              type="secondary"
-              onClick={() => { setSearchParams({ step: "2" }); }}
-            >
-              <span>Edit Information</span>
-            </Button>
-            {showIndicator && (
+            {editInformation && (
               <Button
-                onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
+                type="secondary"
+                onClick={() => { navigate(`/schools/${SchoolId}/edit-school?step=1`) }}
               >
-                <span>Create School</span>
+                <span>Edit Information</span>
               </Button>
+            )}
+            {updateInformation && (
+              <>
+                <Button
+                  type="secondary"
+                  onClick={() => { setSearchParams({ step: "2" }); }}
+                >
+                  <span>Back</span>
+                </Button>
+                <Button
+                  type="primary"
+                  onClick={() => { setDisplaySchoolUpdateSuccessfulModal(true) }}
+                >
+                  <span>Update school information</span>
+                </Button>
+              </>
+            )}
+            {createSchool && (
+              <>
+                <Button
+                  type="secondary"
+                  onClick={() => { setSearchParams({ step: "2" }); }}
+                >
+                  <span>Edit Information</span>
+                </Button>
+
+                <Button
+                  type="primary"
+                  onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
+                >
+                  <span>Create School</span>
+                </Button>
+              </>
             )}
           </div>
         </section>

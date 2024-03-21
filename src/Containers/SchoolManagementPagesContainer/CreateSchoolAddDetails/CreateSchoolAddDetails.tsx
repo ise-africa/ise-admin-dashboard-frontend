@@ -5,7 +5,19 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TextArea from "../../../Components/TextArea/TextArea";
 import Input from "../../../Components/Input/Input";
 
-const CreateSchoolAddDetails = () => {
+type CreateSchoolAddDetailsProps = {
+  title?: string;
+  name?: string;
+  motto?: string;
+  description?: string;
+}
+
+const CreateSchoolAddDetails = ({
+  title,
+  name,
+  motto,
+  description,
+}: CreateSchoolAddDetailsProps) => {
   // Navigate
   const navigate = useNavigate();
 
@@ -15,18 +27,21 @@ const CreateSchoolAddDetails = () => {
   return (
     <SchoolCreatingLayout steps={[1, 2, 3]}>
       <section className={classes.container}>
-        <h2>Create a new school</h2>
+        <h2>{title || "Create a new school"}</h2>
 
         <div>
           <Input
+            value={name}
             label="Name of school"
             placeholder="E.g iṣẹ́ School of Business"
           />
           <Input
+            value={motto}
             label="School motto"
             placeholder="E.g Help businesses grow"
           />
           <TextArea
+            value={description}
             label="School description"
             placeholder="Start typing..."
           />

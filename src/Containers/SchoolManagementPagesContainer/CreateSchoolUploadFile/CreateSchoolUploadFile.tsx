@@ -6,7 +6,17 @@ import { useSearchParams } from "react-router-dom";
 import Input from "../../../Components/Input/Input";
 import DragAndDropInput from "../../../Components/DragAndDropInput/DragAndDropInput";
 
-const CreateSchoolUploadFile = () => {
+type CreateSchoolUploadFileProp = {
+  title?: string;
+  name?: string;
+  importanceItems?: string[];
+}
+
+const CreateSchoolUploadFile = ({
+  title,
+  name,
+  importanceItems = []
+}: CreateSchoolUploadFileProp) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const [additionalInputs, setAdditionalInputs] = useState(1);
@@ -24,7 +34,7 @@ const CreateSchoolUploadFile = () => {
   return (
     <SchoolCreatingLayout steps={[1, 2, 3]}>
       <section className={classes.container}>
-        <h2>Create a new school</h2>
+        <h2>{title || "Create a new school"}</h2>
 
         <DragAndDropInput
           labelText="Upload cover image"
@@ -38,6 +48,7 @@ const CreateSchoolUploadFile = () => {
 
         <div>
           <Input
+            value={name}
             label="School name"
             placeholder="E.g School of Business"
           />
@@ -45,6 +56,7 @@ const CreateSchoolUploadFile = () => {
           {[...Array(additionalInputs)].map((_, index) => (
             <Input
               key={index}
+              // value={}
               placeholder="E.g Master the art of talent acquisition for business success."
             />
           ))}
