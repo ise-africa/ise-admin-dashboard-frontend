@@ -13,7 +13,7 @@ const CohortBoardContainer = () => {
 
     // Router
     const navigate = useNavigate();
-    const { SchoolId, CourseId } = useParams();
+    const { SchoolId, CourseId, CohortId } = useParams();
 
     // Context 
     const { schools } = useContext(AppContext);
@@ -35,7 +35,7 @@ const CohortBoardContainer = () => {
             },
             {
                 title: 'Cohort',
-                route: `/schools/${SchoolId}/courses/${CourseId}/cohort`,
+                route: `/schools/${SchoolId}/courses/${CourseId}/cohorts`,
             },
         ],
     };
@@ -158,7 +158,7 @@ const CohortBoardContainer = () => {
                                         {showOptions && (
                                             <div ref={optionsRef}>
                                                 <ActionsModal
-                                                    onClick={() => { navigate(`/schools/${SchoolId}/courses/`); }}
+                                                    onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}`); }}
                                                     onClick2={() => { }}
                                                 />
                                             </div>

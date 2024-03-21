@@ -78,7 +78,7 @@ const SchoolCourseCard = ({
                                 onClick={() => { navigate(`/schools/${SchoolId}/courses/${id}`); }}
                                 onClick2={() => { navigate(`/schools/${SchoolId}/courses/${id}/edit-course?step=1`); }}
                                 onClick3={() => { navigate(`/schools/${SchoolId}/courses/${id}/add-cohort`) }}
-                                onClick4={() => { navigate(`/schools/${SchoolId}/courses/${id}/cohort`); }}
+                                onClick4={() => { navigate(`/schools/${SchoolId}/courses/${id}/cohorts`); }}
                             />
                         </div>
                     )}

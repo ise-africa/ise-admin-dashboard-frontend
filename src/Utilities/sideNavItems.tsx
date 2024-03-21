@@ -49,7 +49,15 @@ export const sideNavItems: sideNavItemsType = [
     keywords: ["contents"],
     otherOptions: null,
     isVisible: true,
-    children: [{ title: "Quiz", route: "/students/quiz" }, { title: "Assignment", route: "/students/assignment" }]
+
+  },
+
+  {
+    title: "Blog management",
+    route: "/blog",
+    keywords: ["blog"],
+    otherOptions: null,
+    isVisible: true,
 
   },
 

@@ -20,7 +20,11 @@ const AddSchoolCourseCohortPage = () => {
 
     return (
         <Layout>
-            <CreateCourseThirdStep courseName={activeCourse?.courseName} showIndicator={false} firstButtonText="Cancel" secondButtonText="Create cohort" />
+            <CreateCourseThirdStep
+                courseName={activeCourse?.courseName}
+                showIndicator={false}
+                createCohort={true}
+            />
         </Layout>
     )
 }

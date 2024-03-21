@@ -2,7 +2,7 @@ import React from "react";
 import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
 import classes from "../CreateCourseFirstStep/CreateCourseFirstStep.module.css";
 import Button from "../../../../Components/Button/Button";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Input from "../../../../Components/Input/Input";
 import DropdownWithSearch from "../../../../Components/DropdownWithSearch/DropdownWithSearch";
 import calendarIcon from '../../../../Assets/Images/calendar.svg'
@@ -11,8 +11,8 @@ type CreateCourseThirdStepProp = {
   title?: string;
   showIndicator?: boolean
   courseName?: string;
-  firstButtonText?: string;
-  secondButtonText?: string;
+  createCohort?: boolean;
+  editCohort?: boolean;
   name?: string;
   dealine?: string;
   startDate?: string;
@@ -26,8 +26,8 @@ const CreateCourseThirdStep = ({
   title,
   showIndicator,
   courseName,
-  firstButtonText,
-  secondButtonText,
+  createCohort,
+  editCohort,
   name,
   dealine,
   startDate,
@@ -38,6 +38,10 @@ const CreateCourseThirdStep = ({
 }: CreateCourseThirdStepProp) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+
+  // Router
+  const navigate = useNavigate();
+  const { SchoolId, CourseId } = useParams();
 
   return (
     <SchoolCreatingLayout steps={[1, 2, 3, 4]} showProgress={showIndicator}>
@@ -107,21 +111,44 @@ const CreateCourseThirdStep = ({
         </div>
 
         <div className={classes.buttonSection}>
-          <Button
-            type="secondary"
-            onClick={() => {
-              setSearchParams({ step: "2" });
-            }}
-          >
-            <span>{firstButtonText || "Back"}</span>
-          </Button>
-          <Button
-            onClick={() => {
-              setSearchParams({ step: "4" });
-            }}
-          >
-            <span>{secondButtonText || "Preview"}</span>
-          </Button>
+          {editCohort && (
+            <>
+              <Button
+                type="secondary"
+                onClick={() => {
+                  setSearchParams({ step: "2" });
+                }}
+              >
+                <span>Back</span>
+              </Button>
+              <Button
+                onClick={() => {
+                  setSearchParams({ step: "4" });
+                }}
+              >
+                <span>Preview</span>
+              </Button>
+            </>
+          )}
+          {createCohort && (
+            <>
+              <Button
+                type="secondary"
+                onClick={() => {
+                  navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts`);
+                }}
+              >
+                <span>Cancel</span>
+              </Button>
+              <Button
+                onClick={() => {
+                  navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts`);
+                }}
+              >
+                <span>Create Cohort</span>
+              </Button>
+            </>
+          )}
         </div>
       </section>
     </SchoolCreatingLayout>
