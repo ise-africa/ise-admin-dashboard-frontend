@@ -7,12 +7,12 @@ import Breadcrumbs from '../Components/Breadcrumbs/Breadcrumbs';
 import breadcrumbsBack from "../Assets/Images/breadcrumbsBack.svg";
 
 
-const SchoolCourseViewDetailsPage = () => {
+const SchoolCourseCohortViewDetailsPage = () => {
     // Context 
     const { schools } = useContext(AppContext);
 
     // Router
-    const { SchoolId, CourseId } = useParams();
+    const { SchoolId, CourseId, CohortId } = useParams();
 
     const activeSchool = schools.find(data => data.schoolId === SchoolId)
     const activeCourse = activeSchool?.courses.find(data => data.courseId === CourseId)
@@ -31,16 +31,20 @@ const SchoolCourseViewDetailsPage = () => {
             },
             {
                 title: `${activeCourse?.courseName}`,
-                route: `/schools/${SchoolId}/courses/${activeCourse?.courseId}`,
+                route: `/schools/${SchoolId}/courses/${activeCourse?.courseId}/cohorts`,
+            },
+            {
+                title: "Cohort",
+                route: `/schools/${SchoolId}/courses/${activeCourse?.courseId}/cohorts/${CohortId}`,
             },
         ],
     };
     return (
         <Layout>
             <Breadcrumbs {...breadCrumbs} />
-            <SchoolCourseViewDetailsContainer editInformation={true} />
+            <SchoolCourseViewDetailsContainer editCohort={true} />
         </Layout>
     )
 }
 
-export default SchoolCourseViewDetailsPage
+export default SchoolCourseCohortViewDetailsPage

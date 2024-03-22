@@ -24,6 +24,7 @@ import EditSchoolPage from './Pages/EditSchoolPage'
 import EditSchoolCoursePage from './Pages/EditSchoolCoursePage'
 import CohortMangementPage from './Pages/CohortMangementPage'
 import EditSchoolCourseCohortPage from './Pages/EditSchoolCourseCohortPage'
+import SchoolCourseCohortViewDetailsPage from './Pages/SchoolCourseCohortViewDetailsPage'
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
          <Route path="/schools/:SchoolId/courses/:CourseId/edit-course" element={<EditSchoolCoursePage />} />
          <Route path="/schools/:SchoolId/courses/:CourseId/add-cohort" element={<AddSchoolCourseCohortPage />} />
          <Route path="/schools/:SchoolId/courses/:CourseId/cohorts" element={<CohortMangementPage />} />
+         <Route path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId" element={<SchoolCourseCohortViewDetailsPage />} />
          <Route path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId/edit-cohort" element={<EditSchoolCourseCohortPage />} />
          <Route path="/schools/:SchoolId/add-course" element={<AddSchoolCoursePage />} />
 

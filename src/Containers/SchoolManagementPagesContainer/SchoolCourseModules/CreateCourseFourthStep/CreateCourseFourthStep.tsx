@@ -10,6 +10,7 @@ import CancelSchoolSuccessfulModal from "../../CreateSchoolPreview/PreviewModals
 import SchoolCreatedSuccessfulModal from "../../CreateSchoolPreview/PreviewModals/SchoolCreatedSuccessfulModal";
 
 type CreateCourseFourthStepProp = {
+  editCohort?: boolean;
   createCourse?: boolean;
   showIndicator?: boolean;
   editInformation?: boolean;
@@ -29,6 +30,7 @@ type CreateCourseFourthStepProp = {
 }
 
 const CreateCourseFourthStep = ({
+  editCohort,
   createCourse,
   showIndicator,
   editInformation,
@@ -49,7 +51,7 @@ const CreateCourseFourthStep = ({
 
   // Router
   const navigate = useNavigate();
-  const { SchoolId, CourseId } = useParams()
+  const { SchoolId, CourseId, CohortId } = useParams()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
@@ -203,6 +205,14 @@ const CreateCourseFourthStep = ({
                 onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/edit-course?step=1`) }}
               >
                 <span>Edit Information</span>
+              </Button>
+            )}
+            {editCohort && (
+              <Button
+                type="secondary"
+                onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}/edit-cohort`) }}
+              >
+                <span>Edit Cohort</span>
               </Button>
             )}
             {updateInformation && (
