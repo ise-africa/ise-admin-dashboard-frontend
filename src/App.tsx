@@ -25,6 +25,7 @@ import EditSchoolCoursePage from './Pages/EditSchoolCoursePage'
 import CohortMangementPage from './Pages/CohortMangementPage'
 import EditSchoolCourseCohortPage from './Pages/EditSchoolCourseCohortPage'
 import SchoolCourseCohortViewDetailsPage from './Pages/SchoolCourseCohortViewDetailsPage'
+import ContentControlManagementPage from './Pages/ContentControlManagementPage'
 
 
 function App() {
@@ -58,6 +59,8 @@ function App() {
          <Route path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId" element={<SchoolCourseCohortViewDetailsPage />} />
          <Route path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId/edit-cohort" element={<EditSchoolCourseCohortPage />} />
          <Route path="/schools/:SchoolId/add-course" element={<AddSchoolCoursePage />} />
+
+         <Route path="/contents" element={<ContentControlManagementPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

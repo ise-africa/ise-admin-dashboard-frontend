@@ -1,12 +1,10 @@
 import React from 'react'
 import classes from './SchoolCourseModules.module.css'
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Breadcrumbs from "../../../Components/Breadcrumbs/Breadcrumbs";
 import breadcrumbsBack from "../../../Assets/Images/breadcrumbsBack.svg";
 import { AppContext } from "../../../Context/AppContext";
 import { useParams } from "react-router-dom";
-import { Link } from 'react-router-dom';
-import SchoolCourseModulesEmptyTab from './SchoolCourseModulesEmptyTab';
 import SchoolCourseCreatedContainer from '../SchoolCourseCreatedContainer/SchoolCourseCreatedContainer';
 
 const SchoolCourseModules = () => {
@@ -20,17 +18,6 @@ const SchoolCourseModules = () => {
         return data.schoolId === SchoolId
     })
 
-    // States
-    const [navItems] = useState<any[]>([
-        {
-            isActive: true,
-            activeComponent: <SchoolCourseCreatedContainer />,
-            activeNullStateComponent: <SchoolCourseModulesEmptyTab />,
-        },
-    ]);
-    const activeCOmponent = navItems.find((data) => {
-        return data.isActive;
-    });
 
     // Utils
     const breadCrumbs = {
@@ -52,16 +39,7 @@ const SchoolCourseModules = () => {
                 <Breadcrumbs {...breadCrumbs} />
             </div>
             <div className={classes.container}>
-                {activeCOmponent.activeComponent
-                    ? activeCOmponent.activeComponent
-                    : activeCOmponent.activeNullStateComponent}
-                {!activeCOmponent && (
-                    <div className={classes.footer}>
-                        <p>Need help creating a school?</p>
-                        <Link to='/support'>Read guide here</Link>
-                    </div>
-                )}
-                <div className={classes.subContainer}></div>
+                <SchoolCourseCreatedContainer />
             </div>
         </>
     )
