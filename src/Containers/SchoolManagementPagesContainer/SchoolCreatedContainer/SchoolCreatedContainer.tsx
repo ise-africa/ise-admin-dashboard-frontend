@@ -54,7 +54,7 @@ const SchoolCreatedContainer = ({ schools, notShowEmptyTab }: SchoolCreatedConta
                         title={data.schoolName}
                         status={data.status}
                         className={statusClassName}
-                        courseNumber={data.totalCourse}
+                        courseNumber={data.courses.length}
                         description={data.schoolDescription}
                     />
                 );

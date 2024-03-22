@@ -13,7 +13,6 @@ export type SchoolDataType = {
     }[];
     nameOfSchool: string;
     status: string;
-    totalCourse: number;
     displayOptions: boolean;
     courses: {
         courseId: string;
@@ -58,7 +57,6 @@ export const schoolsData: SchoolDataType[] = [
         ],
         nameOfSchool: 'iṣẹ́ School of Business',
         status: 'Active',
-        totalCourse: 1,
         displayOptions: false,
         courses: [
             {
@@ -121,7 +119,6 @@ export const schoolsData: SchoolDataType[] = [
         ],
         nameOfSchool: 'iṣẹ́ School of Software Development',
         status: 'Inactive',
-        totalCourse: 0,
         displayOptions: false,
         courses: []
     },
@@ -141,7 +138,6 @@ export const schoolsData: SchoolDataType[] = [
         ],
         nameOfSchool: 'iṣẹ́ School of Design',
         status: 'Active',
-        totalCourse: 2,
         displayOptions: true,
         courses: [
             {
@@ -245,7 +241,6 @@ export const schoolsData: SchoolDataType[] = [
         ],
         nameOfSchool: 'iṣẹ́ School of Medicine',
         status: 'Active',
-        totalCourse: 4,
         displayOptions: true,
         courses: [
             {
@@ -431,7 +426,6 @@ export const schoolsData: SchoolDataType[] = [
         ],
         nameOfSchool: 'iṣẹ́ School of Engineering',
         status: 'Inactive',
-        totalCourse: 3,
         displayOptions: true,
         courses: [
             {
