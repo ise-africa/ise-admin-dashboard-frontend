@@ -49,6 +49,7 @@ const SchoolCreatedContainer = ({ schools, notShowEmptyTab }: SchoolCreatedConta
                 return (
                     <SchoolCard
                         key={i}
+                        showActionButton={true}
                         id={data.schoolId}
                         image={data.schoolImage}
                         title={data.schoolName}

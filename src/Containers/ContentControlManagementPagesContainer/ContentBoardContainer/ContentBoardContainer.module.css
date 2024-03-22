@@ -1,0 +1,35 @@
+.Container {
+    gap: 2rem;
+    display: flex;
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+}
+
+.schoolList {
+    gap: 33px;
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--grey);
+    align-items: center;
+}
+
+.schoolList>div {
+    gap: 1.5rem;
+    width: 364px;
+    height: 448px;
+    display: flex;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    flex-direction: column;
+    background: var(--white);
+}
+
+@media screen and (max-width: 1023px) {
+    .Container {
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+        background: var(--white);
+    }
+}
