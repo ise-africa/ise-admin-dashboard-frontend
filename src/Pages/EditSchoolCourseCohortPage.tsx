@@ -11,11 +11,10 @@ const EditSchoolCourseCohortPage = () => {
     const { schools } = useContext(AppContext);
 
     // Router
-    const { SchoolId, CourseId, CohortId } = useParams();
+    const { SchoolId, CourseId } = useParams();
 
     const activeSchool = schools.find(data => data.schoolId === SchoolId)
     const activeCourse = activeSchool?.courses.find(data => data.courseId === CourseId)
-    const activeCohort = activeCourse?.cohorts.find(data => data.cohortId === CohortId)
 
 
     return (

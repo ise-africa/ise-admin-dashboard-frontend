@@ -13,7 +13,7 @@ const CohortBoardContainer = () => {
 
     // Router
     const navigate = useNavigate();
-    const { SchoolId, CourseId, CohortId } = useParams();
+    const { SchoolId, CourseId } = useParams();
 
     // Context 
     const { schools } = useContext(AppContext);
@@ -129,8 +129,8 @@ const CohortBoardContainer = () => {
                                         <img onClick={() => { }} src={ellipse} alt="more options" />
                                         <div>
                                             <ActionsModal
-                                                onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}`); }}
-                                                onClick2={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}/edit-cohort`); }}
+                                                onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}`); }}
+                                                onClick2={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${data.cohortId}/edit-cohort`); }}
                                             />
                                         </div>
                                     </div>
