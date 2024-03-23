@@ -61,6 +61,7 @@ function App() {
          <Route path="/schools/:SchoolId/add-course" element={<AddSchoolCoursePage />} />
 
          <Route path="/contents" element={<ContentControlManagementPage />} />
+         <Route path="/contents/:SchoolId/courses/:CourseId/analytics" element={<ContentControlManagementPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

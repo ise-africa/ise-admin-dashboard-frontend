@@ -70,6 +70,7 @@
 
 .emptyTab>button {
     margin-top: 22px;
+    width: fit-content;
 }
 
 @media screen and (max-width: 1023px) {
@@ -90,6 +91,7 @@
     }
 
     .emptyTab {
+        height: 317px;
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.05);
     }
 
