@@ -8,10 +8,13 @@ import SchooCoursesModal from './SchooCoursesModal';
 import SchoolCourseModulesEmptyTab from '../../SchoolManagementPagesContainer/SchoolCourseModules/SchoolCourseModulesEmptyTab';
 import { useNavigate } from 'react-router-dom';
 
-interface Course {
+export type Course = {
     courseTitle: string;
     courseImg: string;
-}
+    schoolId: string;
+    courseId: string;
+};
+
 
 const ContentBoardContainer = () => {
     const { schools } = useContext(AppContext);
@@ -27,7 +30,9 @@ const ContentBoardContainer = () => {
     const handleSchoolClick = (schoolId: string, schoolName: string, courses: any[]) => {
         setActiveSchoolId(schoolId);
         setModalTitle(schoolName);
-        const transformedCourses: Course[] = courses.map((course: any) => ({
+        const transformedCourses: Course[] = courses.map((course: any, index: number) => ({
+            schoolId: schoolId,
+            courseId: `${index + 1}`,
             courseTitle: course.courseName,
             courseImg: course.courseImage,
         }));
@@ -65,7 +70,9 @@ const ContentBoardContainer = () => {
                             title={modalTitle}
                             courses={modalCourses}
                             onClick={() => { setDisplaySchoolCoursesModal(false) }}
-                            onClick2={() => { navigate('/contents/${}/courses/${}/analytics') }}
+                            onClick2={(schoolId: string, courseId: string) => {
+                                navigate(`/contents/${schoolId}/courses/${courseId}/analytics`);
+                            }}
                         />
                     }
                 />

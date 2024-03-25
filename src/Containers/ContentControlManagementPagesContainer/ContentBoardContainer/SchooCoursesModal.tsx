@@ -1,16 +1,12 @@
-import React from 'react'
-import classes from './ContentBoardContainer.module.css'
-
-interface Course {
-    courseTitle: string;
-    courseImg: string;
-}
+import React from 'react';
+import classes from './ContentBoardContainer.module.css';
+import { Course } from './ContentBoardContainer'; // Import Course interface from the same file
 
 type SchooCoursesModalProps = {
     title: string;
     courses: Course[];
     onClick?: () => void;
-    onClick2?: () => void;
+    onClick2?: (schoolId: string, courseId: string) => void; // Update onClick2 to accept schoolId and courseId
 }
 
 const SchooCoursesModal = ({
@@ -27,9 +23,9 @@ const SchooCoursesModal = ({
                     <path d="M1 13.5L13 1.5M1 1.5L13 13.5" stroke="#2E2E2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             </div>
-            <div className={classes.modalContent} onClick={onClick2}>
+            <div className={classes.modalContent}>
                 {courses.map((data, index) => (
-                    <div key={index}>
+                    <div key={index} onClick={() => onClick2?.(data.schoolId, data.courseId)}>
                         <img src={data.courseImg} alt={data.courseTitle} />
                         <h4>{data.courseTitle}</h4>
                     </div>
@@ -39,4 +35,4 @@ const SchooCoursesModal = ({
     )
 }
 
-export default SchooCoursesModal
+export default SchooCoursesModal;

@@ -13,6 +13,7 @@
   width: 100%;
   cursor: pointer;
   white-space: nowrap;
+  background: var(--white);
   transition: all 0.2s ease-in-out;
 }
 
