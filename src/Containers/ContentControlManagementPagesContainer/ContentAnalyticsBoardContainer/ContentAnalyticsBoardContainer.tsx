@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './ContentAnalyticsBoardContainer.module.css';
 import HelloUser from '../../../Components/HelloUser/HelloUser';
+import ContentAnalyticsDataTable from '../ContentAnalyticsDataTable/ContentAnalyticsDataTable';
 
 const ContentAnalyticsBoardContainer = () => {
 
@@ -46,7 +47,7 @@ const ContentAnalyticsBoardContainer = () => {
                 </div>
             </div>
 
-            {/* <CourseUnderReviewContainerTab /> */}
+            <ContentAnalyticsDataTable />
         </div>
     );
 };
