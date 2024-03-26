@@ -7,13 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  font-style: normal;
-  font-family: "Archivo", sans-serif;
-}
-
 p,
 h1,
 h2,
@@ -86,4 +79,13 @@ code {
   --modalGreen: #57970c;
   --isCorrectGreen: #eefcde;
   --sideNavBorder: #EAE0FF
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-style: normal;
+  color: var(--grey);
+  font-family: "Archivo", sans-serif;
 }

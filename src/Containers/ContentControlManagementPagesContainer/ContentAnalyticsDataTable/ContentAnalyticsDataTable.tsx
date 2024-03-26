@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classes from "./ContentAnalyticsDataTable.module.css"
-import AllModules from "./AllModules/AllModules";
+import UploadedModules from "./UploadedModules/UploadedModules";
 import PublishedModules from "./PublishedModules/PublishedModules";
 import DeclinedModules from "./DeclinedModules/DeclinedModules";
 import SectionsNav4 from "../../../Components/SectionsNav4/SectionsNav4";
@@ -10,9 +10,9 @@ const ContentAnalyticsDataTable = () => {
     // States
     const [navItems, setNavItems] = useState<any[]>([
         {
-            title: "All module",
+            title: "Uploaded module",
             isActive: true,
-            activeComponent: <AllModules />,
+            activeComponent: <UploadedModules />,
         },
         {
             title: "Published module",
@@ -23,6 +23,11 @@ const ContentAnalyticsDataTable = () => {
             title: "Declined module",
             isActive: false,
             activeComponent: <DeclinedModules />,
+        },
+        {
+            title: "Recent module upload",
+            isActive: false,
+            activeComponent: null,
         },
     ]);
 
