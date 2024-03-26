@@ -1,10 +1,31 @@
 import classes from "./UploadedModules.module.css";
 import { ContentAnalyticsData } from "../ContentAnalyticsData";
+import { useState } from "react";
+import AcceptedModal from "../../../../Components/Modals/AcceptedModal/AcceptedModal";
+import PreviewUploadedModal from "./PreviewUploadedModal/PreviewUploadedModal";
 
 const UploadedModules = () => {
-
+    const [displayPreviewUploadedModal, setDisplayPreviewUploadedModal] = useState(false)
+    console.log(displayPreviewUploadedModal)
     return (
         <section className={classes.container}>
+            {displayPreviewUploadedModal && (
+                <AcceptedModal
+                    onClick={() => {
+                        setDisplayPreviewUploadedModal(false);
+                    }}
+                    body={
+                        <PreviewUploadedModal
+                            onClick={() => {
+                                setDisplayPreviewUploadedModal(false);
+                            }}
+                            onClick2={() => {
+                                setDisplayPreviewUploadedModal(false);
+                            }}
+                        />
+                    }
+                />
+            )}
             <div>
                 <div className={classes.tableHeader}>
                     <span>Module title</span>
@@ -19,7 +40,7 @@ const UploadedModules = () => {
                             <span>{data.module}:{data.title}</span>
                             <span>{data.tutor}</span>
                             <span>{data.deadline}</span>
-                            <span>Preview</span>
+                            <span onClick={() => setDisplayPreviewUploadedModal(true)}>Preview</span>
                         </div>
                     ))}
                 </div>

@@ -27,7 +27,7 @@ const ContentAnalyticsDataTable = () => {
         {
             title: "Recent module upload",
             isActive: false,
-            activeComponent: null,
+            activeComponent: <UploadedModules />,
         },
     ]);
 
