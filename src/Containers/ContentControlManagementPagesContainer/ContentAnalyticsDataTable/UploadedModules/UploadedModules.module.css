@@ -22,9 +22,13 @@
     border-bottom: 3px solid var(--sectionBorder);
 }
 
-.tableBody>span>a {
-    color: inherit;
-    text-decoration: none;
+.tableBody>span:nth-child(4) {
+    cursor: pointer;
+    transition: var(--threeSecTransition);
+}
+
+.tableBody>span:nth-child(4):hover {
+    color: var(--purple);
 }
 
 .tableBody .action {
@@ -40,11 +44,10 @@
     top: 30px;
     right: 40px;
     z-index: 10;
-    padding: 10px;
     position: absolute;
     border-radius: 10px;
     background: var(--white);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
 }
 
 .tableBody {

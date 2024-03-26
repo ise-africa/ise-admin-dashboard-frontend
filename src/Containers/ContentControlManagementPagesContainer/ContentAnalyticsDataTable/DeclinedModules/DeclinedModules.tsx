@@ -1,181 +1,64 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import classes from "./DeclinedModules.module.css";
+import React, { useState } from 'react';
+import classes from "../UploadedModules/UploadedModules.module.css";
 import { ContentAnalyticsData } from "../ContentAnalyticsData";
-import ellipses from '../../../../Assets/Images/ellipses.svg'
-import ActionsModal from "../ActionsModal/ActionsModal";
-import ReviewUpdatedModal from "./Modals/ReviewUpdatedModal";
-import ReadyToSubmitModal from "./Modals/ReadyToSubmitModal";
-import SubmissionSuccessfulModal from "./Modals/SubmissionSuccessfulModal";
-import AcceptedModal from "../../../../Components/Modals/AcceptedModal/AcceptedModal";
+import ellipse from '../.../../../../../Assets/Images/ellipses.svg'
+import ActionsModal from "./ActionsModal/ActionsModal";
 
 const DeclinedModules = () => {
+    const [popoverIndex, setPopoverIndex] = useState<number | null>(null);
 
-    const reviseCourse = ContentAnalyticsData.filter(data => data.status === "revise");
+    const declineCourse = ContentAnalyticsData.filter(data => data.status === "revise");
 
-    // States
-    const [reviewCourseData, setReviewCourseData] = useState(reviseCourse)
-    const [displayReviewUpdatedModal, setDisplReviewUpdatedModal] = useState(false)
-    const [displayReadyToSubmitModal, setDisplayReadyToSubmitModal] = useState(false)
-    const [displaySubmissionSuccessfulModal, setDisplaySubmissionSuccessfulModal] = useState(false)
-
-    // Router
-    const navigate = useNavigate()
-    const { courseReviewId } = useParams();
-
-    // Refs
-    const optionsRef = useRef<HTMLDivElement | null>(null)
-    const containerRef = useRef<HTMLDivElement>(null)
-
-    const optionsChangeHandler = (index: number) => {
-        const reviewCoursesCopy = reviewCourseData.map((data, i) => {
-            if (i === index) {
-                return { ...data, displayOptions: !data.displayOptions };
-            }
-            return { ...data, displayOptions: false };
-        });
-
-        setReviewCourseData(reviewCoursesCopy);
+    const handleEllipseClick = (index: number) => {
+        setPopoverIndex(index === popoverIndex ? null : index);
     };
 
-    useEffect(() => {
-        const removeOptions = (e: any) => {
-            if (optionsRef && !optionsRef.current?.contains(e.target)) {
-                const reviewCoursesCopy = reviewCourseData.map((data) => {
-                    return { ...data, displayOptions: false }
-                })
-                setReviewCourseData(reviewCoursesCopy)
-            } else {
-                const reviewCoursesCopy = reviewCourseData.map((data) => {
-                    return { ...data }
-                })
-                setReviewCourseData(reviewCoursesCopy)
-            }
+    const handleDocumentClick = (event: MouseEvent) => {
+        if (!event.target) return;
+        const target = event.target as HTMLElement;
+        if (!target.closest(`.${classes.tableBody}`)) {
+            setPopoverIndex(null);
         }
+    };
 
-        document.addEventListener('mousedown', removeOptions)
+    React.useEffect(() => {
+        document.addEventListener('click', handleDocumentClick);
 
         return () => {
-            document.removeEventListener('mousedown', removeOptions)
-        }
-    }, [reviewCourseData])
-
-    const getStatusClass = (status: string) => {
-        switch (status) {
-            case "approved":
-                return classes.approved;
-            case "revise":
-                return classes.revise;
-            case "pending":
-                return classes.pending;
-        }
-    }
+            document.removeEventListener('click', handleDocumentClick);
+        };
+    }, []);
 
     return (
-        <section className={classes.container} ref={containerRef}>
-            {displayReviewUpdatedModal && (
-                <AcceptedModal
-                    onClick={() => {
-                        setDisplReviewUpdatedModal(false)
-                    }}
-                    body={
-                        <ReviewUpdatedModal
-                            onClick={() => {
-                                setDisplReviewUpdatedModal(false)
-                                setDisplayReadyToSubmitModal(true)
-                            }}
-                        />
-                    }
-                />
-            )}
-            {displayReadyToSubmitModal && (
-                <AcceptedModal
-                    onClick={() => {
-                        setDisplayReadyToSubmitModal(false)
-                    }}
-                    body={
-                        <ReadyToSubmitModal
-                            onClick={() => {
-                                navigate('/courses/create-module')
-                                setDisplayReadyToSubmitModal(false)
-                            }}
-                            onClick2={() => {
-                                setDisplayReadyToSubmitModal(false)
-                                setDisplaySubmissionSuccessfulModal(true)
-                            }}
-                        />
-                    }
-                />
-            )}
-            {displaySubmissionSuccessfulModal && (
-                <AcceptedModal
-                    onClick={() => {
-                        setDisplaySubmissionSuccessfulModal(false)
-                    }}
-                    body={
-                        <SubmissionSuccessfulModal
-                            onClick={() => {
-                                setDisplayReadyToSubmitModal(false)
-                                setDisplaySubmissionSuccessfulModal(false)
-                            }}
-                        />
-                    }
-                />
-            )}
+        <section className={classes.container}>
             <div>
                 <div className={classes.tableHeader}>
-                    <span>Module/Title</span>
-                    <span><p>Status</p>/<p>Deadline</p></span>
-                    <span>Status</span>
-                    <span>Deadline</span>
-                    <span>Message</span>
+                    <span>Module title</span>
+                    <span>Tutor's name</span>
+                    <span>Date</span>
                     <span>Action</span>
                 </div>
 
                 <div className={classes.bodyContent}>
-                    {reviewCourseData.map((data, index) => {
-                        const statusClassName = getStatusClass(data.status);
-                        return (
-                            <div key={index} className={classes.tableBody}>
-                                <span>{data.module}:{data.title}</span>
-                                <span className={statusClassName}>{data.status}</span>
-                                <span>{data.deadline}</span>
-                                <span><Link to={`/courses/feedback/${courseReviewId}/feedback-preview`}>View feedback</Link></span>
-                                <p>
-                                    <span>{data.module}</span>
-                                    <span>{data.title}</span>
-                                </p>
-                                <p>
-                                    <span className={statusClassName}>{data.status}</span>
-                                    <span>{data.deadline}</span>
-                                </p>
-                                <span
-                                    onClick={() => {
-                                        optionsChangeHandler(index)
-                                    }}
-                                >
-                                    <img src={ellipses} alt="more options" />
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.4 15L0 13.6L11.6 2H5V0H15V10H13V3.4L1.4 15Z" fill="black" />
-                                    </svg>
-                                    {data.displayOptions && (
-                                        <div ref={optionsRef}>
-                                            <ActionsModal
-                                                onClick={() => {
-                                                    optionsChangeHandler(index);
-                                                    setDisplReviewUpdatedModal(true);
-                                                }}
-                                                onClick2={() => {
-                                                    optionsChangeHandler(index);
-                                                    navigate(`/courses/feedback/${courseReviewId}/feedback-preview`);
-                                                }}
-                                            />
-                                        </div>
-                                    )}
-                                </span>
+                    {declineCourse.map((data, i) => (
+                        <div key={i} className={classes.tableBody}>
+                            <span>{data.module}:{data.title}</span>
+                            <span>{data.tutor}</span>
+                            <span>{data.deadline}</span>
+                            <div className={classes.action}>
+                                <img
+                                    src={ellipse}
+                                    alt="Ellipse"
+                                    onClick={() => handleEllipseClick(i)}
+                                />
+                                {popoverIndex === i && (
+                                    <div>
+                                        <ActionsModal />
+                                    </div>
+                                )}
                             </div>
-                        );
-                    })}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className={classes.pageButtons}>
@@ -189,7 +72,7 @@ const DeclinedModules = () => {
                             d="M15 19L8 12L15 5"
                             stroke="#d8d8d8"
                             strokeWidth="2"
-                            stroke-linecap="round"
+                            strokeLinecap="round"
                             strokeLinejoin="round"
                         />
                     </svg>

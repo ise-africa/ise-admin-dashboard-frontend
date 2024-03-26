@@ -1,6 +1,5 @@
 import classes from "./UploadedModules.module.css";
 import { ContentAnalyticsData } from "../ContentAnalyticsData";
-import { Link } from "react-router-dom";
 
 const UploadedModules = () => {
 
@@ -20,7 +19,7 @@ const UploadedModules = () => {
                             <span>{data.module}:{data.title}</span>
                             <span>{data.tutor}</span>
                             <span>{data.deadline}</span>
-                            <span><Link to={`/courses/feedback/${data.id}/feedback-preview`}>Preview</Link></span>
+                            <span>Preview</span>
                         </div>
                     ))}
                 </div>
