@@ -1,64 +1,64 @@
-import classes from "./PublishedModules.module.css";
+import React, { useState } from 'react';
+import classes from "../UploadedModules/UploadedModules.module.css";
 import { ContentAnalyticsData } from "../ContentAnalyticsData";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import ellipse from '../.../../../../../Assets/Images/ellipses.svg'
+import ActionsModal from "./ActionsModal/ActionsModal";
 
 const PublishedModules = () => {
-
-    // Router
-    const navigate = useNavigate()
-    const { courseReviewId } = useParams();
-
-    const getStatusClass = (status: string) => {
-        switch (status) {
-            case "approved":
-                return classes.approved;
-            case "revise":
-                return classes.revise;
-            case "pending":
-                return classes.pending;
-        }
-    }
+    const [popoverIndex, setPopoverIndex] = useState<number | null>(null);
 
     const publishedCourse = ContentAnalyticsData.filter(data => data.status === "approved");
+
+    const handleEllipseClick = (index: number) => {
+        setPopoverIndex(index === popoverIndex ? null : index);
+    };
+
+    const handleDocumentClick = (event: MouseEvent) => {
+        if (!event.target) return;
+        const target = event.target as HTMLElement;
+        if (!target.closest(`.${classes.tableBody}`)) {
+            setPopoverIndex(null);
+        }
+    };
+
+    React.useEffect(() => {
+        document.addEventListener('click', handleDocumentClick);
+
+        return () => {
+            document.removeEventListener('click', handleDocumentClick);
+        };
+    }, []);
 
     return (
         <section className={classes.container}>
             <div>
                 <div className={classes.tableHeader}>
-                    <span>Module/Title</span>
-                    <span><p>Status</p>/<p>Deadline</p></span>
-                    <span>Status</span>
-                    <span>Deadline</span>
+                    <span>Module title</span>
+                    <span>Tutor's name</span>
+                    <span>Date</span>
                     <span>Action</span>
                 </div>
 
                 <div className={classes.bodyContent}>
-                    {publishedCourse.map((data, i) => {
-                        const statusClassName = getStatusClass(data.status);
-                        return (
-                            <div key={i} className={classes.tableBody}>
-                                <span>{data.module}:{data.title}</span>
-                                <span className={statusClassName}>{data.status}</span>
-                                <span>{data.deadline}</span>
-                                <span><Link to={`/courses/feedback/${courseReviewId}/feedback-preview`}>View feedback</Link></span>
-                                <p>
-                                    <span>{data.module}</span>
-                                    <span>{data.title}</span>
-                                </p>
-                                <p>
-                                    <span className={statusClassName}>{data.status}</span>
-                                    <span>{data.deadline}</span>
-                                </p>
-                                <p>
-                                    <svg
-                                        onClick={() => { navigate(`/courses/feedback/${courseReviewId}/feedback-preview`) }}
-                                        width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.4 15L0 13.6L11.6 2H5V0H15V10H13V3.4L1.4 15Z" fill="black" />
-                                    </svg>
-                                </p>
+                    {publishedCourse.map((data, i) => (
+                        <div key={i} className={classes.tableBody}>
+                            <span>{data.module}:{data.title}</span>
+                            <span>{data.tutor}</span>
+                            <span>{data.deadline}</span>
+                            <div className={classes.action}>
+                                <img
+                                    src={ellipse}
+                                    alt="Ellipse"
+                                    onClick={() => handleEllipseClick(i)}
+                                />
+                                {popoverIndex === i && (
+                                    <div>
+                                        <ActionsModal />
+                                    </div>
+                                )}
                             </div>
-                        );
-                    })}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className={classes.pageButtons}>
@@ -72,7 +72,7 @@ const PublishedModules = () => {
                             d="M15 19L8 12L15 5"
                             stroke="#d8d8d8"
                             strokeWidth="2"
-                            stroke-linecap="round"
+                            strokeLinecap="round"
                             strokeLinejoin="round"
                         />
                     </svg>

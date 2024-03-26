@@ -12,7 +12,7 @@
     color: var(--grey);
     padding: 48px 0 8px;
     align-items: center;
-    grid-template-columns: 2fr 1fr 200px 100px;
+    grid-template-columns: 2fr 1fr 160px 80px;
 }
 
 .tableHeader {
@@ -27,9 +27,24 @@
     text-decoration: none;
 }
 
-.tableBody>span:nth-child(4),
-.tableBody>svg {
+.tableBody .action {
+    position: relative;
+}
+
+.tableBody .action img {
     cursor: pointer;
+    margin-left: 1.2rem;
+}
+
+.tableBody .action>div {
+    top: 30px;
+    right: 40px;
+    z-index: 10;
+    padding: 10px;
+    position: absolute;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 .tableBody {
@@ -86,7 +101,6 @@
     background: var(--purple);
 }
 
-
 .pageButtons>span>svg {
     width: 24px;
     height: 24px;
@@ -105,7 +119,7 @@
 
     .tableHeader,
     .tableBody {
-        grid-template-columns: 1fr 60px;
+        grid-template-columns: 2fr 1fr 60px;
     }
 
     .tableHeader {
@@ -119,9 +133,7 @@
     }
 
     .tableHeader span:nth-child(2),
-    .tableHeader span:nth-child(3),
-    .tableBody span:nth-child(2),
-    .tableBody span:nth-child(3) {
+    .tableBody span:nth-child(2) {
         display: none;
     }
 }
