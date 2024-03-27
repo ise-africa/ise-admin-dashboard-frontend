@@ -27,6 +27,7 @@ import EditSchoolCourseCohortPage from './Pages/EditSchoolCourseCohortPage'
 import SchoolCourseCohortViewDetailsPage from './Pages/SchoolCourseCohortViewDetailsPage'
 import ContentControlManagementPage from './Pages/ContentControlManagementPage'
 import ContentAnalyticsBoardPage from './Pages/ContentAnalyticsBoardPage'
+import CourseAnalyticsViewDetails from './Pages/CourseAnalyticsViewDetails'
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
 
          <Route path="/contents" element={<ContentControlManagementPage />} />
          <Route path="/contents/:SchoolId/courses/:CourseId/analytics" element={<ContentAnalyticsBoardPage />} />
+         <Route path="/contents/:SchoolId/courses/:CourseId/analytics/details" element={<CourseAnalyticsViewDetails />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

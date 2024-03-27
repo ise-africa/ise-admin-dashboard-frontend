@@ -3,10 +3,12 @@ import { ContentAnalyticsData } from "../ContentAnalyticsData";
 import { useState } from "react";
 import AcceptedModal from "../../../../Components/Modals/AcceptedModal/AcceptedModal";
 import PreviewUploadedModal from "./PreviewUploadedModal/PreviewUploadedModal";
+import { useNavigate } from "react-router-dom";
 
 const UploadedModules = () => {
+    const navigate = useNavigate();
     const [displayPreviewUploadedModal, setDisplayPreviewUploadedModal] = useState(false)
-    console.log(displayPreviewUploadedModal)
+
     return (
         <section className={classes.container}>
             {displayPreviewUploadedModal && (
@@ -20,6 +22,7 @@ const UploadedModules = () => {
                                 setDisplayPreviewUploadedModal(false);
                             }}
                             onClick2={() => {
+                                navigate('/contents/:SchoolId/courses/:CourseId/analytics/details')
                                 setDisplayPreviewUploadedModal(false);
                             }}
                         />

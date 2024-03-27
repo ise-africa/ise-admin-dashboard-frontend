@@ -7,6 +7,7 @@ import AcceptedModal from '../../../../Components/Modals/AcceptedModal/AcceptedM
 import CancelSchoolCreationModal from '../../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal';
 import deleteSvg from '../../../../Assets/Images/deleteFeedbackImage.svg'
 import CancelSchoolSuccessfulModal from '../../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal';
+import { useNavigate } from 'react-router-dom';
 
 const PublishedModules = () => {
     // States
@@ -35,6 +36,9 @@ const PublishedModules = () => {
             document.removeEventListener('click', handleDocumentClick);
         };
     }, []);
+
+    const navigate = useNavigate();
+
 
     return (
         <section className={classes.container}>
@@ -93,6 +97,7 @@ const PublishedModules = () => {
                                 {popoverIndex === i && (
                                     <div>
                                         <ActionsModal
+                                            onClick={() => { navigate('/contents/:SchoolId/courses/:CourseId/analytics/details') }}
                                             onClick3={() => { setDisplayDeleteFeedbackModal(true) }}
                                         />
                                     </div>
