@@ -37,7 +37,7 @@ const CreateSchoolUploadFile = ({
         <h2>{title || "Create a new school"}</h2>
 
         <DragAndDropInput
-          labelText="Upload cover image"
+          labelText="Upload cover image *"
           acceptedFileTypes=".svg,.png"
           performFIleValidation={true}
         />
@@ -49,10 +49,10 @@ const CreateSchoolUploadFile = ({
         <div>
           <Input
             value={name}
-            label="School name"
+            label="School name *"
             placeholder="E.g School of Business"
           />
-          <label className={classes.schoolImportanceLabel}>List the importance of joining this school</label>
+          <label className={classes.schoolImportanceLabel}>List the importance of joining this school *</label>
           {[...Array(additionalInputs)].map((_, index) => (
             <Input
               key={index}

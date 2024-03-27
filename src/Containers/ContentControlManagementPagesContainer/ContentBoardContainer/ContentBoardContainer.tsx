@@ -15,7 +15,6 @@ export type Course = {
     courseId: string;
 };
 
-
 const ContentBoardContainer = () => {
     const { schools } = useContext(AppContext);
 
@@ -39,6 +38,9 @@ const ContentBoardContainer = () => {
         setModalCourses(transformedCourses);
         setDisplaySchoolCoursesModal(true);
     }
+
+    // Filter schools with status "Active"
+    const activeSchools = schools.filter(data => data.status === "Active");
 
     return (
         <div className={classes.Container}>
@@ -79,22 +81,20 @@ const ContentBoardContainer = () => {
             )}
 
             <div className={classes.schoolList}>
-                {schools.map((data, i) => {
-                    return (
-                        <SchoolCard
-                            key={i}
-                            id={data.schoolId}
-                            status={data.status}
-                            title={data.schoolName}
-                            showActionButton={false}
-                            image={data.schoolImage}
-                            courseNumber={data.courses.length}
-                            description={data.schoolDescription}
-                            onClick={() => handleSchoolClick(data.schoolId, data.schoolName, data.courses)}
-                            isActive={activeSchoolId === data.schoolId}
-                        />
-                    );
-                })}
+                {activeSchools.map((data, i) => (
+                    <SchoolCard
+                        key={i}
+                        id={data.schoolId}
+                        status={data.status}
+                        title={data.schoolName}
+                        showActionButton={false}
+                        image={data.schoolImage}
+                        courseNumber={data.courses.length}
+                        description={data.schoolDescription}
+                        onClick={() => handleSchoolClick(data.schoolId, data.schoolName, data.courses)}
+                        isActive={activeSchoolId === data.schoolId}
+                    />
+                ))}
             </div>
         </div>
     )

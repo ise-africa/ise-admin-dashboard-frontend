@@ -20,7 +20,7 @@ type SchoolCardProps = {
     description: string;
     courseNumber: number;
     showActionButton?: boolean;
-    isActive?: boolean; // Add isActive prop
+    isActive?: boolean;
     className?: string | undefined;
 }
 
@@ -29,14 +29,12 @@ const SchoolCard = ({
     image,
     title,
     onClick,
-    courses,
     description,
     notification,
     status,
     className,
     courseNumber,
     showActionButton,
-    isActive,
 }: SchoolCardProps) => {
 
     const navigate = useNavigate();
@@ -150,7 +148,7 @@ const SchoolCard = ({
                         {!showActionButton && (
                             <>
                                 <div>
-                                    <p>Active Courses: <span>{courses}</span></p>
+                                    <p>Active Courses: <span>{courseNumber}</span></p>
                                 </div>
                                 <div>
                                     <span>Notification:</span>

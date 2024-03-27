@@ -32,17 +32,17 @@ const CreateSchoolAddDetails = ({
         <div>
           <Input
             value={name}
-            label="Name of school"
+            label="Name of school *"
             placeholder="E.g iṣẹ́ School of Business"
           />
           <Input
             value={motto}
-            label="School motto"
+            label="School motto *"
             placeholder="E.g Help businesses grow"
           />
           <TextArea
             value={description}
-            label="School description"
+            label="School description *"
             placeholder="Start typing..."
           />
         </div>

@@ -85,7 +85,7 @@ const CreateCourseThirdStep = ({
             </div>
           </div>
           <DropdownWithSearch
-            label="Cohort duration"
+            label="Cohort duration *"
             title="Select option"
             selected={duration}
             options={[]}

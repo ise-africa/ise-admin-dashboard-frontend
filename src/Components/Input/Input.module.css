@@ -41,12 +41,13 @@
   line-height: 25px;
   margin: 5px 0;
   border-radius: 5px;
+  outline: none;
   animation: appear 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
 .container>input:focus {
-  outline: 1px solid rgba(102, 78, 254, 1);
+  border: 1.5px solid rgba(102, 78, 254, 1);
 }
 
 /*  */

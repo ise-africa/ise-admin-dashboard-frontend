@@ -45,16 +45,16 @@ const CreateCourseFirstStep = ({
         <div>
           <Input
             value={name}
-            label="Name of course"
+            label="Name of course *"
             placeholder="E.g Talent Acquisition Course"
           />
           <DropdownWithSearch
             title="Select option"
-            label="Course difficulty level"
+            label="Course difficulty level *"
             selected={level}
             options={[]}
           />
-          <label className={classes.schoolImportanceLabel}>List the objectives of this course </label>
+          <label className={classes.schoolImportanceLabel}>List the objectives of this course *</label>
           {[...Array(additionalInputs)].map((_, index) => (
             <Input
               key={index}
