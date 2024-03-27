@@ -8,6 +8,7 @@ import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModa
 import CancelSchoolCreationModal from "./PreviewModals/CancelSchoolCreationModal";
 import CancelSchoolSuccessfulModal from "./PreviewModals/CancelSchoolSuccessfulModal";
 import SchoolCreatedSuccessfulModal from "./PreviewModals/SchoolCreatedSuccessfulModal";
+import cancelSvg from '../../../Assets/Images/CancelSchoolCreationImage.svg'
 
 type CreateSchoolPreviewProp = {
   showIndicator?: boolean
@@ -56,6 +57,7 @@ const CreateSchoolPreview = ({
           onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
           body={
             <CancelSchoolCreationModal
+              imgSrc={cancelSvg}
               header="Cancel school creation?"
               paragraph="You'll lose all information and start over if you cancel."
               onClick={() => { setDisplayCancelSchoolCreationModal(false) }}

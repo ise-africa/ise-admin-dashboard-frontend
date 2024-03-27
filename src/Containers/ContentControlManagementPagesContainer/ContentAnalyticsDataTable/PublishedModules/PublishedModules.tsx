@@ -3,9 +3,16 @@ import classes from "../UploadedModules/UploadedModules.module.css";
 import { ContentAnalyticsData } from "../ContentAnalyticsData";
 import ellipse from '../.../../../../../Assets/Images/ellipses.svg'
 import ActionsModal from "./ActionsModal/ActionsModal";
+import AcceptedModal from '../../../../Components/Modals/AcceptedModal/AcceptedModal';
+import CancelSchoolCreationModal from '../../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal';
+import deleteSvg from '../../../../Assets/Images/deleteFeedbackImage.svg'
+import CancelSchoolSuccessfulModal from '../../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal';
 
 const PublishedModules = () => {
+    // States
     const [popoverIndex, setPopoverIndex] = useState<number | null>(null);
+    const [displayDeleteFeedbackModal, setDisplayDeleteFeedbackModal] = useState(false)
+    const [displayDeleteFeedbackSuccessfulModal, setDisplayDeleteFeedbackSuccessfulModal] = useState(false)
 
     const publishedCourse = ContentAnalyticsData.filter(data => data.status === "approved");
 
@@ -31,6 +38,38 @@ const PublishedModules = () => {
 
     return (
         <section className={classes.container}>
+            {displayDeleteFeedbackModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayDeleteFeedbackModal(false) }}
+                    body={
+                        <CancelSchoolCreationModal
+                            imgSrc={deleteSvg}
+                            header="Delete feedback"
+                            paragraph="Deleting feedback is a permanent action. Any unsaved changes will be lost."
+                            onClick={() => { setDisplayDeleteFeedbackModal(false) }}
+                            onClick2={() => {
+                                setDisplayDeleteFeedbackModal(false)
+                                setDisplayDeleteFeedbackSuccessfulModal(true)
+                            }}
+                        />
+                    }
+                />
+            )}
+            {displayDeleteFeedbackSuccessfulModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayDeleteFeedbackSuccessfulModal(false) }}
+                    body={
+                        <CancelSchoolSuccessfulModal
+                            buttonText="Go to dashboard"
+                            header="Feedback deleted successfully"
+                            paragraph="You can return to the main dashboard to continue editing other modules."
+                            onClick={() => {
+                                setDisplayDeleteFeedbackSuccessfulModal(false)
+                            }}
+                        />
+                    }
+                />
+            )}
             <div>
                 <div className={classes.tableHeader}>
                     <span>Module title</span>
@@ -53,7 +92,9 @@ const PublishedModules = () => {
                                 />
                                 {popoverIndex === i && (
                                     <div>
-                                        <ActionsModal />
+                                        <ActionsModal
+                                            onClick3={() => { setDisplayDeleteFeedbackModal(true) }}
+                                        />
                                     </div>
                                 )}
                             </div>

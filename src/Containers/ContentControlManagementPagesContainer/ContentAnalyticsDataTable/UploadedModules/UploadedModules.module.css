@@ -38,6 +38,7 @@
 .tableBody .action img {
     cursor: pointer;
     margin-left: 1.2rem;
+    transform: rotate(90deg);
 }
 
 .tableBody .action>div {

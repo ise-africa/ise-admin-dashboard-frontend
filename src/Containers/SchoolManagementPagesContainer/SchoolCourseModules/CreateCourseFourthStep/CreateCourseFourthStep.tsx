@@ -8,6 +8,7 @@ import AcceptedModal from "../../../../Components/Modals/AcceptedModal/AcceptedM
 import CancelSchoolCreationModal from "../../CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
 import CancelSchoolSuccessfulModal from "../../CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal";
 import SchoolCreatedSuccessfulModal from "../../CreateSchoolPreview/PreviewModals/SchoolCreatedSuccessfulModal";
+import cancelSvg from '../../../../Assets/Images/CancelSchoolCreationImage.svg'
 
 type CreateCourseFourthStepProp = {
   editCohort?: boolean;
@@ -68,6 +69,7 @@ const CreateCourseFourthStep = ({
           onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
           body={
             <CancelSchoolCreationModal
+              imgSrc={cancelSvg}
               header="Cancel adding course?"
               paragraph="Are you sure you want to discard the course  information? Canceling will discard all entered information and you'll need to start over. Confirm?"
               onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
