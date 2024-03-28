@@ -1,6 +1,6 @@
 import classes from "./SideNav.module.css";
 import iseLogo from "../../Assets/Images/iseLogo.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../../Context/AppContext";
 import { activeToggler } from "../../HelperFunctions/activeTogglers"
@@ -64,6 +64,7 @@ export const sideNavIconsHandler = (title: string) => {
 const SideNav = () => {
   // Location
   const location = useLocation();
+  const navigate = useNavigate();
 
   // COntext
   const { navItmesState, setNavItemsState } = useContext(AppContext)
@@ -73,7 +74,7 @@ const SideNav = () => {
   return (
     <section className={classes.container}>
       <div className={classes.logoSection}>
-        <img src={iseLogo} alt="Ise " />
+        <img src={iseLogo} onClick={() => { navigate('/dashboard') }} alt="Ise " />
       </div>
       <div className={classes.navSection}>
         {navItmesState.map((data, i) => {

@@ -10,32 +10,10 @@
     padding: 10px 30px;
 }
 
-
-.header {
-    gap: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 24px 48px;
-    background: var(--white);
-    border-top: 1px solid var(--veryLightPurple);
-}
-
-.header>p {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 26px;
-    font-style: normal;
-    color: var(--grey);
-    font-family: Archivo;
-    user-select: none;
-}
-
 .body {
     gap: 1rem;
     display: flex;
-    padding: 40px 48px;
+    padding: 24px 32px;
     align-items: flex-start;
 }
 
@@ -80,7 +58,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    padding-bottom: 1rem;
     justify-content: space-between;
 }
 
@@ -140,9 +117,7 @@
 
 .rightSide {
     padding: 24px 16px;
-    border-radius: 10px;
     background: var(--white);
-
     gap: 2rem;
     display: flex;
     flex-direction: column;
@@ -173,8 +148,6 @@
 
 .rightSide .top>p {
     padding-block: 5px;
-    color: var(--timerGreen);
-
     gap: 10px;
     display: flex;
     align-items: center;
@@ -198,6 +171,28 @@
 
 }
 
+.footer {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.footer button:first-child {
+    justify-self: flex-end;
+}
+
+.actionButton,
+.buttonContainer {
+    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.actionButton {
+    justify-content: flex-end;
+}
+
+
 @media screen and (min-width: 778px) and (max-width: 1024px) {
     .leftSide {
         display: none;
@@ -211,29 +206,13 @@
         height: 16px;
     }
 
-    .container button {
-        padding: 10px;
-    }
-
-    .header {
-        gap: 10px;
-    }
-
-    .header {
-        padding: 16px;
-        border-top: none;
-        border-bottom: 1px solid var(--veryLightPurple);
-    }
-
-    .header>p {
-        font-size: 10px;
-        line-height: 18px;
-
+    .breadCrumbs {
+        display: none;
     }
 
     .body {
         gap: 2rem;
-        padding: 2rem 1rem;
+        padding: 2rem 0;
         flex-direction: column;
         background: var(--white);
     }
@@ -241,5 +220,17 @@
     .leftSide {
         display: none;
         position: relative;
+    }
+
+    .footer {
+        gap: 1rem;
+    }
+
+    .footer button:first-child {
+        display: none;
+    }
+
+    .footer button:last-child {
+        padding: 10px;
     }
 }

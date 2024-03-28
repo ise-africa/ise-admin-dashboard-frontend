@@ -4,7 +4,7 @@ import CourseContentViewDetailsContainer from '../Containers/ContentControlManag
 
 const CourseAnalyticsViewDetails = () => {
     return (
-        <Layout>
+        <Layout closeSideNav>
             <CourseContentViewDetailsContainer />
         </Layout>
     )

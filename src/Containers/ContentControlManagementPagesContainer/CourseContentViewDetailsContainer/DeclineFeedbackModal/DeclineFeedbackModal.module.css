@@ -1,0 +1,92 @@
+.container {
+  padding: 40px 2rem;
+  border-radius: 10px;
+  background: var(--white);
+}
+
+.header {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.header>h4 {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 41px;
+}
+
+.header>div {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: flex-end;
+}
+
+.header svg {
+  height: 28px;
+  cursor: pointer;
+  justify-self: flex-end;
+}
+
+.note p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  color: var(--grey3);
+  padding-top: 6px;
+}
+
+.textareaSection {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footer {
+  gap: 1.5rem;
+  display: flex;
+  margin-top: 40px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer>button {
+  width: auto;
+}
+
+@media screen and (max-width: 1023px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header>h4 {
+    font-size: 20px;
+    line-height: 27px;
+  }
+
+  .note>p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .header svg {
+    height: 24px;
+  }
+
+  .textareaSection {
+    margin: 20px 0 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer>button {
+    width: 100%;
+  }
+}
