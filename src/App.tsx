@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import ErrorPage from './Containers/404Page/404Page'
 import Support from './Pages/Support'
 import SupportTrackingChatDetailPage from './Pages/SupportTrackingChatDetailPage'
@@ -34,6 +34,7 @@ function App() {
    return (
       <Routes>
          <Route path="*" element={<ErrorPage />} />
+         <Route path="/" element={<Navigate to="/home"></Navigate>} />
 
          <Route path="/users/admins" element={<AdminsManagementPage />} />
          <Route path="/users/admins/:AdminId" element={<AdminProfilePage />} />

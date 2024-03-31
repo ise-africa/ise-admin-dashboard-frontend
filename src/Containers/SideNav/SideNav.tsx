@@ -74,7 +74,7 @@ const SideNav = () => {
   return (
     <section className={classes.container}>
       <div className={classes.logoSection}>
-        <img src={iseLogo} onClick={() => { navigate('/dashboard') }} alt="Ise " />
+        <img src={iseLogo} onClick={() => { navigate('/home') }} alt="Ise " />
       </div>
       <div className={classes.navSection}>
         {navItmesState.map((data, i) => {

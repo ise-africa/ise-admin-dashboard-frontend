@@ -10,6 +10,7 @@
 }
 
 .container>img {
+  height: auto;
   max-width: 100%;
   object-fit: cover;
 }
@@ -50,8 +51,7 @@
   }
 
   .container>img {
-    width: 154px;
-    height: 144px;
+    height: 200px;
   }
 }
 
@@ -66,8 +66,7 @@
     line-height: 23px;
   }
 
-  .container>img {
-    width: 154px;
-    height: 164px;
+  .container img {
+    max-height: 150px;
   }
 }

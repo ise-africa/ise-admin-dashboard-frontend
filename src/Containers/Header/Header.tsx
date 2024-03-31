@@ -31,7 +31,7 @@ const Header = ({ closeSideNavProp }: HeaderTypes) => {
 
   return (
     <section className={classes.container}>
-      <img src={iseLogo} onClick={() => { navigate('/dashboard ') }} alt="Ise" className={classes.logo} />
+      <img src={iseLogo} onClick={() => { navigate('/home ') }} alt="Ise" className={classes.logo} />
       {!closeSideNavProp && (
         <div className={classes.inputSection}>
           <input type="text" placeholder="Search" />
@@ -55,7 +55,7 @@ const Header = ({ closeSideNavProp }: HeaderTypes) => {
       {closeSideNavProp && (
         <>
           <div>
-            <img src={iseLogo} alt="Ise" onClick={() => { navigate('/dashboard ') }} className={classes.logoHeader} />
+            <img src={iseLogo} alt="Ise" onClick={() => { navigate('/home ') }} className={classes.logoHeader} />
           </div>
           <div className={classes.inputSection}>
             <input type="text" placeholder="Search" />
