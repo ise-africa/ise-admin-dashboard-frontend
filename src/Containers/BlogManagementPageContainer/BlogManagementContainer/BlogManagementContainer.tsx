@@ -4,6 +4,7 @@ import Button from '../../../Components/Button/Button';
 import classes from './BlogManagementContainer.module.css'
 import HelloUser from '../../../Components/HelloUser/HelloUser';
 import BlogManagementModules from '../BlogManagementModules/BlogManagementModules';
+import Blogstatistics from '../Blogstatistics/Blogstatistics';
 
 const BlogManagementContainer = () => {
     const navigate = useNavigate();
@@ -24,6 +25,7 @@ const BlogManagementContainer = () => {
                     <span>Create new post</span>
                 </Button>
             </HelloUser>
+            <Blogstatistics />
             <BlogManagementModules />
         </div>
     );
