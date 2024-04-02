@@ -5,6 +5,7 @@ import classes from './BlogManagementContainer.module.css'
 import HelloUser from '../../../Components/HelloUser/HelloUser';
 import BlogManagementModules from '../BlogManagementModules/BlogManagementModules';
 import Blogstatistics from '../Blogstatistics/Blogstatistics';
+import BlogQuickStart from '../BlogQuickStart/BlogQuickStart';
 
 const BlogManagementContainer = () => {
     const navigate = useNavigate();
@@ -25,6 +26,7 @@ const BlogManagementContainer = () => {
                     <span>Create new post</span>
                 </Button>
             </HelloUser>
+            <BlogQuickStart />
             <Blogstatistics />
             <BlogManagementModules />
         </div>
