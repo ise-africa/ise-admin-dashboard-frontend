@@ -22,7 +22,7 @@ const UploadedModules = () => {
                                 setDisplayPreviewUploadedModal(false);
                             }}
                             onClick2={() => {
-                                navigate('/contents/:SchoolId/courses/:CourseId/analytics/details')
+                                navigate('/courses/:SchoolId/courses/:CourseId/analytics/details')
                                 setDisplayPreviewUploadedModal(false);
                             }}
                         />

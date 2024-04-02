@@ -45,7 +45,7 @@ const ContentBoardContainer = () => {
     return (
         <div className={classes.Container}>
             <HelloUser
-                header="Content management"
+                header="Course management "
                 paragraph="Manage, edit and assign content for all iṣẹ́ Schools."
             />
 
@@ -73,7 +73,7 @@ const ContentBoardContainer = () => {
                             courses={modalCourses}
                             onClick={() => { setDisplaySchoolCoursesModal(false) }}
                             onClick2={(schoolId: string, courseId: string) => {
-                                navigate(`/contents/${schoolId}/courses/${courseId}/analytics`);
+                                navigate(`/courses/${schoolId}/courses/${courseId}/analytics`);
                             }}
                         />
                     }

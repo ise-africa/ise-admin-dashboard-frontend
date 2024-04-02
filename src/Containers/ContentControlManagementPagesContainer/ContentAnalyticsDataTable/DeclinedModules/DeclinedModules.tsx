@@ -96,7 +96,7 @@ const DeclinedModules = () => {
                                 {popoverIndex === i && (
                                     <div>
                                         <ActionsModal
-                                            onClick={() => { navigate('/contents/:SchoolId/courses/:CourseId/analytics/details') }}
+                                            onClick={() => { navigate('/courses/:SchoolId/courses/:CourseId/analytics/details') }}
                                             onClick3={() => { setDisplayDeleteFeedbackModal(true) }}
                                         />
                                     </div>

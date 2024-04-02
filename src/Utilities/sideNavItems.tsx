@@ -44,8 +44,8 @@ export const sideNavItems: sideNavItemsType = [
   },
 
   {
-    title: "Content control",
-    route: "/contents",
+    title: "Course management ",
+    route: "/courses",
     keywords: ["contents"],
     otherOptions: null,
     isVisible: true,

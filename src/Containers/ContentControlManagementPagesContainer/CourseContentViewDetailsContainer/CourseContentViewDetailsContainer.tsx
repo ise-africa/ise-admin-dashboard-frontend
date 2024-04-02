@@ -20,15 +20,15 @@ const CourseContentViewDetailsContainer = () => {
         array: [
             {
                 title: "Back to dashboard",
-                route: "/contents",
+                route: "/courses",
             },
             {
                 title: "Module 1",
-                route: `/contents/:SchoolId/courses/:CourseId/analytics/`,
+                route: `/courses/:SchoolId/courses/:CourseId/analytics/`,
             },
             {
                 title: "Week 1",
-                route: `/contents/:SchoolId/courses/:CourseId/analytics/details`,
+                route: `/courses/:SchoolId/courses/:CourseId/analytics/details`,
             },
         ],
     };
@@ -51,7 +51,7 @@ const CourseContentViewDetailsContainer = () => {
                             paragraph="Module 1 is now live on the curriculum"
                             onClick={() => {
                                 setDisplayPublishFeedbackSuccessfulModal(false)
-                                navigate('/contents/:SchoolId/courses/:CourseId/analytics/')
+                                navigate('/courses/:SchoolId/courses/:CourseId/analytics/')
                             }}
                         />
                     }
@@ -83,7 +83,7 @@ const CourseContentViewDetailsContainer = () => {
                             paragraph="Your feedback has been sent to the tutor."
                             onClick={() => {
                                 setDisplayDeclineFeedbackSuccessfulModal(false)
-                                navigate('/contents/:SchoolId/courses/:CourseId/analytics/')
+                                navigate('/courses/:SchoolId/courses/:CourseId/analytics/')
                             }}
                         />
                     }

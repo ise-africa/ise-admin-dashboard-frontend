@@ -28,6 +28,7 @@ import SchoolCourseCohortViewDetailsPage from './Pages/SchoolCourseCohortViewDet
 import ContentControlManagementPage from './Pages/ContentControlManagementPage'
 import ContentAnalyticsBoardPage from './Pages/ContentAnalyticsBoardPage'
 import CourseAnalyticsViewDetails from './Pages/CourseAnalyticsViewDetails'
+import BlogManagementPage from './Pages/BlogManagementPage'
 
 
 function App() {
@@ -63,9 +64,11 @@ function App() {
          <Route path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId/edit-cohort" element={<EditSchoolCourseCohortPage />} />
          <Route path="/schools/:SchoolId/add-course" element={<AddSchoolCoursePage />} />
 
-         <Route path="/contents" element={<ContentControlManagementPage />} />
-         <Route path="/contents/:SchoolId/courses/:CourseId/analytics" element={<ContentAnalyticsBoardPage />} />
-         <Route path="/contents/:SchoolId/courses/:CourseId/analytics/details" element={<CourseAnalyticsViewDetails />} />
+         <Route path="/courses" element={<ContentControlManagementPage />} />
+         <Route path="/courses/:SchoolId/courses/:CourseId/analytics" element={<ContentAnalyticsBoardPage />} />
+         <Route path="/courses/:SchoolId/courses/:CourseId/analytics/details" element={<CourseAnalyticsViewDetails />} />
+
+         <Route path="/blog" element={<BlogManagementPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />
