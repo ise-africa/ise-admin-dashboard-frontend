@@ -7,13 +7,14 @@ type EmptyTabComponentProps = {
   image: string;
   firstParagraph: string;
   secondParagraph?: string;
-  route: string;
+  route?: string;
   buttontext: string;
   buttonSvg?: ReactNode;
   buttonType?: "invalid" | "delete" | "primary" | "secondary" | "black" | "white" | "null" | "tertiary" | undefined;
   showButton?: boolean;
   header?: string;
   imageHeight?: number;
+  buttonClicked?: () => void;
 };
 
 const EmptyTabComponent = ({
@@ -26,7 +27,8 @@ const EmptyTabComponent = ({
   buttonSvg,
   header,
   showButton = true,
-  imageHeight
+  imageHeight,
+  buttonClicked
 }: EmptyTabComponentProps) => {
   // Router
   const navigate = useNavigate();
@@ -39,17 +41,20 @@ const EmptyTabComponent = ({
         <p>{firstParagraph}</p>
         <p>{secondParagraph}</p>
       </div>
-      {showButton &&
+      {showButton && (
         <Button
           type={buttonType}
           onClick={() => {
-            navigate(route);
+            navigate(route || "");
+            if (buttonClicked) {
+              buttonClicked();
+            }
           }}
         >
           <span>{buttontext}</span>
           {buttonSvg}
         </Button>
-      }
+      )}
     </section>
   );
 };

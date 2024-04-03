@@ -8,6 +8,8 @@ import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModa
 import SendMessageModal from './Modals/SendMessageModal'
 import ConfirmationModal from './Modals/ConfirmationModal'
 import email from '../../../Assets/Images/emailIcon.svg'
+import EmptyTabComponent from '../../../Components/EmptyTabComponent/EmptyTabComponent'
+import noResultFound from '../../../Assets/Images/noResultFound.svg'
 
 const TutorDataTable = () => {
    const navigate = useNavigate()
@@ -27,6 +29,10 @@ const TutorDataTable = () => {
          data.tutorFullName.toLowerCase().includes(searchTerm.toLowerCase())
       )
    });
+
+   const handleRetrySearch = () => {
+      setSearchTerm('');
+   };
 
    return (
       <section className={classes.container}>
@@ -156,7 +162,18 @@ const TutorDataTable = () => {
                   <span></span>
                </div>
                {filteredTutor.length === 0 ? (
-                  <div className={classes.noResult}>No search results for the tutor "{searchTerm}" available</div>
+                  <EmptyTabComponent
+                     image={noResultFound}
+                     header={`No search results for the tutor "${searchTerm}" available`}
+                     firstParagraph='Try a new search'
+                     imageHeight={280}
+                     buttontext='Retry search'
+                     buttonType='null'
+                     buttonClicked={handleRetrySearch}
+                     buttonSvg={<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.5 1.5V5.25H1.93614M13.4536 6.75C13.0845 3.79027 10.5597 1.5 7.5 1.5C4.98197 1.5 2.82622 3.05113 1.93614 5.25M1.93614 5.25H5.25M13.5 13.5V9.75H13.0639M13.0639 9.75C12.1738 11.9489 10.018 13.5 7.5 13.5C4.44029 13.5 1.91549 11.2097 1.54642 8.25M13.0639 9.75H9.75" stroke="#664EFE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                     </svg>}
+                  />
                ) : (
                   filteredTutor.map((data, i) => {
                      return (

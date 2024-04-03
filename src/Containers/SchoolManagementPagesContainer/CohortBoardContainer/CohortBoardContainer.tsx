@@ -8,6 +8,8 @@ import Button from "../../../Components/Button/Button";
 import ellipse from "../../../Assets/Images/ellipses.svg";
 import ActionsModal from "./ActionsModal/ActionsModal";
 import breadcrumbsBack from "../../../Assets/Images/breadcrumbsBack.svg"
+import noResultFound from '../../../Assets/Images/noResultFound.svg'
+import EmptyTabComponent from "../../../Components/EmptyTabComponent/EmptyTabComponent";
 
 const CohortBoardContainer = () => {
     const navigate = useNavigate();
@@ -74,6 +76,10 @@ const CohortBoardContainer = () => {
             document.body.removeEventListener('click', handleOutsideClick);
         };
     }, []);
+
+    const handleRetrySearch = () => {
+        setSearchTerm('');
+    };
 
     const filteredCourseCohortData = activeCourse?.cohorts.filter(data => {
         return (
@@ -153,27 +159,42 @@ const CohortBoardContainer = () => {
                         <span>Status</span>
                         <span>Action</span>
                     </div>
-                    {filteredCourseCohortData?.map((data, i) => {
-                        const statusClassName = getStatusClass(data.status);
-                        return (
-                            <div key={i} className={classes.tableBody}>
-                                <span>{data.cohortName}</span>
-                                <span>{data.dateCreated}</span>
-                                <span className={statusClassName}>{data.status}</span>
-                                <div className={classes.popover}>
-                                    <img onClick={() => handlePopoverClick(data.cohortId)} src={ellipse} alt="more options" />
-                                    {activePopover === data.cohortId && (
-                                        <div>
-                                            <ActionsModal
-                                                onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${data.cohortId}`); }}
-                                                onClick2={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${data.cohortId}/edit-cohort`); }}
-                                            />
-                                        </div>
-                                    )}
+                    {filteredCourseCohortData && filteredCourseCohortData.length > 0 ? (
+                        filteredCourseCohortData.map((data, i) => {
+                            const statusClassName = getStatusClass(data.status);
+                            return (
+                                <div key={i} className={classes.tableBody}>
+                                    <span>{data.cohortName}</span>
+                                    <span>{data.dateCreated}</span>
+                                    <span className={statusClassName}>{data.status}</span>
+                                    <div className={classes.popover}>
+                                        <img onClick={() => handlePopoverClick(data.cohortId)} src={ellipse} alt="more options" />
+                                        {activePopover === data.cohortId && (
+                                            <div>
+                                                <ActionsModal
+                                                    onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${data.cohortId}`); }}
+                                                    onClick2={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${data.cohortId}/edit-cohort`); }}
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })
+                    ) : (
+                        <EmptyTabComponent
+                            image={noResultFound}
+                            header={`No results for “${searchTerm}”`}
+                            firstParagraph='Try a new search'
+                            imageHeight={280}
+                            buttontext='Retry search'
+                            buttonType='null'
+                            buttonClicked={handleRetrySearch}
+                            buttonSvg={<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 1.5V5.25H1.93614M13.4536 6.75C13.0845 3.79027 10.5597 1.5 7.5 1.5C4.98197 1.5 2.82622 3.05113 1.93614 5.25M1.93614 5.25H5.25M13.5 13.5V9.75H13.0639M13.0639 9.75C12.1738 11.9489 10.018 13.5 7.5 13.5C4.44029 13.5 1.91549 11.2097 1.54642 8.25M13.0639 9.75H9.75" stroke="#664EFE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>}
+                        />
+                    )}
                 </div>
             </div>
         </>
