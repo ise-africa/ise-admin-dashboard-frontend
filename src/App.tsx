@@ -29,6 +29,7 @@ import ContentControlManagementPage from './Pages/ContentControlManagementPage'
 import ContentAnalyticsBoardPage from './Pages/ContentAnalyticsBoardPage'
 import CourseAnalyticsViewDetails from './Pages/CourseAnalyticsViewDetails'
 import BlogManagementPage from './Pages/BlogManagementPage'
+import AddBlogPostPage from './Pages/AddBlogPostPage'
 
 
 function App() {
@@ -68,7 +69,8 @@ function App() {
          <Route path="/courses/:SchoolId/courses/:CourseId/analytics" element={<ContentAnalyticsBoardPage />} />
          <Route path="/courses/:SchoolId/courses/:CourseId/analytics/details" element={<CourseAnalyticsViewDetails />} />
 
-         <Route path="/blog" element={<BlogManagementPage />} />
+         <Route path="/blogs" element={<BlogManagementPage />} />
+         <Route path="/blogs/add-post" element={<AddBlogPostPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

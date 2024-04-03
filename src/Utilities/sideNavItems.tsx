@@ -54,7 +54,7 @@ export const sideNavItems: sideNavItemsType = [
 
   {
     title: "Blog management",
-    route: "/blog",
+    route: "/blogs",
     keywords: ["blog"],
     otherOptions: null,
     isVisible: true,
