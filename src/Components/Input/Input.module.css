@@ -12,7 +12,7 @@
   margin-bottom: 24px;
 }
 
-.container>label {
+.container label {
   color: var(--grey);
   font-family: Archivo;
   font-size: 18px;
@@ -21,7 +21,7 @@
   line-height: 27px;
 }
 
-.container>span:nth-child(2) {
+.container span:nth-child(2) {
   color: var(--grey);
   font-family: Archivo;
   font-size: 18px;
@@ -30,7 +30,7 @@
   line-height: 27px;
 }
 
-.container>input {
+.container input {
   display: block;
   width: 100%;
   padding: 18px 15px;
@@ -46,7 +46,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.container>input:focus {
+.container input:focus {
   border: 1.5px solid rgba(102, 78, 254, 1);
 }
 
@@ -61,13 +61,28 @@
   color: var(--red);
 }
 
-.container>input::placeholder {
+.container input::placeholder {
   color: var(--grey3);
   font-family: Archivo;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 25px;
+}
+
+.container .inputContainer {
+  position: relative;
+}
+
+.container .inputContainer input {
+  padding-left: 3rem;
+}
+
+.container .icon {
+  top: 50%;
+  left: 13px;
+  position: absolute;
+  transform: translateY(-50%);
 }
 
 .errorMessage {
@@ -91,7 +106,7 @@
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
-  .container>input {
+  .container input {
     padding: 12px;
     font-family: Archivo;
     font-size: 14px;
@@ -99,7 +114,7 @@
     border-radius: 5px;
   }
 
-  .container>label {
+  .container label {
     font-size: 16px;
     line-height: 25px;
   }
@@ -115,14 +130,14 @@
     margin-bottom: 16px;
   }
 
-  .container>input {
+  .container input {
     padding: 12px;
     font-size: 14px;
     line-height: 23px;
     border-radius: 5px;
   }
 
-  .container>label {
+  .container label {
     font-size: 16px;
     line-height: 25px;
   }

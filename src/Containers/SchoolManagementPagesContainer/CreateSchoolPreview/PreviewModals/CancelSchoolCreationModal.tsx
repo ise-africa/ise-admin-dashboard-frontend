@@ -7,10 +7,20 @@ type CancelSchoolCreationModalProps = {
     onClick2: () => void;
     imgSrc: string;
     header: string;
+    button1?: string;
+    button2?: string;
     paragraph: string;
 }
 
-const CancelSchoolCreationModal = ({ onClick, onClick2, imgSrc, header, paragraph }: CancelSchoolCreationModalProps) => {
+const CancelSchoolCreationModal = ({
+    onClick,
+    onClick2,
+    imgSrc,
+    header,
+    paragraph,
+    button1,
+    button2
+}: CancelSchoolCreationModalProps) => {
     return (
         <div className={classes.container}>
             <img src={imgSrc} alt="Cancel School" />
@@ -20,11 +30,11 @@ const CancelSchoolCreationModal = ({ onClick, onClick2, imgSrc, header, paragrap
                 <Button
                     type='invalid'
                     onClick={onClick}
-                >No, don't cancel</Button>
+                >{button1 || "No, don't cancel"}</Button>
                 <Button
                     type='delete'
                     onClick={onClick2}
-                >Yes, discard</Button>
+                >{button2 || "Yes, discard"}</Button>
             </div>
         </div>
     )

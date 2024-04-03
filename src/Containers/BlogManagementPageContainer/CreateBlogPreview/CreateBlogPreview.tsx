@@ -1,14 +1,14 @@
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Button from "../../../Components/Button/Button";
-import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
+import classes from "../CreateBlogAddDetails/CreateBlogAddDetails.module.css";
 import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
 import schoolImage from '../../../Assets/Images/schoolImage.svg'
 import { useState } from "react";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
-import CancelSchoolCreationModal from "./PreviewModals/CancelSchoolCreationModal";
-import CancelSchoolSuccessfulModal from "./PreviewModals/CancelSchoolSuccessfulModal";
-import SchoolCreatedSuccessfulModal from "./PreviewModals/SchoolCreatedSuccessfulModal";
 import cancelSvg from '../../../Assets/Images/CancelSchoolCreationImage.svg'
+import CancelSchoolCreationModal from "../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
+import CancelSchoolSuccessfulModal from "../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal";
+import SchoolCreatedSuccessfulModal from "../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/SchoolCreatedSuccessfulModal";
 
 type CreateBlogPreviewProp = {
   showIndicator?: boolean

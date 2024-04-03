@@ -1,6 +1,8 @@
 import React from 'react'
 import classes from './CreateBlogCategoryModal.module.css'
 import Input from '../../../Components/Input/Input'
+import Button from '../../../Components/Button/Button'
+import inputIcon from '../../../Assets/Images/globe.svg'
 
 type CreateBlogCategoryModalProps = {
     onClick: () => void
@@ -11,7 +13,7 @@ const CreateBlogCategoryModal = ({ onClick, onClick2 }: CreateBlogCategoryModalP
     return (
         <div className={classes.container}>
             <div>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg onClick={onClick} width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 13L13 1M1 1L13 13" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </div>
@@ -26,7 +28,17 @@ const CreateBlogCategoryModal = ({ onClick, onClick2 }: CreateBlogCategoryModalP
                     placeholder='E.g Career tips'
                     tip='Category titles show on your posts and blog menu.'
                 />
-                <span>Character count: {20} characters</span>
+                <div className={classes.count}>Character count: <span>{20}</span> characters</div>
+                <Input
+                    type='url'
+                    icon={inputIcon}
+                    label='Google preview'
+                    placeholder='https://iseschool.co/blog/category/Untitled category'
+                />
+            </div>
+            <div className={classes.buttonContainer}>
+                <Button onClick={onClick} type='secondary'>Cancel</Button>
+                <Button onClick={onClick2} type='primary'>Save</Button>
             </div>
         </div>
     )

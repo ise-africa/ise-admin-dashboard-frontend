@@ -2,9 +2,9 @@ import React from 'react'
 import Layout from '../Components/Layout/Layout'
 import { useLocation } from "react-router-dom";
 import CreateBlogAddDetails from '../Containers/BlogManagementPageContainer/CreateBlogAddDetails/CreateBlogAddDetails';
-import CreateSchoolPreview from '../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/CreateSchoolPreview';
 import CreateBlogUploadFile from '../Containers/BlogManagementPageContainer/CreateBlogUploadFile/CreateBlogUploadFile';
 import BlogManagementContainer from '../Containers/BlogManagementPageContainer/BlogManagementContainer/BlogManagementContainer';
+import CreateBlogPreview from '../Containers/BlogManagementPageContainer/CreateBlogPreview/CreateBlogPreview';
 
 
 const AddBlogPostPage = () => {
@@ -28,7 +28,7 @@ const AddBlogPostPage = () => {
             ) : userStep === "2" ? (
                 <CreateBlogUploadFile />
             ) : userStep === "3" ? (
-                <CreateSchoolPreview showIndicator={true} createSchool={true} importanceItems={schoolImportance.map(importance => importance.list)} />
+                <CreateBlogPreview showIndicator={true} createSchool={true} importanceItems={schoolImportance.map(importance => importance.list)} />
             ) : (
                 <BlogManagementContainer />
             )}

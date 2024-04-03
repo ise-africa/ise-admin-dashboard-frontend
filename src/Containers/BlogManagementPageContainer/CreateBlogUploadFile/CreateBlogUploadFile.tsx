@@ -9,8 +9,8 @@ import DragAndDropInput from "../../../Components/DragAndDropInput/DragAndDropIn
 import DropdownWithSearch from "../../../Components/DropdownWithSearch/DropdownWithSearch";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import cancelSvg from '../../../Assets/Images/CancelSchoolCreationImage.svg'
-import CancelSchoolCreationModal from "../CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
-import CancelSchoolSuccessfulModal from "../CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal";
+import CancelSchoolCreationModal from "../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
+import CancelSchoolSuccessfulModal from "../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal";
 
 type CreateBlogUploadFileProp = {
   title?: string;
@@ -32,6 +32,7 @@ const CreateBlogUploadFile = ({
   const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
   const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
   const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false)
+  const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false)
 
   return (
     <SchoolCreatingLayout steps={[1, 2, 3]}>
@@ -83,6 +84,22 @@ const CreateBlogUploadFile = ({
               }}
               onClick2={() => {
                 setDisplayCreateBlogCategoryModal(false)
+                setDisplayCreateBlogCategorySuccessfulModal(true)
+              }}
+            />
+          }
+        />
+      )}
+      {displayCreateBlogCategorySuccessfulModal && (
+        <AcceptedModal
+          onClick={() => { setDisplayCreateBlogCategorySuccessfulModal(false) }}
+          body={
+            <CancelSchoolSuccessfulModal
+              buttonText="Done"
+              header="Category created"
+              paragraph=""
+              onClick={() => {
+                setDisplayCreateBlogCategorySuccessfulModal(false)
               }}
             />
           }
