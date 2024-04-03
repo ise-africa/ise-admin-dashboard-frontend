@@ -143,6 +143,10 @@
     box-shadow: none;
   }
 
+  .stepIndicator {
+    margin-bottom: 20px;
+  }
+
   .step>div {
     font-size: 14px;
     line-height: 23px;

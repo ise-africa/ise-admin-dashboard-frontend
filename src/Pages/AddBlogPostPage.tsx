@@ -3,8 +3,8 @@ import Layout from '../Components/Layout/Layout'
 import { useLocation } from "react-router-dom";
 import CreateBlogAddDetails from '../Containers/BlogManagementPageContainer/CreateBlogAddDetails/CreateBlogAddDetails';
 import CreateSchoolPreview from '../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/CreateSchoolPreview';
-import CreateSchoolUploadFile from '../Containers/SchoolManagementPagesContainer/CreateSchoolUploadFile/CreateSchoolUploadFile';
 import SchoolManagementBoard from '../Containers/SchoolManagementPagesContainer/SchoolManagementBoard/SchoolManagementBoard';
+import CreateBlogUploadFile from '../Containers/BlogManagementPageContainer/CreateBlogUploadFile/CreateBlogUploadFile';
 
 
 const AddBlogPostPage = () => {
@@ -26,7 +26,7 @@ const AddBlogPostPage = () => {
             {userStep === "1" ? (
                 <CreateBlogAddDetails />
             ) : userStep === "2" ? (
-                <CreateSchoolUploadFile />
+                <CreateBlogUploadFile />
             ) : userStep === "3" ? (
                 <CreateSchoolPreview showIndicator={true} createSchool={true} importanceItems={schoolImportance.map(importance => importance.list)} />
             ) : (

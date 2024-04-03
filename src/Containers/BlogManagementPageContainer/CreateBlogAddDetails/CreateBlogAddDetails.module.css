@@ -6,13 +6,13 @@
     flex-direction: column;
 }
 
-.container h2 {
-    font-size: 31px;
+.container>h2 {
+    font-size: 25px;
     font-weight: 500;
-    line-height: 49px;
+    line-height: 45px;
 }
 
-.container p {
+.container>p {
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
@@ -42,11 +42,13 @@
 .flexButtonSection {
     display: flex;
     align-items: center;
+    margin-bottom: 24px;
     justify-content: space-between;
 }
 
 .flexButtonSection button {
     padding: 0;
+    font-size: 16px;
 }
 
 .fileUploadInfo {
@@ -96,10 +98,14 @@
 }
 
 @media screen and (max-width: 768px) {
-    .container h2 {
-        font-size: 25px;
-        line-height: 35px;
-        margin-bottom: 10px;
+    .container>h2 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .container>p {
+        font-size: 14px;
+        line-height: 20px;
     }
 
     .schoolImportanceLabel {
@@ -120,6 +126,7 @@
 
     .container .buttonSection {
         gap: 1rem;
+        margin-top: 20px;
         justify-content: space-between;
     }
 
