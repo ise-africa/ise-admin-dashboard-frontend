@@ -27,8 +27,9 @@ const CreateBlogAddDetails = ({
 
         <div>
           <Input
+            isRequired
             value={name}
-            label="Blogpost title *(Maximum character count: 100)"
+            label="Blogpost title (Maximum character count: 100)"
             placeholder="E.g 5 ways to document your website codes"
             tip="Character count: 35 characters "
           />

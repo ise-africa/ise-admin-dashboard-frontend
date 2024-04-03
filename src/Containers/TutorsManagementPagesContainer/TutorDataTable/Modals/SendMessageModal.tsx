@@ -55,7 +55,8 @@ const SendMessageModal = ({ onClick, onClick2 }: SendMessageModalProps) => {
                     isRequired
                     placeholder="What is the subject of your message" />
                 <TextArea
-                    label="Leave  feedback * "
+                    isRequired
+                    label="Leave  feedback"
                     placeholder="Type your message here..."
                 />
             </div>

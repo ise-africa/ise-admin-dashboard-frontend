@@ -31,18 +31,21 @@ const CreateSchoolAddDetails = ({
 
         <div>
           <Input
+            isRequired
             value={name}
-            label="Name of school *"
+            label="Name of school"
             placeholder="E.g iṣẹ́ School of Business"
           />
           <Input
+            isRequired
             value={motto}
-            label="School motto *"
+            label="School motto"
             placeholder="E.g Help businesses grow"
           />
           <TextArea
+            isRequired
             value={description}
-            label="School description *"
+            label="School description"
             placeholder="Start typing..."
           />
         </div>

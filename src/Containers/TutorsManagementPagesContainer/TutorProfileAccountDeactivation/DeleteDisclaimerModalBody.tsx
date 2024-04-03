@@ -18,7 +18,8 @@ const DeleteDisclaimerModalBody = ({
         <h4>Deactivate account?</h4>
         <p>Please provide reasons for requesting to deactivate this tutor’s account.</p>
         <TextArea
-          label="Feedback *"
+          isRequired
+          label="Feedback"
           placeholder="Enter message here"
         />
 

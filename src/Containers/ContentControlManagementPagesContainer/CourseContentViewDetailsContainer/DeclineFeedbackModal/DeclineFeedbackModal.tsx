@@ -40,7 +40,8 @@ const DeclineFeedbackModal = ({ onClick, onClick2 }: DeclineFeedbackModalProps) 
 
             <div className={classes.textareaSection}>
                 <TextArea
-                    label="Leave  feedback * "
+                    isRequired
+                    label="Leave  feedback"
                     placeholder="E.g Content was too bulky consider breaking into bitsize"
                 />
                 <DragAndDropInput />

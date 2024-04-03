@@ -64,23 +64,27 @@ const TutorProfileAccountManagePassword = () => {
           />
         )}
         <Input
+          isRequired
           type="text"
-          label="First name *"
+          label="First name"
           placeholder={activeAdmin?.tutorFirstName}
         />
         <Input
+          isRequired
           type="text"
-          label="Last name *"
+          label="Last name"
           placeholder={activeAdmin?.tutorLastName}
         />
         <Input
+          isRequired
           type="email"
-          label="Email address *"
+          label="Email address"
           placeholder={activeAdmin?.emailAddress}
         />
         <Input
+          isRequired
           type="password"
-          label="Password *"
+          label="Password"
           placeholder={activeAdmin?.password}
         />
 

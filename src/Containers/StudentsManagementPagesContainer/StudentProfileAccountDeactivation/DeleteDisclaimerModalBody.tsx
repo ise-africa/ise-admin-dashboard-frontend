@@ -18,7 +18,8 @@ const DeleteDisclaimerModalBody = ({
         <h4>Disable student account</h4>
         <p>Please provide reasons for requesting to disable this account.</p>
         <TextArea
-          label="Feedback *"
+          isRequired
+          label="Feedback"
           placeholder="Enter message here"
         />
 

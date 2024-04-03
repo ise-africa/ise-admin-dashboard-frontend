@@ -22,7 +22,7 @@
 }
 
 .container>span:nth-child(2) {
-  color: var(--red);
+  color: var(--grey);
   font-family: Archivo;
   font-size: 18px;
   font-style: normal;

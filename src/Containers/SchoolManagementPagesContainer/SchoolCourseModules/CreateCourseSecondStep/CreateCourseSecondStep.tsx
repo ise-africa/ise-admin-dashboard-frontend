@@ -35,8 +35,9 @@ const CreateCourseSecondStep = ({
 
         <div>
           <TextArea
+            isRequired
             value={description}
-            label="Course description *"
+            label="Course description"
             placeholder="Start typing..."
           />
         </div>

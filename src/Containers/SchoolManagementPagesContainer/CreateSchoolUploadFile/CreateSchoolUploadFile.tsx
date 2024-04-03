@@ -48,13 +48,15 @@ const CreateSchoolUploadFile = ({
 
         <div>
           <Input
+            isRequired
             value={name}
-            label="School name *"
+            label="School name"
             placeholder="E.g School of Business"
           />
           <label className={classes.schoolImportanceLabel}>List the importance of joining this school *</label>
           {[...Array(additionalInputs)].map((_, index) => (
             <Input
+              isRequired
               key={index}
               // value={}
               placeholder="E.g Master the art of talent acquisition for business success."

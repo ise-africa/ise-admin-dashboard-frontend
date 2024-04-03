@@ -54,14 +54,16 @@ const CreateCourseThirdStep = ({
 
         <div>
           <Input
+            isRequired
             value={name}
-            label="Enter cohort name *"
+            label="Enter cohort name"
             placeholder="E.g Talent Acquisition May Cohort"
           />
           <div className={classes.date}>
             <label htmlFor="cohortApplication">Cohort application deadline * </label>
             <div className={classes.selectDate}>
               <input
+                required
                 type="text"
                 value={dealine}
                 id="cohortApplication"
@@ -75,6 +77,7 @@ const CreateCourseThirdStep = ({
             <label htmlFor="cohortStartDate">Cohort start date *</label>
             <div className={classes.selectDate}>
               <input
+                required
                 type="text"
                 value={startDate}
                 id="cohortStartDate"
@@ -105,6 +108,7 @@ const CreateCourseThirdStep = ({
             tip=" Price is in Naira specific to this cohort"
           />
           <Input
+            isRequired
             value={capacity}
             label="Enter cohort capacity"
             placeholder="E.g 35"

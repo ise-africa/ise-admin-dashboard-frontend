@@ -54,18 +54,21 @@ const AddTutorContainer = () => {
             paragraph="Add personal details to create an account."
           >
             <Input
+              isRequired
               type="text"
-              label="First name *"
+              label="First name"
               placeholder="E.g John"
             />
             <Input
+              isRequired
               type="text"
-              label="Last name *"
+              label="Last name"
               placeholder="E.g Doe"
             />
             <Input
+              isRequired
               type="email"
-              label="Email address *"
+              label="Email address"
               placeholder="E.g name@gmail.com"
             />
           </ProfileSectionContainer>

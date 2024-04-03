@@ -44,8 +44,9 @@ const CreateCourseFirstStep = ({
 
         <div>
           <Input
+            isRequired
             value={name}
-            label="Name of course *"
+            label="Name of course"
             placeholder="E.g Talent Acquisition Course"
           />
           <DropdownWithSearch
@@ -61,6 +62,7 @@ const CreateCourseFirstStep = ({
           <label className={classes.schoolImportanceLabel}>List the objectives of this course *</label>
           {[...Array(additionalInputs)].map((_, index) => (
             <Input
+              isRequired
               key={index}
               placeholder="E. g Develop a deep understanding of Talent Acquisition strategies and practices "
             />
