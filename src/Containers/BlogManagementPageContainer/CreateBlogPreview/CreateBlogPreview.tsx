@@ -1,9 +1,11 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../../Components/Button/Button";
 import classes from "../CreateBlogAddDetails/CreateBlogAddDetails.module.css";
 import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
-import schoolImage from '../../../Assets/Images/schoolImage.svg'
+import blogImage from '../../../Assets/Images/blogImage.svg'
 import { useState } from "react";
+import draftImg from "../../../Assets/Images/draftImg.svg"
+import publishImg from "../../../Assets/Images/activateSchool.svg"
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import cancelSvg from '../../../Assets/Images/CancelSchoolCreationImage.svg'
 import CancelSchoolCreationModal from "../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
@@ -40,13 +42,14 @@ const CreateBlogPreview = ({
 
   // Router
   const navigate = useNavigate();
-  const { SchoolId } = useParams()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
   const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
+  const [displaySaveAsDraftModal, setDisplaySaveAsDraftModal] = useState(false)
+  const [displayPublishBlogPostSuccessfulModal, setDisplayPublishBlogPostSuccessfulModal] = useState(false)
   const [displaySchoolUpdateSuccessfulModal, setDisplaySchoolUpdateSuccessfulModal] = useState(false)
   const [displaySchoolCreatedSuccessfulModal, setDisplaySchoolCreatedSuccessfulModal] = useState(false)
 
@@ -58,9 +61,14 @@ const CreateBlogPreview = ({
           body={
             <CancelSchoolCreationModal
               imgSrc={cancelSvg}
-              header="Cancel school creation?"
-              paragraph="You'll lose all information and start over if you cancel."
-              onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
+              button1="Save as draft"
+              button2="Cancel blogpost"
+              header="Cancel blogpost creation?"
+              paragraph="This is a permanent action you will lose the details you’ve added. You might want to save as draft instead"
+              onClick={() => {
+                setDisplayCancelSchoolCreationModal(false)
+                navigate('/blogs')
+              }}
               onClick2={() => {
                 setDisplayCancelSchoolCreationModal(false)
                 setDisplayCancelSchoolSuccessfulModal(true)
@@ -74,12 +82,29 @@ const CreateBlogPreview = ({
           onClick={() => { setDisplayCancelSchoolSuccessfulModal(false) }}
           body={
             <CancelSchoolSuccessfulModal
-              buttonText="Cancel school"
-              header="School creation canceled."
-              paragraph="Click ‘Create School' to start again."
+              buttonText="Create blogpost"
+              header="Blogpost creation canceled"
+              paragraph="Select ‘Create blogpost’ to start all over."
               onClick={() => {
                 setDisplayCancelSchoolSuccessfulModal(false)
-                navigate('/schools/add-school?step=1')
+                navigate('/blogs/add-post?step=1')
+              }}
+            />
+          }
+        />
+      )}
+      {displaySaveAsDraftModal && (
+        <AcceptedModal
+          onClick={() => { setDisplaySaveAsDraftModal(false) }}
+          body={
+            <CancelSchoolSuccessfulModal
+              buttonText="Close"
+              imgSrc={draftImg}
+              header="Blogpost added to draft"
+              paragraph="To edit and publish this blogpost, go to “Drafts” on your dashboard. ."
+              onClick={() => {
+                setDisplaySaveAsDraftModal(false)
+                navigate('/blogs')
               }}
             />
           }
@@ -95,7 +120,7 @@ const CreateBlogPreview = ({
               paragraph="Your edits to the school information have been saved. The changes will reflect on the platform."
               onClick={() => {
                 setDisplaySchoolUpdateSuccessfulModal(false)
-                navigate('/schools')
+                navigate('')
               }}
             />
           }
@@ -106,15 +131,34 @@ const CreateBlogPreview = ({
           onClick={() => { setDisplaySchoolCreatedSuccessfulModal(false) }}
           body={
             <SchoolCreatedSuccessfulModal
-              buttonText="Add course"
-              header="School created"
-              paragraph="You've created [School name] on iṣẹ́ School. You can now proceed to add courses and customise the learning environment." onClick={() => {
+              imgSrc={publishImg}
+              buttonText2="Cancel"
+              header="Publish blogpost?"
+              buttonText="Publish blogpost"
+              paragraph="Once you publish, the blogpost will be live on iṣẹ́ blog"
+              onClick={() => {
                 setDisplaySchoolCreatedSuccessfulModal(false)
-                navigate('/schools/school-created')
+                navigate('')
               }}
               onClick2={() => {
                 setDisplaySchoolCreatedSuccessfulModal(false)
-                navigate(`/schools/${SchoolId}/add-course?step=1`)
+                setDisplayPublishBlogPostSuccessfulModal(true)
+              }}
+            />
+          }
+        />
+      )}
+      {displayPublishBlogPostSuccessfulModal && (
+        <AcceptedModal
+          onClick={() => { setDisplayPublishBlogPostSuccessfulModal(false) }}
+          body={
+            <CancelSchoolSuccessfulModal
+              buttonText="Close"
+              header="Blogpost published successfully!"
+              paragraph="Track blogpost performance on your dashboard."
+              onClick={() => {
+                setDisplayPublishBlogPostSuccessfulModal(false)
+                navigate('')
               }}
             />
           }
@@ -124,90 +168,61 @@ const CreateBlogPreview = ({
       <SchoolCreatingLayout steps={[1, 2, 3]} showProgress={showIndicator}>
 
         <section className={classes.container}>
-          <h2>{title || "Review school information"}</h2>
+          <h2>{title || "Review blogpost details"}</h2>
+          <p>Create a clear title so recipients understand your message.</p>
 
           <div className={classes.textSection}>
             <div>
-              <span>Name of school</span>
-              <p>{name || "iṣẹ́ School of Business"}</p>
+              <span>Featured image</span>
+              <img src={image || blogImage} alt="School cover" />
             </div>
             <div>
-              <span>School tagline</span>
-              <p>{tagline || "Help business grow"}</p>
+              <span>Blogpost title</span>
+              <p>{name || "From novice to pro: Your guide to succeeding in the tech industry "}</p>
             </div>
             <div>
-              <span>School description</span>
-              <p>{description || "Ignite your business potential with our resources at iṣẹ́ School of Business. Gain the knowledge and skills to thrive in the dynamic world of commerce. Lead and achieve greatness with essential business skills."}</p>
+              <span>Blogpost content</span>
+              <p>{tagline || "Are you an aspiring techie eager to make your mark in the tech industry? Whether you're a recent graduate, career changer, or self-taught enthusiast, the path to success may seem daunting. Fear not; we've compiled a concise guide to help you navigate the tech landscape and thrive in....."}</p>
             </div>
             <div>
-              <span>School name</span>
-              <p>{school || "School of Business"}</p>
+              <span>Blogpost category</span>
+              <p>{description || "Tech updates"}</p>
             </div>
             <div>
-              <span>School image</span>
-              <img src={image || schoolImage} alt="School cover" />
+              <span>Blogpost tags</span>
+              <div className={classes.tag}>
+                <p>Technology</p>
+                <p>Career tips</p>
+                <p>Edtech</p>
+              </div>
             </div>
             <div>
-              <span>Importance of joining the school</span>
-              <ul>
-                {importanceItems.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
+              <span>Reading minutes</span>
+              <p>{school || "3 minutes"}</p>
             </div>
           </div>
 
           <div className={`${classes.buttonSection} ${classes.buttonSectionThree}`}>
-            {showIndicator && (
-              <Button
-                type="null"
-                className={classes.canelButton}
-                onClick={() => { setDisplayCancelSchoolCreationModal(true) }}
-              >
-                <span>Cancel</span>
-              </Button>
-            )}
-            {editInformation && (
-              <Button
-                type="secondary"
-                onClick={() => { navigate(`/schools/${SchoolId}/edit-school?step=1`) }}
-              >
-                <span>Edit Information</span>
-              </Button>
-            )}
-            {updateInformation && (
-              <>
-                <Button
-                  type="secondary"
-                  onClick={() => { setSearchParams({ step: "2" }); }}
-                >
-                  <span>Back</span>
-                </Button>
-                <Button
-                  type="primary"
-                  onClick={() => { setDisplaySchoolUpdateSuccessfulModal(true) }}
-                >
-                  <span>Update school information</span>
-                </Button>
-              </>
-            )}
-            {createSchool && (
-              <>
-                <Button
-                  type="secondary"
-                  onClick={() => { setSearchParams({ step: "2" }); }}
-                >
-                  <span>Edit Information</span>
-                </Button>
+            <Button
+              type="null"
+              className={classes.canelButton}
+              onClick={() => { setSearchParams({ step: "2" }) }}
+            >
+              <span>Previous step</span>
+            </Button>
+            <Button
+              type="secondary"
+              onClick={() => { setDisplaySaveAsDraftModal(true) }}
+            >
+              <span>Save as draft</span>
+            </Button>
 
-                <Button
-                  type="primary"
-                  onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
-                >
-                  <span>Create School</span>
-                </Button>
-              </>
-            )}
+            <Button
+              type="primary"
+              onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
+            >
+              <span>Publish blogpost</span>
+            </Button>
           </div>
         </section>
       </SchoolCreatingLayout>

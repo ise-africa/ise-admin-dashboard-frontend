@@ -11,6 +11,7 @@ import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModa
 import cancelSvg from '../../../Assets/Images/CancelSchoolCreationImage.svg'
 import CancelSchoolCreationModal from "../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
 import CancelSchoolSuccessfulModal from "../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal";
+import close from "../../../Assets/Images/x-sign.svg"
 
 type CreateBlogUploadFileProp = {
   title?: string;
@@ -141,6 +142,21 @@ const CreateBlogUploadFile = ({
             label="Add Tags (Use a comma to separate tags) *"
             placeholder="E.g Technology, Edtech, Carrer tips"
           />
+
+          <div className={`${classes.tag} ${classes.addTag}`}>
+            <p>
+              <span>Technology</span>
+              <img src={close} alt="close" />
+            </p>
+            <p>
+              <span>Career tips</span>
+              <img src={close} alt="close" />
+            </p>
+            <p>
+              <span>Edtech</span>
+              <img src={close} alt="close" />
+            </p>
+          </div>
 
           <DropdownWithSearch
             options={[]}

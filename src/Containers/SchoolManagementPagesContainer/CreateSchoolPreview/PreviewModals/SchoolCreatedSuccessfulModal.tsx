@@ -7,14 +7,24 @@ type SchoolCreatedSuccessfulModalProps = {
     onClick?: () => void;
     onClick2: () => void;
     header: string;
+    imgSrc?: string;
     paragraph: string;
     buttonText: string;
+    buttonText2?: string;
 }
 
-const SchoolCreatedSuccessfulModal = ({ onClick, onClick2, header, paragraph, buttonText }: SchoolCreatedSuccessfulModalProps) => {
+const SchoolCreatedSuccessfulModal = ({
+    onClick,
+    onClick2,
+    header,
+    imgSrc,
+    paragraph,
+    buttonText,
+    buttonText2
+}: SchoolCreatedSuccessfulModalProps) => {
     return (
         <div className={classes.container}>
-            <img src={image} alt="Cancel School" />
+            <img src={imgSrc || image} alt="Cancel School" />
             <h4>{header}</h4>
             <p>{paragraph}</p>
             <div className={classes.buttonContainer}>
@@ -22,7 +32,7 @@ const SchoolCreatedSuccessfulModal = ({ onClick, onClick2, header, paragraph, bu
                     <Button
                         type='secondary'
                         onClick={onClick}
-                    >Done</Button>
+                    >{buttonText2 || "Done"}</Button>
                 )}
                 <Button
                     type='primary'
