@@ -1,0 +1,52 @@
+.sectionsNavSection {
+  margin: 1.5rem;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  background: var(--white);
+}
+
+.body {
+  margin: 1.5rem;
+}
+
+@media screen and (min-width: 737px) and (max-width: 1023px) {
+  .container {
+    margin: 0;
+    padding: 0;
+    background: var(--white);
+  }
+
+  .sectionsNavSection {
+    padding: 0 1rem;
+  }
+
+  .body {
+    margin: 0;
+    padding-inline: 16px;
+    background: var(--white);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin-top: -1rem;
+    background: var(--white);
+  }
+
+  .breadCrumbs {
+    padding-top: 1.2rem;
+    padding-bottom: 10px;
+  }
+
+  .sectionsNavSection {
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  .body {
+    margin: 0;
+    padding-top: 1.5rem;
+    padding-inline: 16px;
+    background: var(--white);
+  }
+}

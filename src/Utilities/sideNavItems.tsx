@@ -14,34 +14,55 @@ export type sideNavItemsType = {
 
 export const sideNavItems: sideNavItemsType = [
   {
-    title: "Dashboard",
-    route: "/dashboard",
-    keywords: ["dashboard", ""],
+    title: "Home",
+    route: "/home",
+    keywords: ["home"],
     otherOptions: null,
     isVisible: true,
   },
 
   {
-    title: "Courses",
-    route: "/courses",
-    keywords: ["courses", "courses/"],
+    title: "Users",
+    route: "/users",
+    keywords: ["users"],
+    otherOptions: null,
+    isVisible: true,
+    children: [
+      { title: "Students", route: "/users/students" },
+      { title: "Tutors", route: "/users/tutors" },
+      { title: "Administrator", route: "/users/admins" },
+    ]
+  },
+
+  {
+    title: "Analytics",
+    route: "/analytcs",
+    keywords: ["analytcs"],
     otherOptions: null,
     isVisible: true,
     children: [{ title: "Courses curriculum", route: "/courses/courses-curriculum" }, { title: "Feedback", route: "/courses/feedback" }]
   },
 
   {
-    title: "Student",
-    route: "/student",
-    keywords: ["student"],
+    title: "Course management ",
+    route: "/courses",
+    keywords: ["contents"],
     otherOptions: null,
     isVisible: true,
-    children: [{ title: "Quiz", route: "/student/quiz" }, { title: "Assignment", route: "/student/assignment" }]
 
   },
 
   {
-    title: "Schools",
+    title: "Blog management",
+    route: "/blogs",
+    keywords: ["blog"],
+    otherOptions: null,
+    isVisible: true,
+
+  },
+
+  {
+    title: "Schools management",
     route: "/schools",
     keywords: ["schools"],
     otherOptions: null,
@@ -49,17 +70,49 @@ export const sideNavItems: sideNavItemsType = [
   },
 
   {
-    title: "Profile",
-    route: "/profile",
-    keywords: ["profile"],
+    title: "Communication",
+    route: "/communication",
+    keywords: ["communication"],
     otherOptions: null,
     isVisible: true,
   },
 
   {
-    title: "Support",
+    title: "Feedback",
+    route: "/feedback",
+    keywords: ["feedback"],
+    otherOptions: null,
+    isVisible: true,
+  },
+
+  {
+    title: "Promotions",
+    route: "/promotions",
+    keywords: ["promotions"],
+    otherOptions: null,
+    isVisible: true,
+  },
+
+  {
+    title: "Support tickets",
     route: "/support",
     keywords: ["support"],
+    otherOptions: null,
+    isVisible: true,
+  },
+
+  {
+    title: "Referral",
+    route: "/referral",
+    keywords: ["referral"],
+    otherOptions: null,
+    isVisible: true,
+  },
+
+  {
+    title: "Integrations",
+    route: "/integrations",
+    keywords: ["integrations"],
     otherOptions: null,
     isVisible: true,
   },

@@ -2,6 +2,9 @@ import React, { createContext, Dispatch, SetStateAction, useEffect, useState } f
 import { sideNavItems } from '../Utilities/sideNavItems';
 import { SupportTrackingData, SupportTrackingDataType } from '../Utilities/SupportTrackingData';
 import { adminsData, adminsDataType } from '../Utilities/admins';
+import { tutorsData, tutorsDataType } from '../Utilities/tutors';
+import { studentsData, studentsDataType } from '../Utilities/students';
+import { schoolsData, SchoolDataType } from '../Utilities/schools';
 
 type AppContextProviderProps = {
   children: React.ReactNode
@@ -31,6 +34,12 @@ type AppContextProps = {
   setSupportData: Dispatch<SetStateAction<SupportTrackingDataType[]>>
   adminData: adminsDataType[];
   setAdminData: Dispatch<SetStateAction<adminsDataType[]>>
+  tutors: tutorsDataType
+  setTutors: Dispatch<SetStateAction<tutorsDataType>>
+  students: studentsDataType[]
+  setStudents: Dispatch<SetStateAction<studentsDataType[]>>
+  schools: SchoolDataType[]
+  setSchools: Dispatch<SetStateAction<SchoolDataType[]>>
 }
 
 export const AppContext = createContext({} as AppContextProps)
@@ -59,6 +68,12 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   )
   const [supportData, setSupportData] = useState<SupportTrackingDataType[]>(SupportTrackingData);
   const [adminData, setAdminData] = useState<adminsDataType[]>(adminsData);
+  const [students, setStudents] = useState<studentsDataType[]>(studentsData)
+  const [schools, setSchools] = useState<SchoolDataType[]>(schoolsData)
+  const [tutors, setTutors] = useState<tutorsDataType>(
+    tutorsData as tutorsDataType
+  )
+
 
   //   Effects
   useEffect(() => {
@@ -80,7 +95,13 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         supportData,
         setSupportData,
         adminData,
-        setAdminData
+        setAdminData,
+        tutors,
+        setTutors,
+        students,
+        setStudents,
+        schools,
+        setSchools
       }}
     >
       {children}

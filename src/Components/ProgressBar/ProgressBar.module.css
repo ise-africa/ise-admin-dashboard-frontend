@@ -3,7 +3,6 @@
 }
 
 .progressBar {
-  height: 8px;
   background-color: var(--progressBarYellow);
   border-radius: 50px;
 }
@@ -14,7 +13,7 @@
   border-radius: 50px 0 0 50px;
 }
 
-.container > p {
+.container>p {
   color: var(--grey);
   font-family: Archivo;
   font-size: 13px;

@@ -14,6 +14,7 @@ type InputProps = {
     tip?: string
     style?: React.CSSProperties
     name?: string
+    icon?: string
     condition?: boolean
 }
 
@@ -30,6 +31,7 @@ const Input = ({
     tip,
     style,
     name,
+    icon,
     condition,
 }: InputProps) => {
     // States
@@ -44,26 +46,29 @@ const Input = ({
                     {isRequired && <span>*</span>}
                 </>
             )}
-            <input
-                type={type ? type : 'text'}
-                name={name}
-                placeholder={placeholder}
-                id={label}
-                onChange={onChange}
-                onBlur={(e) => {
-                    if (isRequired && e.target.value === '') {
-                        setInvalid(true)
-                    }
-                    if (condition !== undefined && condition === false) {
-                        setInvalid(true)
-                    } else {
-                        setInvalid(false)
-                    }
-                    if (onBlur) onBlur()
-                }}
-                value={value}
-                className={invalid ? classes.invalid : classes.valid}
-            />
+            <div className={`${icon ? classes.inputContainer : ''}`}>
+                <input
+                    type={type ? type : 'text'}
+                    name={name}
+                    placeholder={placeholder}
+                    id={label}
+                    onChange={onChange}
+                    onBlur={(e) => {
+                        if (isRequired && e.target.value === '') {
+                            setInvalid(true)
+                        }
+                        if (condition !== undefined && condition === false) {
+                            setInvalid(true)
+                        } else {
+                            setInvalid(false)
+                        }
+                        if (onBlur) onBlur()
+                    }}
+                    value={value}
+                    className={invalid ? classes.invalid : classes.valid}
+                />
+                {icon && <img src={icon} alt={name} className={classes.icon} />}
+            </div>
             {(invalid || inValidCondition) && (
                 <span className={classes.errorMessage}>
                     {errorMessage || '*invalid'}{' '}

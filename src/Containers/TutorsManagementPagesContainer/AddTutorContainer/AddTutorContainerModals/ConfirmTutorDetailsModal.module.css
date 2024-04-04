@@ -1,0 +1,136 @@
+.container {
+    width: 90%;
+    margin: 2rem auto;
+
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 36px;
+}
+
+.container p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--grey3);
+}
+
+.container button {
+    width: fit-content;
+    padding: 10px 30px;
+}
+
+.container>ul {
+    list-style: disc;
+    padding-left: 1rem;
+}
+
+.role {
+    gap: 7px;
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+}
+
+.role p,
+.role h4 {
+    font-size: 13px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 26px;
+    color: var(--grey3);
+    font-family: Archivo;
+}
+
+.role h4 {
+    color: var(--grey);
+}
+
+.container>ul li,
+.listContainer p,
+.numberList li {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--grey);
+    font-style: normal;
+    font-family: Archivo;
+}
+
+.container>ul li {
+    color: var(--grey3);
+}
+
+.container>ul li span {
+    color: var(--grey);
+}
+
+.listContainer h4 {
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.listContainer p {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--grey3);
+}
+
+.numberList {
+    list-style: decimal;
+    padding-left: 20px;
+}
+
+.discList {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.buttonContainer {
+    gap: 2rem;
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+    padding-bottom: 1rem;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+    .container h3 {
+        font-size: 18px;
+        line-height: 29px;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+
+    .listContainer h4 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .numberList li {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .buttonContainer {
+        gap: 1rem;
+        margin-top: 24px;
+        padding-bottom: 1rem;
+        justify-content: flex-start;
+    }
+
+    .buttonContainer>button:nth-child(1) {
+        flex: unset;
+        padding: 10px 30px;
+        justify-content: center;
+        border: 2px solid var(--purple);
+    }
+}

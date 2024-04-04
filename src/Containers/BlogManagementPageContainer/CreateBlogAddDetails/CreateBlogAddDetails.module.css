@@ -1,0 +1,142 @@
+.container,
+.textSection,
+.textSection>div {
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.container>h2 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 45px;
+}
+
+.container>p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    margin-top: -24px;
+}
+
+.container button {
+    width: fit-content;
+    padding: 10px 30px;
+}
+
+.container .buttonSection {
+    gap: 1.5rem;
+    display: flex;
+    margin-top: 40px;
+    padding-top: 24px;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid var(--sectionBorder);
+}
+
+.buttonSectionThree .canelButton {
+    padding: 0;
+    margin-right: auto;
+}
+
+.flexButtonSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    justify-content: space-between;
+}
+
+.flexButtonSection button {
+    padding: 0;
+    font-size: 16px;
+}
+
+.fileUploadInfo {
+    padding: 8px;
+    margin-top: -1.125rem;
+    background: var(--progressBarYellow);
+}
+
+.textSection span,
+.fileUploadInfo li {
+    font-size: 13px;
+    list-style: none;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--grey);
+}
+
+.textSection span {
+    color: var(--grey3);
+}
+
+.textSection p,
+.textSection li {
+    font-size: 16px;
+    list-style: disc;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--grey);
+}
+
+.textSection img {
+    width: 500px;
+    height: 500px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.textSection>div {
+    gap: 8px;
+}
+
+.schoolImportanceLabel {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 33px;
+    color: var(--grey);
+}
+
+@media screen and (max-width: 768px) {
+    .container>h2 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .container>p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .schoolImportanceLabel {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .textSection p,
+    .textSection li {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .textSection img {
+        width: 230px;
+        height: 250px;
+    }
+
+    .container .buttonSection {
+        gap: 1rem;
+        margin-top: 20px;
+        justify-content: space-between;
+    }
+
+    .buttonSectionThree {
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+    }
+
+    .buttonSectionThree .canelButton {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+}

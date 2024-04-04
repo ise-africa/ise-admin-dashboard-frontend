@@ -1,8 +1,13 @@
 .container {
-  padding: 0 2rem;
+  padding: 1.5rem 2rem;
   height: 100%;
   overflow: auto;
-  background-color: var(--white);
+  background-color: var(--sideNavBackground);
+}
+
+.logoSection {
+  width: 53px;
+  height: 50px;
 }
 
 .navSection {
@@ -32,23 +37,19 @@
   padding: 0;
 }
 
-.navSection>div>svg:nth-child(3) {
-  margin-left: auto;
-}
-
 .otherOptions>a {
   text-decoration: none;
-  padding: 10px 10px 10px 30px;
+  padding: 10px 10px 10px 42px;
   border-radius: 4px;
   font-family: Archivo;
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 26px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   display: block;
-  color: var(--disabled);
+  color: var(--grey);
   white-space: nowrap;
 }
 
@@ -58,25 +59,23 @@
   transition: all .3s ease-in-out
 }
 
+.otherOptionsLinkActive {
+  color: var(--purple) !important;
+}
+
 .active {
   padding: 10px;
   color: var(--grey);
-  stroke: var(--grey);
-}
-
-.active svg {
-  filter: invert(1);
-  stroke: var(--grey);
-}
-
-.active:nth-child(4) svg {
-  filter: invert(1);
-  stroke: var(--grey);
+  background-color: var(--veryLightPurple);
 }
 
 .inActive {
+  color: var(--grey);
   padding: 10px;
-  color: var(--disabled);
+}
+
+.inActive:nth-child(4) {
+  stroke: none;
 }
 
 .link {
@@ -89,35 +88,38 @@
   text-decoration: none;
 }
 
+.link:nth-child(2) {
+  flex: 1;
+}
+
 .moreMenuContentInActive {
   color: var(--grey);
   border-radius: 5px;
   width: 100%;
   gap: 10px;
   display: flex;
-  padding: 8px;
-  align-items: center;
+  padding: 10px;
 }
 
 .moreMenuContentActive {
-  color: var(--white);
+  background-color: var(--veryLightPurple);
+  color: var(--grey);
   border-radius: 5px;
-  padding: 8px;
+  padding: 10px;
   width: 100%;
   gap: 10px;
   display: flex;
 }
 
 .moreMenuContentInActive a {
-  color: var(--disabled);
+  color: var(--grey);
 }
 
 .moreMenuContentActive a {
-  color: var(--greys);
+  color: var(--grey);
 }
 
 .logout {
   margin-top: 3rem;
-  color: var(--disabled);
   padding: 10px !important;
 }

@@ -32,7 +32,7 @@
 
 @media screen and (max-width: 1023px) {
   .helloUser {
-    padding: 24px 16px;
+    padding: 24px 8px;
   }
 
   .helloUser h2 {

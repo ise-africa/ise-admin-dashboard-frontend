@@ -12,6 +12,7 @@ export type DropdownProps = {
   isRequired?: boolean;
   errorMessage?: string;
   image?: string;
+  tip?: string;
 };
 
 const DropdownWithSearch = (props: DropdownProps) => {
@@ -176,6 +177,7 @@ const DropdownWithSearch = (props: DropdownProps) => {
           </div>
         )}
       </div>
+      {props.tip && <span className={classes.tip}>{props.tip}</span>}
       {invalid && (
         <div className={classes.errorMessage}>
           {props.errorMessage || "Please choose an option to continue"}

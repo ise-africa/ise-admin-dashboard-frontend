@@ -1,0 +1,142 @@
+.userDetails,
+.userDetails>div:nth-child(1) {
+    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.userDetails>div:nth-child(1) {
+    width: 100%;
+    max-width: 500px;
+    flex-direction: column;
+}
+
+.links div,
+.userDetails .userInfo,
+.iconTextContainer,
+.iconTextContainer div {
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.userDetails .userInfo {
+    flex-wrap: nowrap;
+}
+
+.iconTextContainer {
+    gap: 20px;
+}
+
+.iconTextContainer div {
+    gap: 8px;
+}
+
+.userDetails .userInfo img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.about h4,
+.links h4 {
+    color: var(--grey3);
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.iconTextContainer span,
+.about p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.iconTextContainer span {
+    color: var(--grey3);
+}
+
+.links div {
+    gap: 1rem;
+}
+
+.userDetails .userInfo h3 {
+    color: var(--grey);
+    font-weight: 500;
+    line-height: 30px;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.editModal {
+    gap: 1rem;
+    width: 90%;
+    display: flex;
+    margin: 2rem auto;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.editModal>h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 35px;
+    color: var(--grey);
+}
+
+.editModal>p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--grey3);
+}
+
+.editModal>.buttonContainer {
+    gap: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.editModal>.buttonContainer>button {
+    width: auto;
+    padding: 8px 30px;
+}
+
+@media screen and (max-width: 767px) {
+    .userDetails .userInfo {
+        flex-wrap: wrap;
+    }
+
+    .userDetails .userInfo h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .about h4,
+    .links h4 {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .iconTextContainer span,
+    .about p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .editModal>h3 {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .editModal>p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}

@@ -1,0 +1,74 @@
+.container {
+    width: 90%;
+    gap: 1.5rem;
+    display: flex;
+    margin: 2rem auto;
+    flex-direction: column;
+}
+
+.container>div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.container>div:nth-child(1) svg {
+    cursor: pointer;
+}
+
+.container .header h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 35px;
+}
+
+.container .header p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.container .header a {
+    color: var(--purple);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--purple);
+}
+
+.container .count {
+    font-size: 13px;
+    margin-top: -24px;
+    margin-bottom: 24px;
+}
+
+.buttonContainer {
+    gap: calc(2rem - 10px);
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    align-items: center;
+    padding-bottom: 1rem;
+    justify-content: flex-end;
+}
+
+.buttonContainer button {
+    width: auto;
+}
+
+@media screen and (max-width: 767px) {
+    .container .header h3 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .container .header p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .container .count {
+        font-size: 10px;
+        margin-top: -18px;
+        margin-bottom: 24px;
+    }
+
+}

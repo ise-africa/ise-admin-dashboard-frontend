@@ -1,0 +1,167 @@
+.container {
+    width: 90%;
+    height: 80%;
+    margin: 2rem auto;
+
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    color: var(--grey);
+    font-style: normal;
+    font-family: Archivo;
+}
+
+.updatedRole {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.container h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 36px;
+}
+
+.container p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--grey3);
+}
+
+.container button {
+    width: fit-content;
+    padding: 10px 30px;
+}
+
+.role {
+    gap: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+.role p,
+.role button {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 26px;
+    color: var(--grey3);
+}
+
+.role button {
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 2px;
+    color: var(--grey);
+    background: var(--greyWhite);
+    border: 1px solid var(--purple);
+}
+
+.newRole button {
+    background: var(--lightGreen);
+    border: 1px solid var(--timerGreen);
+}
+
+.container>div:nth-child(4) {
+    gap: 10px;
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+}
+
+.selectRole {
+    gap: 1rem;
+    display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--veryVeryLightPurple);
+}
+
+.selectRole p {
+    flex: 1;
+    color: var(--grey);
+    font-size: 16px !important;
+}
+
+.selectRole svg {
+    cursor: pointer;
+}
+
+.listContainer {
+    flex-basis: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    padding: 0 16px;
+    background-color: rgba(247, 245, 255, 1);
+    color: var(--grey);
+    font-family: Archivo;
+    font-style: normal;
+    line-height: 26px;
+    scrollbar-width: none;
+    margin-top: 10px;
+}
+
+.listContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.numberList {
+    list-style: decimal;
+    padding-left: 0;
+}
+
+.numberList li {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.discList {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.buttonContainer {
+    gap: 2rem;
+    display: flex;
+    margin-top: 40px;
+    padding-bottom: 1rem;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+    .container h3 {
+        font-size: 18px;
+        line-height: 29px;
+    }
+
+    .container p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .role p,
+    .role button {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .selectRole {
+        padding: 8px;
+    }
+
+    .numberList li {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .buttonContainer {
+        gap: 1rem;
+        margin-top: 20px;
+    }
+}

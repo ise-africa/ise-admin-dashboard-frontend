@@ -1,0 +1,499 @@
+.container {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    font-style: normal;
+    font-family: Archivo;
+}
+
+.noResult {
+    font-size: 18px;
+    line-height: 29px;
+    margin: 4rem auto;
+}
+
+.filterButton {
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.filterButton span,
+.filterButton button {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.filterButton div {
+    width: 100%;
+    gap: 1.5rem;
+    display: flex;
+    overflow: auto;
+    align-items: center;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.filterButton button {
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 10px;
+    background: var(--white);
+    border: 1px solid #CAC2FE;
+    transition: var(--transition);
+}
+
+.filterButton button:hover {
+    border: 1px solid transparent;
+    background: var(--veryLightPurple);
+}
+
+.engagement {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterButton div::-webkit-scrollbar,
+.engagement>div::-webkit-scrollbar {
+    display: none;
+}
+
+.engagement>div {
+    gap: 1.5rem;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.engagementCard {
+    width: 366px;
+    padding: 1rem;
+    display: flex;
+    flex-shrink: 0;
+    cursor: pointer;
+    text-align: start;
+    border-width: 1px;
+    border-radius: 12px;
+    border-style: solid;
+    box-sizing: border-box;
+    align-items: flex-start;
+    background: var(--white);
+    border-color: transparent;
+    transition: var(--transition);
+    justify-content: space-between;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.05);
+}
+
+.engagementCard:active {
+    border-color: var(--purple);
+}
+
+.engagementCard>div:nth-child(1) {
+    flex: 1;
+    padding-right: 8px;
+}
+
+.engagementCard>div:nth-child(2) {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.engagementCard img {
+    width: 49px;
+    height: 49px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.engagementCard .number {
+    font-size: 39px;
+    font-weight: 500;
+    line-height: 50px;
+}
+
+.engagementCard .title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.engagementCard>div span {
+    font-family: Archivo;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+
+.header {
+    gap: 2rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100px 4fr 200px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem 2rem;
+    border-radius: 16px;
+    background: var(--white);
+}
+
+.pagination,
+.headerItem,
+.headerItem div {
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.headerItem div {
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header div img {
+    height: 1.125em;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.header div span {
+    font-size: 13px;
+    line-height: 23px;
+    font-weight: normal;
+    color: var(--disabled);
+}
+
+.header p {
+    text-align: end;
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: normal;
+    color: var(--grey3);
+    font-style: italic;
+}
+
+.seachInput {
+    width: 100%;
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+.inputSection {
+    position: relative;
+}
+
+.inputSection>input {
+    width: 100%;
+    padding: 11px 40px 11px 64px;
+    border-radius: 10px;
+    border: 1px solid var(--foundation-grey-g-50, #d8d8d8);
+    background: var(--white-body-text, #fff);
+    color: var(--foundation-grey-g-900, #2e2e2e);
+    font-family: Archivo;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    outline: none;
+}
+
+.inputSection>svg {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.body {
+    width: 100%;
+    padding: 24px;
+    background: var(--white);
+}
+
+.body .tableBodyContainer {
+    height: 536px;
+    overflow: auto;
+    padding-right: 1.5rem;
+}
+
+.body .tableBodyContainer::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px;
+}
+
+.body .tableBodyContainer::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 10px;
+}
+
+.body .tableBodyContainer::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 10px;
+}
+
+.tableHeader,
+.tableBody {
+    gap: 40px;
+    width: 100%;
+    display: grid;
+    min-width: 100%;
+    grid-template-columns: 40px 2fr 1fr 1fr 70px;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--grey);
+}
+
+.tableHeader {
+    font-size: 18px;
+    font-weight: 500;
+    padding-block: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.tableBody {
+    padding: 32px 0 10px;
+    border-bottom: 1px solid var(--sectionBorder);
+}
+
+.tableBody:last-child {
+    border-bottom: none;
+    padding-bottom: 40px;
+}
+
+.tableBody div {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.tableBody div img {
+    width: 30px;
+    height: 30px;
+    display: block;
+    border-radius: 50%;
+}
+
+.tableBody span:last-child {
+    cursor: pointer;
+}
+
+.pagination {
+    justify-content: flex-end;
+}
+
+.headerPageButton {
+    margin: 0;
+    padding: 0;
+    border: none;
+    gap: 25px !important;
+    flex-direction: row !important;
+}
+
+.headerPageButton>span {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: var(--purple);
+}
+
+
+.pageButtons {
+    gap: 24px;
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    padding-top: 1.7rem;
+    justify-content: center;
+    border-top: 1px solid var(--sectionBorder)
+}
+
+.pageButtons button {
+    width: 48px;
+    height: 48px;
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--purple);
+    cursor: pointer;
+    color: var(--white);
+    padding: 24px;
+
+    background: var(--purple);
+    transition: var(--threeSecTransition);
+}
+
+.pageButtons>span {
+    width: 40px;
+    height: 40px;
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--sectionBorder);
+    cursor: pointer;
+    transition: var(--threeSecTransition);
+}
+
+
+.pageButtons>span:hover {
+    background: var(--purple);
+}
+
+
+.pageButtons>span>svg {
+    width: 24px;
+    height: 24px;
+}
+
+.headerPageButton {
+    margin: 0;
+    padding: 0;
+    border: none;
+    gap: 25px !important;
+    flex-direction: row !important;
+}
+
+.headerPageButton>span {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: var(--purple);
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+
+    .body,
+    .container {
+        padding: 0;
+    }
+
+    .header {
+        gap: 1rem;
+        padding: 0;
+        grid-template-areas:
+            "selectANDEmail pagination"
+            "search search"
+        ;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .headerItem {
+        grid-area: selectANDEmail;
+    }
+
+    .pagination {
+        grid-area: pagination;
+    }
+
+    .seachInput {
+        max-width: 100%;
+        grid-area: search;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .body,
+    .container {
+        padding: 0;
+    }
+
+    .filterButton {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .filterButton div {
+        gap: 16px;
+    }
+
+    .filterButton span,
+    .filterButton button {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .tableHeader,
+    .tableBody {
+        gap: 20px;
+        font-size: 10px;
+        line-height: 22px;
+        grid-template-columns: 15px 3fr 2fr 2fr 30px;
+    }
+
+    .header {
+        gap: 1rem;
+        padding: 0;
+        grid-template-areas:
+            "selectANDEmail pagination"
+            "search search"
+        ;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .headerItem {
+        grid-area: selectANDEmail;
+    }
+
+    .pagination {
+        grid-area: pagination;
+    }
+
+    .seachInput {
+        max-width: 100%;
+        grid-area: search;
+    }
+
+    .headerPageButton {
+        display: none;
+    }
+
+
+    .tableBody div img {
+        display: none;
+    }
+
+    .engagementCard {
+        width: 252px;
+        border: 1px solid var(--black);
+    }
+
+    .engagementCard .number {
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    .engagementCard .title {
+        font-size: 14px;
+        line-height: 23px;
+    }
+
+    .engagement span {
+        font-size: 10px;
+        line-height: 18px;
+    }
+}

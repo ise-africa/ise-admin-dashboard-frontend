@@ -2,15 +2,17 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
+
 .container {
   margin-bottom: 24px;
 }
 
-.container > label {
+.container>label {
   color: var(--grey);
   font-family: Archivo;
   font-size: 18px;
@@ -19,7 +21,7 @@
   line-height: 27px;
 }
 
-.container > span:nth-child(2) {
+.container>span:nth-child(2) {
   color: var(--red);
   font-family: Archivo;
   font-size: 18px;
@@ -28,7 +30,7 @@
   line-height: 27px;
 }
 
-.container > textarea {
+.container>textarea {
   display: block;
   width: 100%;
   padding: 18px 15px;
@@ -43,10 +45,11 @@
   transition: all 0.3s ease-in-out;
   resize: none;
   min-height: 150px;
+  outline: none;
 }
 
-.container > textarea:focus {
-  outline: 1px solid rgba(102, 78, 254, 1);
+.container>textarea:focus {
+  border: 1.5px solid rgba(102, 78, 254, 1);
 }
 
 /*  */
@@ -60,7 +63,7 @@
   color: var(--red);
 }
 
-.container > textarea::placeholder {
+.container>textarea::placeholder {
   color: var(--grey3);
   font-family: Archivo;
   font-size: 16px;
@@ -90,7 +93,7 @@
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
-  .container > textarea {
+  .container>textarea {
     padding: 12px;
     font-family: Archivo;
     font-size: 14px;
@@ -98,7 +101,7 @@
     border-radius: 5px;
   }
 
-  .container > label {
+  .container>label {
     font-size: 16px;
     line-height: 25px;
   }
@@ -110,7 +113,7 @@
 }
 
 @media screen and (max-width: 767px) and (max-width: 1023px) {
-  .container > textarea {
+  .container>textarea {
     padding: 12px;
     font-family: Archivo;
     font-size: 14px;
@@ -118,7 +121,7 @@
     border-radius: 5px;
   }
 
-  .container > label {
+  .container>label {
     font-size: 16px;
     line-height: 25px;
   }
