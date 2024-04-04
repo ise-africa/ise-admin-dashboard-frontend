@@ -90,6 +90,7 @@
 .tag {
     gap: 8px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -163,5 +164,10 @@
     .buttonSectionThree .canelButton {
         flex-basis: 100%;
         margin-right: 0;
+    }
+
+    .tag p {
+        font-size: 14px;
+        line-height: 22px;
     }
 }
