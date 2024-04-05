@@ -4,10 +4,10 @@ import ellipse from '../../Assets/Images/ellipses.svg';
 import ActionsModal from './ActionsModal/ActionsModal';
 import { useNavigate } from 'react-router-dom';
 import AcceptedModal from '../Modals/AcceptedModal/AcceptedModal';
-import ActivateSchoolModal from './Modals/ActivateSchoolModal';
-import DeactivateSchoolModal from './Modals/DeactivateSchoolModal';
-import ActivateSchoolSuccessfulModal from './Modals/ActivateSchoolSuccessfulModal';
-import DeactivateSchoolSuccessfulModal from './Modals/DeactivateSchoolSuccessfulModal';
+import CreateBlogCategoryModal from '../../Containers/BlogManagementPageContainer/CreateBlogUploadFile/CreateBlogCategoryModal';
+import CancelSchoolCreationModal from '../../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal';
+import CancelSchoolSuccessfulModal from '../../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal';
+import deleteSvg from "../../Assets/Images/deleteBlogPost.svg"
 
 type BlogPostCardProps = {
     id: string;
@@ -35,10 +35,10 @@ const BlogPostCard = ({
 
     // State
     const [showOptions, setShowOptions] = useState(false);
-    const [displayActivateSchoolModal, setDisplayActivateSchoolModal] = useState(false);
-    const [displayActivateSchoolSuccessfulModal, setDisplayActivateSchoolSuccessfulModal] = useState(false);
-    const [displayDeactivateSchoolModal, setDisplayDeactivateSchoolModal] = useState(false);
-    const [displayDeactivateSchoolSuccessfulModal, setDisplayDeactivateSchoolSuccessfulModal] = useState(false);
+    const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
+    const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
+    const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false)
+    const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false)
 
     // Refs
     const containerRef = useRef<HTMLDivElement>(null);
@@ -68,67 +68,70 @@ const BlogPostCard = ({
 
     return (
         <>
-            {displayActivateSchoolModal && (
+            {displayCancelSchoolCreationModal && (
                 <AcceptedModal
-                    onClick={() => {
-                        setDisplayActivateSchoolModal(false);
-                    }}
+                    onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
                     body={
-                        <ActivateSchoolModal
+                        <CancelSchoolCreationModal
+                            imgSrc={deleteSvg}
+                            button1="Cancel"
+                            button2="Yes, Delete"
+                            header="Delete blogpost?"
+                            paragraph="This is a permanent action, All likes, views and comments will be lost."
                             onClick={() => {
-                                setDisplayActivateSchoolModal(false);
+                                setDisplayCancelSchoolCreationModal(false)
+                                navigate('/blogs')
                             }}
                             onClick2={() => {
-                                setDisplayActivateSchoolModal(false);
-                                setDisplayActivateSchoolSuccessfulModal(true);
+                                setDisplayCancelSchoolCreationModal(false)
+                                setDisplayCancelSchoolSuccessfulModal(true)
                             }}
                         />
                     }
                 />
             )}
-            {displayActivateSchoolSuccessfulModal && (
+            {displayCancelSchoolSuccessfulModal && (
                 <AcceptedModal
-                    onClick={() => {
-                        setDisplayActivateSchoolSuccessfulModal(false);
-                    }}
+                    onClick={() => { setDisplayCancelSchoolSuccessfulModal(false) }}
                     body={
-                        <ActivateSchoolSuccessfulModal
+                        <CancelSchoolSuccessfulModal
+                            buttonText="Create blogpost"
+                            header="Blogpost creation canceled"
+                            paragraph="Select ‘Create blogpost’ to start all over."
                             onClick={() => {
-                                setDisplayActivateSchoolSuccessfulModal(false);
+                                setDisplayCancelSchoolSuccessfulModal(false)
+                                navigate('/blogs/add-post?step=1')
                             }}
                         />
                     }
                 />
             )}
-            {displayDeactivateSchoolModal && (
+            {displayCreateBlogCategoryModal && (
                 <AcceptedModal
-                    onClick={() => {
-                        setDisplayDeactivateSchoolModal(false);
-                    }}
+                    onClick={() => { setDisplayCreateBlogCategoryModal(false) }}
                     body={
-                        <DeactivateSchoolModal
+                        <CreateBlogCategoryModal
                             onClick={() => {
-                                setDisplayDeactivateSchoolModal(false);
+                                setDisplayCreateBlogCategoryModal(false)
                             }}
                             onClick2={() => {
-                                setDisplayDeactivateSchoolModal(false);
-                                setDisplayDeactivateSchoolSuccessfulModal(true);
+                                setDisplayCreateBlogCategoryModal(false)
+                                setDisplayCreateBlogCategorySuccessfulModal(true)
                             }}
                         />
                     }
                 />
             )}
-            {displayDeactivateSchoolSuccessfulModal && (
+            {displayCreateBlogCategorySuccessfulModal && (
                 <AcceptedModal
-                    onClick={() => {
-                        setDisplayDeactivateSchoolSuccessfulModal(false);
-                        navigate('/schools')
-                    }}
+                    onClick={() => { setDisplayCreateBlogCategorySuccessfulModal(false) }}
                     body={
-                        <DeactivateSchoolSuccessfulModal
+                        <CancelSchoolSuccessfulModal
+                            buttonText="Done"
+                            header="Category created"
+                            paragraph=""
                             onClick={() => {
-                                setDisplayDeactivateSchoolSuccessfulModal(false);
-                                navigate('/schools')
+                                setDisplayCreateBlogCategorySuccessfulModal(false)
                             }}
                         />
                     }
@@ -157,11 +160,11 @@ const BlogPostCard = ({
                                     onClick2={() => { }}
                                     onClick3={() => { }}
                                     onClick4={() => { }}
-                                    onClick5={() => { setDisplayActivateSchoolModal(true); }}
-                                    onClick6={() => { setDisplayDeactivateSchoolModal(true) }}
+                                    onClick5={() => { }}
+                                    onClick6={() => { }}
                                     onClick7={() => { }}
-                                    onClick8={() => { setDisplayActivateSchoolModal(true); }}
-                                    onClick9={() => { setDisplayDeactivateSchoolModal(true) }}
+                                    onClick8={() => { }}
+                                    onClick9={() => { setDisplayCancelSchoolCreationModal(true) }}
                                 />
                             </div>
                         )}
