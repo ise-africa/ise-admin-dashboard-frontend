@@ -14,15 +14,17 @@ import CancelSchoolSuccessfulModal from "../../SchoolManagementPagesContainer/Cr
 import close from "../../../Assets/Images/x-sign.svg"
 
 type CreateBlogUploadFileProp = {
-  title?: string;
-  name?: string;
-  importanceItems?: string[];
+  category?: string;
+  addTag?: string[];
 }
 
 const CreateBlogUploadFile = ({
-  title,
-  name,
-  importanceItems = []
+  category,
+  addTag = [
+    "EdTech",
+    "Free",
+    "Technology"
+  ],
 }: CreateBlogUploadFileProp) => {
   // Router
   const navigate = useNavigate();
@@ -107,7 +109,7 @@ const CreateBlogUploadFile = ({
         />
       )}
       <section className={classes.container}>
-        <h2>{title || "Add blogpost details"}</h2>
+        <h2>Add blogpost details</h2>
         <p>Organise blogpost content with visuals, tags and categories</p>
 
         <DragAndDropInput
@@ -124,6 +126,7 @@ const CreateBlogUploadFile = ({
           <DropdownWithSearch
             options={[]}
             title="Select option"
+            selected={category}
             label="Select blogpost category *"
             tip="Categories help readers filter and find  blogpost easily "
           />
@@ -144,18 +147,12 @@ const CreateBlogUploadFile = ({
           />
 
           <div className={`${classes.tag} ${classes.addTag}`}>
-            <p>
-              <span>Technology</span>
-              <img src={close} alt="close" />
-            </p>
-            <p>
-              <span>Career tips</span>
-              <img src={close} alt="close" />
-            </p>
-            <p>
-              <span>Edtech</span>
-              <img src={close} alt="close" />
-            </p>
+            {addTag.map((item, index) => (
+              <p key={index}>
+                <span>{item}</span>
+                <img src={close} alt="remove" />
+              </p>
+            ))}
           </div>
 
           <DropdownWithSearch

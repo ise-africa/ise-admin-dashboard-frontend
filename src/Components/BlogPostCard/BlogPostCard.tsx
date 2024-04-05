@@ -29,6 +29,7 @@ const BlogPostCard = ({
     category,
 }: BlogPostCardProps) => {
 
+    // Router
     const navigate = useNavigate();
 
     // State
@@ -150,12 +151,15 @@ const BlogPostCard = ({
                         {showOptions && (
                             <div className={classes.popover} ref={optionsRef}>
                                 <ActionsModal
-                                    onClick={() => { navigate(`/schools/${id}`); }}
-                                    onClick2={() => { navigate(`/schools/${id}/edit-school?step=1`) }}
-                                    onClick3={() => { navigate(`/schools/${id}/add-course?step=1`) }}
-                                    onClick4={() => { navigate(`/schools/${id}/courses`); }}
+                                    onClick={() => { navigate(`/blogs/${id}/edit-post?step=1`) }}
+                                    onClick2={() => { }}
+                                    onClick3={() => { }}
+                                    onClick4={() => { }}
                                     onClick5={() => { setDisplayActivateSchoolModal(true); }}
                                     onClick6={() => { setDisplayDeactivateSchoolModal(true) }}
+                                    onClick7={() => { }}
+                                    onClick8={() => { setDisplayActivateSchoolModal(true); }}
+                                    onClick9={() => { setDisplayDeactivateSchoolModal(true) }}
                                 />
                             </div>
                         )}

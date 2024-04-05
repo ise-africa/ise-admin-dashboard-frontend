@@ -30,6 +30,7 @@ import ContentAnalyticsBoardPage from './Pages/ContentAnalyticsBoardPage'
 import CourseAnalyticsViewDetails from './Pages/CourseAnalyticsViewDetails'
 import BlogManagementPage from './Pages/BlogManagementPage'
 import AddBlogPostPage from './Pages/AddBlogPostPage'
+import EditBlogPostPage from './Pages/EditBlogPostPage'
 
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
 
          <Route path="/blogs" element={<BlogManagementPage />} />
          <Route path="/blogs/add-post" element={<AddBlogPostPage />} />
+         <Route path="/blogs/:PostId/edit-post" element={<EditBlogPostPage />} />
 
          <Route path="/support" element={<Support />} />
          <Route path="/support/:SupportTrackingId" element={<SupportTrackingChatDetailPage />} />

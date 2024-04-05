@@ -12,15 +12,6 @@ const AddBlogPostPage = () => {
     const location = useLocation();
     const userStep = new URLSearchParams(location.search).get("step");
 
-    const schoolImportance = [
-        { list: "Embark on a transformative learning journey with our courses in talent acquisition, customer success and project management." },
-        { list: "Master the art of talent acquisition for business success." },
-        { list: "Develop practical skills in managing customer expectations and supporting business goals." },
-        { list: "Acquire expertise in managing projects and delivering results." },
-        { list: "Gain valuable skills for real-world projects" },
-        { list: "Choose between a free short course or a comprehensive paid program" },
-    ];
-
     return (
         <Layout>
             {userStep === "1" ? (
@@ -28,7 +19,7 @@ const AddBlogPostPage = () => {
             ) : userStep === "2" ? (
                 <CreateBlogUploadFile />
             ) : userStep === "3" ? (
-                <CreateBlogPreview showIndicator={true} createSchool={true} importanceItems={schoolImportance.map(importance => importance.list)} />
+                <CreateBlogPreview />
             ) : (
                 <BlogManagementContainer />
             )}

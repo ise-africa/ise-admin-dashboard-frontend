@@ -14,30 +14,28 @@ import SchoolCreatedSuccessfulModal from "../../SchoolManagementPagesContainer/C
 
 type CreateBlogPreviewProp = {
   showIndicator?: boolean
-  editInformation?: boolean;
-  updateInformation?: boolean;
-  createSchool?: boolean;
+  updateInformation?: string;
   title?: string;
-  name?: string;
-  tagline?: string;
-  description?: string;
-  school?: string;
+  content?: string;
+  category?: string;
+  readTime?: string;
   image?: string;
-  importanceItems?: string[];
+  addTag?: string[];
 }
 
 const CreateBlogPreview = ({
   showIndicator,
-  editInformation,
   updateInformation,
-  createSchool,
   title,
-  name,
-  tagline,
-  description,
-  school,
+  content,
+  category,
+  readTime,
   image,
-  importanceItems = []
+  addTag = [
+    "EdTech",
+    "Free",
+    "Technology"
+  ],
 }: CreateBlogPreviewProp) => {
 
   // Router
@@ -168,7 +166,7 @@ const CreateBlogPreview = ({
       <SchoolCreatingLayout steps={[1, 2, 3]} showProgress={showIndicator}>
 
         <section className={classes.container}>
-          <h2>{title || "Review blogpost details"}</h2>
+          <h2>Review blogpost details</h2>
           <p>Create a clear title so recipients understand your message.</p>
 
           <div className={classes.textSection}>
@@ -178,27 +176,27 @@ const CreateBlogPreview = ({
             </div>
             <div>
               <span>Blogpost title</span>
-              <p>{name || "From novice to pro: Your guide to succeeding in the tech industry "}</p>
+              <p>{title || "From novice to pro: Your guide to succeeding in the tech industry "}</p>
             </div>
             <div>
               <span>Blogpost content</span>
-              <p>{tagline || "Are you an aspiring techie eager to make your mark in the tech industry? Whether you're a recent graduate, career changer, or self-taught enthusiast, the path to success may seem daunting. Fear not; we've compiled a concise guide to help you navigate the tech landscape and thrive in....."}</p>
+              <p>{content || "Are you an aspiring techie eager to make your mark in the tech industry? Whether you're a recent graduate, career changer, or self-taught enthusiast, the path to success may seem daunting. Fear not; we've compiled a concise guide to help you navigate the tech landscape and thrive in....."}</p>
             </div>
             <div>
               <span>Blogpost category</span>
-              <p>{description || "Tech updates"}</p>
+              <p>{category || "Tech updates"}</p>
             </div>
             <div>
               <span>Blogpost tags</span>
               <div className={classes.tag}>
-                <p>Technology</p>
-                <p>Career tips</p>
-                <p>Edtech</p>
+                {addTag.map((item, index) => (
+                  <p key={index}>{item}</p>
+                ))}
               </div>
             </div>
             <div>
               <span>Reading minutes</span>
-              <p>{school || "3 minutes"}</p>
+              <p>{readTime || "3 minutes"}</p>
             </div>
           </div>
 
@@ -221,7 +219,7 @@ const CreateBlogPreview = ({
               type="primary"
               onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
             >
-              <span>Publish blogpost</span>
+              <span>{updateInformation || "Publish blogpost"}</span>
             </Button>
           </div>
         </section>

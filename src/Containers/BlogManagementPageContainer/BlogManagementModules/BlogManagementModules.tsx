@@ -13,7 +13,7 @@ const BlogManagementModules = () => {
         {
             title: "Published posts",
             isActive: true,
-            statusFilter: "Published",
+            statusFilter: "Publish",
             emptyState: {
                 header: "No blogposts",
                 paragraph: "Select “Create blogpost” to share insights, and connect with iṣẹ́’s audience. Once you publish a blogpost, it’ll appear here."

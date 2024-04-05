@@ -6,12 +6,10 @@ import Input from "../../../Components/Input/Input";
 
 type CreateBlogAddDetailsProps = {
   title?: string;
-  name?: string;
 }
 
 const CreateBlogAddDetails = ({
   title,
-  name,
 }: CreateBlogAddDetailsProps) => {
   // Navigate
   const navigate = useNavigate();
@@ -22,16 +20,16 @@ const CreateBlogAddDetails = ({
   return (
     <SchoolCreatingLayout steps={[1, 2, 3]}>
       <section className={classes.container}>
-        <h2>{title || "Create blogpost content"}</h2>
+        <h2>Create blogpost content</h2>
         <p>Start blogposts with suitable titles and create your content here</p>
 
         <div>
           <Input
             isRequired
-            value={name}
+            value={title}
             label="Blogpost title (Maximum character count: 100)"
             placeholder="E.g 5 ways to document your website codes"
-            tip="Character count: 35 characters "
+            tip={`Character count: ${35} characters`}
           />
           <h1>Text Editor</h1>
         </div>
