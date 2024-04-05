@@ -1,22 +1,23 @@
-import { useState } from 'react'
-import classes from './Input.module.css'
+import { useState, useEffect } from 'react';
+import classes from './Input.module.css';
 
 type InputProps = {
-    type?: string
-    label?: string
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onBlur?: () => void
-    value?: string
-    isRequired?: boolean
-    errorMessage?: string
-    inValidCondition?: boolean
-    placeholder?: string
-    tip?: string
-    style?: React.CSSProperties
-    name?: string
-    icon?: string
-    condition?: boolean
-}
+    type?: string;
+    label?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: () => void;
+    value?: string;
+    isRequired?: boolean;
+    errorMessage?: string;
+    inValidCondition?: boolean;
+    placeholder?: string;
+    tip?: string;
+    style?: React.CSSProperties;
+    name?: string;
+    icon?: string;
+    condition?: boolean;
+    maxLength?: number | undefined;
+};
 
 const Input = ({
     type,
@@ -33,9 +34,27 @@ const Input = ({
     name,
     icon,
     condition,
+    maxLength,
 }: InputProps) => {
     // States
-    const [invalid, setInvalid] = useState(false)
+    const [invalid, setInvalid] = useState(false);
+    const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
+
+    useEffect(() => {
+        setCharacterCount(value ? value.length : 0);
+    }, [value]);
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = event.target.value;
+        if (maxLength !== undefined && inputValue.length > maxLength) {
+            event.preventDefault();
+            setInvalid(true);
+            return;
+        }
+        setCharacterCount(inputValue.length);
+        if (onChange) onChange(event);
+        setInvalid(false);
+    };
 
     return (
         <div className={classes.container} style={style}>
@@ -52,17 +71,17 @@ const Input = ({
                     name={name}
                     placeholder={placeholder}
                     id={label}
-                    onChange={onChange}
+                    onChange={handleInputChange}
                     onBlur={(e) => {
                         if (isRequired && e.target.value === '') {
-                            setInvalid(true)
+                            setInvalid(true);
                         }
                         if (condition !== undefined && condition === false) {
-                            setInvalid(true)
+                            setInvalid(true);
                         } else {
-                            setInvalid(false)
+                            setInvalid(false);
                         }
-                        if (onBlur) onBlur()
+                        if (onBlur) onBlur();
                     }}
                     value={value}
                     className={invalid ? classes.invalid : classes.valid}
@@ -75,8 +94,13 @@ const Input = ({
                 </span>
             )}
             {tip && <span className={classes.tip}>{tip}</span>}
+            {maxLength && (
+                <span className={classes.tip}>
+                    Character count: {characterCount} characters
+                </span>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default Input
+export default Input;
