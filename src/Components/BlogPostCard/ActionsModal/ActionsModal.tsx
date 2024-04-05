@@ -10,6 +10,7 @@ type ActionsModalProps = {
    onClick7: () => void
    onClick8: () => void
    onClick9: () => void
+   status: string;
 }
 
 const ActionsModal = ({
@@ -22,6 +23,7 @@ const ActionsModal = ({
    onClick7,
    onClick8,
    onClick9,
+   status,
 }: ActionsModalProps) => {
 
    const modalOptions = [
@@ -100,18 +102,27 @@ const ActionsModal = ({
       },
    ];
 
+   const filteredOptions = modalOptions.filter(option => {
+      if (status === "Publish" && ["Edit blogpost", "View blogpost", "Share blogpost", "View report", "Revert to draft", "Archive blogpost"].includes(option.title)) {
+         return true;
+      } else if (status === "Draft" && ["Edit blogpost", "Publish blogpost", "Archive blogpost"].includes(option.title)) {
+         return true;
+      } else if (status === "Archive" && ["Restore blogpost", "Delete blogpost"].includes(option.title)) {
+         return true;
+      }
+      return false;
+   });
+
    return (
       <div className={classes.container}>
-         {modalOptions.map((data, i) => (
-            <>
-               <div key={i} onClick={data.action}>
-                  {data.svg}
-                  <span>{data.title}</span>
-               </div>
-            </>
+         {filteredOptions.map((data, i) => (
+            <div key={i} onClick={data.action}>
+               {data.svg}
+               <span className={data.title === 'Delete blogpost' ? classes.delete : ''}>{data.title}</span>
+            </div>
          ))}
       </div>
    )
 }
 
-export default ActionsModal
+export default ActionsModal;

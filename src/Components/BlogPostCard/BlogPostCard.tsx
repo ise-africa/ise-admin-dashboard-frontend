@@ -14,7 +14,7 @@ type BlogPostCardProps = {
     image: string;
     title: string;
     date?: string;
-    status: string;
+    postStatus: string; // Changed prop name to postStatus
     courses?: string;
     category?: string;
     onClick?: () => void;
@@ -27,6 +27,7 @@ const BlogPostCard = ({
     onClick,
     date,
     category,
+    postStatus,
 }: BlogPostCardProps) => {
 
     // Router
@@ -151,6 +152,7 @@ const BlogPostCard = ({
                         {showOptions && (
                             <div className={classes.popover} ref={optionsRef}>
                                 <ActionsModal
+                                    status={postStatus}
                                     onClick={() => { navigate(`/blogs/${id}/edit-post?step=1`) }}
                                     onClick2={() => { }}
                                     onClick3={() => { }}

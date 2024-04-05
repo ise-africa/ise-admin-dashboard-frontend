@@ -37,6 +37,6 @@
     border-top: 1px solid var(--sectionBorder);
 }
 
-.container div:last-child span {
+.container div:last-child .delete {
     color: var(--red);
 }
