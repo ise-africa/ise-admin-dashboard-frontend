@@ -2,11 +2,11 @@ import classes from "./BlogManagementModules.module.css"
 import { AppContext } from "../../../Context/AppContext";
 import React, { useContext, useEffect, useState } from 'react'
 import SectionsNav4 from '../../../Components/SectionsNav4/SectionsNav4';
-import SchoolCreatedContainer from '../../SchoolManagementPagesContainer/SchoolCreatedContainer/SchoolCreatedContainer';
 import BlogMangementModulesEmptyTab from './BlogMangementModulesEmptyTab';
+import BlogCreatedContainer from "../BlogCreatedContainer/BlogCreatedContainer";
 
 const BlogManagementModules = () => {
-    const { schools } = useContext(AppContext)
+    const { blogPost } = useContext(AppContext)
 
     // States
     const [navItems, setNavItems] = useState<any[]>([
@@ -39,19 +39,19 @@ const BlogManagementModules = () => {
         },
     ]);
 
-    const [filteredSchools, setFilteredSchools] = useState<any[]>(schools);
+    const [filteredBlogPost, setFilteredBlogPost] = useState<any[]>(blogPost);
 
     useEffect(() => {
         const activeTab = navItems.find(item => item.isActive);
         if (activeTab) {
             if (activeTab.statusFilter) {
-                const filtered = schools.filter(school => school.status === activeTab.statusFilter);
-                setFilteredSchools(filtered);
+                const filtered = blogPost.filter(data => data.status === activeTab.statusFilter);
+                setFilteredBlogPost(filtered);
             } else {
-                setFilteredSchools(schools);
+                setFilteredBlogPost(blogPost);
             }
         }
-    }, [navItems, schools]);
+    }, [navItems, blogPost]);
 
     //   Utils
     const activeComponent = navItems.find((data) => data.isActive);
@@ -61,8 +61,8 @@ const BlogManagementModules = () => {
                 <SectionsNav4 navItems={navItems} setNavItems={setNavItems} />
             </div>
             <div className={classes.body}>
-                {filteredSchools.length > 0 ? (
-                    <SchoolCreatedContainer notShowEmptyTab={true} schools={filteredSchools} />
+                {filteredBlogPost.length > 0 ? (
+                    <BlogCreatedContainer notShowEmptyTab={true} blogPost={filteredBlogPost} />
                 ) : (
                     <BlogMangementModulesEmptyTab
                         header={activeComponent.emptyState.header}
@@ -70,6 +70,7 @@ const BlogManagementModules = () => {
                     />
                 )}
             </div>
+
         </section>
     );
 };

@@ -5,6 +5,7 @@ import { adminsData, adminsDataType } from '../Utilities/admins';
 import { tutorsData, tutorsDataType } from '../Utilities/tutors';
 import { studentsData, studentsDataType } from '../Utilities/students';
 import { schoolsData, SchoolDataType } from '../Utilities/schools';
+import { blogsPostData, BlogPostDataType } from '../Utilities/blogPost';
 
 type AppContextProviderProps = {
   children: React.ReactNode
@@ -40,6 +41,8 @@ type AppContextProps = {
   setStudents: Dispatch<SetStateAction<studentsDataType[]>>
   schools: SchoolDataType[]
   setSchools: Dispatch<SetStateAction<SchoolDataType[]>>
+  blogPost: BlogPostDataType[]
+  setBlogPost: Dispatch<SetStateAction<BlogPostDataType[]>>
 }
 
 export const AppContext = createContext({} as AppContextProps)
@@ -70,6 +73,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [adminData, setAdminData] = useState<adminsDataType[]>(adminsData);
   const [students, setStudents] = useState<studentsDataType[]>(studentsData)
   const [schools, setSchools] = useState<SchoolDataType[]>(schoolsData)
+  const [blogPost, setBlogPost] = useState<BlogPostDataType[]>(blogsPostData)
   const [tutors, setTutors] = useState<tutorsDataType>(
     tutorsData as tutorsDataType
   )
@@ -101,7 +105,9 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         students,
         setStudents,
         schools,
-        setSchools
+        setSchools,
+        blogPost,
+        setBlogPost
       }}
     >
       {children}

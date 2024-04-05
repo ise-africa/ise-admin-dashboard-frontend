@@ -1,0 +1,72 @@
+.containerPadding {
+    padding: 40px 32px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--grey);
+    align-items: center;
+}
+
+.container>div {
+    gap: 1rem;
+    width: 100%;
+    display: flex;
+    padding: 16px 8px;
+    position: relative;
+    background: var(--white);
+    border-bottom: 1px solid var(--sectionBorder);
+}
+
+.container>div:last-child {
+    border-bottom: none;
+}
+
+.container .emptyTab {
+    padding: 1rem;
+    justify-content: center;
+}
+
+.container .emptyTab img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.container .emptyTab h2 {
+    font-size: 31px;
+    font-weight: 500;
+    line-height: 41px;
+}
+
+.container .emptyTab p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.container .school>img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    background: rgb(0, 0, 0, 10%);
+}
+
+@media screen and (max-width: 768px) {
+    .container .emptyTab img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .container .emptyTab h2 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .container .emptyTab p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
