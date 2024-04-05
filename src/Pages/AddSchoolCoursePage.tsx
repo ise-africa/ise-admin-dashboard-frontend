@@ -18,12 +18,12 @@ const AddSchoolCoursePage = () => {
     const userStep = new URLSearchParams(location.search).get("step");
 
     const courseObjective = [
-        { list: "Develop a deep understanding of Talent Acquisition strategies and practices" },
-        { list: "Beginner-friendly program- no experience needed" },
-        { list: "Receive personalised one-on-one mentorship and guidance sessions" },
-        { list: "Gain practical skills to source, assess, and hire top talent effectively" },
-        { list: "Gain valuable skills for real-world projects" },
-        { list: "Complete course in 4 months at 10hrs/week" },
+        "Develop a deep understanding of Talent Acquisition strategies and practices",
+        "Beginner-friendly program- no experience needed",
+        "Receive personalised one-on-one mentorship and guidance sessions",
+        "Gain practical skills to source, assess, and hire top talent effectively",
+        "Gain valuable skills for real-world projects",
+        "Complete course in 4 months at 10hrs/week",
     ];
     // Context
     const { schools } = useContext(AppContext)
@@ -60,7 +60,7 @@ const AddSchoolCoursePage = () => {
             ) : userStep === "3" ? (
                 <CreateCourseThirdStep showIndicator={true} createCohort={true} />
             ) : userStep === "4" ? (
-                <CreateCourseFourthStep showIndicator={true} createCourse={true} objectives={courseObjective.map(importance => importance.list)} />
+                <CreateCourseFourthStep showIndicator={true} createCourse={true} objectives={courseObjective.map(importance => importance)} />
             ) : (
                 <SchoolCreatedPage />
             )}

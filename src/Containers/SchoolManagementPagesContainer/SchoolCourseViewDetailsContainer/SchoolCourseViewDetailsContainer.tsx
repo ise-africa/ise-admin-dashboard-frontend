@@ -30,7 +30,7 @@ const SchoolCourseViewDetailsContainer = ({ editCohort, editInformation }: Schoo
                 tagline={activeCourse?.difficultyLevel}
                 description={activeCourse?.courseDescription}
                 image={activeCourse?.courseImage}
-                objectives={activeCourse?.objectives.map(objective => objective.list)}
+                objectives={activeCourse?.objectives.map(objective => objective)}
                 cohortName={activeCourse?.cohortName}
                 cohortDeadline={activeCourse?.applicationDeadLine}
                 cohortStart={activeCourse?.startDate}

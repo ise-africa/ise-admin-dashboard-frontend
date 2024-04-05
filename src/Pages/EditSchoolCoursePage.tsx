@@ -14,16 +14,6 @@ const EditSchoolCoursePage = () => {
     // Router
     const location = useLocation();
     const userStep = new URLSearchParams(location.search).get("step");
-
-    const courseObjective = [
-        { list: "Develop a deep understanding of Talent Acquisition strategies and practices" },
-        { list: "Beginner-friendly program- no experience needed" },
-        { list: "Receive personalised one-on-one mentorship and guidance sessions" },
-        { list: "Gain practical skills to source, assess, and hire top talent effectively" },
-        { list: "Gain valuable skills for real-world projects" },
-        { list: "Complete course in 4 months at 10hrs/week" },
-    ];
-
     // Router
     const { SchoolId, CourseId } = useParams();
 
@@ -40,6 +30,7 @@ const EditSchoolCoursePage = () => {
                     title='Edit Course'
                     name={activeCourse?.courseName}
                     level={activeCourse?.difficultyLevel}
+                    objectives={activeCourse?.objectives.map(importance => importance)}
                 />
             ) : userStep === "2" ? (
                 <CreateCourseSecondStep
@@ -64,7 +55,7 @@ const EditSchoolCoursePage = () => {
                 <CreateCourseFourthStep
                     showIndicator={true}
                     updateInformation={true}
-                    objectives={courseObjective.map(importance => importance.list)}
+                    objectives={activeCourse?.objectives.map(importance => importance)}
                 />
             ) : (
                 <SchoolCreatedPage />

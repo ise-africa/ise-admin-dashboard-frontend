@@ -14,15 +14,6 @@ const EditSchoolPage = () => {
     const { SchoolId } = useParams();
     const userStep = new URLSearchParams(location.search).get("step");
 
-    const schoolImportance = [
-        { list: "Embark on a transformative learning journey with our courses in talent acquisition, customer success and project management." },
-        { list: "Master the art of talent acquisition for business success." },
-        { list: "Develop practical skills in managing customer expectations and supporting business goals." },
-        { list: "Acquire expertise in managing projects and delivering results." },
-        { list: "Gain valuable skills for real-world projects" },
-        { list: "Choose between a free short course or a comprehensive paid program" },
-    ];
-
     // Router
 
     // Context 
@@ -43,13 +34,17 @@ const EditSchoolPage = () => {
                 <CreateSchoolUploadFile
                     title='Edit School'
                     name={activeSchool?.schoolName}
-                    importanceItems={schoolImportance.map(importance => importance.list)}
+                    importanceItems={activeSchool?.schoolImportance.map(importance => importance)}
                 />
             ) : userStep === "3" ? (
                 <CreateSchoolPreview
                     showIndicator={true}
                     updateInformation={true}
-                    importanceItems={schoolImportance.map(importance => importance.list)} />
+                    image={activeSchool?.schoolImage}
+                    name={activeSchool?.nameOfSchool}
+                    tagline={activeSchool?.schoolTagline}
+                    description={activeSchool?.schoolDescription}
+                    importanceItems={activeSchool?.schoolImportance.map(importance => importance)} />
             ) : (
                 <SchoolManagementBoard />
             )}

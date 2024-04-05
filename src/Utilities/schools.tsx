@@ -8,9 +8,7 @@ export type SchoolDataType = {
     schoolImage: string;
     schoolTagline: string;
     schoolDescription: string;
-    schoolImportance: {
-        list: string
-    }[];
+    schoolImportance: string[];
     nameOfSchool: string;
     status: string;
     displayOptions: boolean;
@@ -27,9 +25,7 @@ export type SchoolDataType = {
         cohortTutor: string;
         cohortPrice: string;
         cohortCapacity: string;
-        objectives: {
-            list: string
-        }[];
+        objectives: string[];
         cohorts: {
             cohortId: string;
             cohortName: string;
@@ -48,12 +44,12 @@ export const schoolsData: SchoolDataType[] = [
         schoolTagline: 'Help business grow',
         schoolDescription: 'Ignite your business potential with our resources at ise School of Business. Gain the knowledge and skills to thrive',
         schoolImportance: [
-            { list: "Embark on a transformative learning journey with our courses in talent acquisition, customer success and project management." },
-            { list: "Master the art of talent acquisition for business success." },
-            { list: "Develop practical skills in managing customer expectations and supporting business goals." },
-            { list: "Acquire expertise in managing projects and delivering results." },
-            { list: "Gain valuable skills for real-world projects" },
-            { list: "Choose between a free short course or a comprehensive paid program" },
+            "Embark on a transformative learning journey with our courses in talent acquisition, customer success and project management.",
+            "Master the art of talent acquisition for business success.",
+            "Develop practical skills in managing customer expectations and supporting business goals.",
+            "Acquire expertise in managing projects and delivering results.",
+            "Gain valuable skills for real-world projects",
+            "Choose between a free short course or a comprehensive paid program",
         ],
         nameOfSchool: 'iṣẹ́ School of Business',
         status: 'Active',
@@ -73,12 +69,12 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦110,000',
                 cohortCapacity: '55',
                 objectives: [
-                    { list: "Develop a deep understanding of Talent Acquisition strategies and practices" },
-                    { list: "Beginner-friendly program- no experience needed" },
-                    { list: "Receive personalised one-on-one mentorship and guidance sessions" },
-                    { list: "Gain practical skills to source, assess, and hire top talent effectively" },
-                    { list: "Gain valuable skills for real-world projects" },
-                    { list: "Complete course in 4 months at 10hrs/week" },
+                    "Develop a deep understanding of Talent Acquisition strategies and practices",
+                    "Beginner-friendly program- no experience needed",
+                    "Receive personalised one-on-one mentorship and guidance sessions",
+                    "Gain practical skills to source, assess, and hire top talent effectively",
+                    "Gain valuable skills for real-world projects",
+                    "Complete course in 4 months at 10hrs/week",
                 ],
                 cohorts: [
                     {
@@ -111,11 +107,11 @@ export const schoolsData: SchoolDataType[] = [
         schoolTagline: 'Unlock the world of software',
         schoolDescription: 'Ignite your Software Development potential with our resources at ise School of Software Development. Gain the knowledge and skills to thrive.',
         schoolImportance: [
-            { list: "Learn fundamental programming concepts and techniques." },
-            { list: "Explore advanced topics such as software architecture and design patterns." },
-            { list: "Gain hands-on experience through real-world projects and case studies." },
-            { list: "Collaborate with industry professionals and fellow learners." },
-            { list: "Stay updated with the latest technologies and industry trends." }
+            "Learn fundamental programming concepts and techniques.",
+            "Explore advanced topics such as software architecture and design patterns.",
+            "Gain hands-on experience through real-world projects and case studies.",
+            "Collaborate with industry professionals and fellow learners.",
+            "Stay updated with the latest technologies and industry trends."
         ],
         nameOfSchool: 'iṣẹ́ School of Software Development',
         status: 'Inactive',
@@ -130,11 +126,11 @@ export const schoolsData: SchoolDataType[] = [
         schoolTagline: 'Create with imagination',
         schoolDescription: 'Explore your creativity and design skills at the School of Design. Develop innovative solutions and bring your ideas to life.',
         schoolImportance: [
-            { list: "Learn design principles and techniques from industry experts." },
-            { list: "Gain hands-on experience using industry-standard design tools and software." },
-            { list: "Collaborate with peers on design projects and challenges." },
-            { list: "Receive feedback and guidance from experienced designers." },
-            { list: "Build a portfolio showcasing your design projects and achievements." }
+            "Learn design principles and techniques from industry experts.",
+            "Gain hands-on experience using industry-standard design tools and software.",
+            "Collaborate with peers on design projects and challenges.",
+            "Receive feedback and guidance from experienced designers.",
+            "Build a portfolio showcasing your design projects and achievements."
         ],
         nameOfSchool: 'iṣẹ́ School of Design',
         status: 'Active',
@@ -154,12 +150,12 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦150,000',
                 cohortCapacity: '45',
                 objectives: [
-                    { list: "Develop a strong foundation in graphic design principles and techniques" },
-                    { list: "Hands-on experience with industry-standard design tools and software" },
-                    { list: "Create visually compelling designs for various media platforms" },
-                    { list: "Collaborate with peers ondesign projects and receive constructive feedback" },
-                    { list: "Build a professional portfolio showcasing your graphic design skills" },
-                    { list: "Complete course in 6 months at 8hrs/week" }
+                    "Develop a strong foundation in graphic design principles and techniques",
+                    "Hands-on experience with industry-standard design tools and software",
+                    "Create visually compelling designs for various media platforms",
+                    "Collaborate with peers ondesign projects and receive constructive feedback",
+                    "Build a professional portfolio showcasing your graphic design skills",
+                    "Complete course in 6 months at 8hrs/week"
                 ],
                 cohorts: [
                     {
@@ -196,11 +192,11 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦150,000',
                 cohortCapacity: '50',
                 objectives: [
-                    { list: "Learn HTML, CSS, and JavaScript to build interactive and responsive websites" },
-                    { list: "Explore design principles and best practices for effective web design" },
-                    { list: "Hands-on experience with industry-standard web development tools and frameworks" },
-                    { list: "Create a portfolio of web design projects to showcase your skills to potential employers" },
-                    { list: "Complete course in 6 months at 8hrs/week" }
+                    "Learn HTML, CSS, and JavaScript to build interactive and responsive websites",
+                    "Explore design principles and best practices for effective web design",
+                    "Hands-on experience with industry-standard web development tools and frameworks",
+                    "Create a portfolio of web design projects to showcase your skills to potential employers",
+                    "Complete course in 6 months at 8hrs/week"
                 ],
                 cohorts: [
                     {
@@ -233,11 +229,11 @@ export const schoolsData: SchoolDataType[] = [
         schoolTagline: 'Heal with compassion',
         schoolDescription: 'Join us at the School of Medicine to embark on a journey of healing and discovery. Learn from top medical professionals and make a difference in people\'s lives.',
         schoolImportance: [
-            { list: "Study anatomy, physiology, and medical sciences to understand the human body." },
-            { list: "Gain practical clinical experience through internships and rotations." },
-            { list: "Develop communication and empathy skills essential for patient care." },
-            { list: "Conduct research to advance medical knowledge and treatments." },
-            { list: "Join a community dedicated to promoting health and well-being." }
+            "Study anatomy, physiology, and medical sciences to understand the human body.",
+            "Gain practical clinical experience through internships and rotations.",
+            "Develop communication and empathy skills essential for patient care.",
+            "Conduct research to advance medical knowledge and treatments.",
+            "Join a community dedicated to promoting health and well-being."
         ],
         nameOfSchool: 'iṣẹ́ School of Medicine',
         status: 'Active',
@@ -257,11 +253,11 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦120,000',
                 cohortCapacity: '40',
                 objectives: [
-                    { list: "Learn the basic terminology and concepts of human anatomy" },
-                    { list: "Understand the structure and function of major organ systems" },
-                    { list: "Identify the anatomical structures and their locations in the body" },
-                    { list: "Explore the relationship between anatomy and physiology" },
-                    { list: "Complete course in 3 months at 6hrs/week" }
+                    "Learn the basic terminology and concepts of human anatomy",
+                    "Understand the structure and function of major organ systems",
+                    "Identify the anatomical structures and their locations in the body",
+                    "Explore the relationship between anatomy and physiology",
+                    "Complete course in 3 months at 6hrs/week",
                 ],
                 cohorts: [
                     {
@@ -298,11 +294,11 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦150,000',
                 cohortCapacity: '35',
                 objectives: [
-                    { list: "Learn to perform medical history taking and physical examinations" },
-                    { list: "Understand the principles of diagnosis and treatment of common medical conditions" },
-                    { list: "Develop clinical reasoning and decision-making skills" },
-                    { list: "Gain hands-on experience in clinical settings through internships and rotations" },
-                    { list: "Complete course in 6 months at 8hrs/week" }
+                    "Learn to perform medical history taking and physical examinations",
+                    "Understand the principles of diagnosis and treatment of common medical conditions",
+                    "Develop clinical reasoning and decision-making skills",
+                    "Gain hands-on experience in clinical settings through internships and rotations",
+                    "Complete course in 6 months at 8hrs/week",
                 ],
                 cohorts: [
                     {
@@ -339,11 +335,11 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦150,000',
                 cohortCapacity: '30',
                 objectives: [
-                    { list: "Understand the core concepts and principles of public health" },
-                    { list: "Explore the role of epidemiology and biostatistics in public health research and practice" },
-                    { list: "Examine health policy and its impact on population health outcomes" },
-                    { list: "Address environmental health issues and promote sustainable practices" },
-                    { list: "Complete course in 6 months at 8hrs/week" }
+                    "Understand the core concepts and principles of public health",
+                    "Explore the role of epidemiology and biostatistics in public health research and practice",
+                    "Examine health policy and its impact on population health outcomes",
+                    "Address environmental health issues and promote sustainable practices",
+                    "Complete course in 6 months at 8hrs/week",
                 ],
                 cohorts: [
                     {
@@ -380,12 +376,12 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦180,000',
                 cohortCapacity: '25',
                 objectives: [
-                    { list: "Understand the principles of research design and methodology" },
-                    { list: "Learn to critically evaluate scientific literature and research studies" },
-                    { list: "Gain hands-on experience in designing and conducting research projects" },
-                    { list: "Develop skills in data analysis using statistical software" },
-                    { list: "Communicate research findings effectively through oral and written presentations" },
-                    { list: "Complete course in 6 months at 8hrs/week" }
+                    "Understand the principles of research design and methodology",
+                    "Learn to critically evaluate scientific literature and research studies",
+                    "Gain hands-on experience in designing and conducting research projects",
+                    "Develop skills in data analysis using statistical software",
+                    "Communicate research findings effectively through oral and written presentations",
+                    "Complete course in 6 months at 8hrs/week",
                 ],
                 cohorts: [
                     {
@@ -418,11 +414,11 @@ export const schoolsData: SchoolDataType[] = [
         schoolTagline: 'Innovate for tomorrow',
         schoolDescription: 'Explore the frontiers of technology and innovation at the School of Engineering. Develop groundbreaking solutions to real-world problems and shape the future.',
         schoolImportance: [
-            { list: "Master core engineering principles and methodologies." },
-            { list: "Participate in hands-on projects and engineering challenges." },
-            { list: "Collaborate with industry partners on research and development initiatives." },
-            { list: "Gain practical skills in designing and implementing engineering solutions." },
-            { list: "Be part of a community driving technological advancements and societal impact." }
+            "Master core engineering principles and methodologies.",
+            "Participate in hands-on projects and engineering challenges.",
+            "Collaborate with industry partners on research and development initiatives.",
+            "Gain practical skills in designing and implementing engineering solutions.",
+            "Be part of a community driving technological advancements and societal impact.",
         ],
         nameOfSchool: 'iṣẹ́ School of Engineering',
         status: 'Inactive',
@@ -442,11 +438,11 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦150,000',
                 cohortCapacity: '30',
                 objectives: [
-                    { list: "Understand the fundamental principles of mechanics and thermodynamics" },
-                    { list: "Learn to apply engineering principles to solve real-world problems" },
-                    { list: "Gain hands-on experience with engineering software and tools" },
-                    { list: "Develop critical thinking and problem-solving skills" },
-                    { list: "Complete course in 6 months at 8hrs/week" }
+                    "Understand the fundamental principles of mechanics and thermodynamics",
+                    "Learn to apply engineering principles to solve real-world problems",
+                    "Gain hands-on experience with engineering software and tools",
+                    "Develop critical thinking and problem-solving skills",
+                    "Complete course in 6 months at 8hrs/week",
                 ],
                 cohorts: [
                     {
@@ -483,11 +479,11 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦150,000',
                 cohortCapacity: '25',
                 objectives: [
-                    { list: "Understand the principles of electricity and magnetism" },
-                    { list: "Learn to analyze and design electrical circuits" },
-                    { list: "Gain practical experience with electronic components and devices" },
-                    { list: "Explore applications of electrical engineering in various industries" },
-                    { list: "Complete course in 6 months at 8hrs/week" }
+                    "Understand the principles of electricity and magnetism",
+                    "Learn to analyze and design electrical circuits",
+                    "Gain practical experience with electronic components and devices",
+                    "Explore applications of electrical engineering in various industries",
+                    "Complete course in 6 months at 8hrs/week",
                 ],
                 cohorts: [
                     {
@@ -524,11 +520,11 @@ export const schoolsData: SchoolDataType[] = [
                 cohortPrice: '₦150,000',
                 cohortCapacity: '30',
                 objectives: [
-                    { list: "Understand the principles of structural analysis and design" },
-                    { list: "Learn about transportation systems and infrastructure" },
-                    { list: "Explore environmental considerations in civil engineering projects" },
-                    { list: "Gain hands-on experience with engineering software and tools" },
-                    { list: "Complete course in 6 months at 8hrs/week" }
+                    "Understand the principles of structural analysis and design",
+                    "Learn about transportation systems and infrastructure",
+                    "Explore environmental considerations in civil engineering projects",
+                    "Gain hands-on experience with engineering software and tools",
+                    "Complete course in 6 months at 8hrs/week",
                 ],
                 cohorts: [
                     {

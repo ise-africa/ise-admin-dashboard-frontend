@@ -40,7 +40,7 @@ const SchoolViewDetailsContainer = () => {
                 description={activeSchool?.schoolDescription}
                 school={activeSchool?.schoolName}
                 image={activeSchool?.schoolImage}
-                importanceItems={activeSchool?.schoolImportance.map(importance => importance.list)}
+                importanceItems={activeSchool?.schoolImportance.map(importance => importance)}
             />
         </div>
     )
