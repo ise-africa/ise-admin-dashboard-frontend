@@ -14,12 +14,16 @@ import CancelSchoolSuccessfulModal from "../../SchoolManagementPagesContainer/Cr
 import close from "../../../Assets/Images/x-sign.svg"
 
 type CreateBlogUploadFileProp = {
-  category?: string;
+  editInformation?: boolean;
   addTag?: string[];
+  category?: string;
+  image?: string;
 }
 
 const CreateBlogUploadFile = ({
+  image,
   category,
+  editInformation,
   addTag = [
     "EdTech",
     "Free",
@@ -31,12 +35,23 @@ const CreateBlogUploadFile = ({
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const [newImage, setNewImage] = useState("");
   const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
   const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
   const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false)
   const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false)
 
+  const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const imageDataUrl = reader.result as string;
+        setNewImage(imageDataUrl);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <SchoolCreatingLayout steps={[1, 2, 3]}>
       {displayCancelSchoolCreationModal && (
@@ -111,16 +126,35 @@ const CreateBlogUploadFile = ({
       <section className={classes.container}>
         <h2>Add blogpost details</h2>
         <p>Organise blogpost content with visuals, tags and categories</p>
+        {!editInformation && (
+          <>
+            <DragAndDropInput
+              labelText="Upload cover image * (Clear, useful cover images grab users attention)"
+              acceptedFileTypes=".png"
+              performFIleValidation={true}
+            />
+            <ul className={classes.fileUploadInfo}>
+              <li>You can upload: <strong> .png</strong> files </li>
+              <li> File size: <strong>1MB</strong> with maximum width and height of 750 X 600px</li>
+            </ul>
+          </>
+        )}
 
-        <DragAndDropInput
-          labelText="Upload cover image * (Clear, useful cover images grab users attention)"
-          acceptedFileTypes=".png"
-          performFIleValidation={true}
-        />
-        <ul className={classes.fileUploadInfo}>
-          <li>You can upload: <strong> .png</strong> files </li>
-          <li> File size: <strong>1MB</strong> with maximum width and height of 750 X 600px</li>
-        </ul>
+        {editInformation && (
+          <div className={classes.uploadededFile}>
+            <img src={newImage || image} alt={category} />
+            <label htmlFor="replaceImg">Replace Image</label>
+            <input
+              type="file"
+              name=""
+              accept=".png"
+              id="replaceImg"
+              placeholder=""
+              onChange={handleFileInputChange}
+            />
+          </div>
+        )}
+
 
         <div>
           <DropdownWithSearch
@@ -130,6 +164,8 @@ const CreateBlogUploadFile = ({
             label="Select blogpost category *"
             tip="Categories help readers filter and find  blogpost easily "
           />
+
+
 
           <div className={classes.flexButtonSection}>
             <Button type="null" onClick={() => { setDisplayCreateBlogCategoryModal(true) }}>

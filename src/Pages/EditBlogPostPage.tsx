@@ -28,6 +28,8 @@ const EditBlogPostPage = () => {
                 />
             ) : userStep === "2" ? (
                 <CreateBlogUploadFile
+                    editInformation={true}
+                    image={activeBlogPost?.postImage}
                     category={activeBlogPost?.postCategory}
                     addTag={activeBlogPost?.postTag.map(tag => tag)}
                 />

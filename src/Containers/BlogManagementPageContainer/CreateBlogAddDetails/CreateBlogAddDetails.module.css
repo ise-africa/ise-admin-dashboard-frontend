@@ -123,6 +123,30 @@
     color: var(--grey);
 }
 
+.uploadededFile {
+    display: flex;
+    flex-direction: column;
+}
+
+.uploadededFile img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.uploadededFile input[type="file"] {
+    display: none;
+}
+
+.uploadededFile label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 21px;
+    line-height: 23px;
+    color: var(--purple);
+}
+
 @media screen and (max-width: 768px) {
     .container>h2 {
         font-size: 18px;
