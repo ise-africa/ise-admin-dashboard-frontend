@@ -4,17 +4,20 @@ import ellipse from '../../Assets/Images/ellipses.svg';
 import ActionsModal from './ActionsModal/ActionsModal';
 import { useNavigate } from 'react-router-dom';
 import AcceptedModal from '../Modals/AcceptedModal/AcceptedModal';
-import CreateBlogCategoryModal from '../../Containers/BlogManagementPageContainer/CreateBlogUploadFile/CreateBlogCategoryModal';
 import CancelSchoolCreationModal from '../../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal';
 import CancelSchoolSuccessfulModal from '../../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal';
 import deleteSvg from "../../Assets/Images/deleteBlogPost.svg"
+import SchoolCreatedSuccessfulModal from '../../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/SchoolCreatedSuccessfulModal';
+import restoreImg from "../../Assets/Images/draftImg.svg"
+import publishImg from "../../Assets/Images/activateSchool.svg"
+import archivehImg from "../../Assets/Images/archivehImg.svg"
 
 type BlogPostCardProps = {
     id: string;
     image: string;
     title: string;
     date?: string;
-    postStatus: string; // Changed prop name to postStatus
+    postStatus: string;
     courses?: string;
     category?: string;
     onClick?: () => void;
@@ -35,10 +38,15 @@ const BlogPostCard = ({
 
     // State
     const [showOptions, setShowOptions] = useState(false);
-    const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
-    const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
-    const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false)
-    const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false)
+    const [displayDeleteBlogPostModal, setDisplayDeleteBlogPostModal] = useState(false)
+    const [displayRestoreBlogPostModal, setDisplayRestoreBlogPostModal] = useState(false)
+    const [displayRestoreBlogPostSuccessfulModal, setDisplayRestoreBlogPostSuccessfulModal] = useState(false)
+    const [displayPublishBlogPostModal, setDisplayPublishBlogPostModal] = useState(false)
+    const [displayPublishBlogPostSuccessfulModal, setDisplayPublishBlogPostSuccessfulModal] = useState(false)
+    const [displayArchiveBlogPostModal, setDisplayArchiveBlogPostModal] = useState(false)
+    const [displayArchiveBlogPostSuccessfulModal, setDisplayArchiveBlogPostSuccessfulModal] = useState(false)
+    const [displayDraftBlogPostModal, setDisplayDraftBlogPostModal] = useState(false)
+    const [displayDraftBlogPostSuccessfulModal, setDisplayDraftBlogPostSuccessfulModal] = useState(false)
 
     // Refs
     const containerRef = useRef<HTMLDivElement>(null);
@@ -68,9 +76,10 @@ const BlogPostCard = ({
 
     return (
         <>
-            {displayCancelSchoolCreationModal && (
+            {/* Delete BlogPost */}
+            {displayDeleteBlogPostModal && (
                 <AcceptedModal
-                    onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
+                    onClick={() => { setDisplayDeleteBlogPostModal(false) }}
                     body={
                         <CancelSchoolCreationModal
                             imgSrc={deleteSvg}
@@ -79,64 +88,174 @@ const BlogPostCard = ({
                             header="Delete blogpost?"
                             paragraph="This is a permanent action, All likes, views and comments will be lost."
                             onClick={() => {
-                                setDisplayCancelSchoolCreationModal(false)
+                                setDisplayDeleteBlogPostModal(false)
                                 navigate('/blogs')
                             }}
                             onClick2={() => {
-                                setDisplayCancelSchoolCreationModal(false)
-                                setDisplayCancelSchoolSuccessfulModal(true)
+                                setDisplayDeleteBlogPostModal(false)
                             }}
                         />
                     }
                 />
             )}
-            {displayCancelSchoolSuccessfulModal && (
+
+            {/* Restore BlogPost */}
+            {displayRestoreBlogPostModal && (
                 <AcceptedModal
-                    onClick={() => { setDisplayCancelSchoolSuccessfulModal(false) }}
+                    onClick={() => { setDisplayRestoreBlogPostModal(false) }}
                     body={
-                        <CancelSchoolSuccessfulModal
-                            buttonText="Create blogpost"
-                            header="Blogpost creation canceled"
-                            paragraph="Select ‘Create blogpost’ to start all over."
+                        <SchoolCreatedSuccessfulModal
+                            imgSrc={restoreImg}
+                            buttonText2="Cancel"
+                            header="Restore blogpost?"
+                            buttonText="Yes, restore blogpost"
+                            paragraph="Restoring a blog post will move it to drafts on the dashboard"
                             onClick={() => {
-                                setDisplayCancelSchoolSuccessfulModal(false)
-                                navigate('/blogs/add-post?step=1')
-                            }}
-                        />
-                    }
-                />
-            )}
-            {displayCreateBlogCategoryModal && (
-                <AcceptedModal
-                    onClick={() => { setDisplayCreateBlogCategoryModal(false) }}
-                    body={
-                        <CreateBlogCategoryModal
-                            onClick={() => {
-                                setDisplayCreateBlogCategoryModal(false)
+                                setDisplayRestoreBlogPostModal(false)
+                                navigate('')
                             }}
                             onClick2={() => {
-                                setDisplayCreateBlogCategoryModal(false)
-                                setDisplayCreateBlogCategorySuccessfulModal(true)
+                                setDisplayRestoreBlogPostModal(false)
+                                setDisplayRestoreBlogPostSuccessfulModal(true)
                             }}
                         />
                     }
                 />
             )}
-            {displayCreateBlogCategorySuccessfulModal && (
+            {displayRestoreBlogPostSuccessfulModal && (
                 <AcceptedModal
-                    onClick={() => { setDisplayCreateBlogCategorySuccessfulModal(false) }}
+                    onClick={() => { setDisplayRestoreBlogPostSuccessfulModal(false) }}
                     body={
                         <CancelSchoolSuccessfulModal
                             buttonText="Done"
-                            header="Category created"
-                            paragraph=""
+                            header="Blogpost in drafts"
                             onClick={() => {
-                                setDisplayCreateBlogCategorySuccessfulModal(false)
+                                setDisplayRestoreBlogPostSuccessfulModal(false)
+                                navigate('')
                             }}
                         />
                     }
                 />
             )}
+
+            {/* Published BlogPost */}
+            {displayPublishBlogPostModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayPublishBlogPostModal(false) }}
+                    body={
+                        <SchoolCreatedSuccessfulModal
+                            imgSrc={publishImg}
+                            buttonText2="Cancel"
+                            header="Publish blogpost?"
+                            buttonText="Publish blogpost"
+                            paragraph="Once you publish, the blogpost will be live on iṣẹ́ blog"
+                            onClick={() => {
+                                setDisplayPublishBlogPostModal(false)
+                                navigate('')
+                            }}
+                            onClick2={() => {
+                                setDisplayPublishBlogPostModal(false)
+                                setDisplayPublishBlogPostSuccessfulModal(true)
+                            }}
+                        />
+                    }
+                />
+            )}
+            {displayPublishBlogPostSuccessfulModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayPublishBlogPostSuccessfulModal(false) }}
+                    body={
+                        <CancelSchoolSuccessfulModal
+                            buttonText="Close"
+                            header="Blogpost published successfully!"
+                            paragraph="Track blogpost performance on your dashboard."
+                            onClick={() => {
+                                setDisplayPublishBlogPostSuccessfulModal(false)
+                                navigate('')
+                            }}
+                        />
+                    }
+                />
+            )}
+
+            {/* Archive BlogPost */}
+            {displayArchiveBlogPostModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayArchiveBlogPostModal(false) }}
+                    body={
+                        <SchoolCreatedSuccessfulModal
+                            imgSrc={archivehImg}
+                            buttonText2="Cancel"
+                            header="Archive blogpost?"
+                            buttonText="Yes, archive blogpost"
+                            paragraph="Archiving will remove this post from the website but keep it saved for future reference."
+                            onClick={() => {
+                                setDisplayArchiveBlogPostModal(false)
+                                navigate('')
+                            }}
+                            onClick2={() => {
+                                setDisplayArchiveBlogPostModal(false)
+                                setDisplayArchiveBlogPostSuccessfulModal(true)
+                            }}
+                        />
+                    }
+                />
+            )}
+            {displayArchiveBlogPostSuccessfulModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayArchiveBlogPostSuccessfulModal(false) }}
+                    body={
+                        <CancelSchoolSuccessfulModal
+                            buttonText="Done"
+                            header="Blogpost archived successfully!"
+                            onClick={() => {
+                                setDisplayArchiveBlogPostSuccessfulModal(false)
+                                navigate('')
+                            }}
+                        />
+                    }
+                />
+            )}
+
+            {/* Draft BlogPost */}
+            {displayDraftBlogPostModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayDraftBlogPostModal(false) }}
+                    body={
+                        <SchoolCreatedSuccessfulModal
+                            imgSrc={restoreImg}
+                            buttonText2="Cancel"
+                            header="Send to draft?"
+                            buttonText="Yes, send to draft"
+                            paragraph="This action will disable the blogpost temporarily.  Blogpost likes, views and comments will be lost."
+                            onClick={() => {
+                                setDisplayDraftBlogPostModal(false)
+                                navigate('')
+                            }}
+                            onClick2={() => {
+                                setDisplayDraftBlogPostModal(false)
+                                setDisplayDraftBlogPostSuccessfulModal(true)
+                            }}
+                        />
+                    }
+                />
+            )}
+            {displayDraftBlogPostSuccessfulModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayDraftBlogPostSuccessfulModal(false) }}
+                    body={
+                        <CancelSchoolSuccessfulModal
+                            buttonText="Done"
+                            header="Blogpost in drafts"
+                            onClick={() => {
+                                setDisplayDraftBlogPostSuccessfulModal(false)
+                                navigate('')
+                            }}
+                        />
+                    }
+                />
+            )}
+
             <div className={classes.post} onClick={onClick}>
                 <img src={image} alt={title} />
                 <div className={classes.content}>
@@ -160,11 +279,11 @@ const BlogPostCard = ({
                                     onClick2={() => { }}
                                     onClick3={() => { }}
                                     onClick4={() => { }}
-                                    onClick5={() => { }}
-                                    onClick6={() => { }}
-                                    onClick7={() => { }}
-                                    onClick8={() => { }}
-                                    onClick9={() => { setDisplayCancelSchoolCreationModal(true) }}
+                                    onClick5={() => { setDisplayDraftBlogPostModal(true) }}
+                                    onClick6={() => { setDisplayPublishBlogPostModal(true) }}
+                                    onClick7={() => { setDisplayArchiveBlogPostModal(true) }}
+                                    onClick8={() => { setDisplayRestoreBlogPostModal(true) }}
+                                    onClick9={() => { setDisplayDeleteBlogPostModal(true) }}
                                 />
                             </div>
                         )}

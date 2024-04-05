@@ -115,7 +115,6 @@ const CreateBlogUploadFile = ({
             <CancelSchoolSuccessfulModal
               buttonText="Done"
               header="Category created"
-              paragraph=""
               onClick={() => {
                 setDisplayCreateBlogCategorySuccessfulModal(false)
               }}
