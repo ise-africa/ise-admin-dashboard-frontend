@@ -12,6 +12,7 @@ import restoreImg from "../../Assets/Images/draftImg.svg"
 import publishImg from "../../Assets/Images/activateSchool.svg"
 import archivehImg from "../../Assets/Images/archivehImg.svg"
 import ReportBlogPostModal from './Modals/ReportBlogPostModal/ReportBlogPostModal';
+import ShareBlogPostModal from './Modals/ShareBlogPostModal/ShareBlogPostModal';
 
 type BlogPostCardProps = {
     id: string;
@@ -49,6 +50,7 @@ const BlogPostCard = ({
     const [displayDraftBlogPostModal, setDisplayDraftBlogPostModal] = useState(false)
     const [displayDraftBlogPostSuccessfulModal, setDisplayDraftBlogPostSuccessfulModal] = useState(false)
     const [displayReportBlogPostModal, setDisplayReportBlogPostModal] = useState(false)
+    const [displayShareBlogPostModal, setDisplayShareBlogPostModal] = useState(false)
 
 
     // Refs
@@ -273,6 +275,20 @@ const BlogPostCard = ({
                 />
             )}
 
+            {/* Share BlogPost */}
+            {displayShareBlogPostModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayShareBlogPostModal(false) }}
+                    body={
+                        <ShareBlogPostModal
+                            onClick={() => {
+                                setDisplayShareBlogPostModal(false)
+                            }}
+                        />
+                    }
+                />
+            )}
+
             <div className={classes.post} onClick={onClick}>
                 <img src={image} alt={title} />
                 <div className={classes.content}>
@@ -294,7 +310,7 @@ const BlogPostCard = ({
                                     status={postStatus}
                                     onClick={() => { navigate(`/blogs/${id}/edit-post?step=1`) }}
                                     onClick2={() => { }}
-                                    onClick3={() => { }}
+                                    onClick3={() => { setDisplayShareBlogPostModal(true) }}
                                     onClick4={() => { setDisplayReportBlogPostModal(true) }}
                                     onClick5={() => { setDisplayDraftBlogPostModal(true) }}
                                     onClick6={() => { setDisplayPublishBlogPostModal(true) }}

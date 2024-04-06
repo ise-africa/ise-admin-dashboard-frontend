@@ -23,7 +23,12 @@
     line-height: 25px;
 }
 
+.header svg {
+    cursor: pointer;
+}
+
 .header {
+    gap: 1rem;
     display: flex;
     justify-content: space-between;
 }
