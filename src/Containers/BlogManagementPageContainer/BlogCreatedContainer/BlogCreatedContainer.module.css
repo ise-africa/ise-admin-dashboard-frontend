@@ -69,4 +69,17 @@
     border-bottom: none;
 }
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 1023px) {
+    .header {
+        gap: 16px;
+        padding: 16px 0;
+    }
+
+    .container {
+        margin: 8px 0;
+    }
+
+    .container>div {
+        padding: 10px 0;
+    }
+}

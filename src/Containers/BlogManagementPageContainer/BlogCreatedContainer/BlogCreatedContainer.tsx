@@ -28,7 +28,6 @@ const BlogCreatedContainer = ({ blogPost, notShowEmptyTab }: BlogCreatedContaine
                     <input
                         type="text"
                         placeholder="Search by name or email"
-                        value={''}
                         onChange={e => { }}
                     />
                     <svg

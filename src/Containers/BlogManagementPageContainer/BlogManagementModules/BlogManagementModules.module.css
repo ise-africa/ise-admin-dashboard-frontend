@@ -12,7 +12,13 @@
 
 @media screen and (max-width: 1023px) {
     .container {
+        gap: 0;
         background: var(--white);
+    }
+
+    .container>div:nth-child(1) {
+        margin: 0;
+        padding: 1rem 0;
     }
 
     .sectionsNavSection {
