@@ -4,7 +4,7 @@ import ViewBlogPostContainer from '../Containers/BlogManagementPageContainer/Vie
 
 const ViewBlogPostPage = () => {
     return (
-        <Layout>
+        <Layout closeSideNav>
             <ViewBlogPostContainer />
         </Layout>
     )

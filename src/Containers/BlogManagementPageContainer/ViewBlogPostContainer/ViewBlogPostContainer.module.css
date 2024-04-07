@@ -1,0 +1,50 @@
+.container button {
+    width: auto;
+    padding: 10px 30px;
+}
+
+.header {
+    gap: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px 48px;
+    background: var(--white);
+    border-top: 1px solid var(--veryLightPurple);
+}
+
+.header>p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    font-style: normal;
+    color: var(--grey);
+    font-family: Archivo;
+    user-select: none;
+}
+
+.body {
+    gap: 1rem;
+    display: flex;
+    padding: 40px 48px;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 778px) {
+    .header {
+        gap: 10px;
+    }
+
+    .header {
+        padding: 16px;
+        border-top: none;
+        border-bottom: 1px solid var(--veryLightPurple);
+    }
+
+    .header>p {
+        font-size: 10px;
+        line-height: 18px;
+
+    }
+}
