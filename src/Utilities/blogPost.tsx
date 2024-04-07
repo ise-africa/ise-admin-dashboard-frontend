@@ -1,4 +1,6 @@
 import postImage from '../Assets/Images/postImage.svg';
+import postImage2 from '../Assets/Images/postImage2.svg';
+import postImage3 from '../Assets/Images/postImage3.svg';
 
 export type BlogPostDataType = {
     isActive: boolean;
@@ -62,7 +64,7 @@ export const blogsPostData: BlogPostDataType[] = [
         isActive: true,
         postId: '00004',
         status: "Publish",
-        postImage: postImage,
+        postImage: postImage2,
         postTitle: 'The Impact of Artificial Intelligence on Healthcare',
         postContent: "Artificial intelligence is revolutionizing healthcare, from diagnosis and treatment to patient care and administrative tasks. This blog explores the transformative impact of AI on healthcare and discusses the opportunities and challenges it presents for patients, healthcare providers, and policymakers.",
         postCategory: 'Healthcare',
@@ -77,7 +79,7 @@ export const blogsPostData: BlogPostDataType[] = [
         isActive: true,
         postId: '00005',
         status: "Publish",
-        postImage: postImage,
+        postImage: postImage3,
         postTitle: 'Exploring Mars: Recent Discoveries and Future Missions',
         postContent: "Mars has long captured the imagination of scientists and space enthusiasts alike. In recent years, there have been exciting discoveries about the Red Planet, from evidence of past water to the potential for microbial life. This blog explores recent discoveries about Mars and discusses future missions that will further our understanding of the planet.",
         postCategory: 'Space Exploration',

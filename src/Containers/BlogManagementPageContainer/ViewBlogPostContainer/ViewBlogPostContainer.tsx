@@ -29,6 +29,20 @@ const ViewBlogPostContainer = () => {
                     <span>Leave preview</span>
                 </Button>
             </div>
+            <div className={classes.body}>
+                <div className={classes.intro}>
+                    <img src={activeBlogPost?.postImage} alt={activeBlogPost?.postTitle} />
+                    <div>
+                        {activeBlogPost?.postTag.map((tag, i) => (
+                            <span key={i}>{tag}</span>
+                        ))}
+                        <h1>{activeBlogPost?.postTitle}</h1>
+                        <p>{activeBlogPost?.postDate}, 3mins read</p>
+                    </div>
+                </div>
+                <div className={classes.content}>
+                </div>
+            </div>
         </div>
     )
 }
