@@ -309,7 +309,7 @@ const BlogPostCard = ({
                                 <ActionsModal
                                     status={postStatus}
                                     onClick={() => { navigate(`/blogs/${id}/edit-post?step=1`) }}
-                                    onClick2={() => { }}
+                                    onClick2={() => { navigate(`/blogs/${id}`) }}
                                     onClick3={() => { setDisplayShareBlogPostModal(true) }}
                                     onClick4={() => { setDisplayReportBlogPostModal(true) }}
                                     onClick5={() => { setDisplayDraftBlogPostModal(true) }}
