@@ -13,7 +13,21 @@ const ViewBlogPostContainer = () => {
     const { blogPost } = useContext(AppContext);
 
     const activeBlogPost = blogPost.find(data => data.postId === PostId)
+    const blogList = [
+        `Start with the Basics: Begin your journey by mastering the fundamental concepts. Dive into coding languages like Python, JavaScript, or Java. Familiarize yourself with data structures, algorithms, and software development methodologies. Solidify your understanding of essential tech concepts to build a strong foundation.`,
 
+        `Embrace Lifelong Learning: In tech, learning never stops. Stay curious and keep up with the latest trends, tools, and technologies. Engage in online courses, attend workshops, and join tech communities. Embrace continuous learning to adapt to the ever-evolving tech landscape.`,
+
+        `Build Projects and Showcase Your Skills: Put theory into practice by working on real-world projects. Create apps, websites, or software solutions that showcase your skills. A portfolio of projects demonstrates your abilities to potential employers and clients. Share your projects on platforms like GitHub to gain visibility in the tech community.`,
+
+        `Network, Network, Network: Building connections is vital in the tech industry. Attend tech events, conferences, and meetups to meet like-minded professionals—network with industry experts and potential mentors who can guide you on your tech journey. Networking can open doors to exciting opportunities and collaborations.`,
+
+        `Seek Internships and Entry-Level Opportunities: Gaining hands-on experience is invaluable. Seek internships or entry-level positions in tech companies. Even if it's a small role, it exposes the industry's dynamics and provides growth opportunities. Work hard, show initiative, and leave a positive impression to make the most of these opportunities.`,
+
+        `Develop Soft Skills: Tech professionals need more than technical expertise. Cultivate essential soft skills like communication, teamwork, and problem-solving. Effective communication is critical to collaborating with diverse teams and clients. Emphasize the value of your soft skills alongside your technical prowess.`,
+
+        `Embrace Challenges and Learn from Failures: The tech industry is ever-changing and can be challenging. Embrace failure as a stepping stone to growth. Learn from your mistakes, adapt, and persevere. When you face challenges head-on, it fosters resilience and makes you a stronger techie.`,
+    ]
 
     return (
         <div className={classes.container}>
@@ -41,6 +55,20 @@ const ViewBlogPostContainer = () => {
                     </div>
                 </div>
                 <div className={classes.content}>
+                    <p>{activeBlogPost?.postContent}</p>
+                    <ol>
+                        {blogList.slice(0, 2).map((item, i) => (
+                            <li key={i}>{item}</li>
+                        ))}
+                    </ol>
+                    <img src={activeBlogPost?.postImage2} alt={activeBlogPost?.postTitle} />
+                    <p>Tips to help you start your pro journey</p>
+                    <ol>
+                        {blogList.map((item, i) => (
+                            <li key={i}>{item}</li>
+                        ))}
+                    </ol>
+                    <p>The tech industry offers boundless opportunities for growth and innovation. By following these simple steps and staying committed to your goals, you'll be well on your way to becoming a pro in the tech world. Keep learning, stay curious, and remember that every step you take brings you closer to success in this exciting field. Happy tech journey.</p>
                 </div>
             </div>
         </div>
