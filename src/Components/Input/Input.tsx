@@ -95,9 +95,9 @@ const Input = ({
             )}
             {tip && <span className={classes.tip}>{tip}</span>}
             {maxLength && (
-                <span className={classes.tip}>
+                <p className={classes.tip}>
                     Character count: {characterCount} characters
-                </span>
+                </p>
             )}
         </div>
     );

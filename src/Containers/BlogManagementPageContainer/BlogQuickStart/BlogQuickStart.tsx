@@ -1,20 +1,27 @@
-import React from 'react'
-import classes from './BlogQuickStart.module.css'
-import Button from '../../../Components/Button/Button'
-import img1 from '../../../Assets/Images/activateSchool.svg'
-import img2 from '../../../Assets/Images/createBlogpost.svg'
-import img3 from '../../../Assets/Images/readBlogGuide.svg'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import classes from './BlogQuickStart.module.css';
+import Button from '../../../Components/Button/Button';
+import img1 from '../../../Assets/Images/activateSchool.svg';
+import img2 from '../../../Assets/Images/createBlogpost.svg';
+import img3 from '../../../Assets/Images/readBlogGuide.svg';
+import { useNavigate } from 'react-router-dom';
 
-const BlogQuickStart = () => {
+type BlogQuickStartProps = {
+    onClick: () => void;
+}
+
+const BlogQuickStart = ({ onClick }: BlogQuickStartProps) => {
+
     const navigate = useNavigate();
 
     const startTab = [
         {
+            action: onClick,
             title: 'Create blog category',
-            description: 'Organise and help readers find blogposts easily with categories and tags', buttonText: 'Create category',
+            description: 'Organise and help readers find blogposts easily with categories and tags',
+            buttonText: 'Create category',
             imgSrc: img1,
-            route: "/blogs/create-category"
+            route: ""
         },
         {
             title: 'Create blogpost',
@@ -30,10 +37,11 @@ const BlogQuickStart = () => {
             imgSrc: img3,
             route: "/blogs/guide"
         },
-    ]
+    ];
 
     return (
         <div className={classes.container}>
+
             {startTab.map((data, i) => (
                 <div
                     key={i}
@@ -43,13 +51,13 @@ const BlogQuickStart = () => {
                     <div>
                         <h4>{data.title}</h4>
                         <p>{data.description}</p>
-                        <Button type='primary'>{data.buttonText}</Button>
+                        <Button type='primary' onClick={data.action}>{data.buttonText}</Button>
                     </div>
                     <img src={data.imgSrc} alt={data.title} />
                 </div>
             ))}
         </div>
-    )
+    );
 }
 
-export default BlogQuickStart
+export default BlogQuickStart;

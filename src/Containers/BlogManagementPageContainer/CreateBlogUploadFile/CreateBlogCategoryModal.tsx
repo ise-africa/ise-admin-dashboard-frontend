@@ -24,11 +24,11 @@ const CreateBlogCategoryModal = ({ onClick, onClick2 }: CreateBlogCategoryModalP
             <div className={classes.content}>
                 <Input
                     isRequired
+                    maxLength={50}
                     label='Category title'
                     placeholder='E.g Career tips'
                     tip='Category titles show on your posts and blog menu.'
                 />
-                <div className={classes.count}>Character count: <span>{20}</span> characters</div>
                 <Input
                     type='url'
                     icon={inputIcon}

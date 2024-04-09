@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
 import classes from './BlogManagementContainer.module.css'
@@ -6,12 +6,49 @@ import HelloUser from '../../../Components/HelloUser/HelloUser';
 import BlogManagementModules from '../BlogManagementModules/BlogManagementModules';
 import Blogstatistics from '../Blogstatistics/Blogstatistics';
 import BlogQuickStart from '../BlogQuickStart/BlogQuickStart';
+import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
+import CancelSchoolSuccessfulModal from '../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal';
+import CreateBlogCategoryModal from '../CreateBlogUploadFile/CreateBlogCategoryModal';
 
 const BlogManagementContainer = () => {
+
     const navigate = useNavigate();
+
+    const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false)
+    const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false)
 
     return (
         <div className={classes.container}>
+            {displayCreateBlogCategoryModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayCreateBlogCategoryModal(false) }}
+                    body={
+                        <CreateBlogCategoryModal
+                            onClick={() => {
+                                setDisplayCreateBlogCategoryModal(false)
+                            }}
+                            onClick2={() => {
+                                setDisplayCreateBlogCategoryModal(false)
+                                setDisplayCreateBlogCategorySuccessfulModal(true)
+                            }}
+                        />
+                    }
+                />
+            )}
+            {displayCreateBlogCategorySuccessfulModal && (
+                <AcceptedModal
+                    onClick={() => { setDisplayCreateBlogCategorySuccessfulModal(false) }}
+                    body={
+                        <CancelSchoolSuccessfulModal
+                            buttonText="Done"
+                            header="Category created"
+                            onClick={() => {
+                                setDisplayCreateBlogCategorySuccessfulModal(false)
+                            }}
+                        />
+                    }
+                />
+            )}
             <HelloUser
                 includeButton={true}
                 header='Blog management'
@@ -26,7 +63,7 @@ const BlogManagementContainer = () => {
                     <span>Create new post</span>
                 </Button>
             </HelloUser>
-            <BlogQuickStart />
+            <BlogQuickStart onClick={() => { setDisplayCreateBlogCategoryModal(true) }} />
             <Blogstatistics />
             <BlogManagementModules />
         </div>

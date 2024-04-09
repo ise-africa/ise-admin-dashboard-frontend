@@ -34,12 +34,6 @@
     border-bottom: 0.5px solid var(--purple);
 }
 
-.container .count {
-    font-size: 13px;
-    margin-top: -24px;
-    margin-bottom: 24px;
-}
-
 .buttonContainer {
     gap: calc(2rem - 10px);
     display: flex;
@@ -64,11 +58,4 @@
         font-size: 14px;
         line-height: 22px;
     }
-
-    .container .count {
-        font-size: 10px;
-        margin-top: -18px;
-        margin-bottom: 24px;
-    }
-
 }
