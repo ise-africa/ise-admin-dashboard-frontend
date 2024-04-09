@@ -1,18 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
-import classes from "./BlogCategoriesContainer.module.css"
-import Button from '../../../Components/Button/Button'
-import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal'
-import CancelSchoolSuccessfulModal from '../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal'
-import CreateBlogCategoryModal from '../CreateBlogUploadFile/CreateBlogCategoryModal'
-import ellipse from "../../../Assets/Images/ellipses.svg"
-import ActionsModal from './ActionsModal/ActionsModal'
+import React, { useEffect, useRef, useState } from 'react';
+import classes from "./BlogCategoriesContainer.module.css";
+import Button from '../../../Components/Button/Button';
+import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
+import CancelSchoolSuccessfulModal from '../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal';
+import CreateBlogCategoryModal from '../CreateBlogUploadFile/CreateBlogCategoryModal';
+import ellipse from "../../../Assets/Images/ellipses.svg";
+import ActionsModal from './ActionsModal/ActionsModal';
 
 const BlogCategoriesContainer = () => {
 
     // State
-    const [showOptions, setShowOptions] = useState(false);
-    const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false)
-    const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false)
+    const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false);
+    const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false);
+    const [activeOptionIndex, setActiveOptionIndex] = useState<number | null>(null);
 
     const categories = [
         {
@@ -34,22 +34,19 @@ const BlogCategoriesContainer = () => {
     ]
 
     // Refs
-    const containerRef = useRef<HTMLDivElement>(null);
-    const optionsRef = useRef<HTMLDivElement>(null);
+    const containerRefs = useRef<Array<HTMLDivElement | null>>(Array(categories.length).fill(null));
+    const actionModalRef = useRef<HTMLDivElement | null>(null);
 
-    const toggleOptions = () => {
-        setShowOptions(!showOptions);
+    const toggleOptions = (index: number) => {
+        setActiveOptionIndex(activeOptionIndex === index ? null : index);
     };
 
     const closeOptions = (event: MouseEvent) => {
-        if (
-            containerRef.current &&
-            !containerRef.current.contains(event.target as Node) &&
-            optionsRef.current &&
-            !optionsRef.current.contains(event.target as Node)
-        ) {
-            setShowOptions(false);
+        if (actionModalRef.current && actionModalRef.current.contains(event.target as Node)) {
+            // Clicked within action modal, do nothing
+            return;
         }
+        setActiveOptionIndex(null);
     };
 
     useEffect(() => {
@@ -58,6 +55,12 @@ const BlogCategoriesContainer = () => {
             document.removeEventListener('mousedown', closeOptions);
         };
     }, []);
+
+    const performAction = () => {
+        // Perform action here
+        // For example:
+        setActiveOptionIndex(null); // Close action modal after action is performed
+    };
 
     return (
         <div className={classes.container}>
@@ -99,7 +102,7 @@ const BlogCategoriesContainer = () => {
                 </div>
                 <Button onClick={() => { setDisplayCreateBlogCategoryModal(true) }}>
                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 1.5V17.5M17 9.5L1 9.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M9 1.5V17.5M17 9.5L1 9.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     <span>Add category</span>
                 </Button>
@@ -112,17 +115,17 @@ const BlogCategoriesContainer = () => {
                         <span>{data.title}</span>
                         <span>{data.count} post</span>
                         <div
-                            ref={containerRef}
+                            ref={ref => containerRefs.current[index] = ref}
                             className={classes.ellipse}
-                            onClick={(toggleOptions)}>
+                            onClick={() => toggleOptions(index)}>
                             <img src={ellipse} alt="more options" />
                         </div>
                         <div>
-                            {showOptions && (
-                                <div className={classes.popover} ref={optionsRef}>
+                            {activeOptionIndex === index && (
+                                <div ref={actionModalRef} className={classes.popover}>
                                     <ActionsModal
-                                        onClick={() => { }}
-                                        onClick2={() => { }}
+                                        onClick={() => { setDisplayCreateBlogCategoryModal(true) }}
+                                        onClick2={performAction} // Perform action and close action modal
                                     />
                                 </div>
                             )}
@@ -134,4 +137,4 @@ const BlogCategoriesContainer = () => {
     )
 }
 
-export default BlogCategoriesContainer
+export default BlogCategoriesContainer;

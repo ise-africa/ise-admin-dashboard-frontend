@@ -5,6 +5,21 @@
   background-color: var(--sideNavBackground);
 }
 
+.container::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #dcd7fe;
+}
+
 .logoSection {
   width: 53px;
   height: 50px;

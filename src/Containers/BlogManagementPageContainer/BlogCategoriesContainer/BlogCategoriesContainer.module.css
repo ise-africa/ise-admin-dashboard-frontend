@@ -5,7 +5,7 @@
 }
 
 .header {
-    gap: 2rem;
+    gap: 1rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -40,7 +40,7 @@
     padding: 16px 8px;
     position: relative;
     margin-bottom: 8px;
-    grid-template-columns: 2fr 1fr 35px;
+    grid-template-columns: 2fr 1fr 50px;
     border-bottom: 1px solid var(--sectionBorder)
 }
 
@@ -87,4 +87,8 @@
         line-height: 18px;
     }
 
+    .tableBody {
+        padding: 16px 0;
+        grid-template-columns: 2fr 1fr 30px;
+    }
 }
