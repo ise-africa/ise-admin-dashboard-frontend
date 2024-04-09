@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classes from "./BlogCategoriesContainer.module.css"
 import Button from '../../../Components/Button/Button'
 import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal'
 import CancelSchoolSuccessfulModal from '../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal'
 import CreateBlogCategoryModal from '../CreateBlogUploadFile/CreateBlogCategoryModal'
 import ellipse from "../../../Assets/Images/ellipses.svg"
+import ActionsModal from './ActionsModal/ActionsModal'
+
 const BlogCategoriesContainer = () => {
 
+    // State
+    const [showOptions, setShowOptions] = useState(false);
     const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false)
     const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false)
 
@@ -28,6 +32,32 @@ const BlogCategoriesContainer = () => {
             count: 4
         },
     ]
+
+    // Refs
+    const containerRef = useRef<HTMLDivElement>(null);
+    const optionsRef = useRef<HTMLDivElement>(null);
+
+    const toggleOptions = () => {
+        setShowOptions(!showOptions);
+    };
+
+    const closeOptions = (event: MouseEvent) => {
+        if (
+            containerRef.current &&
+            !containerRef.current.contains(event.target as Node) &&
+            optionsRef.current &&
+            !optionsRef.current.contains(event.target as Node)
+        ) {
+            setShowOptions(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', closeOptions);
+        return () => {
+            document.removeEventListener('mousedown', closeOptions);
+        };
+    }, []);
 
     return (
         <div className={classes.container}>
@@ -81,7 +111,22 @@ const BlogCategoriesContainer = () => {
                         className={classes.tableBody}>
                         <span>{data.title}</span>
                         <span>{data.count} post</span>
-                        <img src={ellipse} alt='more options' />
+                        <div
+                            ref={containerRef}
+                            className={classes.ellipse}
+                            onClick={(toggleOptions)}>
+                            <img src={ellipse} alt="more options" />
+                        </div>
+                        <div>
+                            {showOptions && (
+                                <div className={classes.popover} ref={optionsRef}>
+                                    <ActionsModal
+                                        onClick={() => { }}
+                                        onClick2={() => { }}
+                                    />
+                                </div>
+                            )}
+                        </div>
                     </div>
                 ))}
             </div>
