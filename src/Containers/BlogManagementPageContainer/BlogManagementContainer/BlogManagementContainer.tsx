@@ -9,6 +9,7 @@ import BlogQuickStart from '../BlogQuickStart/BlogQuickStart';
 import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
 import CancelSchoolSuccessfulModal from '../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal';
 import CreateBlogCategoryModal from '../CreateBlogUploadFile/CreateBlogCategoryModal';
+import BlogCategoriesContainer from '../BlogCategoriesContainer/BlogCategoriesContainer';
 
 const BlogManagementContainer = () => {
 
@@ -66,6 +67,7 @@ const BlogManagementContainer = () => {
             <BlogQuickStart onClick={() => { setDisplayCreateBlogCategoryModal(true) }} />
             <Blogstatistics />
             <BlogManagementModules />
+            <BlogCategoriesContainer />
         </div>
     );
 };
