@@ -4,11 +4,30 @@ import Button from '../../../Components/Button/Button'
 import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal'
 import CancelSchoolSuccessfulModal from '../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal'
 import CreateBlogCategoryModal from '../CreateBlogUploadFile/CreateBlogCategoryModal'
-
+import ellipse from "../../../Assets/Images/ellipses.svg"
 const BlogCategoriesContainer = () => {
 
     const [displayCreateBlogCategoryModal, setDisplayCreateBlogCategoryModal] = useState(false)
     const [displayCreateBlogCategorySuccessfulModal, setDisplayCreateBlogCategorySuccessfulModal] = useState(false)
+
+    const categories = [
+        {
+            title: "Technology Trends",
+            count: 4
+        },
+        {
+            title: "Inside Africa",
+            count: 2
+        },
+        {
+            title: "Edtech space",
+            count: 2
+        },
+        {
+            title: "Product updates",
+            count: 4
+        },
+    ]
 
     return (
         <div className={classes.container}>
@@ -54,6 +73,17 @@ const BlogCategoriesContainer = () => {
                     </svg>
                     <span>Add category</span>
                 </Button>
+            </div>
+            <div className={classes.body}>
+                {categories.map((data, index) => (
+                    <div
+                        key={index}
+                        className={classes.tableBody}>
+                        <span>{data.title}</span>
+                        <span>{data.count} post</span>
+                        <img src={ellipse} alt='more options' />
+                    </div>
+                ))}
             </div>
         </div>
     )
