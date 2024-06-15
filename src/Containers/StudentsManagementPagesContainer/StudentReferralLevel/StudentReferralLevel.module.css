@@ -1,0 +1,42 @@
+.container {
+    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container h4 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    flex-basis: 100%;
+    margin-bottom: -2rem;
+}
+
+.container p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.container>div {
+    gap: 16px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        gap: 25px;
+    }
+
+    .container h4 {
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: -1rem;
+    }
+
+    .container p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}

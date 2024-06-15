@@ -1,31 +1,32 @@
 .container {
-  height: 100vh;
   display: flex;
+  padding: 2rem 1rem;
+  margin: 2rem 1rem;
+  border-radius: 10px;
   align-items: center;
+  background: var(--white);
   justify-content: center;
   flex-direction: column;
-  width: 45%;
-  margin: auto;
 }
 
-.container > img {
-  width: 668px;
-  height: 668px;
+.container>img {
+  width: 280px;
+  height: 280px;
   object-fit: cover;
 }
 
-.container > h4 {
+.container>h4 {
   color: var(--grey);
   text-align: center;
   font-family: Archivo;
-  font-size: 49px;
+  font-size: 25px;
   font-style: normal;
   font-weight: 500;
-  line-height: 61px;
+  line-height: 36px;
   margin-top: 24px;
 }
 
-.container > p {
+.container>p {
   color: var(--grey);
   text-align: center;
   font-family: Archivo;
@@ -34,68 +35,35 @@
   font-weight: 400;
   line-height: 25px;
   margin-top: 1rem;
+  max-width: 450px;
 }
 
-.container > button {
+.container>button {
   width: 195px;
   margin: 24px;
 }
 
-@media screen and (min-width: 767px) and (max-width: 1023px) {
+@media screen and (max-width: 1023px) {
   .container {
     height: auto;
     width: 100%;
+    margin: 0;
     padding: 1rem;
+    min-height: 90vh;
   }
 
-  .container > img {
-    width: 343px;
-    height: 343px;
+  .container>img {
+    width: 240px;
+    height: 240px;
   }
 
-  .container > h4 {
-    font-size: 31px;
-    line-height: 40px;
-    margin-top: 24px;
+  .container>h4 {
+    font-size: 18px;
+    line-height: 30px;
   }
 
-  .container > p {
+  .container>p {
     font-size: 14px;
     line-height: 23px;
-  }
-
-  .container > button {
-    width: 178px;
-    margin: 24px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .container {
-    height: auto;
-    width: 100%;
-    padding: 1rem;
-    min-height: 100vh;
-  }
-
-  .container > img {
-    width: 343px;
-    height: 343px;
-  }
-
-  .container > h4 {
-    font-size: 31px;
-    line-height: 40px;
-    margin-top: 24px;
-  }
-
-  .container > p {
-    font-size: 14px;
-    line-height: 23px;
-  }
-
-  .container > button {
-    width: 178px;
-    margin: 24px;
   }
 }

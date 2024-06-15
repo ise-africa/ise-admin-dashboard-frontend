@@ -1,0 +1,137 @@
+.container {
+  gap: 2rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.header h1 {
+  font-size: 39px;
+  line-height: 51px;
+  font-weight: 500;
+}
+
+.header p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+.body {
+  border-radius: 10px;
+  padding: 1rem 2rem 0;
+  background: var(--white);
+  border: 1px solid var(--sectionBorder);
+}
+
+.body>div:not(:last-child),
+.body>section:not(:last-child) {
+  padding: 1.5rem 0;
+  border-radius: 0;
+  border-bottom: 1px solid var(--sectionBorder);
+}
+
+.body .buttonContainer {
+  gap: 2rem;
+  display: flex;
+  margin-block: 40px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.body .buttonContainer>button {
+  width: fit-content;
+}
+
+.selectRole {
+  gap: 1rem;
+  display: flex;
+  padding: 1rem;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  background: var(--veryVeryLightPurple);
+}
+
+.selectRole p {
+  flex: 1;
+  color: var(--grey);
+  font-size: 16px !important;
+}
+
+.selectRole svg {
+  cursor: pointer;
+}
+
+.listContainer {
+  flex-basis: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  padding: 0 16px;
+  background-color: rgba(247, 245, 255, 1);
+  color: var(--grey);
+  font-family: Archivo;
+  font-style: normal;
+  line-height: 26px;
+  scrollbar-width: none;
+  margin-top: 10px;
+}
+
+.listContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.numberList {
+  list-style: decimal;
+  padding-left: 0;
+}
+
+.numberList li {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.discList {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 1023px) {
+  .container {
+    margin: 0;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: var(--white);
+  }
+
+  .header h1 {
+    font-size: 25px;
+    line-height: 36px;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
+
+  .body {
+    border: none;
+    padding: 0;
+  }
+
+  .body .buttonContainer {
+    gap: 1rem;
+    margin: 24px 0 0;
+  }
+
+  .selectRole {
+    padding: 8px;
+  }
+
+  .numberList li {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+}

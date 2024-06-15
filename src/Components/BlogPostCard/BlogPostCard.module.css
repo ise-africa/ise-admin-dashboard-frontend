@@ -1,0 +1,83 @@
+.post>img {
+    width: 120px;
+    height: 80px;
+    width: 120px;
+    border-radius: 5px;
+    object-fit: cover;
+    background: rgb(0, 0, 0, 10%);
+}
+
+.post h4 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+
+    flex-basis: 70%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.postInfo {
+    gap: 4px;
+    display: flex;
+    padding-right: 2.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.postInfo p,
+.postInfo span {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.postInfo p {
+    color: var(--grey3);
+}
+
+.ellipse {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    right: 2.5%;
+    padding: 10px;
+    position: absolute;
+    border-radius: 100px;
+    transform: translateY(-50%);
+}
+
+.ellipse img {
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+.popover {
+    top: 70px;
+    z-index: 2;
+    right: 2.5%;
+    position: absolute;
+    border-radius: 10px;
+    background: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+    .post h4 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .postInfo p,
+    .postInfo span {
+        font-size: 12px;
+        line-height: 20px;
+    }
+}

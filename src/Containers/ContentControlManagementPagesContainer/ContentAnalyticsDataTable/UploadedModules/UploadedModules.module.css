@@ -1,0 +1,143 @@
+.container {
+    display: flex;
+    margin: 40px 0 24px;
+    flex-direction: column;
+    background: var(--white);
+}
+
+.tableHeader,
+.tableBody {
+    gap: 1rem;
+    display: grid;
+    color: var(--grey);
+    padding: 48px 0 8px;
+    align-items: center;
+    grid-template-columns: 2fr 1fr 160px 80px;
+}
+
+.tableHeader {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 29px;
+    border-bottom: 3px solid var(--sectionBorder);
+}
+
+.tableBody>span:nth-child(4) {
+    cursor: pointer;
+    transition: var(--threeSecTransition);
+}
+
+.tableBody>span:nth-child(4):hover {
+    color: var(--purple);
+}
+
+.tableBody .action {
+    position: relative;
+}
+
+.tableBody .action img {
+    cursor: pointer;
+    margin-left: 1.2rem;
+    transform: rotate(90deg);
+}
+
+.tableBody .action>div {
+    top: 30px;
+    right: 40px;
+    z-index: 10;
+    position: absolute;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+}
+
+.tableBody {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    border-bottom: 1px solid var(--sectionBorder);
+}
+
+.tableBody:last-child {
+    border-bottom: none;
+}
+
+.pageButtons {
+    gap: 24px;
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    padding-top: 1.7rem;
+    justify-content: center;
+    border-top: 1px solid var(--sectionBorder)
+}
+
+.pageButtons button {
+    width: 48px;
+    height: 48px;
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--purple);
+    cursor: pointer;
+    color: var(--white);
+    background: var(--purple);
+    transition: var(--threeSecTransition);
+}
+
+.pageButtons>span {
+    width: 48px;
+    height: 48px;
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--sectionBorder);
+    cursor: pointer;
+    transition: var(--threeSecTransition);
+}
+
+
+.pageButtons>span:hover {
+    background: var(--purple);
+}
+
+.pageButtons>span>svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    .container {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        padding: 0;
+    }
+
+    .tableHeader,
+    .tableBody {
+        grid-template-columns: 2fr 1fr 60px;
+    }
+
+    .tableHeader {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .tableBody {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .tableHeader span:nth-child(2),
+    .tableBody span:nth-child(2) {
+        display: none;
+    }
+}

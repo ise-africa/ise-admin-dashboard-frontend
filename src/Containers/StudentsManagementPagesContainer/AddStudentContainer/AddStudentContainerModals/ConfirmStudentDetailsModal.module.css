@@ -1,0 +1,88 @@
+.container {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+
+    gap: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 36px;
+}
+
+.container p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--grey3);
+}
+
+.container button {
+    width: fit-content;
+    padding: 10px 30px;
+}
+
+.container>ul {
+    list-style: none;
+    padding-left: 0;
+
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container>ul li {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--grey3);
+    font-style: normal;
+    font-family: Archivo;
+
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container>ul li span {
+    color: var(--grey);
+}
+
+.buttonContainer {
+    gap: 2rem;
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+    padding-bottom: 1rem;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+    .container h3 {
+        font-size: 18px;
+        line-height: 29px;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+
+    .buttonContainer {
+        gap: 1rem;
+        margin-top: 24px;
+        padding-bottom: 1rem;
+        justify-content: flex-start;
+    }
+
+    .buttonContainer>button:nth-child(1) {
+        flex: unset;
+        padding: 10px 30px;
+        justify-content: center;
+        border: 2px solid var(--purple);
+    }
+}

@@ -1,103 +1,102 @@
-import { createContext, Dispatch, SetStateAction, useState } from 'react'
-import axios from 'axios'
-import { useLocation, useNavigate } from 'react-router-dom'
+import axios from "axios";
+import { createContext, Dispatch, SetStateAction, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { SetURLSearchParams } from "react-router-dom";
 
 export type requestType = {
-    isLoading: boolean
-    data: null | any[] | string
-    error: null | any
-}
+    isLoading: boolean;
+    data: null | any[] | string;
+    error: null | any;
+};
 
-type AuthCOntextValuesProps = {
-    signIn: () => void
-    signInRequest: requestType
-    setSignInRequest: Dispatch<SetStateAction<requestType>>
-    userLoginInfo: { email: string; password: string }
+type AuthUserContextValueType = {
+    userLoginInfo: {
+        email: string | null;
+        password: string | null;
+    };
     setUserLoginInfo: Dispatch<
-        SetStateAction<{ email: string; password: string }>
-    >
-}
+        SetStateAction<{
+            email: string | null;
+            password: string | null;
+        }>
+    >;
+    searchParams: URLSearchParams;
+    setSearchParams: SetURLSearchParams;
+    fetchCountries: () => void;
+    countriesRequestObject: requestType;
+    setCountriesRequestObject: Dispatch<SetStateAction<requestType>>;
+};
 
-type AuthCOntextProviderProps = {
-    children: React.ReactNode
-}
+type AuthUserContextProviderTypes = {
+    children: React.ReactNode;
+};
 
-export const AuthUserContext = createContext({} as AuthCOntextValuesProps)
+export const AuthUserContext = createContext<AuthUserContextValueType>(
+    {} as AuthUserContextValueType
+);
 
-const AuthUserContextProvider = ({ children }: AuthCOntextProviderProps) => {
+const AuthUserContextProvider = ({
+    children,
+}: AuthUserContextProviderTypes) => {
     // States
     const [userLoginInfo, setUserLoginInfo] = useState<{
-        email: string
-        password: string
+        email: string | null;
+        password: string | null;
     }>({
-        email: '',
-        password: '',
-    })
-    const [signInRequest, setSignInRequest] = useState<requestType>({
-        isLoading: false,
-        data: null,
-        error: null,
-    })
+        email: null,
+        password: null,
+    });
+    const [countriesRequestObject, setCountriesRequestObject] =
+        useState<requestType>({
+            isLoading: false,
+            data: null,
+            error: null,
+        });
 
-    //   Router
-    const navigate = useNavigate()
-    const location = useLocation()
+    // Query Params
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    // Utils
-    const redirectRoute = location.state || '/tutor-complete-profile'
+    // Requests
+    const fetchCountries = () => {
+        setCountriesRequestObject({
+            isLoading: true,
+            data: null,
+            error: null,
+        });
+        axios
+            .get(`https://restcountries.com/v3.1/all?fields=name`)
+            .then((res) => {
+                setCountriesRequestObject({
+                    isLoading: false,
+                    data: res.data,
+                    error: null,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+                setCountriesRequestObject({
+                    isLoading: false,
+                    data: null,
+                    error: err?.response?.data?.message,
+                });
+            });
+    };
 
-    const signIn = () => {
-        setSignInRequest({ isLoading: true, data: null, error: null })
-        if (userLoginInfo.email && userLoginInfo.password)
-            axios
-                .post(
-                    `${process.env.REACT_APP_ISE_BACKEND_URL}/api/ise/v1/auth/login/tutor`,
-                    {
-                        email: userLoginInfo.email,
-                        password: userLoginInfo.password,
-                    }
-                )
-                .then((res) => {
-                    setSignInRequest({
-                        data: res.data,
-                        error: null,
-                        isLoading: false,
-                    })
-                    localStorage.setItem(
-                        'iseTutorAccessToken',
-                        res.data?.accessToken
-                    )
-                    localStorage.setItem(
-                        'iseTutorRefreshToken',
-                        res.data?.refreshToken
-                    )
-
-                    navigate(redirectRoute)
-                })
-                .catch((err) => {
-                    console.log(err)
-                    setSignInRequest({
-                        data: null,
-                        error: err.response
-                            ? err.response?.data?.responseMessage
-                            : err.message,
-                        isLoading: false,
-                    })
-                })
-    }
     return (
         <AuthUserContext.Provider
             value={{
-                signIn,
                 userLoginInfo,
                 setUserLoginInfo,
-                signInRequest,
-                setSignInRequest,
+                searchParams,
+                setSearchParams,
+                fetchCountries,
+                countriesRequestObject,
+                setCountriesRequestObject,
             }}
         >
             {children}
         </AuthUserContext.Provider>
-    )
-}
+    );
+};
 
-export default AuthUserContextProvider
+export default AuthUserContextProvider;

@@ -1,0 +1,85 @@
+.body {
+    background: var(--white);
+}
+
+.header {
+    gap: 24px;
+    display: flex;
+    align-items: center;
+    padding: 24px 32px 16px;
+    border-bottom: 1px solid var(--sectionBorder);
+}
+
+.header button {
+    padding: 12px 24px;
+    border-radius: 10px;
+    background: var(--white);
+    border: 1px solid var(--teamCardBorderPurple);
+}
+
+.inputSection {
+    width: 100%;
+    max-width: 330px;
+    position: relative;
+    margin-left: 1.5rem;
+}
+
+.inputSection>input {
+    width: 100%;
+    padding: 11px 40px 11px 64px;
+    border-radius: 10px;
+    border: 1px solid var(--foundation-grey-g-50, #d8d8d8);
+    background: var(--white-body-text, #fff);
+    color: var(--foundation-grey-g-900, #2e2e2e);
+    font-family: Archivo;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    outline: none;
+}
+
+.inputSection>svg {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.container {
+    display: flex;
+    margin: 8px 24px;
+    flex-wrap: wrap;
+    color: var(--grey);
+    align-items: center;
+}
+
+.container>div {
+    gap: 1rem;
+    width: 100%;
+    display: flex;
+    padding: 16px 8px;
+    position: relative;
+    background: var(--white);
+    border-bottom: 1px solid var(--sectionBorder);
+}
+
+.container>div:last-child {
+    border-bottom: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .header {
+        gap: 16px;
+        padding: 16px 0;
+    }
+
+    .container {
+        margin: 8px 0;
+    }
+
+    .container>div {
+        padding: 10px 0;
+    }
+}

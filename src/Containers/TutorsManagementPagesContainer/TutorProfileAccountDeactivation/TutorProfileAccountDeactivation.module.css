@@ -1,0 +1,136 @@
+.container>h4 {
+  color: var(--red);
+  font-family: Archivo;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  margin-bottom: 1rem;
+}
+
+.container>ul {
+  color: var(--grey);
+  font-family: Archivo;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  margin-left: -20px;
+}
+
+.container>button {
+  margin-top: 24px;
+  color: var(--red);
+  width: fit-content;
+  padding: 10px 30px;
+  background: var(--white);
+  border: 2px solid var(--red);
+}
+
+.modalContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modalInnerContainer {
+  width: 80%;
+  padding: 1rem 0;
+}
+
+.modalInnerContainer2 {
+  width: 80%;
+  display: flex;
+  padding: 1rem 0;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modalInnerContainer>h4,
+.modalInnerContainer2>h4 {
+  color: var(--grey);
+  font-family: Archivo;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px;
+  margin-bottom: 0.5rem;
+}
+
+.modalInnerContainer>p,
+.modalInnerContainer2>p {
+  color: var(--grey3);
+  font-family: Archivo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  margin-bottom: 1.5rem;
+}
+
+.modalButtonSection {
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.modalButtonSection>button,
+.modalInnerContainer2>button {
+  padding: 10px 30px;
+  width: fit-content;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+
+  .container h4,
+  .modalContainer h4 {
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 0.5rem;
+  }
+
+  .modalContainer p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .container>ul {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modalInnerContainer {
+    width: 90%;
+    padding: 1rem 0;
+  }
+
+  .container h4,
+  .modalContainer h4 {
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 0.5rem;
+  }
+
+  .modalContainer p {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .modalButtonSection>button,
+  .modalInnerContainer2>button {
+    width: 100%;
+  }
+
+  .container>ul {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}

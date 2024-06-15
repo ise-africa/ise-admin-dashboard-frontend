@@ -1,0 +1,179 @@
+.container {
+    gap: 40px;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    padding: 2rem auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content h3,
+.header h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 36px;
+}
+
+.contentInfo p,
+.header p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.header svg {
+    cursor: pointer;
+}
+
+.header {
+    gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonContainer {
+    gap: 1.5rem;
+    display: flex;
+    margin-top: 1.5rem;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.buttonContainer button {
+    width: auto;
+}
+
+.innerContainer {
+    padding: 16px;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+    background: var(--white);
+    border: 1px solid var(--sectionBorder);
+}
+
+.innerContainer>h4 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 29px;
+}
+
+.body span,
+.contentInfo span,
+.innerContainer>p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--grey3);
+}
+
+.innerContainer>p {
+    font-size: 12px;
+}
+
+.body {
+    gap: 24px;
+    display: flex;
+    overflow: auto;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    align-items: center;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: space-between;
+    border-top: 1px solid var(--sectionBorder);
+}
+
+.body::-webkit-scrollbar {
+    display: none;
+}
+
+.body>div {
+    flex: 1;
+    gap: 4px;
+    width: 100%;
+    display: flex;
+    min-width: 120px;
+    padding: 16px 24px;
+    flex-direction: column;
+    border-right: 1px solid var(--sectionBorder);
+}
+
+.body>div:last-child {
+    border-right: none;
+}
+
+.body p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.contentInfo {
+    gap: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    align-items: center;
+}
+
+@media screen and (max-width: 1023px) {
+    .container {
+        gap: 24px;
+        height: unset;
+        margin: 2rem auto;
+    }
+
+    .contentInfo {
+        gap: 1rem;
+    }
+
+    .content h3,
+    .header h3 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .body {
+        gap: 16px;
+    }
+
+    .innerContainer>h4 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .body>div {
+        padding: 8px 0;
+    }
+
+    .body span {
+        font-size: 10px;
+        line-height: 16px;
+    }
+
+    .body p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        gap: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    .content h3,
+    .header h3 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .contentInfo p,
+    .header>p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}

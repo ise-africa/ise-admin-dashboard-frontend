@@ -2,6 +2,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -135,7 +136,7 @@
   z-index: 1;
 }
 
-.inputSection > input {
+.inputSection>input {
   width: 100%;
   height: 100%;
   border-radius: 8px;
@@ -170,7 +171,7 @@
   margin-bottom: 0.5rem;
 }
 
-.label > span {
+.label>span {
   color: var(--red);
 }
 
@@ -184,6 +185,16 @@
   animation: appear 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
+.tip {
+  color: var(--grey);
+  font-family: Archivo;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
 @media screen and (min-width: 767px) and (max-width: 1023px) {
   .dropdown {
     border-radius: 5px;
@@ -203,7 +214,7 @@
   }
 
   .label,
-  .inputSection > input,
+  .inputSection>input,
   .dropdown .dropdownContent .dropdownItem {
     font-size: 14px;
     line-height: 23px;
@@ -223,13 +234,14 @@
     line-height: 23px;
   }
 
+  .tip,
   .errorMessage {
     font-size: 10px;
     line-height: 18px;
   }
 
   .label,
-  .inputSection > input,
+  .inputSection>input,
   .dropdown .dropdownContent .dropdownItem {
     font-size: 14px;
     line-height: 23px;

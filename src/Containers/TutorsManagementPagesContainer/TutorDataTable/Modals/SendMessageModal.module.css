@@ -1,0 +1,139 @@
+.container {
+  padding: 40px 2rem;
+  border-radius: 10px;
+  background: var(--white);
+}
+
+.container button,
+.modalContainer button {
+  width: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--grey);
+  font-family: Archivo;
+  margin-bottom: 40px;
+}
+
+.header h4 {
+  font-size: 39px;
+  font-weight: 500;
+  line-height: 50px;
+  font-style: normal;
+
+}
+
+.header>svg {
+  height: 35px;
+  cursor: pointer;
+}
+
+.modalContainer>p,
+.recipient {
+  gap: 2rem;
+  display: flex;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--grey3);
+  font-weight: 400 !important;
+}
+
+.recipient div {
+  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipient h4,
+.recipient p {
+  color: var(--grey3);
+  white-space: nowrap;
+}
+
+.recipient span {
+  color: var(--grey);
+  white-space: nowrap;
+}
+
+.textareaSection {
+  margin-top: 40px;
+}
+
+.footer {
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: calc(40px - 1rem);
+}
+
+.modalContainer {
+  gap: 5px;
+  width: 90%;
+  height: 80%;
+  display: flex;
+  text-align: center;
+  margin: 2rem auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modalContainer h4 {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 35px;
+}
+
+.modalContainer button {
+  margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 1023px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header h4 {
+    font-size: 28px;
+    line-height: 35px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header h4 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .recipient {
+    gap: 1.5rem;
+  }
+
+  .recipient span {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  .footer {
+    gap: 1rem;
+  }
+
+  .modalContainer h4 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .modalContainer>p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

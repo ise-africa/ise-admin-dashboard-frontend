@@ -1,7 +1,7 @@
 .button {
   border-radius: 5px;
   display: flex;
-  padding: 10px 8px;
+  padding: 10px 30px;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -13,6 +13,7 @@
   width: 100%;
   cursor: pointer;
   white-space: nowrap;
+  background: var(--white);
   transition: all 0.2s ease-in-out;
 }
 
@@ -78,6 +79,12 @@
   background: var(--red);
   color: var(--white);
   border: none;
+}
+
+.deleteSecondary {
+  color: var(--red);
+  background: var(--white);
+  border: 2px solid var(--red);
 }
 
 .button:disabled {

@@ -1,0 +1,204 @@
+.container {
+    gap: 2rem;
+    display: flex;
+    padding: 24px;
+    overflow-x: hidden;
+    flex-direction: column;
+
+    font-style: normal;
+    font-family: Archivo;
+}
+
+.container button {
+    width: fit-content;
+    padding: 10px 30px;
+}
+
+.topHeader,
+.buttonContainer {
+    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.topHeader {
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.buttonContainer button {
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 8px 24px;
+    color: var(--grey);
+    background: var(--white);
+    border: 1px solid var(--grey3);
+}
+
+.buttonContainer .active {
+    color: var(--white);
+    background: var(--grey);
+    border: 1px solid var(--grey);
+}
+
+.inputSection {
+    width: 100%;
+    max-width: 330px;
+    position: relative;
+}
+
+.inputSection>input {
+    width: 100%;
+    padding: 12px 20px 12px 64px;
+    border-radius: 10px;
+    border: 1px solid var(--foundation-grey-g-50, #d8d8d8);
+    background: var(--white-body-text, #fff);
+    color: var(--foundation-grey-g-900, #2e2e2e);
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 29px;
+}
+
+.inputSection>svg {
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.topHeader {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--sectionBorder, #EFEFEF);
+}
+
+.tableContainer {
+    gap: 24px;
+    display: flex;
+    padding: 24px 32px;
+    border-radius: 10px;
+    flex-direction: column;
+    background: var(--white);
+}
+
+
+.tableHeader,
+.tableBody {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 50px;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--grey);
+    text-transform: capitalize;
+}
+
+.tableHeader {
+    font-weight: 500;
+    padding-block: 10px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.tableHeader>span:last-child {
+    opacity: 0;
+}
+
+.tableBody {
+    position: relative;
+    padding: 20px 0 15px;
+    border-bottom: 1px solid var(--sectionBorder);
+}
+
+.tableBody:last-child {
+    border-bottom: none;
+    padding-bottom: 40px;
+}
+
+.tableBody img {
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+.upcoming {
+    color: #C7920B;
+}
+
+.active {
+    color: #4A820B;
+}
+
+.closed {
+    color: var(--grey);
+}
+
+.noResult {
+    font-size: 18px;
+    line-height: 29px;
+    margin: 2rem auto;
+}
+
+.popover {
+    position: relative;
+}
+
+.popover>div {
+    top: 30px;
+    right: 15px;
+    z-index: 2;
+    position: absolute;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 1023px) {
+    .container {
+        padding: 16px 0;
+        background: var(--white);
+    }
+
+    .topHeader,
+    .buttonContainer {
+        gap: 16px;
+    }
+
+    .buttonContainer button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .inputSection>input {
+        font-size: 14px;
+        line-height: 22px;
+        border-radius: 5px;
+        padding: 8px 20px 8px 44px;
+    }
+
+    .inputSection>svg {
+        left: 16px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .tableContainer {
+        padding: 24px 16px;
+    }
+
+    .tableHeader span:nth-child(2),
+    .tableBody span:nth-child(2) {
+        display: none;
+    }
+
+    .tableHeader,
+    .tableBody {
+        font-size: 14px;
+        line-height: 22px;
+        grid-template-columns: 1fr 1fr 20px;
+    }
+}

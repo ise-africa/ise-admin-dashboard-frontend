@@ -1,21 +1,23 @@
-import { useState } from 'react'
-import classes from './Input.module.css'
+import { useState, useEffect } from 'react';
+import classes from './Input.module.css';
 
 type InputProps = {
-    type?: string
-    label?: string
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onBlur?: () => void
-    value?: string
-    isRequired?: boolean
-    errorMessage?: string
-    inValidCondition?: boolean
-    placeholder?: string
-    tip?: string
-    style?: React.CSSProperties
-    name?: string
-    condition?: boolean
-}
+    type?: string;
+    label?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: () => void;
+    value?: string;
+    isRequired?: boolean;
+    errorMessage?: string;
+    inValidCondition?: boolean;
+    placeholder?: string;
+    tip?: string;
+    style?: React.CSSProperties;
+    name?: string;
+    icon?: string;
+    condition?: boolean;
+    maxLength?: number | undefined;
+};
 
 const Input = ({
     type,
@@ -30,10 +32,29 @@ const Input = ({
     tip,
     style,
     name,
+    icon,
     condition,
+    maxLength,
 }: InputProps) => {
     // States
-    const [invalid, setInvalid] = useState(false)
+    const [invalid, setInvalid] = useState(false);
+    const [characterCount, setCharacterCount] = useState(value ? value.length : 0);
+
+    useEffect(() => {
+        setCharacterCount(value ? value.length : 0);
+    }, [value]);
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = event.target.value;
+        if (maxLength !== undefined && inputValue.length > maxLength) {
+            event.preventDefault();
+            setInvalid(true);
+            return;
+        }
+        setCharacterCount(inputValue.length);
+        if (onChange) onChange(event);
+        setInvalid(false);
+    };
 
     return (
         <div className={classes.container} style={style}>
@@ -44,34 +65,42 @@ const Input = ({
                     {isRequired && <span>*</span>}
                 </>
             )}
-            <input
-                type={type ? type : 'text'}
-                name={name}
-                placeholder={placeholder}
-                id={label}
-                onChange={onChange}
-                onBlur={(e) => {
-                    if (isRequired && e.target.value === '') {
-                        setInvalid(true)
-                    }
-                    if (condition !== undefined && condition === false) {
-                        setInvalid(true)
-                    } else {
-                        setInvalid(false)
-                    }
-                    if (onBlur) onBlur()
-                }}
-                value={value}
-                className={invalid ? classes.invalid : classes.valid}
-            />
+            <div className={`${icon ? classes.inputContainer : ''}`}>
+                <input
+                    type={type ? type : 'text'}
+                    name={name}
+                    placeholder={placeholder}
+                    id={label}
+                    onChange={handleInputChange}
+                    onBlur={(e) => {
+                        if (isRequired && e.target.value === '') {
+                            setInvalid(true);
+                        }
+                        if (condition !== undefined && condition === false) {
+                            setInvalid(true);
+                        } else {
+                            setInvalid(false);
+                        }
+                        if (onBlur) onBlur();
+                    }}
+                    value={value}
+                    className={invalid ? classes.invalid : classes.valid}
+                />
+                {icon && <img src={icon} alt={name} className={classes.icon} />}
+            </div>
             {(invalid || inValidCondition) && (
                 <span className={classes.errorMessage}>
                     {errorMessage || '*invalid'}{' '}
                 </span>
             )}
             {tip && <span className={classes.tip}>{tip}</span>}
+            {maxLength && (
+                <p className={classes.tip}>
+                    Character count: {characterCount} characters
+                </p>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default Input
+export default Input;

@@ -1,0 +1,28 @@
+.container {
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionsNavSection {
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    background: var(--white);
+}
+
+@media screen and (max-width: 1023px) {
+    .container {
+        gap: 0;
+        background: var(--white);
+    }
+
+    .container>div:nth-child(1) {
+        margin: 0;
+        padding: 1rem 0;
+    }
+
+    .sectionsNavSection {
+        margin: 0 0 1rem;
+        padding: 1rem;
+    }
+}
