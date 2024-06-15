@@ -4,12 +4,12 @@ pipeline {
 	environment {
 		DOCKER_REGISTRY = 'docker.iseschool.co'
 		DOCKER_IMAGE_NAME = 'ise-admin-dashboard'
-		BUILD_NAME = 'nightly'
+		BUILD_NAME = 'prod'
 		CONTAINER_NAME = 'ise-admin-dashboard'
-		TARGET_SERVER = '10.106.0.2'
-		SSH_CREDENTIALS_ID = 'ssh-droplet-staging'
+		TARGET_SERVER = '10.106.0.4'
+		SSH_CREDENTIALS_ID = 'ssh-droplet-prod'
 		NEXUS_CREDENTIALS_ID = 'ise-nexus-credential'
-		ENV_FILE_ID = 'b32e2d7e-7be2-4c26-b728-ed639e673169'
+		ENV_FILE_ID = '6e9f6207-e99d-4a12-8657-8ff88a1321c2'
 		SSH_USER = 'jenkins'
 	}
   
