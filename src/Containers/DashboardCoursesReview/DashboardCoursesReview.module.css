@@ -1,0 +1,84 @@
+.container {
+  padding: 2rem 1.5rem;
+  background-color: var(--white);
+  margin: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: #ffffff;
+}
+
+.header > h4 {
+  font-family: Archivo;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.header > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: left;
+  color: #664efe;
+  cursor: pointer;
+}
+
+.table {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #d8d8d8;
+}
+
+.tableHeader,
+.tableBody {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: left;
+  color: #2e2e2e;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #2e2e2e;
+}
+
+.tableBody {
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: left;
+  color: #2e2e2e;
+  padding: 2rem 0 1rem 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.tableHeader > span:nth-child(1),
+.tableBody > span:nth-child(1) {
+  flex: 3;
+}
+
+.tableHeader > span:nth-child(2),
+.tableHeader > span:nth-child(3),
+.tableBody > span:nth-child(2),
+.tableBody > span:nth-child(3) {
+  flex: 2;
+}
+
+.tableHeader > span:nth-child(4),
+.tableBody > span:nth-child(4) {
+  flex: 1;
+  cursor: pointer;
+}

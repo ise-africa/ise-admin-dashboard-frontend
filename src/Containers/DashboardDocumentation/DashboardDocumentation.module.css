@@ -1,0 +1,56 @@
+.container {
+  padding: 2rem 1.5rem;
+  background-color: var(--white);
+  margin: 24px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.container > div {
+  border: 1px solid #f7f7f7;
+  box-shadow: 0px 1px 2px 0px #0000000d;
+  padding: 40px 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-grow: 0;
+}
+
+.container > div:nth-child(1) {
+  flex-basis: 50%;
+}
+
+.container > div:nth-child(2) {
+  flex-basis: 35%;
+}
+
+.container > div > div > h4 {
+  font-family: Archivo;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  color: var(--grey);
+  margin-bottom: 0.5rem;
+}
+
+.container > div > div > p {
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: left;
+  color: var(--grey);
+  margin-bottom: 0.5rem;
+}
+
+.container > div > div > button {
+  min-width: 183px;
+  max-width: 225px;
+  margin-top: 1rem;
+}
+
+.container > div > div > button > svg {
+  flex-shrink: 0;
+}
