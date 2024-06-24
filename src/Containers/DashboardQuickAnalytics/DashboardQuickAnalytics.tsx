@@ -1,5 +1,4 @@
-import DropdownWithSearch from "../../Components/DropdownWithSearch/DropdownWithSearch";
-import classes from "./DashboardQuickAnalytics.module.css";
+import Summary from "../../Components/Summary/Summary";
 
 const DashboardQuickAnalytics = () => {
   const analyticsOverview = [
@@ -24,26 +23,7 @@ const DashboardQuickAnalytics = () => {
     },
   ];
   return (
-    <section className={classes.container}>
-      <div className={classes.header}>
-        <h4>Quick analytics</h4>
-        <DropdownWithSearch
-          options={["Yesterday", "Last 7 days"]}
-          title="Last 7 days"
-        />
-      </div>
-
-      <div className={classes.analyticsSection}>
-        {analyticsOverview.map((data, i) => {
-          return (
-            <div className={classes.overview}>
-              <h4>{data.value}</h4>
-              <p>{data.title}</p>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+    <Summary data={analyticsOverview} title="Quick analytics" showDropdown />
   );
 };
 
