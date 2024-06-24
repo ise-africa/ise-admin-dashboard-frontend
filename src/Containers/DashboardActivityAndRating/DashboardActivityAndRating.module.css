@@ -1,0 +1,15 @@
+.container {
+  padding: 2rem 1.5rem;
+  margin: 24px;
+  display: flex;
+  align-items: stretch;
+  gap: 30px;
+}
+
+.container > section {
+  flex: calc(50% - 30px);
+  border-radius: 10px;
+  border: 1px solid #d8d8d8;
+  background: var(--white);
+  border-radius: 10px;
+}

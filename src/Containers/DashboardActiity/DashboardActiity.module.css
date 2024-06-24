@@ -1,0 +1,76 @@
+.container {
+  border: 2px solid red;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: #ffffff;
+  border-bottom: 1px solid #d8d8d8;
+  border-radius: 10px 10px 0 0;
+}
+
+.header > h4 {
+  font-family: Archivo;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.header > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: left;
+  color: #664efe;
+  cursor: pointer;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.activities {
+  padding: 1.5rem 2rem;
+}
+
+.activity:not(.activity:last-child) {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 1rem;
+}
+
+.activity > img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.activity > div > h6 {
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: left;
+  color: var(--grey);
+  margin-bottom: 0.5rem;
+}
+
+.activity > div > p {
+  font-family: Archivo;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  color: var(--grey3);
+}
