@@ -33,92 +33,102 @@ import AddBlogPostPage from "./Pages/AddBlogPostPage";
 import EditBlogPostPage from "./Pages/EditBlogPostPage";
 import ViewBlogPostPage from "./Pages/ViewBlogPostPage";
 import Dashboard from "./Pages/Dashboard";
+import SignInPage from "./Pages/SignInPage";
+import RequireAuth from "./Components/RequireAuth/RequireAuth";
 
 function App() {
   return (
     <Routes>
       <Route path="*" element={<ErrorPage />} />
       <Route path="/" element={<Navigate to="/dashboard"></Navigate>} />
+      <Route path="/sign-in" element={<SignInPage />} />
 
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route element={<RequireAuth />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/users/admins" element={<AdminsManagementPage />} />
+        <Route path="/users/admins/:AdminId" element={<AdminProfilePage />} />
+        <Route
+          path="/users/admins/#:AdminInfo"
+          element={<AdminProfilePage />}
+        />
+        <Route path="/users/admins/add-admin" element={<AddAdminPage />} />
 
-      <Route path="/users/admins" element={<AdminsManagementPage />} />
-      <Route path="/users/admins/:AdminId" element={<AdminProfilePage />} />
-      <Route path="/users/admins/#:AdminInfo" element={<AdminProfilePage />} />
-      <Route path="/users/admins/add-admin" element={<AddAdminPage />} />
+        <Route path="/users/tutors" element={<TutorsManagementPage />} />
+        <Route path="/users/tutors/:TutorId" element={<TutorProfilePage />} />
+        <Route path="/users/tutors/add-tutor" element={<AddTutorPage />} />
 
-      <Route path="/users/tutors" element={<TutorsManagementPage />} />
-      <Route path="/users/tutors/:TutorId" element={<TutorProfilePage />} />
-      <Route path="/users/tutors/add-tutor" element={<AddTutorPage />} />
+        <Route path="/users/students" element={<StudentsManagementPage />} />
+        <Route
+          path="/users/students/:StudentId"
+          element={<StudentProfilePage />}
+        />
+        <Route
+          path="/users/students/add-student"
+          element={<AddStudentPage />}
+        />
 
-      <Route path="/users/students" element={<StudentsManagementPage />} />
-      <Route
-        path="/users/students/:StudentId"
-        element={<StudentProfilePage />}
-      />
-      <Route path="/users/students/add-student" element={<AddStudentPage />} />
+        <Route path="/schools" element={<SchoolManagementPage />} />
+        <Route path="/schools/add-school" element={<AddSchoolsPage />} />
+        <Route path="/schools/school-created" element={<SchoolCreatedPage />} />
+        <Route path="/schools/:SchoolId" element={<SchoolViewDetailsPage />} />
+        <Route
+          path="/schools/:SchoolId/edit-school"
+          element={<EditSchoolPage />}
+        />
+        <Route
+          path="/schools/:SchoolId/courses"
+          element={<SchoolCoursesPage />}
+        />
+        <Route
+          path="/schools/:SchoolId/courses/:CourseId"
+          element={<SchoolCourseViewDetailsPage />}
+        />
+        <Route
+          path="/schools/:SchoolId/courses/:CourseId/edit-course"
+          element={<EditSchoolCoursePage />}
+        />
+        <Route
+          path="/schools/:SchoolId/courses/:CourseId/add-cohort"
+          element={<AddSchoolCourseCohortPage />}
+        />
+        <Route
+          path="/schools/:SchoolId/courses/:CourseId/cohorts"
+          element={<CohortMangementPage />}
+        />
+        <Route
+          path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId"
+          element={<SchoolCourseCohortViewDetailsPage />}
+        />
+        <Route
+          path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId/edit-cohort"
+          element={<EditSchoolCourseCohortPage />}
+        />
+        <Route
+          path="/schools/:SchoolId/add-course"
+          element={<AddSchoolCoursePage />}
+        />
 
-      <Route path="/schools" element={<SchoolManagementPage />} />
-      <Route path="/schools/add-school" element={<AddSchoolsPage />} />
-      <Route path="/schools/school-created" element={<SchoolCreatedPage />} />
-      <Route path="/schools/:SchoolId" element={<SchoolViewDetailsPage />} />
-      <Route
-        path="/schools/:SchoolId/edit-school"
-        element={<EditSchoolPage />}
-      />
-      <Route
-        path="/schools/:SchoolId/courses"
-        element={<SchoolCoursesPage />}
-      />
-      <Route
-        path="/schools/:SchoolId/courses/:CourseId"
-        element={<SchoolCourseViewDetailsPage />}
-      />
-      <Route
-        path="/schools/:SchoolId/courses/:CourseId/edit-course"
-        element={<EditSchoolCoursePage />}
-      />
-      <Route
-        path="/schools/:SchoolId/courses/:CourseId/add-cohort"
-        element={<AddSchoolCourseCohortPage />}
-      />
-      <Route
-        path="/schools/:SchoolId/courses/:CourseId/cohorts"
-        element={<CohortMangementPage />}
-      />
-      <Route
-        path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId"
-        element={<SchoolCourseCohortViewDetailsPage />}
-      />
-      <Route
-        path="/schools/:SchoolId/courses/:CourseId/cohorts/:CohortId/edit-cohort"
-        element={<EditSchoolCourseCohortPage />}
-      />
-      <Route
-        path="/schools/:SchoolId/add-course"
-        element={<AddSchoolCoursePage />}
-      />
+        <Route path="/courses" element={<ContentControlManagementPage />} />
+        <Route
+          path="/courses/:SchoolId/courses/:CourseId/analytics"
+          element={<ContentAnalyticsBoardPage />}
+        />
+        <Route
+          path="/courses/:SchoolId/courses/:CourseId/analytics/details"
+          element={<CourseAnalyticsViewDetails />}
+        />
 
-      <Route path="/courses" element={<ContentControlManagementPage />} />
-      <Route
-        path="/courses/:SchoolId/courses/:CourseId/analytics"
-        element={<ContentAnalyticsBoardPage />}
-      />
-      <Route
-        path="/courses/:SchoolId/courses/:CourseId/analytics/details"
-        element={<CourseAnalyticsViewDetails />}
-      />
+        <Route path="/blogs" element={<BlogManagementPage />} />
+        <Route path="/blogs/:PostId" element={<ViewBlogPostPage />} />
+        <Route path="/blogs/add-post" element={<AddBlogPostPage />} />
+        <Route path="/blogs/:PostId/edit-post" element={<EditBlogPostPage />} />
 
-      <Route path="/blogs" element={<BlogManagementPage />} />
-      <Route path="/blogs/:PostId" element={<ViewBlogPostPage />} />
-      <Route path="/blogs/add-post" element={<AddBlogPostPage />} />
-      <Route path="/blogs/:PostId/edit-post" element={<EditBlogPostPage />} />
-
-      <Route path="/support" element={<Support />} />
-      <Route
-        path="/support/:SupportTrackingId"
-        element={<SupportTrackingChatDetailPage />}
-      />
+        <Route path="/support" element={<Support />} />
+        <Route
+          path="/support/:SupportTrackingId"
+          element={<SupportTrackingChatDetailPage />}
+        />
+      </Route>
     </Routes>
   );
 }

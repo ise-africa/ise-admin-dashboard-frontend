@@ -8,28 +8,6 @@ type SummaryProps = {
 };
 
 const Summary = ({ data, showDropdown, title }: SummaryProps) => {
-  const analyticsOverview = [
-    {
-      title: "Total revenue",
-      value: "₦1,500,000",
-    },
-
-    {
-      title: "Total transactions",
-      value: "23",
-    },
-
-    {
-      title: "Total enrolments",
-      value: "123",
-    },
-
-    {
-      title: "New accounts",
-      value: "13",
-    },
-  ];
-
   return (
     <section className={classes.container}>
       <div className={classes.header}>
