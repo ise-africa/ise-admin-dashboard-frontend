@@ -1,0 +1,25 @@
+.container {
+  border: 2px solid red;
+  padding: 2rem 1.5rem;
+  background-color: var(--white);
+  margin: 24px;
+}
+
+.container > h1 {
+  font-family: Archivo;
+  font-size: 39px;
+  font-weight: 500;
+  line-height: 50px;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.container > p {
+  font-family: Archivo;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: left;
+  color: #2e2e2e;
+  margin-top: 1rem;
+}
