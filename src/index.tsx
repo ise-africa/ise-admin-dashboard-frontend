@@ -8,6 +8,7 @@ import AppContextProvider from "./Context/AppContext";
 import AuthUserContextProvider from "./Context/AuthUserContext";
 import SchoolContextProvider from "./Context/SchoolContext";
 import UseSWRConfigProvider from "./Configs/UseSWRConfig";
+import Toast2 from "./Components/Toast2/Toast2";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,7 +21,9 @@ root.render(
         <AppContextProvider>
           <SchoolContextProvider>
             <React.StrictMode>
-              <App />
+              <Toast2>
+                <App />
+              </Toast2>
             </React.StrictMode>
           </SchoolContextProvider>
         </AppContextProvider>

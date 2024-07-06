@@ -19,6 +19,7 @@ type RequestType = {
   successFunction?: () => void;
   errorFunction?: () => void;
   load?: boolean;
+  requestCleanup?: boolean;
 };
 
 export default async function requestHandler({
@@ -63,6 +64,7 @@ export async function requestHandler2({
   successFunction,
   errorFunction,
   load,
+  requestCleanup,
 }: RequestType) {
   const userToken = localStorage.getItem("iseAdminAccessToken");
   if ((setState && load === true) || (setState && load === undefined)) {
@@ -91,6 +93,16 @@ export async function requestHandler2({
           data: res?.data,
           error: null,
         });
+
+        if (requestCleanup) {
+          setTimeout(() => {
+            setState({
+              isLoading: false,
+              data: null,
+              error: null,
+            });
+          }, 5000);
+        }
       }
       if (successFunction) {
         successFunction();
@@ -115,6 +127,16 @@ export async function requestHandler2({
             ? err.response?.data?.responseMessage.toString()
             : err.message,
         });
+
+        if (requestCleanup) {
+          setTimeout(() => {
+            setState({
+              isLoading: false,
+              data: null,
+              error: null,
+            });
+          }, 5000);
+        }
       }
       if (errorFunction) {
         errorFunction();

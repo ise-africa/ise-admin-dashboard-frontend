@@ -1,130 +1,140 @@
 .container,
 .textSection,
-.textSection>div {
-    gap: 1.5rem;
-    display: flex;
-    flex-direction: column;
+.textSection > div {
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .container h2 {
-    font-size: 31px;
-    font-weight: 500;
-    line-height: 49px;
-    color: var(--grey);
-    margin-bottom: 16px;
+  font-size: 31px;
+  font-weight: 500;
+  line-height: 49px;
+  color: var(--grey);
+  margin-bottom: 16px;
 }
 
 .container button {
-    width: fit-content;
-    padding: 10px 30px;
+  width: fit-content;
+  padding: 10px 30px;
 }
 
 .container .buttonSection {
-    gap: 1.5rem;
-    display: flex;
-    margin-top: 40px;
-    padding-top: 24px;
-    align-items: center;
-    justify-content: flex-end;
-    border-top: 1px solid var(--sectionBorder);
+  gap: 1.5rem;
+  display: flex;
+  margin-top: 40px;
+  padding-top: 24px;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid var(--sectionBorder);
 }
 
 .buttonSectionThree .canelButton {
-    padding: 0;
-    margin-right: auto;
+  padding: 0;
+  margin-right: auto;
 }
 
 .flexButtonSection {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .flexButtonSection button {
-    padding: 0;
+  padding: 0;
 }
 
 .fileUploadInfo {
-    padding: 8px;
-    margin-top: -1.125rem;
-    background: var(--progressBarYellow);
+  padding: 8px;
+  margin-top: -1.125rem;
+  background: var(--progressBarYellow);
 }
 
 .textSection span,
 .fileUploadInfo li {
-    font-size: 13px;
-    list-style: none;
-    font-weight: 400;
-    line-height: 20px;
-    color: var(--grey);
+  font-size: 13px;
+  list-style: none;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--grey);
 }
 
 .textSection span {
-    color: var(--grey3);
+  color: var(--grey3);
 }
 
 .textSection p,
 .textSection li {
-    font-size: 16px;
-    list-style: disc;
-    font-weight: 400;
-    line-height: 26px;
-    color: var(--grey);
+  font-size: 16px;
+  list-style: disc;
+  font-weight: 400;
+  line-height: 26px;
+  color: var(--grey);
 }
 
 .textSection img {
-    width: 500px;
-    height: 500px;
-    max-width: 100%;
-    object-fit: cover;
+  width: 500px;
+  height: 500px;
+  max-width: 100%;
+  object-fit: cover;
 }
 
-.textSection>div {
-    gap: 8px;
+.textSection > div {
+  gap: 8px;
 }
 
 .schoolImportanceLabel {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 33px;
-    color: var(--grey);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 33px;
+  color: var(--grey);
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.benefit > div {
+  flex: 1;
 }
 
 @media screen and (max-width: 768px) {
-    .container h2 {
-        font-size: 25px;
-        line-height: 35px;
-        margin-bottom: 10px;
-    }
+  .container h2 {
+    font-size: 25px;
+    line-height: 35px;
+    margin-bottom: 10px;
+  }
 
-    .schoolImportanceLabel {
-        font-size: 16px;
-        line-height: 26px;
-    }
+  .schoolImportanceLabel {
+    font-size: 16px;
+    line-height: 26px;
+  }
 
-    .textSection p,
-    .textSection li {
-        font-size: 14px;
-        line-height: 22px;
-    }
+  .textSection p,
+  .textSection li {
+    font-size: 14px;
+    line-height: 22px;
+  }
 
-    .textSection img {
-        width: 230px;
-        height: 250px;
-    }
+  .textSection img {
+    width: 230px;
+    height: 250px;
+  }
 
-    .container .buttonSection {
-        gap: 1rem;
-        justify-content: space-between;
-    }
+  .container .buttonSection {
+    gap: 1rem;
+    justify-content: space-between;
+  }
 
-    .buttonSectionThree {
-        justify-content: center;
-        flex-wrap: wrap-reverse;
-    }
+  .buttonSectionThree {
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+  }
 
-    .buttonSectionThree .canelButton {
-        flex-basis: 100%;
-        margin-right: 0;
-    }
+  .buttonSectionThree .canelButton {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
 }

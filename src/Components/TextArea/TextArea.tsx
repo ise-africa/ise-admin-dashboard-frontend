@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import classes from "./TextArea.module.css";
 
 type TextAreaProps = {
   label?: string;
-  onChange?: () => void;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onBlur?: () => void;
   value?: string;
   isRequired?: boolean;
@@ -11,6 +11,7 @@ type TextAreaProps = {
   inValidCondition?: boolean;
   placeholder?: string;
   tip?: string;
+  name?: string;
 };
 
 const TextArea = ({
@@ -23,6 +24,7 @@ const TextArea = ({
   inValidCondition,
   placeholder,
   tip,
+  name,
 }: TextAreaProps) => {
   // States
   const [invalid, setInvalid] = useState(false);
@@ -38,6 +40,7 @@ const TextArea = ({
       )}
       <textarea
         placeholder={placeholder}
+        name={name}
         id={label}
         onChange={onChange}
         onBlur={(e) => {

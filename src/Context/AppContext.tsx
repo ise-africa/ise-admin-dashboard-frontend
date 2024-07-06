@@ -52,6 +52,8 @@ type AppContextProps = {
   schools: SchoolDataType[];
   setSchools: Dispatch<SetStateAction<SchoolDataType[]>>;
   blogPost: BlogPostDataType[];
+  notifications: notificationsType;
+  setNotifications: Dispatch<SetStateAction<notificationsType>>;
   setBlogPost: Dispatch<SetStateAction<BlogPostDataType[]>>;
 };
 
@@ -72,6 +74,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const screenWidth = window.innerWidth;
 
   // States
+  const [notifications, setNotifications] = useState<notificationsType>(null);
   const [screenWidthState, setScreenWidthState] = useState<number>(screenWidth);
   const [showGetStarted, setShowGetStarted] = useState<{
     rightCta: boolean;
@@ -104,10 +107,6 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setScreenWidthState(screenWidth);
   }, [screenWidth]);
 
-  const { data, isLoading } = useCountries();
-
-  console.log(data, isLoading);
-
   return (
     <AppContext.Provider
       value={{
@@ -132,6 +131,8 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         setSchools,
         blogPost,
         setBlogPost,
+        notifications,
+        setNotifications,
       }}
     >
       {children}
