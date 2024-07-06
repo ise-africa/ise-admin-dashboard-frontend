@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  width: 80%;
+  margin: 24px;
+}
+
+.container > div {
+  flex: 50%;
+}

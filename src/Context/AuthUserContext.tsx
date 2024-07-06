@@ -3,6 +3,7 @@ import { createContext, Dispatch, SetStateAction, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { SetURLSearchParams } from "react-router-dom";
 import { backend_url } from "../Utilities/global";
+import useSWR from "swr";
 
 export type requestType = {
   isLoading: boolean;
@@ -23,9 +24,6 @@ type AuthUserContextValueType = {
   >;
   searchParams: URLSearchParams;
   setSearchParams: SetURLSearchParams;
-  fetchCountries: () => void;
-  countriesRequestObject: requestType;
-  setCountriesRequestObject: Dispatch<SetStateAction<requestType>>;
   signInRequest: requestType;
   signIn: () => void;
 };
@@ -49,12 +47,6 @@ const AuthUserContextProvider = ({
     email: null,
     password: null,
   });
-  const [countriesRequestObject, setCountriesRequestObject] =
-    useState<requestType>({
-      isLoading: false,
-      data: null,
-      error: null,
-    });
 
   // Query Params
   const [searchParams, setSearchParams] = useSearchParams();
@@ -69,32 +61,6 @@ const AuthUserContextProvider = ({
 
   //   Utils
   const redirectRoute = location.state || "/dashboard";
-
-  // Requests
-  const fetchCountries = () => {
-    setCountriesRequestObject({
-      isLoading: true,
-      data: null,
-      error: null,
-    });
-    axios
-      .get(`https://restcountries.com/v3.1/all?fields=name`)
-      .then((res) => {
-        setCountriesRequestObject({
-          isLoading: false,
-          data: res.data,
-          error: null,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        setCountriesRequestObject({
-          isLoading: false,
-          data: null,
-          error: err?.response?.data?.message,
-        });
-      });
-  };
 
   const signIn = () => {
     setSignInRequest({ isLoading: true, data: null, error: null });
@@ -148,9 +114,6 @@ const AuthUserContextProvider = ({
         setUserLoginInfo,
         searchParams,
         setSearchParams,
-        fetchCountries,
-        countriesRequestObject,
-        setCountriesRequestObject,
         signInRequest,
         signIn,
       }}

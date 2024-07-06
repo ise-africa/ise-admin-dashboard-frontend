@@ -23,7 +23,12 @@ const DashboardQuickAnalytics = () => {
     },
   ];
   return (
-    <Summary data={analyticsOverview} title="Quick analytics" showDropdown />
+    <Summary
+      data={analyticsOverview}
+      title="Quick analytics"
+      showDropdown
+      flexBasis="23%"
+    />
   );
 };
 
