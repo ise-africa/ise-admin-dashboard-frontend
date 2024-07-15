@@ -1,16 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../Components/Layout/Layout";
 import { useLocation, useSearchParams } from "react-router-dom";
 import CreateSchoolAddDetails from "../Containers/SchoolManagementPagesContainer/CreateSchoolAddDetails/CreateSchoolAddDetails";
 import CreateSchoolUploadFile from "../Containers/SchoolManagementPagesContainer/CreateSchoolUploadFile/CreateSchoolUploadFile";
 import SchoolManagementBoard from "../Containers/SchoolManagementPagesContainer/SchoolManagementBoard/SchoolManagementBoard";
 import CreateSchoolPreview from "../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/CreateSchoolPreview";
+import { SchoolContext } from "../Context/SchoolContext";
 
 const AddSchoolsPage = () => {
   // Router
   const location = useLocation();
   const userStep = new URLSearchParams(location.search).get("step");
   const [_, setSearchParams] = useSearchParams();
+
+  // Context
+  const { createSchoolData } = useContext(SchoolContext);
 
   const schoolImportance = [
     "Embark on a transformative learning journey with our courses in talent acquisition, customer success and project management.",
@@ -33,7 +37,18 @@ const AddSchoolsPage = () => {
       ) : userStep === "2" ? (
         <CreateSchoolUploadFile />
       ) : userStep === "3" ? (
-        <CreateSchoolPreview showIndicator={true} creatingSchool={true} />
+        <CreateSchoolPreview
+          showIndicator={true}
+          creatingSchool={true}
+          image={createSchoolData?.image?.frontendFile}
+          name={createSchoolData?.name}
+          tagline={createSchoolData?.tagline}
+          description={createSchoolData?.description}
+          importanceItems={
+            createSchoolData?.benefits &&
+            createSchoolData?.benefits?.map((importance: string) => importance)
+          }
+        />
       ) : (
         <SchoolManagementBoard />
       )}

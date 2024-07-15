@@ -1,23 +1,31 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
 import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
 import Button from "../../../Components/Button/Button";
 import { useSearchParams } from "react-router-dom";
 import Input from "../../../Components/Input/Input";
 import DragAndDropInput from "../../../Components/DragAndDropInput/DragAndDropInput";
-import { SchoolContext } from "../../../Context/SchoolContext";
+import {
+  createSchoolType,
+  SchoolContext,
+} from "../../../Context/SchoolContext";
 import { inputChangeHandler } from "../../../HelperFunctions/inputChangeHandler";
+import { SchoolDataType } from "../../../Utilities/schools";
 
 type CreateSchoolUploadFileProp = {
   title?: string;
   name?: string;
   importanceItems?: string[];
+  isEditing?: boolean;
+  image?: string;
 };
 
 const CreateSchoolUploadFile = ({
   title,
   name,
   importanceItems = [],
+  isEditing,
+  image,
 }: CreateSchoolUploadFileProp) => {
   const [_, setSearchParams] = useSearchParams();
 
@@ -40,8 +48,20 @@ const CreateSchoolUploadFile = ({
       <section className={classes.container}>
         <h2>{title || "Create a new school"}</h2>
 
+        {isEditing && (
+          <div className={classes.textSection}>
+            <p>School image</p>
+            <img
+              src={createSchoolData?.image?.frontendFile}
+              alt="School cover"
+            />
+          </div>
+        )}
+
         <DragAndDropInput
-          labelText="Upload cover image *"
+          labelText={
+            isEditing ? "Upload a new cover image" : "Upload cover image *"
+          }
           acceptedFileTypes=".svg,.png"
           performFIleValidation={true}
           onChange={(e) => {
@@ -77,7 +97,7 @@ const CreateSchoolUploadFile = ({
         <div>
           <Input
             isRequired
-            value={name || createSchoolData.name}
+            value={createSchoolData.name}
             label="School name"
             placeholder="E.g School of Business"
             name="name"
@@ -88,8 +108,9 @@ const CreateSchoolUploadFile = ({
           </label>
 
           <div className={classes.benefits}>
-            {createSchoolData.benefits.length !== 0 &&
-              createSchoolData.benefits.map((data, i) => {
+            {createSchoolData?.benefits &&
+              createSchoolData?.benefits?.length !== 0 &&
+              createSchoolData?.benefits?.map((data, i) => {
                 return (
                   <div className={classes.benefit} key={i}>
                     <Input
@@ -147,17 +168,19 @@ const CreateSchoolUploadFile = ({
           <Button
             type="white"
             onClick={() => {
-              if (
-                createSchoolData.benefits[
-                  createSchoolData.benefits.length - 1
-                ] !== ""
-              ) {
-                setCreateSchoolData((prevState) => {
-                  return {
-                    ...prevState,
-                    benefits: [...prevState.benefits, ""],
-                  };
-                });
+              if (createSchoolData?.benefits) {
+                if (
+                  createSchoolData?.benefits[
+                    createSchoolData?.benefits?.length - 1
+                  ] !== ""
+                ) {
+                  setCreateSchoolData((prevState) => {
+                    return {
+                      ...prevState,
+                      benefits: [...prevState.benefits, ""],
+                    };
+                  });
+                }
               }
             }}
           >
@@ -193,6 +216,14 @@ const CreateSchoolUploadFile = ({
             onClick={() => {
               setSearchParams({ step: "3" });
             }}
+            disabled={
+              !isEditing &&
+              (!createSchoolData.name ||
+                !createSchoolData.tagline ||
+                !createSchoolData.description ||
+                !createSchoolData.image.file ||
+                createSchoolData.benefits.length < 0)
+            }
           >
             <span>Preview</span>
           </Button>

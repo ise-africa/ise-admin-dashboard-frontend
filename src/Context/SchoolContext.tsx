@@ -16,13 +16,15 @@ type SchoolContextValues = {
   setCreateSchoolData: Dispatch<SetStateAction<createSchoolType>>;
   createSchool: () => void;
   createSchoolRequest: requestType;
+  updateSchool: (id: string) => void;
+  toggleActivate: (id: string) => void;
 };
 
 type SchoolContextProviderProps = {
   children: React.ReactNode;
 };
 
-type createSchoolType = {
+export type createSchoolType = {
   name: string;
   image: { frontendFile: string; file: File | null };
   description: string;
@@ -67,12 +69,46 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
     });
   };
 
+  const updateSchool = (id: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/school/update/${id}`,
+      method: "PATCH",
+      isMultipart: true,
+      data: createSchoolFormData,
+      setState: setCreateSchoolRequest,
+      state: createSchoolRequest,
+      setNotificationsFailure: true,
+      setNotifications: setNotifications,
+      setNotificationsSuccess: true,
+      successMessage: "School was edited successfully",
+      requestCleanup: true,
+    });
+  };
+
+  const toggleActivate = (id: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/school/admin/${id}/toggle`,
+      method: "PATCH",
+      setState: setCreateSchoolRequest,
+      state: createSchoolRequest,
+      setNotificationsFailure: true,
+      setNotifications: setNotifications,
+      setNotificationsSuccess: true,
+      requestCleanup: true,
+      // successMessage: "School was edited successfully",
+    });
+  };
+
   // Effects
   useEffect(() => {
     createSchoolFormData.append("name", createSchoolData.name);
     createSchoolFormData.append("image", createSchoolData.image.file as File);
     createSchoolFormData.append("description", createSchoolData.description);
     createSchoolFormData.append("tagline", createSchoolData.tagline);
+    createSchoolFormData.append(
+      "importance",
+      createSchoolData?.benefits?.toString()
+    );
   }, [createSchoolData]);
 
   return (
@@ -82,6 +118,8 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
         setCreateSchoolData,
         createSchool,
         createSchoolRequest,
+        updateSchool,
+        toggleActivate,
       }}
     >
       {children}

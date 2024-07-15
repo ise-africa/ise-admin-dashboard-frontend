@@ -4,15 +4,17 @@ import Button from "../../../Components/Button/Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import TextArea from "../../../Components/TextArea/TextArea";
 import Input from "../../../Components/Input/Input";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { SchoolContext } from "../../../Context/SchoolContext";
 import { inputChangeHandler } from "../../../HelperFunctions/inputChangeHandler";
+import { schoolDetailType } from "../../../Types/schoolType";
 
 type CreateSchoolAddDetailsProps = {
   title?: string;
   name?: string;
   motto?: string;
   description?: string;
+  isEditing?: boolean;
 };
 
 const CreateSchoolAddDetails = ({
@@ -20,6 +22,7 @@ const CreateSchoolAddDetails = ({
   name,
   motto,
   description,
+  isEditing,
 }: CreateSchoolAddDetailsProps) => {
   // Context
   const { createSchoolData, setCreateSchoolData } = useContext(SchoolContext);
@@ -42,7 +45,7 @@ const CreateSchoolAddDetails = ({
             placeholder="E.g iṣẹ́ School of Business"
             name="name"
             onChange={(e) => inputChangeHandler(e, setCreateSchoolData)}
-            value={name || createSchoolData.name}
+            value={createSchoolData.name}
           />
           <Input
             isRequired
@@ -50,7 +53,7 @@ const CreateSchoolAddDetails = ({
             placeholder="E.g Help businesses grow"
             name="tagline"
             onChange={(e) => inputChangeHandler(e, setCreateSchoolData)}
-            value={motto || createSchoolData.tagline}
+            value={createSchoolData.tagline}
           />
           <TextArea
             isRequired
@@ -58,7 +61,7 @@ const CreateSchoolAddDetails = ({
             placeholder="Start typing..."
             name="description"
             onChange={(e) => inputChangeHandler(e, setCreateSchoolData)}
-            value={description || createSchoolData.description}
+            value={createSchoolData.description}
           />
         </div>
 
@@ -75,6 +78,11 @@ const CreateSchoolAddDetails = ({
             onClick={() => {
               setSearchParams({ step: "2" });
             }}
+            disabled={
+              !createSchoolData.name ||
+              !createSchoolData.tagline ||
+              !createSchoolData.description
+            }
           >
             <span>Next</span>
           </Button>

@@ -1,15 +1,23 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import Button from "../../../Components/Button/Button";
 import classes from "../CreateSchoolAddDetails/CreateSchoolAddDetails.module.css";
 import SchoolCreatingLayout from "../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
-import schoolImage from "../../../Assets/Images/schoolImage.svg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import CancelSchoolCreationModal from "./PreviewModals/CancelSchoolCreationModal";
 import CancelSchoolSuccessfulModal from "./PreviewModals/CancelSchoolSuccessfulModal";
 import SchoolCreatedSuccessfulModal from "./PreviewModals/SchoolCreatedSuccessfulModal";
 import cancelSvg from "../../../Assets/Images/CancelSchoolCreationImage.svg";
 import { SchoolContext } from "../../../Context/SchoolContext";
+import { useSchoolsById } from "../../../Hooks/useSchools";
+import { schoolDetailType } from "../../../Types/schoolType";
+import Loader from "../../../Components/Loader/Loader";
+import { mutate } from "swr";
 
 type CreateSchoolPreviewProp = {
   showIndicator?: boolean;
@@ -40,10 +48,10 @@ const CreateSchoolPreview = ({
 }: CreateSchoolPreviewProp) => {
   // Context
   const {
-    createSchoolData,
     createSchool,
     createSchoolRequest,
     setCreateSchoolData,
+    updateSchool,
   } = useContext(SchoolContext);
 
   // Router
@@ -51,8 +59,11 @@ const CreateSchoolPreview = ({
   const { SchoolId } = useParams();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [_, setSearchParams] = useSearchParams();
 
+  console.log(name, importanceItems);
+
+  // State
   const [
     displayCancelSchoolCreationModal,
     setDisplayCancelSchoolCreationModal,
@@ -118,7 +129,7 @@ const CreateSchoolPreview = ({
           }
         />
       )}
-      {displaySchoolUpdateSuccessfulModal && (
+      {createSchoolRequest.data && (
         <AcceptedModal
           onClick={() => {
             setDisplaySchoolUpdateSuccessfulModal(false);
@@ -166,33 +177,31 @@ const CreateSchoolPreview = ({
           <div className={classes.textSection}>
             <div>
               <span>Name of school</span>
-              <p>{createSchoolData?.name || name}</p>
+              <p>{name}</p>
             </div>
             <div>
               <span>School tagline</span>
-              <p>{createSchoolData?.tagline || tagline}</p>
+              <p>{tagline}</p>
             </div>
             <div>
               <span>School description</span>
-              <p>{createSchoolData?.description || description}</p>
+              <p>{description}</p>
             </div>
             <div>
               <span>School name</span>
-              <p>{school || "School of Business"}</p>
+              <p>{name}</p>
             </div>
             <div>
               <span>School image</span>
-              <img
-                src={createSchoolData.image.frontendFile || image}
-                alt="School cover"
-              />
+              <img src={image} alt="School cover" />
             </div>
             <div>
               <span>Importance of joining the school</span>
               <ul>
-                {createSchoolData?.benefits.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
+                {importanceItems &&
+                  importanceItems?.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
               </ul>
             </div>
           </div>
@@ -234,14 +243,16 @@ const CreateSchoolPreview = ({
                 <Button
                   type="primary"
                   onClick={() => {
-                    setDisplaySchoolUpdateSuccessfulModal(true);
+                    // setDisplaySchoolUpdateSuccessfulModal(true);
+                    updateSchool(SchoolId as string);
                   }}
+                  loading={createSchoolRequest.isLoading}
                 >
                   <span>Update school information</span>
                 </Button>
               </>
             )}
-            {createSchool && (
+            {creatingSchool && (
               <>
                 <Button
                   type="secondary"

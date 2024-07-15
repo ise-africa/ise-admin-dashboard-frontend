@@ -1,55 +1,97 @@
-import React, { useContext } from 'react'
-import Layout from '../Components/Layout/Layout'
-import { AppContext } from '../Context/AppContext';
+import React, { useContext, useEffect } from "react";
+import Layout from "../Components/Layout/Layout";
+import { AppContext } from "../Context/AppContext";
 import { useLocation, useParams } from "react-router-dom";
-import CreateSchoolAddDetails from '../Containers/SchoolManagementPagesContainer/CreateSchoolAddDetails/CreateSchoolAddDetails';
-import CreateSchoolUploadFile from '../Containers/SchoolManagementPagesContainer/CreateSchoolUploadFile/CreateSchoolUploadFile';
-import SchoolManagementBoard from '../Containers/SchoolManagementPagesContainer/SchoolManagementBoard/SchoolManagementBoard';
-import CreateSchoolPreview from '../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/CreateSchoolPreview';
-
+import CreateSchoolAddDetails from "../Containers/SchoolManagementPagesContainer/CreateSchoolAddDetails/CreateSchoolAddDetails";
+import CreateSchoolUploadFile from "../Containers/SchoolManagementPagesContainer/CreateSchoolUploadFile/CreateSchoolUploadFile";
+import SchoolManagementBoard from "../Containers/SchoolManagementPagesContainer/SchoolManagementBoard/SchoolManagementBoard";
+import CreateSchoolPreview from "../Containers/SchoolManagementPagesContainer/CreateSchoolPreview/CreateSchoolPreview";
+import { useSchoolsById } from "../Hooks/useSchools";
+import { schoolDetailType } from "../Types/schoolType";
+import Loader from "../Components/Loader/Loader";
+import { SchoolContext } from "../Context/SchoolContext";
+import { schoolsData } from "../Utilities/schools";
 
 const EditSchoolPage = () => {
-    // Router
-    const location = useLocation();
-    const { SchoolId } = useParams();
-    const userStep = new URLSearchParams(location.search).get("step");
+  // Context
+  const { createSchoolData, setCreateSchoolData } = useContext(SchoolContext);
 
-    // Router
+  // Router
+  const location = useLocation();
+  const { SchoolId } = useParams();
+  const userStep = new URLSearchParams(location.search).get("step");
 
-    // Context 
-    const { schools } = useContext(AppContext);
+  //   Hooks
+  const { data, isLoading } = useSchoolsById(SchoolId as string, {
+    revalidateOnFocus: false,
+  });
 
-    const activeSchool = schools.find(data => data.schoolId === SchoolId)
+  //   Utils
+  const schoolData: schoolDetailType = data?.data;
 
-    return (
-        <Layout>
-            {userStep === "1" ? (
-                <CreateSchoolAddDetails
-                    title='Edit School'
-                    name={activeSchool?.nameOfSchool}
-                    motto={activeSchool?.schoolTagline}
-                    description={activeSchool?.schoolDescription}
-                />
-            ) : userStep === "2" ? (
-                <CreateSchoolUploadFile
-                    title='Edit School'
-                    name={activeSchool?.schoolName}
-                    importanceItems={activeSchool?.schoolImportance.map(importance => importance)}
-                />
-            ) : userStep === "3" ? (
-                <CreateSchoolPreview
-                    showIndicator={true}
-                    updateInformation={true}
-                    image={activeSchool?.schoolImage}
-                    name={activeSchool?.nameOfSchool}
-                    tagline={activeSchool?.schoolTagline}
-                    description={activeSchool?.schoolDescription}
-                    importanceItems={activeSchool?.schoolImportance.map(importance => importance)} />
-            ) : (
-                <SchoolManagementBoard />
-            )}
-        </Layout>
-    )
-}
+  // To update school information onLoad
+  useEffect(() => {
+    if (schoolData) {
+      console.log("schoolDaa changed");
+      setCreateSchoolData((prevState: any) => {
+        return {
+          ...prevState,
+          name: schoolData?.name,
+          tagline: schoolData?.tagline,
+          description: schoolData?.description,
+          benefits: schoolData?.importance || [""],
+          image: {
+            frontendFile: schoolData?.image,
+            file: (prevState.image.file as File) || schoolData?.image,
+          },
+        };
+      });
+    }
+  }, [schoolData]);
 
-export default EditSchoolPage
+  return (
+    <Layout>
+      {isLoading ? (
+        <Loader />
+      ) : userStep === "1" ? (
+        <CreateSchoolAddDetails
+          title="Edit School"
+          name={schoolData?.name}
+          motto={schoolData?.tagline}
+          description={schoolData?.description}
+          isEditing
+        />
+      ) : userStep === "2" ? (
+        <CreateSchoolUploadFile
+          title="Edit School"
+          name={schoolData?.name}
+          image={schoolData?.image}
+          importanceItems={
+            schoolData?.importance &&
+            JSON.parse(schoolData?.importance)?.map(
+              (importance: schoolDetailType) => importance
+            )
+          }
+          isEditing
+        />
+      ) : userStep === "3" ? (
+        <CreateSchoolPreview
+          showIndicator={true}
+          updateInformation={true}
+          image={createSchoolData?.image?.frontendFile}
+          name={createSchoolData?.name}
+          tagline={createSchoolData?.tagline}
+          description={createSchoolData?.description}
+          importanceItems={
+            createSchoolData?.benefits &&
+            createSchoolData?.benefits?.map((importance: string) => importance)
+          }
+        />
+      ) : (
+        <SchoolManagementBoard />
+      )}
+    </Layout>
+  );
+};
+
+export default EditSchoolPage;

@@ -14,7 +14,7 @@ export const setNotiticationFunction = (
         return [
           ...prevState,
           {
-            title: capitalize(errorMessage as string),
+            title: capitalize((errorMessage as string) || ""),
             severity: severity || "error",
             id: v4(),
           },
@@ -22,7 +22,7 @@ export const setNotiticationFunction = (
       } else {
         return [
           {
-            title: capitalize(errorMessage as string),
+            title: capitalize((errorMessage as string) || ""),
             severity: severity || "error",
             id: v4(),
           },
