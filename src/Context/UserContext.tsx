@@ -15,6 +15,7 @@ type UserContextValues = {
   setCreateStudentDetails: Dispatch<SetStateAction<createStudentDetailsType>>;
   isCreatingStudent: requestType;
   createStudent: () => void;
+  editStudent: (id: string) => void;
 };
 
 type UserContextProviderType = {
@@ -24,6 +25,8 @@ type UserContextProviderType = {
 type createStudentDetailsType = {
   full_name: string;
   email: string;
+  bio: string;
+  linkedIn_profile: string;
 };
 
 export const UserContext = createContext({} as UserContextValues);
@@ -37,18 +40,24 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
     useState<createStudentDetailsType>({
       full_name: "",
       email: "",
+      bio: "",
+      linkedIn_profile: "",
     });
   const [isCreatingStudent, setIsCreatingStudent] = useState<requestType>({
     isLoading: false,
     data: null,
     error: null,
   });
+
   // Utils
   const createStudent = async () => {
     await requestHandler2({
       url: `${backend_url}/api/ise/v1/admin/students`,
       method: "POST",
-      data: createStudentDetails,
+      data: {
+        full_name: createStudentDetails.full_name,
+        email: createStudentDetails.email,
+      },
       state: isCreatingStudent,
       setState: setIsCreatingStudent,
       setNotificationsFailure: true,
@@ -62,11 +71,37 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
         setCreateStudentDetails({
           full_name: "",
           email: "",
+          bio: "",
+          linkedIn_profile: "",
         });
       },
       requestCleanup: true,
     });
   };
+
+  const editStudent = async (id: string) => {
+    await requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/edit_student/${id}`,
+      method: "POST",
+      data: createStudentDetails,
+      state: isCreatingStudent,
+      setState: setIsCreatingStudent,
+      setNotificationsFailure: true,
+      setNotificationsSuccess: true,
+      setNotifications: setNotifications,
+      successFunction() {
+        setCreateStudentDetails({
+          full_name: "",
+          email: "",
+          bio: "",
+          linkedIn_profile: "",
+        });
+      },
+      requestCleanup: true,
+      successMessage: "User successfully edited",
+    });
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -74,6 +109,7 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
         setCreateStudentDetails,
         isCreatingStudent,
         createStudent,
+        editStudent,
       }}
     >
       {children}

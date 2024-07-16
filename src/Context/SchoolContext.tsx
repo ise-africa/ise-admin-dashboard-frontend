@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useSearchParams } from "react-router-dom";
 import { requestHandler2 } from "../HelperFunctions/requestHandler";
 import { backend_url } from "../Utilities/global";
 import { AppContext } from "./AppContext";
@@ -18,6 +19,13 @@ type SchoolContextValues = {
   createSchoolRequest: requestType;
   updateSchool: (id: string) => void;
   toggleActivate: (id: string) => void;
+  createCourse: createCourseType;
+  setCreateCourse: Dispatch<SetStateAction<createCourseType>>;
+  createCourseRequest: (
+    schoolId: string,
+    stage: number,
+    courseId?: string
+  ) => void;
 };
 
 type SchoolContextProviderProps = {
@@ -32,11 +40,33 @@ export type createSchoolType = {
   benefits: string[];
 };
 
+export type createCourseType = {
+  name?: string;
+  course_objective?: { id: number; value: string }[];
+  schoolId?: string;
+  difficulty_level?: string;
+  description?: string;
+  image?: { frontendFile: string; file: File | null };
+  cohort_name?: string;
+  application_deadline?: string;
+  start_date?: string;
+  duration?: string;
+  tutorId?: string;
+  price?: string | number;
+  total_capacity?: string;
+  has_installment?: boolean;
+  paid?: boolean;
+  has_discount?: boolean;
+};
+
 export const SchoolContext = createContext({} as SchoolContextValues);
 
 const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
   // Context
   const { setNotifications } = useContext(AppContext);
+
+  // Router
+  const [_, setSearchParams] = useSearchParams();
 
   // States
   const [createSchoolData, setCreateSchoolData] = useState<createSchoolType>({
@@ -51,9 +81,28 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
     data: null,
     error: null,
   });
+  const [createCourse, setCreateCourse] = useState<createCourseType>({
+    name: "",
+    course_objective: [],
+    schoolId: "",
+    difficulty_level: "",
+    description: "",
+    image: { frontendFile: "", file: null },
+    cohort_name: "",
+    application_deadline: "",
+    start_date: "",
+    duration: "",
+    tutorId: "",
+    price: "",
+    total_capacity: "",
+    has_installment: false,
+    paid: false,
+    has_discount: true,
+  });
 
   // Formdata
   const createSchoolFormData = new FormData();
+  const createCourseFormData = new FormData();
 
   // Requests
   const createSchool = () => {
@@ -99,6 +148,65 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
     });
   };
 
+  const createCourseRequest = (
+    schoolId: string,
+    stage: number,
+    courseId?: string
+  ) => {
+    requestHandler2({
+      url:
+        stage === 1
+          ? `${backend_url}/api/ise/v1/courses/create-course/step${String(
+              stage
+            )}`
+          : `${backend_url}/api/ise/v1/courses/create-course/step${String(
+              stage
+            )}/${courseId}`,
+      method: stage === 1 ? "POST" : "PUT",
+      data:
+        stage === 1
+          ? {
+              name: createCourse.name,
+              course_objective: createCourse.course_objective,
+              schoolId: Number(schoolId),
+              difficulty_level: createCourse.difficulty_level,
+            }
+          : stage === 2
+          ? createCourseFormData
+          : stage === 3 && {
+              cohort_name: createCourse?.cohort_name,
+              application_deadline: createCourse?.application_deadline,
+              start_date: createCourse?.start_date,
+              duration: createCourse?.duration,
+              tutorId: createCourse?.tutorId,
+              price: createCourse?.price,
+              total_capacity: Number(createCourse?.total_capacity),
+              has_installment: createCourse?.has_installment,
+              paid: createCourse?.price ? true : false,
+              has_discount: createCourse?.has_discount,
+            },
+      isMultipart: stage === 1 || stage === 3 ? false : true,
+      setState: setCreateSchoolRequest,
+      state: createSchoolRequest,
+      setNotificationsFailure: true,
+      setNotifications: setNotifications,
+      requestCleanup: true,
+      successFunction: (res) => {
+        console.log(res, "Response");
+        if (stage === 1) {
+          setSearchParams({ step: "2", courseId: res?.data?.id });
+        }
+        if (stage === 2) {
+          setSearchParams({ step: "3", courseId: res?.data?.id });
+        }
+        if (stage === 3) {
+          setSearchParams({ step: "4", courseId: res?.data?.id });
+        }
+      },
+      // successMessage: "School was edited successfully",
+    });
+  };
+
   // Effects
   useEffect(() => {
     createSchoolFormData.append("name", createSchoolData.name);
@@ -111,6 +219,17 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
     );
   }, [createSchoolData]);
 
+  useEffect(() => {
+    createCourseFormData.append(
+      "description",
+      createCourse.description as string
+    );
+    createCourseFormData.append(
+      "cover_image",
+      createCourse?.image?.file as File
+    );
+  }, [createCourseFormData]);
+
   return (
     <SchoolContext.Provider
       value={{
@@ -120,6 +239,9 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
         createSchoolRequest,
         updateSchool,
         toggleActivate,
+        createCourse,
+        setCreateCourse,
+        createCourseRequest,
       }}
     >
       {children}

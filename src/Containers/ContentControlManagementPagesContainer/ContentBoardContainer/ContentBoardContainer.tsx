@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import classes from "./ContentBoardContainer.module.css";
 import HelloUser from "../../../Components/HelloUser/HelloUser";
 import SchoolCard from "../../../Components/SchoolCard/SchoolCard";
@@ -9,6 +9,9 @@ import SchoolCourseModulesEmptyTab from "../../SchoolManagementPagesContainer/Sc
 import { useNavigate } from "react-router-dom";
 import useSchools from "../../../Hooks/useSchools";
 import Loader from "../../../Components/Loader/Loader";
+import useCourseFromSchool from "../../../Hooks/useCourse";
+import { mutate } from "swr";
+import { backend_url } from "../../../Utilities/global";
 
 export type Course = {
   courseTitle: string;
@@ -18,41 +21,58 @@ export type Course = {
 };
 
 const ContentBoardContainer = () => {
-  const { schools } = useContext(AppContext);
+  // const { schools } = useContext(AppContext);
 
   // Router
   const navigate = useNavigate();
 
-  const [activeSchoolId, setActiveSchoolId] = useState("");
+  const [activeSchool, setActiveSchool] = useState<any>();
   const [displaySchoolCoursesModal, setDisplaySchoolCoursesModal] =
     useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalCourses, setModalCourses] = useState<Course[]>([]);
 
-  const handleSchoolClick = (
-    schoolId: string,
-    schoolName: string,
-    courses: any[]
-  ) => {
-    setActiveSchoolId(schoolId);
-    setModalTitle(schoolName);
-    const transformedCourses: Course[] = courses.map(
-      (course: any, index: number) => ({
-        schoolId: schoolId,
-        courseId: `${index + 1}`,
-        courseTitle: course.courseName,
-        courseImg: course.courseImage,
-      })
-    );
-    setModalCourses(transformedCourses);
+  const handleSchoolClick = (school: string, schoolName: string) => {
     setDisplaySchoolCoursesModal(true);
+
+    setActiveSchool(school);
+    setModalTitle(schoolName);
+    // const transformedCourses: Course[] = courses.map(
+    //   (course: any, index: number) => ({
+    //     schoolId: schoolId,
+    //     courseId: `${index + 1}`,
+    //     courseTitle: course.courseName,
+    //     courseImg: course.courseImage,
+    //   })
+    // );
+    // setModalCourses(transformedCourses);
+
+    console.log(school, "SchoolId");
   };
 
-  // Filter schools with status "Active"
-
+  // Requests
   const { data, isLoading } = useSchools();
-
   const activeSchools = data?.data;
+
+  const { data: courseFromSchoolData, isLoading: courseFromSchoolIsLoading } =
+    useCourseFromSchool(activeSchool?.id, { revalidateOnMount: false });
+
+  // Effects
+  useEffect(() => {
+    const getCourseFromSchool = async () => {
+      await mutate(
+        `${backend_url}/api/ise/v1/school/admin/${
+          activeSchool?.id as string
+        }/courses`
+      );
+
+      console.log("Mutate is run", activeSchool?.id);
+    };
+
+    if (activeSchool?.id as string) {
+      getCourseFromSchool();
+    }
+  }, [activeSchool]);
 
   return (
     <div className={classes.Container}>
@@ -61,21 +81,35 @@ const ContentBoardContainer = () => {
         paragraph="Manage, edit and assign content for all iṣẹ́ Schools."
       />
 
-      {displaySchoolCoursesModal && modalCourses.length === 0 && (
-        <AcceptedModal
-          onClick={() => {
-            setDisplaySchoolCoursesModal(false);
-          }}
-          body={
-            <>
-              <SchooCoursesModal title={modalTitle} courses={modalCourses} />
-              <SchoolCourseModulesEmptyTab />
-            </>
-          }
-        />
-      )}
+      {displaySchoolCoursesModal &&
+        courseFromSchoolData?.data?.length === 0 && (
+          <AcceptedModal
+            onClick={() => {
+              setDisplaySchoolCoursesModal(false);
+            }}
+            body={
+              <>
+                <SchooCoursesModal
+                  title={modalTitle}
+                  courses={courseFromSchoolData?.data}
+                  onClick={() => {
+                    setDisplaySchoolCoursesModal(false);
+                  }}
+                  onClick2={(schoolId: string, courseId: string) => {
+                    navigate(
+                      `/courses/${schoolId}/courses/${courseId}/analytics`
+                    );
+                  }}
+                  isLoading={courseFromSchoolIsLoading}
+                  data={courseFromSchoolData}
+                />
+                <SchoolCourseModulesEmptyTab school={activeSchool} />
+              </>
+            }
+          />
+        )}
 
-      {displaySchoolCoursesModal && modalCourses.length > 0 && (
+      {displaySchoolCoursesModal && courseFromSchoolData?.data?.length > 0 && (
         <AcceptedModal
           onClick={() => {
             setDisplaySchoolCoursesModal(false);
@@ -83,13 +117,15 @@ const ContentBoardContainer = () => {
           body={
             <SchooCoursesModal
               title={modalTitle}
-              courses={modalCourses}
+              courses={courseFromSchoolData?.data}
               onClick={() => {
                 setDisplaySchoolCoursesModal(false);
               }}
               onClick2={(schoolId: string, courseId: string) => {
                 navigate(`/courses/${schoolId}/courses/${courseId}/analytics`);
               }}
+              isLoading={courseFromSchoolIsLoading}
+              data={courseFromSchoolData}
             />
           }
         />
@@ -109,10 +145,8 @@ const ContentBoardContainer = () => {
               image={data?.image}
               courseNumber={3}
               description={data?.description}
-
-              // Add the course preview here
-              // onClick={() => handleSchoolClick(data?.id, data.name, )}
-              // isActive={activeSchoolId === data.schoolId}
+              onClick={() => handleSchoolClick(data, data.name)}
+              isActive={activeSchool?.id === data.id}
             />
           ))
         )}

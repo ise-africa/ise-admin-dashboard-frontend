@@ -1,36 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./StudentDataTable.module.css";
 import greenBar from "../../../Assets/Images/greenBar.svg";
 import yellowBar from "../../../Assets/Images/yellowBar.svg";
 import StudentsManagementModulesEmptyTab from "./StudentsManagementModulesEmptyTab";
 import StudentDataTableContent from "./StudentDataTableContent";
 import useStudents from "../../../Hooks/useStudents";
+import Loader from "../../../Components/Loader/Loader";
 
 const StudentDataTable = () => {
   // States
-  const [navItems] = useState<any[]>([
-    {
-      isActive: true,
-      activeComponent: <StudentDataTableContent />,
-      activeNullStateComponent: <StudentsManagementModulesEmptyTab />,
-    },
-  ]);
-  const activeCOmponent = navItems.find((data) => {
-    return data.isActive;
-  });
+  const [students, setStudent] = useState([]);
+
+  // Requests
+  const { isLoading, data } = useStudents();
+
+  // Effects
+  useEffect(() => {
+    if (data?.data?.data) {
+      setStudent(
+        data?.data?.data?.map((data: any) => {
+          return { ...data, isActive: false };
+        })
+      );
+    }
+  }, [data?.data?.data]);
 
   const engagement = [
     {
       status: "Up",
       statusFigure: 2.1,
-      totalNumber: 854,
+      totalNumber: students?.length || 0,
       image: greenBar,
       title: "All students",
     },
     {
       status: "Dn",
       statusFigure: 5.1,
-      totalNumber: 342,
+      totalNumber:
+        students?.filter((data: any) => data?.status === "active").length || 0,
       image: yellowBar,
       title: "Active students",
     },
@@ -43,11 +50,9 @@ const StudentDataTable = () => {
     },
   ];
 
-  // Requests
-  const { isLoading, data } = useStudents();
-  const students = data?.data;
-
-  console.log(data, "Students");
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <section className={classes.container}>
@@ -82,9 +87,12 @@ const StudentDataTable = () => {
           })}
         </div>
       </div>
-      {activeCOmponent.activeComponent
-        ? activeCOmponent.activeComponent
-        : activeCOmponent.activeNullStateComponent}
+
+      {students?.length > 0 ? (
+        <StudentDataTableContent students={students} setStudents={setStudent} />
+      ) : (
+        <StudentsManagementModulesEmptyTab />
+      )}
     </section>
   );
 };

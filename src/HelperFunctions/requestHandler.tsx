@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Dispatch, SetStateAction } from "react";
 import { notificationsType } from "../Context/AppContext";
 import { requestType } from "../Context/AuthUserContext";
@@ -16,7 +16,7 @@ type RequestType = {
   setNotificationsFailure?: boolean;
   setNotifications?: Dispatch<SetStateAction<notificationsType>>;
   successMessage?: string;
-  successFunction?: () => void;
+  successFunction?: (res?: AxiosResponse) => void;
   errorFunction?: () => void;
   load?: boolean;
   requestCleanup?: boolean;
@@ -105,7 +105,7 @@ export async function requestHandler2({
         }
       }
       if (successFunction) {
-        successFunction();
+        successFunction(res);
       }
       if (setNotificationsSuccess) {
         setNotiticationFunction(
