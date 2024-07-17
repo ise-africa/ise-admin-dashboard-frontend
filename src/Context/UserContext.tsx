@@ -16,17 +16,20 @@ type UserContextValues = {
   isCreatingStudent: requestType;
   createStudent: () => void;
   editStudent: (id: string) => void;
+  createTutor: () => void;
+  createAdmin: () => void;
 };
 
 type UserContextProviderType = {
   children: React.ReactNode;
 };
 
-type createStudentDetailsType = {
+export type createStudentDetailsType = {
   full_name: string;
   email: string;
   bio: string;
   linkedIn_profile: string;
+  role?: string;
 };
 
 export const UserContext = createContext({} as UserContextValues);
@@ -42,6 +45,7 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
       email: "",
       bio: "",
       linkedIn_profile: "",
+      role: "",
     });
   const [isCreatingStudent, setIsCreatingStudent] = useState<requestType>({
     isLoading: false,
@@ -102,12 +106,40 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
     });
   };
 
-  // const deactivateTutor = (id: string) => {
-  //   requestHandler2({
-  //     url: `${backend_url}/api/ise/v1/admin/tutors/close-account/${id}`,
-  //     method: "GET",
-  //   });
-  // };
+  const createTutor = () => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/tutors`,
+      method: "POST",
+      data: {
+        first_name: createStudentDetails?.full_name?.split(" ")[0] || "",
+        last_name: createStudentDetails?.full_name?.split(" ")[1] || "",
+        email: createStudentDetails?.email,
+      },
+      setNotifications: setNotifications,
+      setNotificationsFailure: true,
+      state: isCreatingStudent,
+      setState: setIsCreatingStudent,
+      requestCleanup: true,
+    });
+  };
+
+  const createAdmin = () => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin`,
+      method: "POST",
+      data: {
+        first_name: createStudentDetails?.full_name?.split(" ")[0] || "",
+        last_name: createStudentDetails?.full_name?.split(" ")[1] || "",
+        email: createStudentDetails?.email,
+        role: createStudentDetails?.role?.replaceAll(" ", "-").toLowerCase(),
+      },
+      setNotifications: setNotifications,
+      setNotificationsFailure: true,
+      state: isCreatingStudent,
+      setState: setIsCreatingStudent,
+      requestCleanup: true,
+    });
+  };
 
   return (
     <UserContext.Provider
@@ -117,6 +149,8 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
         isCreatingStudent,
         createStudent,
         editStudent,
+        createTutor,
+        createAdmin,
       }}
     >
       {children}
