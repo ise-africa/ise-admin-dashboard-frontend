@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteDisclaimerModalBody from "./DeleteDisclaimerModalBody";
 import DeleteSuccessfulModalBody from "./DeleteSuccessfulModalBody";
 import classes from "./TutorProfileAccountDeactivation.module.css";
 import ProfileSectionContainer from "../../../Components/ProfileSectionContainer/ProfileSectionContainer";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
 import Button from "../../../Components/Button/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { requestType } from "../../../Context/AuthUserContext";
+import { backend_url } from "../../../Utilities/global";
+import { requestHandler2 } from "../../../HelperFunctions/requestHandler";
 
 const TutorProfileAccountDeactivation = () => {
   const navigate = useNavigate();
@@ -13,12 +16,42 @@ const TutorProfileAccountDeactivation = () => {
   const [displayDeleteDisclaimerModal, setDisplauDeleteDisclaimeeModal] =
     useState(false);
   const [displayDeletedModal, setDisplayDeletedModal] = useState(false);
+  const [deactivateTutorObject, setDeactivateTutorOnject] =
+    useState<requestType>({
+      isLoading: false,
+      data: null,
+      error: null,
+    });
 
   // Utils
   const closeDisclaimers = [
     "This disables tutor’s access to their dashboard.",
-    "Prevents them from logging in and performing any actions."
+    "Prevents them from logging in and performing any actions.",
   ];
+
+  // Router
+  const { TutorId } = useParams();
+
+  const deactivateTutor = (id: string) => {
+    setDeactivateTutorOnject((prevState) => {
+      return { ...prevState, isLoading: true };
+    });
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/tutors/close-account/${id}`,
+      method: "GET",
+      successFunction() {
+        setDeactivateTutorOnject((prevState) => {
+          return { ...prevState, isLoading: false };
+        });
+        setDisplauDeleteDisclaimeeModal(false);
+        setDisplayDeletedModal(true);
+      },
+    });
+
+    setTimeout(() => {
+      setDisplayDeletedModal(false);
+    }, 5000);
+  };
 
   return (
     <ProfileSectionContainer
@@ -36,9 +69,9 @@ const TutorProfileAccountDeactivation = () => {
                 setDisplauDeleteDisclaimeeModal(false);
               }}
               onClick2={() => {
-                setDisplauDeleteDisclaimeeModal(false);
-                setDisplayDeletedModal(true);
+                deactivateTutor(TutorId as string);
               }}
+              state={deactivateTutorObject}
             />
           }
         />
@@ -52,7 +85,7 @@ const TutorProfileAccountDeactivation = () => {
             <DeleteSuccessfulModalBody
               onClick={() => {
                 setDisplayDeletedModal(false);
-                navigate('/users/tutors')
+                navigate("/users/tutors");
               }}
             />
           }

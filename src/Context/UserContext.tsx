@@ -102,6 +102,13 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
     });
   };
 
+  // const deactivateTutor = (id: string) => {
+  //   requestHandler2({
+  //     url: `${backend_url}/api/ise/v1/admin/tutors/close-account/${id}`,
+  //     method: "GET",
+  //   });
+  // };
+
   return (
     <UserContext.Provider
       value={{
