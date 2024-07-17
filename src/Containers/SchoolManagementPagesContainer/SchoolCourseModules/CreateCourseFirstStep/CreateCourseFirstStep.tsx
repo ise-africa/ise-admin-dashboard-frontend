@@ -133,7 +133,7 @@ const CreateCourseFirstStep = ({ title }: CreateCourseFirstStepProps) => {
           <Button
             type="secondary"
             onClick={() => {
-              navigate(`/schools/courses`);
+              navigate(`/courses`);
             }}
           >
             <span>Cancel</span>

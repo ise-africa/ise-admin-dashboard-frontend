@@ -81,35 +81,34 @@ const ContentBoardContainer = () => {
         paragraph="Manage, edit and assign content for all iṣẹ́ Schools."
       />
 
-      {displaySchoolCoursesModal &&
-        courseFromSchoolData?.data?.length === 0 && (
-          <AcceptedModal
-            onClick={() => {
-              setDisplaySchoolCoursesModal(false);
-            }}
-            body={
-              <>
-                <SchooCoursesModal
-                  title={modalTitle}
-                  courses={courseFromSchoolData?.data}
-                  onClick={() => {
-                    setDisplaySchoolCoursesModal(false);
-                  }}
-                  onClick2={(schoolId: string, courseId: string) => {
-                    navigate(
-                      `/courses/${schoolId}/courses/${courseId}/analytics`
-                    );
-                  }}
-                  isLoading={courseFromSchoolIsLoading}
-                  data={courseFromSchoolData}
-                />
-                <SchoolCourseModulesEmptyTab school={activeSchool} />
-              </>
-            }
-          />
-        )}
+      {displaySchoolCoursesModal && (
+        <AcceptedModal
+          onClick={() => {
+            setDisplaySchoolCoursesModal(false);
+          }}
+          body={
+            <>
+              <SchooCoursesModal
+                title={modalTitle}
+                courses={courseFromSchoolData?.data}
+                onClick={() => {
+                  setDisplaySchoolCoursesModal(false);
+                }}
+                onClick2={(schoolId: string, courseId: string) => {
+                  navigate(
+                    `/courses/${schoolId}/courses/${courseId}/analytics`
+                  );
+                }}
+                isLoading={courseFromSchoolIsLoading}
+                data={courseFromSchoolData}
+                school={activeSchool}
+              />
+            </>
+          }
+        />
+      )}
 
-      {displaySchoolCoursesModal && courseFromSchoolData?.data?.length > 0 && (
+      {/* {displaySchoolCoursesModal && courseFromSchoolData?.data?.length > 0 && (
         <AcceptedModal
           onClick={() => {
             setDisplaySchoolCoursesModal(false);
@@ -126,10 +125,11 @@ const ContentBoardContainer = () => {
               }}
               isLoading={courseFromSchoolIsLoading}
               data={courseFromSchoolData}
+              school={activeSchool}
             />
           }
         />
-      )}
+      )} */}
 
       <div className={classes.schoolList}>
         {isLoading ? (
