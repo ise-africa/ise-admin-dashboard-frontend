@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import classes from "./SchoolCard.module.css";
 import ellipse from "../../Assets/Images/ellipses.svg";
 import ActionsModal from "./ActionsModal/ActionsModal";
@@ -10,6 +10,8 @@ import ActivateSchoolSuccessfulModal from "./Modals/ActivateSchoolSuccessfulModa
 import DeactivateSchoolSuccessfulModal from "./Modals/DeactivateSchoolSuccessfulModal";
 import { capitalize } from "../../HelperFunctions/capitalize";
 import { SchoolContext } from "../../Context/SchoolContext";
+import { mutate } from "swr";
+import { backend_url } from "../../Utilities/global";
 
 type SchoolCardProps = {
   id: string;
@@ -42,7 +44,7 @@ const SchoolCard = ({
   const navigate = useNavigate();
 
   // COntext
-  const { toggleActivate } = useContext(SchoolContext);
+  const { toggleActivate, createSchoolRequest } = useContext(SchoolContext);
 
   // State
   const [showOptions, setShowOptions] = useState(false);
@@ -84,6 +86,14 @@ const SchoolCard = ({
       document.removeEventListener("mousedown", closeOptions);
     };
   }, []);
+
+  useEffect(() => {
+    if (createSchoolRequest?.data) {
+      setDisplayDeactivateSchoolModal(false);
+      setDisplayActivateSchoolModal(false);
+      mutate(`${backend_url}/api/ise/v1/school`);
+    }
+  }, [createSchoolRequest?.data]);
 
   return (
     <>

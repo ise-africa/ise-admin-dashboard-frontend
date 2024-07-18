@@ -19,7 +19,7 @@ const StudentDetailPageProfile = ({
       <StudentProfile student={student} referrals={referrals} />
       <StudentReferralLevel referral={referrals} />
       <StudentBadges />
-      <StudentProfileAccountDeactivation />
+      <StudentProfileAccountDeactivation student={student} />
     </div>
   );
 };

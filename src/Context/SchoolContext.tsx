@@ -144,7 +144,7 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
       setNotifications: setNotifications,
       setNotificationsSuccess: true,
       requestCleanup: true,
-      // successMessage: "School was edited successfully",
+      successMessage: "School status was changed successfully",
     });
   };
 

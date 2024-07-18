@@ -33,8 +33,6 @@ const StudentProfile = ({ student, referrals }: StudentProfileTypes) => {
     }
   }, [isCreatingStudent?.data]);
 
-  console.log(referrals, "referrals");
-
   return (
     <>
       {displayEditStudentProfileModal && (
@@ -152,6 +150,7 @@ const StudentProfile = ({ student, referrals }: StudentProfileTypes) => {
             <Button
               type="secondary"
               onClick={() => setDisplayEditStudentProfileModal(true)}
+              disabled={student?.status === "inactive"}
             >
               Edit student profile
             </Button>

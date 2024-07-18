@@ -20,6 +20,8 @@ const ActionsModal = ({
   onClick6,
   schoolIsActive,
 }: ActionsModalProps) => {
+  console.log(schoolIsActive);
+
   const [modalOptions, setModalOptions] = useState([
     {
       action: onClick,
@@ -131,7 +133,7 @@ const ActionsModal = ({
           />
         </svg>
       ),
-      isActive: schoolIsActive,
+      isActive: !schoolIsActive,
     },
 
     {
@@ -151,7 +153,7 @@ const ActionsModal = ({
           />
         </svg>
       ),
-      isActive: !schoolIsActive,
+      isActive: schoolIsActive,
     },
   ]);
 

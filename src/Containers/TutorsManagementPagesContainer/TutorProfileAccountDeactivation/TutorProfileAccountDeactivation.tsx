@@ -22,6 +22,7 @@ const TutorProfileAccountDeactivation = () => {
       data: null,
       error: null,
     });
+  const [reason, setReason] = useState("");
 
   // Utils
   const closeDisclaimers = [
@@ -37,12 +38,12 @@ const TutorProfileAccountDeactivation = () => {
       return { ...prevState, isLoading: true };
     });
     requestHandler2({
-      url: `${backend_url}/api/ise/v1/admin/tutors/close-account/${id}`,
-      method: "GET",
+      url: `${backend_url}/api/ise/v1/admin/tutors/deactivate/${id}`,
+      method: "POST",
+      data: { deactivationReason: reason },
+      state: deactivateTutorObject,
+      setState: setDeactivateTutorOnject,
       successFunction() {
-        setDeactivateTutorOnject((prevState) => {
-          return { ...prevState, isLoading: false };
-        });
         setDisplauDeleteDisclaimeeModal(false);
         setDisplayDeletedModal(true);
       },
@@ -72,6 +73,8 @@ const TutorProfileAccountDeactivation = () => {
                 deactivateTutor(TutorId as string);
               }}
               state={deactivateTutorObject}
+              reason={reason}
+              setReason={setReason}
             />
           }
         />

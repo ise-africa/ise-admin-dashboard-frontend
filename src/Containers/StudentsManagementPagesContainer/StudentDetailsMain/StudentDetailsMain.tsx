@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../../../Context/AppContext";
 import breadcrumbsBack from "../../../Assets/Images/breadcrumbsBack.svg";
@@ -12,20 +12,15 @@ import { capitalize } from "../../../HelperFunctions/capitalize";
 import Loader from "../../../Components/Loader/Loader";
 
 const StudentDetailsMain = () => {
-  const { students } = useContext(AppContext);
   // Router
   const { StudentId } = useParams();
-
-  const activeStudent = students.find((data) => {
-    return data.studentName.replace(" ", "-").toLowerCase() === StudentId;
-  });
 
   // Requests
   const { isLoading, data } = useStudentsById(StudentId as string);
   const { isLoading: referralLoading, data: referralData } =
     useStudentsReferralById(StudentId as string);
+  const [student, setStudent] = useState(data?.data);
 
-  const student = data?.data;
   const referralDataMain = referralData?.data;
 
   // Utils
@@ -44,6 +39,12 @@ const StudentDetailsMain = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    if (data?.data) {
+      setStudent(data?.data);
+    }
+  }, [data?.data]);
   return (
     <>
       <Breadcrumbs {...breadCrumbs} />

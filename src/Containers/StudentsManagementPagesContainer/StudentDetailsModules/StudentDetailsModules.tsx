@@ -21,29 +21,22 @@ const StudentDetailsModules = ({
     {
       title: "Profile",
       isActive: true,
-      activeComponent: (
-        <StudentDetailPageProfile student={student} referrals={referrals} />
-      ),
     },
     {
       title: "Payment",
       isActive: false,
-      activeComponent: <StudentCoursePayment />,
     },
     {
       title: "Courses",
       isActive: false,
-      activeComponent: <StudentCourseEnrolled />,
     },
     {
       title: "Grade",
       isActive: false,
-      activeComponent: <StudentDetailGradeDataTable />,
     },
     {
       title: "Feedback",
       isActive: false,
-      activeComponent: <StudentDetailFeedBackDataTable />,
     },
   ]);
 
@@ -55,6 +48,12 @@ const StudentDetailsModules = ({
         <SectionsNav4 navItems={navItems} setNavItems={setNavItems} />
       </div>
       <div className={classes.body}>{activeComponent.activeComponent}</div>
+      {navItems[0]?.isActive && (
+        <StudentDetailPageProfile student={student} referrals={referrals} />
+      )}
+      {navItems[1]?.isActive && <StudentCourseEnrolled />}
+      {navItems[2]?.isActive && <StudentDetailGradeDataTable />}
+      {navItems[3]?.isActive && <StudentDetailFeedBackDataTable />}
     </section>
   );
 };
