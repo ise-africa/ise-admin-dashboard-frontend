@@ -18,6 +18,7 @@ type InputProps = {
   condition?: boolean;
   maxLength?: number | undefined;
   onKeyup?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  readOnly?: boolean;
 };
 
 const Input = ({
@@ -37,6 +38,7 @@ const Input = ({
   condition,
   maxLength,
   onKeyup,
+  readOnly,
 }: InputProps) => {
   // States
   const [invalid, setInvalid] = useState(false);
@@ -72,6 +74,7 @@ const Input = ({
       <div className={`${icon ? classes.inputContainer : ""}`}>
         <input
           type={type ? type : "text"}
+          readOnly={readOnly}
           name={name}
           placeholder={placeholder}
           id={label}

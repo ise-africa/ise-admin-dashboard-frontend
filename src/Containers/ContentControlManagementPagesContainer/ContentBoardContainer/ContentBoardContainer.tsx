@@ -37,15 +37,6 @@ const ContentBoardContainer = () => {
 
     setActiveSchool(school);
     setModalTitle(schoolName);
-    // const transformedCourses: Course[] = courses.map(
-    //   (course: any, index: number) => ({
-    //     schoolId: schoolId,
-    //     courseId: `${index + 1}`,
-    //     courseTitle: course.courseName,
-    //     courseImg: course.courseImage,
-    //   })
-    // );
-    // setModalCourses(transformedCourses);
 
     console.log(school, "SchoolId");
   };
@@ -107,29 +98,6 @@ const ContentBoardContainer = () => {
           }
         />
       )}
-
-      {/* {displaySchoolCoursesModal && courseFromSchoolData?.data?.length > 0 && (
-        <AcceptedModal
-          onClick={() => {
-            setDisplaySchoolCoursesModal(false);
-          }}
-          body={
-            <SchooCoursesModal
-              title={modalTitle}
-              courses={courseFromSchoolData?.data}
-              onClick={() => {
-                setDisplaySchoolCoursesModal(false);
-              }}
-              onClick2={(schoolId: string, courseId: string) => {
-                navigate(`/courses/${schoolId}/courses/${courseId}/analytics`);
-              }}
-              isLoading={courseFromSchoolIsLoading}
-              data={courseFromSchoolData}
-              school={activeSchool}
-            />
-          }
-        />
-      )} */}
 
       <div className={classes.schoolList}>
         {isLoading ? (

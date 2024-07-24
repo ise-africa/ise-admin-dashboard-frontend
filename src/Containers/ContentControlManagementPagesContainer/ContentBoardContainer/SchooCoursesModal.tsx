@@ -56,7 +56,7 @@ const SchooCoursesModal = ({
       </div>
 
       {courses?.length < 1 ? (
-        <SchoolCourseModulesEmptyTab />
+        <SchoolCourseModulesEmptyTab school={school} />
       ) : (
         <>
           <div className={classes.modalContent}>
@@ -64,7 +64,11 @@ const SchooCoursesModal = ({
               courses?.map((data: any) => (
                 <div
                   key={data?.id}
-                  onClick={() => onClick2?.(data.schoolId, data.courseId)}
+                  onClick={() => {
+                    navigate(
+                      `/courses/${school?.id}/courses/${data?.id}/analytics`
+                    );
+                  }}
                 >
                   <img
                     src={data?.cover_image || courseImage}

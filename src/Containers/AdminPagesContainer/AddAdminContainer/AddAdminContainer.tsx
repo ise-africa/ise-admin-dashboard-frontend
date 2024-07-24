@@ -14,91 +14,56 @@ import { inputChangeHandler } from "../../../HelperFunctions/inputChangeHandler"
 export const roles = [
   {
     isActive: true,
-    title: "Content administrator",
-    slug: "content-admin",
+    title: "Community Manager",
+    slug: "community-manager",
     duties: [
       {
-        title: "User account management:",
+        title: "User-Generated Content:",
         details: [
-          "Creation, modification, and deletion of student and tutor accounts.",
+          "Creating user-generated content (blog)",
+          "Enforcing community guidelines.",
+          "Addressing inappropriate behavior and policy violations.",
         ],
       },
+
       {
-        title: "Students' enrollment:",
-        details: ["Manage the enrollment process for students."],
-      },
-      {
-        title: "Data reports and insights:",
-        details: [
-          "Generate reports from the dashboard to support decision-making.",
-        ],
-      },
-      {
-        title: "Communication management:",
-        details: [
-          "Handle email notifications, messaging, and announcements.",
-          "Manage user registration, account activation, and password resets.",
-        ],
+        title: "User-Generated Content:",
+        details: ["Email notifications, messaging, and announcements."],
       },
     ],
   },
   {
     isActive: false,
-    title: "Support administrator",
+    title: "Support Admin",
     slug: "support-admin",
     duties: [
       {
-        title: "User account management:",
-        details: [
-          "Creation, modification, and deletion of student and tutor accounts.",
-        ],
-      },
-      {
-        title: "Students' enrollment:",
-        details: ["Manage the enrollment process for students."],
-      },
-      {
-        title: "Data reports and insights:",
-        details: [
-          "Generate reports from the dashboard to support decision-making.",
-        ],
-      },
-      {
-        title: "Communication management:",
-        details: [
-          "Handle email notifications, messaging, and announcements.",
-          "Manage user registration, account activation, and password resets.",
-        ],
+        title: "User Support and Assistance:",
+        details: ["Handling support tickets, inquiries, and technical issues."],
       },
     ],
   },
   {
     isActive: false,
-    title: "Community administrator",
-    slug: "community-manager",
-
+    title: "Course Curriculum/Content Admin",
+    slug: "content-admin",
     duties: [
       {
-        title: "User account management:",
+        title: "Content Review and Approval:",
+        details: ["Reviewing and approving course content created by tutors."],
+      },
+      {
+        title: "Quality Control:",
         details: [
-          "Creation, modification, and deletion of student and tutor accounts.",
+          "Evaluating course content for quality and adherence to platform guidelines.",
+          "Providing feedback to tutors for content improvement.",
         ],
       },
+
       {
-        title: "Students' enrollment:",
-        details: ["Manage the enrollment process for students."],
-      },
-      {
-        title: "Data reports and insights:",
+        title: "Educational Standards:",
         details: [
-          "Generate reports from the dashboard to support decision-making.",
-        ],
-      },
-      {
-        title: "Communication management:",
-        details: [
-          "Handle email notifications, messaging, and announcements.",
-          "Manage user registration, account activation, and password resets.",
+          "Ensuring content aligns with progressive IT educational standards.",
         ],
       },
     ],

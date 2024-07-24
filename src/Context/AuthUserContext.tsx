@@ -26,6 +26,7 @@ type AuthUserContextValueType = {
   setSearchParams: SetURLSearchParams;
   signInRequest: requestType;
   signIn: () => void;
+  logout: () => void;
 };
 
 type AuthUserContextProviderTypes = {
@@ -107,6 +108,13 @@ const AuthUserContextProvider = ({
         });
   };
 
+  const logout = () => {
+    localStorage.removeItem("iseAdminAccessToken");
+    localStorage.removeItem("iseAdminRefreshToken");
+
+    navigate("/sign-in", { state: location.pathname });
+  };
+
   return (
     <AuthUserContext.Provider
       value={{
@@ -116,6 +124,7 @@ const AuthUserContextProvider = ({
         setSearchParams,
         signInRequest,
         signIn,
+        logout,
       }}
     >
       {children}

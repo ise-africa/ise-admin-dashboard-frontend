@@ -11,11 +11,8 @@ export const useTutorsById = (id: string) => {
   return useGetHook(`${backend_url}/api/ise/v1/admin/tutors/${id}`);
 };
 
-// export const useDeactivateTutor = (id: string, props?: SWRConfiguration) => {
-//   return useGetHook(
-//     `${backend_url}/api/ise/v1/admin/tutors/close-account/${id}`,
-//     { ...props }
-//   );
-// };
+export const useTutorsAssignedCourses = (id: string) => {
+  return useGetHook(`${backend_url}/api/ise/v1/admin/tutors/${id}`);
+};
 
 export default useTutors;

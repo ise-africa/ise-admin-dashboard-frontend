@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import classes from "./AdministratorBoard.module.css";
 import HelloUser from "../../../Components/HelloUser/HelloUser";
 import Button from "../../../Components/Button/Button";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../../Context/AppContext";
 import ActionsModal from "./ActionsModal/ActionsModal";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
@@ -16,15 +16,12 @@ import { capitalize } from "../../../HelperFunctions/capitalize";
 import moment from "moment";
 
 const AdministratorBoard = () => {
-  const { adminData } = useContext(AppContext);
   const navigate = useNavigate();
 
   // Requests
   const { isLoading, data } = useAdmin();
 
   const admins = data?.data?.data;
-
-  console.log(admins, "Admins");
 
   // States
   const [displayViewPermissionModal, setDisplayViewPermissionModal] =
@@ -36,7 +33,7 @@ const AdministratorBoard = () => {
   ] = useState(false);
   const [displayClosingAdminAccountModal, setDisplayClosingAdminAccountModal] =
     useState(false);
-  const [activeAdminIndex, setActiveAdminIndex] = useState<number | null>(null);
+  const [activeAdminIndex, setActiveAdminIndex] = useState(null);
 
   const getStatusClass = (status: string) => {
     switch (status) {
@@ -48,8 +45,26 @@ const AdministratorBoard = () => {
   };
 
   const handleOptionsToggle = (index: number) => {
-    setActiveAdminIndex(activeAdminIndex === index ? null : index);
+    setActiveAdminIndex(admins?.find((data: any) => data?.id === index)?.id);
   };
+
+  // Refs
+  const optionsRef = useRef<HTMLDivElement>(null);
+
+  // Effects
+  useEffect(() => {
+    const removeDropdownHandler = (e: any) => {
+      if (optionsRef && !optionsRef?.current?.contains(e.target)) {
+        setActiveAdminIndex(null);
+      } else {
+      }
+    };
+    document.addEventListener("mousedown", removeDropdownHandler);
+
+    return () => {
+      document.removeEventListener("mousedown", removeDropdownHandler);
+    };
+  }, []);
 
   if (isLoading) {
     return <Loader />;
@@ -65,6 +80,8 @@ const AdministratorBoard = () => {
           body={
             <ViewPermissionModal
               onClick={() => setDisplayViewPermissionModal(false)}
+              admins={admins}
+              activeAdminId={activeAdminIndex as any}
             />
           }
         />
@@ -156,7 +173,7 @@ const AdministratorBoard = () => {
             return (
               <div key={index} className={classes.tableBody}>
                 <div>
-                  <img src={data?.image} alt={data.last_name} />
+                  {/* <img src={data?.image} alt={data.last_name} /> */}
                 </div>
                 <div className={classes.adminInfo}>
                   <span>
@@ -172,7 +189,7 @@ const AdministratorBoard = () => {
                 </div>
                 <div className={classes.moreOptionsContainer}>
                   <svg
-                    onClick={() => handleOptionsToggle(index)}
+                    onClick={() => handleOptionsToggle(data?.id)}
                     width="4"
                     height="19"
                     viewBox="0 0 4 19"
@@ -187,8 +204,8 @@ const AdministratorBoard = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  {activeAdminIndex === index && (
-                    <div className={classes.moreOptions}>
+                  {activeAdminIndex === data?.id && (
+                    <div className={classes.moreOptions} ref={optionsRef}>
                       <ActionsModal
                         onClick={() => setDisplayViewPermissionModal(true)}
                         onClick2={() => navigate(`/users/admins/${data?.id}`)}

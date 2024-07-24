@@ -17,21 +17,21 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Router>
-    <UseSWRConfigProvider>
-      <AuthUserContextProvider>
-        <AppContextProvider>
-          <SchoolContextProvider>
-            <UserContextProvider>
+    <AuthUserContextProvider>
+      <AppContextProvider>
+        <SchoolContextProvider>
+          <UserContextProvider>
+            <UseSWRConfigProvider>
               <React.StrictMode>
                 <Toast2>
                   <App />
                 </Toast2>
               </React.StrictMode>
-            </UserContextProvider>
-          </SchoolContextProvider>
-        </AppContextProvider>
-      </AuthUserContextProvider>
-    </UseSWRConfigProvider>
+            </UseSWRConfigProvider>
+          </UserContextProvider>
+        </SchoolContextProvider>
+      </AppContextProvider>
+    </AuthUserContextProvider>
   </Router>
 );
 

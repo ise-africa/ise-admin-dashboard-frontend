@@ -1,161 +1,160 @@
 .container {
-    gap: 2rem;
-    display: flex;
-    padding: 24px;
-    flex-direction: column;
+  gap: 2rem;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
 
-    font-style: normal;
-    font-family: Archivo;
+  font-style: normal;
+  font-family: Archivo;
 }
 
 .container button {
-    width: fit-content;
-    padding: 10px 30px;
+  width: fit-content;
+  padding: 10px 30px;
 }
 
 .role {
-    gap: 7px;
-    display: flex;
-    flex-direction: column;
+  gap: 7px;
+  display: flex;
+  flex-direction: column;
 }
 
 .role p,
 .role button {
-    font-size: 13px;
-    font-weight: 500;
-    font-style: normal;
-    line-height: 26px;
-    color: var(--grey3);
-    font-family: Archivo;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 26px;
+  color: var(--grey3);
+  font-family: Archivo;
 }
 
 .role button {
-    padding: 4px 8px;
-    border-radius: 2px;
-    color: var(--grey);
-    background: var(--greyWhite);
-    border: 1px solid var(--purple);
+  padding: 4px 8px;
+  border-radius: 2px;
+  color: var(--grey);
+  background: var(--greyWhite);
+  border: 1px solid var(--purple);
 }
 
 .subContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    padding: 24px 32px;
-    background: var(--white);
+  padding: 24px 32px;
+  background: var(--white);
 }
-
 
 .tableHeader,
 .tableBody {
-    gap: 20px;
-    display: grid;
-    grid-template-columns: 70px repeat(3, 2fr) 20px;
-    align-items: center;
-    justify-content: space-between;
+  gap: 20px;
+  display: grid;
+  grid-template-columns: 70px repeat(3, 2fr) 20px;
+  align-items: center;
+  justify-content: space-between;
 
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 26px;
-    color: var(--grey);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: var(--grey);
 }
 
 .tableHeader {
-    font-weight: 500;
-    padding-block: 10px;
-    border-bottom: 1px solid var(--grey);
+  font-weight: 500;
+  padding-block: 10px;
+  border-bottom: 1px solid var(--grey);
 }
 
 .tableBody {
-    padding: 40px 0 15px;
-    border-bottom: 1px solid var(--sectionBorder);
+  padding: 40px 0 15px;
+  border-bottom: 1px solid var(--sectionBorder);
 }
 
 .tableBody:last-child {
-    border-bottom: none;
-    padding-bottom: 40px;
+  border-bottom: none;
+  padding-bottom: 40px;
 }
 
 .adminInfo {
-    gap: 4px;
-    display: flex;
-    flex-direction: column;
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
 }
 
 .adminInfo span:nth-child(2) {
-    font-size: 13px;
-    color: var(--grey3);
+  font-size: 13px;
+  color: var(--grey3);
 }
 
 .status mark {
-    font-size: 13px;
-    font-weight: 400;
-    background: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    text-transform: capitalize;
+  font-size: 13px;
+  font-weight: 400;
+  background: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: capitalize;
 }
 
 .pending mark {
-    color: #C7920B;
+  color: #c7920b;
 }
 
 .moreOptionsContainer {
-    cursor: pointer;
-    position: relative;
+  cursor: pointer;
+  position: relative;
 }
 
 .moreOptions {
-    top: 20px;
-    z-index: 20;
-    left: -158px;
-    position: absolute;
-    border-radius: 10px;
-    animation: appear 0.3s ease-in-out;
-    border: 1px solid var(--sectionBorder);
+  top: 20px;
+  z-index: 20;
+  left: -158px;
+  position: absolute;
+  border-radius: 10px;
+  animation: appear 0.3s ease-in-out;
+  border: 1px solid var(--sectionBorder);
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
-    .container {
-        gap: 1rem;
-        padding: 0;
-        background: var(--white);
-    }
+  .container {
+    gap: 1rem;
+    padding: 0;
+    background: var(--white);
+  }
 
-    .role,
-    .subContainer {
-        padding: 0 1rem;
-    }
+  .role,
+  .subContainer {
+    padding: 0 1rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .container {
-        gap: 1rem;
-        padding: 0;
-        background: var(--white);
-    }
+  .container {
+    gap: 1rem;
+    padding: 0;
+    background: var(--white);
+  }
 
-    .role,
-    .subContainer {
-        padding: 0 1rem;
-    }
+  .role,
+  .subContainer {
+    padding: 0 1rem;
+  }
 
-    .tableHeader span:nth-child(1),
-    .tableBody div:nth-child(1),
-    .tableBody div:nth-child(4),
-    .tableHeader span:nth-child(4) {
-        display: none;
-    }
+  .tableHeader span:nth-child(1),
+  .tableBody div:nth-child(1),
+  .tableBody div:nth-child(4),
+  .tableHeader span:nth-child(4) {
+    display: none;
+  }
 
-    .tableHeader,
-    .tableBody {
-        font-size: 14px;
-        line-height: 22px;
-        grid-template-columns: minmax(130px, 180px) minmax(100px, 1fr) 30px;
-    }
+  .tableHeader,
+  .tableBody {
+    font-size: 14px;
+    line-height: 22px;
+    grid-template-columns: minmax(130px, 180px) minmax(100px, 1fr) 30px;
+  }
 
-    .status mark {
-        font-size: 12px;
-        padding: 6px 14px;
-    }
+  .status mark {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
 }

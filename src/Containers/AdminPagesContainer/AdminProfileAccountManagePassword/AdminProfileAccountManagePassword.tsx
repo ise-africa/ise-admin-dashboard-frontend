@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import classes from "./AdminProfileAccountManagePassword.module.css";
 import ChangeEmailComformedModalBody from "./ChangeEmailComformedModalBody";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
@@ -6,24 +6,35 @@ import ProfileSectionContainer from "../../../Components/ProfileSectionContainer
 import Input from "../../../Components/Input/Input";
 import Button from "../../../Components/Button/Button";
 import ChangePasswordModal from "./ChangeEmailModalWarning";
-import { AppContext } from "../../../Context/AppContext";
+import { UserContext } from "../../../Context/UserContext";
 import { useParams } from "react-router-dom";
 
-const AdminProfileAccountManagePassword = () => {
+type AdminProfileAccountManagePasswordType = {
+  data: any;
+};
+
+const AdminProfileAccountManagePassword = ({
+  data,
+}: AdminProfileAccountManagePasswordType) => {
   // States
-  const [displayChangePasswordModal, setDisplayChangePasswordModal] = useState(false);
+  const [displayChangePasswordModal, setDisplayChangePasswordModal] =
+    useState(false);
   const [displayEmailChangeConfirmModal, setDisplayEmailChangeConfirmModal] =
     useState(false);
 
-  // Context
-  const { adminData } = useContext(AppContext)
-
   // Router
-  const { AdminId } = useParams()
+  const { Adminid } = useParams();
 
-  const activeAdmin = adminData.find((data) => {
-    return data.adminFullName.replace(' ', '-').toLowerCase() === AdminId
-  })
+  // Context
+  const { changeAdminPassword, isCreatingStudent } = useContext(UserContext);
+
+  // Effects
+  useEffect(() => {
+    if (isCreatingStudent?.data === "Password changed successfully") {
+      setDisplayChangePasswordModal(false);
+      setDisplayEmailChangeConfirmModal(true);
+    }
+  }, [isCreatingStudent?.data]);
 
   return (
     <ProfileSectionContainer
@@ -42,8 +53,7 @@ const AdminProfileAccountManagePassword = () => {
                   setDisplayChangePasswordModal(false);
                 }}
                 onClick2={() => {
-                  setDisplayChangePasswordModal(false);
-                  setDisplayEmailChangeConfirmModal(true);
+                  changeAdminPassword(Adminid as string);
                 }}
               />
             }
@@ -63,29 +73,38 @@ const AdminProfileAccountManagePassword = () => {
             }
           />
         )}
+
         <Input
           isRequired
           type="text"
           label="First name"
-          placeholder={activeAdmin?.adminFirstName}
+          placeholder={data?.first_name}
+          value={data?.first_name}
+          readOnly
         />
         <Input
           isRequired
           type="text"
           label="Last name"
-          placeholder={activeAdmin?.adminLastName}
+          readOnly
+          placeholder={data?.last_name}
+          value={data?.last_name}
         />
         <Input
           isRequired
           type="email"
           label="Email address"
-          placeholder={activeAdmin?.emailAddress}
+          placeholder={data?.email}
+          value={data?.email}
+          readOnly
         />
         <Input
           isRequired
           type="password"
           label="Password"
-          placeholder={activeAdmin?.password}
+          placeholder={data?.password}
+          value={data?.password}
+          readOnly
         />
 
         <Button

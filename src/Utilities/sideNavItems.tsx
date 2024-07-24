@@ -49,6 +49,14 @@ export const sideNavItems: sideNavItemsType = [
   },
 
   {
+    title: "Schools management",
+    route: "/schools",
+    keywords: ["schools"],
+    otherOptions: null,
+    isVisible: true,
+  },
+
+  {
     title: "Course management ",
     route: "/courses",
     keywords: ["contents"],
@@ -60,14 +68,6 @@ export const sideNavItems: sideNavItemsType = [
     title: "Blog management",
     route: "/blogs",
     keywords: ["blog"],
-    otherOptions: null,
-    isVisible: true,
-  },
-
-  {
-    title: "Schools management",
-    route: "/schools",
-    keywords: ["schools"],
     otherOptions: null,
     isVisible: true,
   },

@@ -18,6 +18,10 @@ type UserContextValues = {
   editStudent: (id: string) => void;
   createTutor: () => void;
   createAdmin: () => void;
+  passwords: passwordsType;
+  setPasswords: Dispatch<SetStateAction<passwordsType>>;
+  changeAdminPassword: (id: string) => void;
+  changeAdminRole: (id: string, role: string) => void;
 };
 
 type UserContextProviderType = {
@@ -30,6 +34,12 @@ export type createStudentDetailsType = {
   bio: string;
   linkedIn_profile: string;
   role?: string;
+};
+
+export type passwordsType = {
+  currentPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
 };
 
 export const UserContext = createContext({} as UserContextValues);
@@ -51,6 +61,11 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
     isLoading: false,
     data: null,
     error: null,
+  });
+  const [passwords, setPasswords] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
   });
 
   // Utils
@@ -141,6 +156,42 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
     });
   };
 
+  const changeAdminPassword = (id: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/${id}/change-password`,
+      method: "PATCH",
+      data: passwords,
+      setNotifications: setNotifications,
+      setNotificationsFailure: true,
+      state: isCreatingStudent,
+      setState: setIsCreatingStudent,
+      requestCleanup: true,
+      successFunction() {
+        setIsCreatingStudent((prevState) => {
+          return { ...prevState, data: "Password changed successfully" };
+        });
+      },
+    });
+  };
+
+  const changeAdminRole = (id: string, role: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/${id}/modify-role`,
+      method: "PUT",
+      data: { role },
+      setNotifications: setNotifications,
+      setNotificationsFailure: true,
+      state: isCreatingStudent,
+      setState: setIsCreatingStudent,
+      successFunction() {
+        setIsCreatingStudent((prevState) => {
+          return { ...prevState, data: "Role changed successfully" };
+        });
+      },
+      requestCleanup: true,
+    });
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -151,6 +202,10 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
         editStudent,
         createTutor,
         createAdmin,
+        passwords,
+        setPasswords,
+        changeAdminPassword,
+        changeAdminRole,
       }}
     >
       {children}

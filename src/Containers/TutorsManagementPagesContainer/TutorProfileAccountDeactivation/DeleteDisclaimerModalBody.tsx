@@ -40,7 +40,12 @@ const DeleteDisclaimerModalBody = ({
           <Button type="invalid" onClick={onClick}>
             Cancel
           </Button>
-          <Button type="delete" onClick={onClick2} loading={state?.isLoading}>
+          <Button
+            type="delete"
+            onClick={onClick2}
+            loading={state?.isLoading}
+            disabled={!reason}
+          >
             Deactivate account
           </Button>
         </div>

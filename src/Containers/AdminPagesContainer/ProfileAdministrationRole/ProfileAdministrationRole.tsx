@@ -1,103 +1,137 @@
-import classes from './ProfileAdministrationRole.module.css'
-import ProfileSectionContainer from '../../../Components/ProfileSectionContainer/ProfileSectionContainer';
-import Button from '../../../Components/Button/Button';
-import { useContext, useState } from 'react';
-import AcceptedModal from '../../../Components/Modals/AcceptedModal/AcceptedModal';
-import ModifyRoleFirstModal from './ModifyRoleModals/ModifyRoleFirstModal';
-import ModifyRoleSecondModal from './ModifyRoleModals/ModifyRoleSecondModal';
-import ModifyRoleThirdModal from './ModifyRoleModals/ModifyRoleThirdModal';
-import { AppContext } from '../../../Context/AppContext';
-import { useParams } from 'react-router-dom';
+import classes from "./ProfileAdministrationRole.module.css";
+import ProfileSectionContainer from "../../../Components/ProfileSectionContainer/ProfileSectionContainer";
+import Button from "../../../Components/Button/Button";
+import { useContext, useEffect, useState } from "react";
+import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
+import ModifyRoleFirstModal from "./ModifyRoleModals/ModifyRoleFirstModal";
+import ModifyRoleSecondModal from "./ModifyRoleModals/ModifyRoleSecondModal";
+import ModifyRoleThirdModal from "./ModifyRoleModals/ModifyRoleThirdModal";
+import { capitalize } from "../../../HelperFunctions/capitalize";
+import { roles } from "../AddAdminContainer/AddAdminContainer";
+import { UserContext } from "../../../Context/UserContext";
 
-const ProfileAdministrationRole = () => {
+type ProfileAdministrationRoleType = {
+  data: any;
+};
 
-    const [displayModifyRoleFirstModal, setDisplayModifyRoleFirstModal] = useState(false)
-    const [displayModifyRoleSecondModal, setDisplayModifyRoleSecondModal] = useState(false)
-    const [displayModifyRoleThirdModal, setDisplayModifyRoleThirdModal] = useState(false)
+const ProfileAdministrationRole = ({ data }: ProfileAdministrationRoleType) => {
+  const [displayModifyRoleFirstModal, setDisplayModifyRoleFirstModal] =
+    useState(false);
+  const [displayModifyRoleSecondModal, setDisplayModifyRoleSecondModal] =
+    useState(false);
+  const [displayModifyRoleThirdModal, setDisplayModifyRoleThirdModal] =
+    useState(false);
+  const [selectedRole, setSelectedRole] = useState("");
 
-    // Context
-    const { adminData } = useContext(AppContext)
+  // Context
+  const { isCreatingStudent } = useContext(UserContext);
 
-    // Router
-    const { AdminId } = useParams()
+  const adminRoles = roles?.find((role) => role?.slug === data?.role);
 
-    const activeAdmin = adminData.find((data) => {
-        return data.adminFullName.replace(' ', '-').toLowerCase() === AdminId
-    })
+  // Effects
+  useEffect(() => {
+    if (isCreatingStudent?.data === "Role changed successfully") {
+      setDisplayModifyRoleSecondModal(false);
+      setDisplayModifyRoleThirdModal(true);
+    } else {
+      setDisplayModifyRoleThirdModal(false);
+    }
+  }, [isCreatingStudent?.data]);
 
-    return (
-        <>
-            {displayModifyRoleFirstModal && (
-                <AcceptedModal
-                    onClick={() => { setDisplayModifyRoleFirstModal(false) }}
-                    body={
-                        <ModifyRoleFirstModal
-                            onClick={() => { setDisplayModifyRoleFirstModal(false) }}
-                            onClick2={() => {
-                                setDisplayModifyRoleFirstModal(false)
-                                setDisplayModifyRoleSecondModal(true)
-                            }}
-                        />
-                    }
-                />
-            )}
-            {displayModifyRoleSecondModal && (
-                <AcceptedModal
-                    onClick={() => { setDisplayModifyRoleSecondModal(false) }}
-                    body={
-                        <ModifyRoleSecondModal
-                            onClick={() => {
-                                setDisplayModifyRoleFirstModal(true)
-                                setDisplayModifyRoleSecondModal(false)
-                            }}
-                            onClick2={() => {
-                                setDisplayModifyRoleSecondModal(false)
-                                setDisplayModifyRoleThirdModal(true)
-                            }}
-                        />
-                    }
-                />
-            )}
-            {displayModifyRoleThirdModal && (
-                <AcceptedModal
-                    onClick={() => { setDisplayModifyRoleThirdModal(false) }}
-                    body={
-                        <ModifyRoleThirdModal
-                            onClick={() => { setDisplayModifyRoleThirdModal(false) }}
-                        />
-                    }
-                />
-            )}
-            <ProfileSectionContainer
-                header="Administrator roles"
-                paragraph="Learn about the responsibilities, and tasks of the user administrator."
-            >
-                <div className={classes.listContainer}>
-                    <p>Role</p>
-                    <h4>{activeAdmin?.adminRole}</h4>
-                    <p>Permissions</p>
-                    <ol className={classes.numberList}>
-                        {activeAdmin && activeAdmin.permissionsData.map((permission, index) => (
-                            <li key={index}>
-                                {permission.title}
-                                <ul className={classes.discList}>
-                                    {permission.details.map((detail, idx) => (
-                                        <li key={idx}>{detail}</li>
-                                    ))}
-                                </ul>
-                            </li>
-                        ))}
-                    </ol>
-                </div>
-                <Button
-                    type='null'
-                    className={classes.modifyButton}
-                    onClick={() => { setDisplayModifyRoleFirstModal(true) }}
-                >Modify role</Button>
-            </ProfileSectionContainer>
-        </>
+  return (
+    <>
+      {displayModifyRoleFirstModal && (
+        <AcceptedModal
+          onClick={() => {
+            setDisplayModifyRoleFirstModal(false);
+          }}
+          body={
+            <ModifyRoleFirstModal
+              onClick={() => {
+                setDisplayModifyRoleFirstModal(false);
+              }}
+              onClick2={() => {
+                setDisplayModifyRoleFirstModal(false);
+                setDisplayModifyRoleSecondModal(true);
+              }}
+              data={data}
+              selectedRole={selectedRole}
+              setSelectedRole={setSelectedRole}
+            />
+          }
+        />
+      )}
+      {displayModifyRoleSecondModal && (
+        <AcceptedModal
+          onClick={() => {
+            setDisplayModifyRoleSecondModal(false);
+          }}
+          body={
+            <ModifyRoleSecondModal
+              onClick={() => {
+                setDisplayModifyRoleFirstModal(true);
+                setDisplayModifyRoleSecondModal(false);
+              }}
+              onClick2={() => {
+                setDisplayModifyRoleSecondModal(false);
+                setDisplayModifyRoleThirdModal(true);
+              }}
+              selectedRole={selectedRole}
+              data={data}
+            />
+          }
+        />
+      )}
+      {displayModifyRoleThirdModal && (
+        <AcceptedModal
+          onClick={() => {
+            setDisplayModifyRoleThirdModal(false);
+          }}
+          body={
+            <ModifyRoleThirdModal
+              onClick={() => {
+                setDisplayModifyRoleThirdModal(false);
+              }}
+              selectedRole={selectedRole}
+              data={data}
+            />
+          }
+        />
+      )}
+      <ProfileSectionContainer
+        header="Administrator roles"
+        paragraph="Learn about the responsibilities, and tasks of the user administrator."
+      >
+        <div className={classes.listContainer}>
+          <p>Role</p>
+          <h4>{capitalize(data?.role?.replace("-", " "))}</h4>
+          <p>Permissions</p>
+          <ol className={classes.numberList}>
+            {adminRoles &&
+              adminRoles?.duties.map((permission, index) => (
+                <li key={index}>
+                  {permission.title}
+                  <ul className={classes.discList}>
+                    {permission.details.map((detail, idx) => (
+                      <li key={idx}>{detail}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+          </ol>
+        </div>
+        <Button
+          type="null"
+          className={classes.modifyButton}
+          onClick={() => {
+            setDisplayModifyRoleFirstModal(true);
+          }}
+        >
+          Modify role
+        </Button>
+      </ProfileSectionContainer>
+    </>
+  );
+};
 
-    )
-}
-
-export default ProfileAdministrationRole
+export default ProfileAdministrationRole;
