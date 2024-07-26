@@ -6,6 +6,7 @@ import StudentsManagementModulesEmptyTab from "./StudentsManagementModulesEmptyT
 import StudentDataTableContent from "./StudentDataTableContent";
 import useStudents from "../../../Hooks/useStudents";
 import Loader from "../../../Components/Loader/Loader";
+import moment from "moment";
 
 const StudentDataTable = () => {
   // States
@@ -29,7 +30,7 @@ const StudentDataTable = () => {
     {
       status: "Up",
       statusFigure: 2.1,
-      totalNumber: students?.length || 0,
+      totalNumber: data?.data?.total || 0,
       image: greenBar,
       title: "All students",
     },
@@ -44,7 +45,14 @@ const StudentDataTable = () => {
     {
       status: "Up",
       statusFigure: 2.1,
-      totalNumber: 5,
+      totalNumber:
+        students
+          ?.map((data: any) => {
+            return moment().diff(data?.created_at, "days");
+          })
+          .filter((filter: any) => {
+            return filter < 14;
+          })?.length || 0,
       image: greenBar,
       title: "New students",
     },

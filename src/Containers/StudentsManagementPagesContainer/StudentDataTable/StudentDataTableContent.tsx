@@ -13,6 +13,7 @@ import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModa
 import ConfirmationModal from "./Modals/ConfirmationModal";
 import EmptyTabComponent from "../../../Components/EmptyTabComponent/EmptyTabComponent";
 import SendMessageModal from "./Modals/SendMessageModal";
+import { capitalize } from "../../../HelperFunctions/capitalize";
 
 type StudentDataTableContentType = {
   students: any;
@@ -213,7 +214,7 @@ const StudentDataTableContent = ({
                   />
                   <div>
                     <img src={data?.profile_image} alt={data?.full_name} />
-                    <span>{data.full_name}</span>
+                    <span>{capitalize(data.full_name)}</span>
                   </div>
                   <span>#{data?.id}</span>
                   <span>{data.status}</span>
