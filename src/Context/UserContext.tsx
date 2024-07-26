@@ -22,6 +22,8 @@ type UserContextValues = {
   setPasswords: Dispatch<SetStateAction<passwordsType>>;
   changeAdminPassword: (id: string) => void;
   changeAdminRole: (id: string, role: string) => void;
+  resendAdminInvite: (email: string) => void;
+  closeAdminAccount: (id: string, deactivationReason: string) => void;
 };
 
 type UserContextProviderType = {
@@ -192,6 +194,44 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
     });
   };
 
+  const resendAdminInvite = (email: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/resend-admin-invitation`,
+      method: "POST",
+      data: { email },
+      setNotifications: setNotifications,
+      setNotificationsFailure: true,
+      state: isCreatingStudent,
+      setState: setIsCreatingStudent,
+      successFunction() {
+        setIsCreatingStudent((prevState) => {
+          return { ...prevState, data: "Invite sent successfully" };
+        });
+      },
+      requestCleanup: true,
+    });
+  };
+
+  const closeAdminAccount = (id: string, deactivationReason: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/deactivate/${id}`,
+      method: "POST",
+      data: { deactivationReason },
+      setNotifications: setNotifications,
+      setNotificationsFailure: true,
+      state: isCreatingStudent,
+      setState: setIsCreatingStudent,
+      successFunction() {
+        setIsCreatingStudent((prevState) => {
+          return { ...prevState, data: "Admin account closed successfully" };
+        });
+      },
+      successMessage: "Admin account closed successfully",
+      setNotificationsSuccess: true,
+      requestCleanup: true,
+    });
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -206,6 +246,8 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
         setPasswords,
         changeAdminPassword,
         changeAdminRole,
+        resendAdminInvite,
+        closeAdminAccount,
       }}
     >
       {children}

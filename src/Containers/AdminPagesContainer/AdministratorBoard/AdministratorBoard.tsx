@@ -14,6 +14,7 @@ import useAdmin from "../../../Hooks/useAdmin";
 import Loader from "../../../Components/Loader/Loader";
 import { capitalize } from "../../../HelperFunctions/capitalize";
 import moment from "moment";
+import { UserContext } from "../../../Context/UserContext";
 
 const AdministratorBoard = () => {
   const navigate = useNavigate();
@@ -22,6 +23,9 @@ const AdministratorBoard = () => {
   const { isLoading, data } = useAdmin();
 
   const admins = data?.data?.data;
+
+  // Context
+  const { isCreatingStudent } = useContext(UserContext);
 
   // States
   const [displayViewPermissionModal, setDisplayViewPermissionModal] =
@@ -34,6 +38,7 @@ const AdministratorBoard = () => {
   const [displayClosingAdminAccountModal, setDisplayClosingAdminAccountModal] =
     useState(false);
   const [activeAdminIndex, setActiveAdminIndex] = useState(null);
+  const [activeAdmin, setActiveAdmin] = useState(null);
 
   const getStatusClass = (status: string) => {
     switch (status) {
@@ -46,6 +51,7 @@ const AdministratorBoard = () => {
 
   const handleOptionsToggle = (index: number) => {
     setActiveAdminIndex(admins?.find((data: any) => data?.id === index)?.id);
+    setActiveAdmin(admins?.find((data: any) => data?.id === index));
   };
 
   // Refs
@@ -54,9 +60,12 @@ const AdministratorBoard = () => {
   // Effects
   useEffect(() => {
     const removeDropdownHandler = (e: any) => {
-      if (optionsRef && !optionsRef?.current?.contains(e.target)) {
+      if (
+        optionsRef &&
+        !optionsRef?.current?.contains(e.target) &&
+        !displayClosingAdminAccountModal
+      ) {
         setActiveAdminIndex(null);
-      } else {
       }
     };
     document.addEventListener("mousedown", removeDropdownHandler);
@@ -64,7 +73,22 @@ const AdministratorBoard = () => {
     return () => {
       document.removeEventListener("mousedown", removeDropdownHandler);
     };
-  }, []);
+  }, [displayClosingAdminAccountModal]);
+
+  console.log(activeAdmin, displayClosingAdminAccountModal);
+
+  useEffect(() => {
+    if (isCreatingStudent?.data === "Invite sent successfully") {
+      setDisplaySendInviteModal(false);
+      setDisplaySendInviteSuccessfulModal(true);
+    } else {
+      setDisplaySendInviteSuccessfulModal(false);
+    }
+
+    if (isCreatingStudent?.data === "Admin account closed successfully") {
+      setDisplayClosingAdminAccountModal(false);
+    }
+  }, [isCreatingStudent?.data]);
 
   if (isLoading) {
     return <Loader />;
@@ -96,10 +120,7 @@ const AdministratorBoard = () => {
               onClick={() => {
                 setDisplaySendInviteModal(false);
               }}
-              onClick2={() => {
-                setDisplaySendInviteModal(false);
-                setDisplaySendInviteSuccessfulModal(true);
-              }}
+              activeAdmin={activeAdmin}
             />
           }
         />
@@ -112,6 +133,7 @@ const AdministratorBoard = () => {
           body={
             <SendInviteSuccessfulModal
               onClick={() => setDisplaySendInviteSuccessfulModal(false)}
+              activeAdmin={activeAdmin}
             />
           }
         />
@@ -124,6 +146,7 @@ const AdministratorBoard = () => {
           body={
             <ClosingAdminAccountModal
               onClick={() => setDisplayClosingAdminAccountModal(false)}
+              activeAdminId={activeAdminIndex as any}
             />
           }
         />
