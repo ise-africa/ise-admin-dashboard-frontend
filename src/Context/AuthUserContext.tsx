@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { createContext, Dispatch, SetStateAction, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { SetURLSearchParams } from "react-router-dom";
@@ -7,7 +7,7 @@ import useSWR from "swr";
 
 export type requestType = {
   isLoading: boolean;
-  data: null | any[] | string;
+  data: null | any[] | string | AxiosResponse;
   error: null | any;
 };
 

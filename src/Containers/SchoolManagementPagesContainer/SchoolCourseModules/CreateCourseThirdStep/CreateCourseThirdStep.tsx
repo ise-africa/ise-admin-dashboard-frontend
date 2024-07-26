@@ -225,7 +225,7 @@ const CreateCourseThirdStep = ({
                   !createCourse?.application_deadline ||
                   !createCourse?.start_date ||
                   !createCourse?.duration ||
-                  !createCourse?.tutorId ||
+                  // !createCourse?.tutorId ||
                   !createCourse?.total_capacity
                 }
               >

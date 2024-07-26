@@ -178,7 +178,7 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
               application_deadline: createCourse?.application_deadline,
               start_date: createCourse?.start_date,
               duration: createCourse?.duration,
-              tutorId: createCourse?.tutorId,
+              tutorId: createCourse?.tutorId || 1,
               price: createCourse?.price,
               total_capacity: Number(createCourse?.total_capacity),
               has_installment: createCourse?.has_installment,
