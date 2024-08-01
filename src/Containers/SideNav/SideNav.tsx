@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../../Context/AppContext";
 import { activeToggler } from "../../HelperFunctions/activeTogglers";
+import { AuthUserContext } from "../../Context/AuthUserContext";
 
 export const sideNavIconsHandler = (title: string) => {
   if (title === "Home") {
@@ -217,6 +218,7 @@ const SideNav = () => {
 
   // COntext
   const { navItmesState, setNavItemsState } = useContext(AppContext);
+  const { logout } = useContext(AuthUserContext);
 
   // Utils
 
@@ -338,7 +340,7 @@ const SideNav = () => {
             </Link>
           );
         })}
-        <div className={classes.logout}>
+        <div className={classes.logout} onClick={logout}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

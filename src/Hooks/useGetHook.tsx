@@ -1,15 +1,12 @@
-import { useContext } from "react";
 import useSWR, { SWRConfiguration } from "swr";
-import { AppContext } from "../Context/AppContext";
-import { AuthUserContext } from "../Context/AuthUserContext";
-// import { setNotiticationFunction } from "../Utilities/setNotificationsFunction";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const useGetHook = (url: string | null, props?: SWRConfiguration) => {
   const { data, error, isLoading, isValidating } = useSWR(url, { ...props });
 
   // Context
-  const { setNotifications } = useContext(AppContext);
-  const { logout } = useContext(AuthUserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const errorMessage = error?.response?.data?.error
     ? error?.response?.data?.error?.responseMessage
@@ -24,7 +21,7 @@ const useGetHook = (url: string | null, props?: SWRConfiguration) => {
   }
 
   if (errorMessage === "Expired Token" || errorMessage === "Unauthorized") {
-    logout();
+    navigate("/sign-in", { state: location.pathname });
   }
 
   return { data, error, isLoading, isValidating };

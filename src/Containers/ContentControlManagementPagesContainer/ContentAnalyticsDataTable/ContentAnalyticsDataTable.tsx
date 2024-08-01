@@ -33,10 +33,16 @@ const ContentAnalyticsDataTable = ({
       slug: "published",
     },
     {
+      title: "Unpublished",
+      isActive: false,
+      slug: "unpublished",
+    },
+    {
       title: "Declined module",
       isActive: false,
       slug: "declined",
     },
+
     {
       title: "Recent module upload",
       isActive: false,
@@ -65,10 +71,19 @@ const ContentAnalyticsDataTable = ({
           {navItems[0]?.isActive ? (
             <UploadedModules data={courseModules?.modulesList?.data} />
           ) : navItems[1]?.isActive ? (
-            <PublishedModules data={courseModules?.modulesList?.data} />
+            <PublishedModules
+              data={courseModules?.modulesList?.data}
+              filter={filter}
+            />
           ) : navItems[2]?.isActive ? (
-            <DeclinedModules data={courseModules?.modulesList?.data} />
+            <PublishedModules
+              data={courseModules?.modulesList?.data}
+              isUnpublished
+              filter={filter}
+            />
           ) : navItems[3]?.isActive ? (
+            <DeclinedModules data={courseModules?.modulesList?.data} />
+          ) : navItems[4]?.isActive ? (
             <UploadedModules data={courseModules?.modulesList?.data} />
           ) : null}
         </>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import classes from "../UploadedModules/UploadedModules.module.css";
 import { ContentAnalyticsData } from "../ContentAnalyticsData";
 import ellipse from "../.../../../../../Assets/Images/ellipses.svg";
@@ -7,14 +7,23 @@ import AcceptedModal from "../../../../Components/Modals/AcceptedModal/AcceptedM
 import CancelSchoolCreationModal from "../../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
 import deleteSvg from "../../../../Assets/Images/deleteFeedbackImage.svg";
 import CancelSchoolSuccessfulModal from "../../../SchoolManagementPagesContainer/CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
+import { SchoolContext } from "../../../../Context/SchoolContext";
+import { mutate } from "swr";
+import { backend_url } from "../../../../Utilities/global";
 
 type PublishedModulesTypes = {
   data: any;
+  isUnpublished?: boolean;
+  filter: string;
 };
 
-const PublishedModules = ({ data }: PublishedModulesTypes) => {
+const PublishedModules = ({
+  data,
+  isUnpublished,
+  filter,
+}: PublishedModulesTypes) => {
   // States
   const [popoverIndex, setPopoverIndex] = useState<number | null>(null);
   const [displayDeleteFeedbackModal, setDisplayDeleteFeedbackModal] =
@@ -24,9 +33,9 @@ const PublishedModules = ({ data }: PublishedModulesTypes) => {
     setDisplayDeleteFeedbackSuccessfulModal,
   ] = useState(false);
 
-  const publishedCourse = ContentAnalyticsData.filter(
-    (data) => data.status === "approved"
-  );
+  // Context
+  const { unPublishModule, createSchoolRequest, publishModule, deleteModule } =
+    useContext(SchoolContext);
 
   const handleEllipseClick = (index: number) => {
     setPopoverIndex(index === popoverIndex ? null : index);
@@ -40,7 +49,12 @@ const PublishedModules = ({ data }: PublishedModulesTypes) => {
     }
   };
 
-  React.useEffect(() => {
+  // Router
+  const navigate = useNavigate();
+  const { CourseId } = useParams();
+
+  // Effects
+  useEffect(() => {
     document.addEventListener("click", handleDocumentClick);
 
     return () => {
@@ -48,7 +62,20 @@ const PublishedModules = ({ data }: PublishedModulesTypes) => {
     };
   }, []);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (createSchoolRequest?.data) {
+      mutate(
+        `${backend_url}/api/ise/v1/courses/admin/school/${CourseId}?filter=${filter}`
+      );
+    }
+
+    if (createSchoolRequest?.data === "Module was deleted successfully") {
+      setDisplayDeleteFeedbackModal(false);
+      setDisplayDeleteFeedbackSuccessfulModal(true);
+    } else {
+      setDisplayDeleteFeedbackSuccessfulModal(false);
+    }
+  }, [createSchoolRequest?.data]);
 
   return (
     <section className={classes.container}>
@@ -66,9 +93,9 @@ const PublishedModules = ({ data }: PublishedModulesTypes) => {
                 setDisplayDeleteFeedbackModal(false);
               }}
               onClick2={() => {
-                setDisplayDeleteFeedbackModal(false);
-                setDisplayDeleteFeedbackSuccessfulModal(true);
+                deleteModule(String(popoverIndex));
               }}
+              isLoading={createSchoolRequest?.isLoading}
             />
           }
         />
@@ -122,9 +149,18 @@ const PublishedModules = ({ data }: PublishedModulesTypes) => {
                               "/courses/:SchoolId/courses/:CourseId/analytics/details"
                             );
                           }}
+                          onClick2={() => {
+                            if (isUnpublished) {
+                              publishModule(data?.id);
+                            } else {
+                              unPublishModule(data?.id);
+                            }
+                          }}
                           onClick3={() => {
                             setDisplayDeleteFeedbackModal(true);
                           }}
+                          isLoading={createSchoolRequest?.isLoading}
+                          isPublished={!isUnpublished}
                         />
                       </div>
                     )}

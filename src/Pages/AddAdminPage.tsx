@@ -1,13 +1,13 @@
-import React from 'react'
-import Layout from '../Components/Layout/Layout'
-import AddAdminContainer from '../Containers/AdminPagesContainer/AddAdminContainer/AddAdminContainer'
+import React from "react";
+import Layout from "../Components/Layout/Layout";
+import AddAdminContainer from "../Containers/AdminPagesContainer/AddAdminContainer/AddAdminContainer";
 
 const AddAdminPage = () => {
-    return (
-        <Layout>
-            <AddAdminContainer />
-        </Layout>
-    )
-}
+  return (
+    <Layout>
+      <AddAdminContainer />
+    </Layout>
+  );
+};
 
-export default AddAdminPage
+export default AddAdminPage;

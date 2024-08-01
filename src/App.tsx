@@ -40,10 +40,10 @@ function App() {
   return (
     <Routes>
       <Route path="*" element={<ErrorPage />} />
-      <Route path="/" element={<Navigate to="/dashboard"></Navigate>} />
       <Route path="/sign-in" element={<SignInPage />} />
 
       <Route element={<RequireAuth />}>
+        <Route path="/" element={<Navigate to="/dashboard"></Navigate>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/users/admins" element={<AdminsManagementPage />} />
         <Route path="/users/admins/:AdminId" element={<AdminProfilePage />} />

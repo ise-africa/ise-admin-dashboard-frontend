@@ -1,27 +1,34 @@
+import { useEffect, useState } from "react";
 import Summary from "../../Components/Summary/Summary";
 
-const DashboardQuickAnalytics = () => {
-  const analyticsOverview = [
+type DashboardQuickAnalyticsType = {
+  data: any;
+};
+
+const DashboardQuickAnalytics = ({ data }: DashboardQuickAnalyticsType) => {
+  const [analyticsOverview, setAnalyticsOverview] = useState([
     {
       title: "Total revenue",
-      value: "₦1,500,000",
+      value: "₦0",
     },
 
     {
       title: "Total transactions",
-      value: "23",
+      value: "0",
     },
 
     {
       title: "Total enrolments",
-      value: "123",
+      value: "0",
     },
 
     {
       title: "New accounts",
-      value: "13",
+      value: "0",
     },
-  ];
+  ]);
+
+  // Effects
   return (
     <Summary
       data={analyticsOverview}

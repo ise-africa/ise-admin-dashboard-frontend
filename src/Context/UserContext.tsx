@@ -64,6 +64,7 @@ const UserContextProvider = ({ children }: UserContextProviderType) => {
     data: null,
     error: null,
   });
+
   const [passwords, setPasswords] = useState({
     currentPassword: "",
     newPassword: "",

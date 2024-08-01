@@ -26,6 +26,9 @@ type SchoolContextValues = {
     stage: number,
     courseId?: string
   ) => void;
+  unPublishModule: (id: string) => void;
+  publishModule: (id: string) => void;
+  deleteModule: (id: string) => void;
 };
 
 type SchoolContextProviderProps = {
@@ -207,6 +210,48 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
     });
   };
 
+  const unPublishModule = (id: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/course-modules/admin/unpublish-module/${id}`,
+      method: "PATCH",
+      setState: setCreateSchoolRequest,
+      state: createSchoolRequest,
+      setNotificationsFailure: true,
+      setNotifications: setNotifications,
+      setNotificationsSuccess: true,
+      requestCleanup: true,
+      successMessage: "Module submission was reversed successfully",
+    });
+  };
+
+  const publishModule = (id: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/course-modules/admin/publish-module/${id}`,
+      method: "PATCH",
+      setState: setCreateSchoolRequest,
+      state: createSchoolRequest,
+      setNotificationsFailure: true,
+      setNotifications: setNotifications,
+      setNotificationsSuccess: true,
+      requestCleanup: true,
+      successMessage: "Module was published successfully",
+    });
+  };
+
+  const deleteModule = (id: string) => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/course-modules/admin/delete-module/${id}`,
+      method: "DELETE",
+      setState: setCreateSchoolRequest,
+      state: createSchoolRequest,
+      setNotificationsFailure: true,
+      setNotifications: setNotifications,
+      setNotificationsSuccess: true,
+      requestCleanup: true,
+      successMessage: "Module was deleted successfully",
+    });
+  };
+
   // Effects
   useEffect(() => {
     createSchoolFormData.append("name", createSchoolData.name);
@@ -242,6 +287,9 @@ const SchoolContextProvider = ({ children }: SchoolContextProviderProps) => {
         createCourse,
         setCreateCourse,
         createCourseRequest,
+        unPublishModule,
+        publishModule,
+        deleteModule,
       }}
     >
       {children}

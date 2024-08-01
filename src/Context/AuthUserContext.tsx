@@ -1,13 +1,19 @@
-import axios, { AxiosResponse } from "axios";
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import axios from "axios";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { SetURLSearchParams } from "react-router-dom";
 import { backend_url } from "../Utilities/global";
-import useSWR from "swr";
+import { requestHandler2 } from "../HelperFunctions/requestHandler";
 
 export type requestType = {
   isLoading: boolean;
-  data: null | any[] | string | AxiosResponse;
+  data: null | any;
   error: null | any;
 };
 
@@ -62,6 +68,7 @@ const AuthUserContextProvider = ({
 
   //   Utils
   const redirectRoute = location.state || "/dashboard";
+  const accessToken = localStorage.getItem("iseAdminAccessToken");
 
   const signIn = () => {
     setSignInRequest({ isLoading: true, data: null, error: null });
@@ -72,16 +79,14 @@ const AuthUserContextProvider = ({
           password: userLoginInfo.password,
         })
         .then((res) => {
+          localStorage.setItem("iseAdminAccessToken", res.data?.accessToken);
+          localStorage.setItem("iseAdminRefreshToken", res.data?.refreshToken);
           setSignInRequest({
             data: res.data,
             error: null,
             isLoading: false,
           });
           navigate(redirectRoute);
-          localStorage.setItem("iseAdminAccessToken", res.data?.accessToken);
-          localStorage.setItem("iseAdminRefreshToken", res.data?.refreshToken);
-
-          //   getUser();
         })
         .catch((err) => {
           localStorage.setItem(
@@ -114,6 +119,28 @@ const AuthUserContextProvider = ({
 
     navigate("/sign-in", { state: location.pathname });
   };
+
+  const getAccountDetails = () => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/my-profile`,
+      method: "GET",
+      setNotificationsFailure: true,
+      state: signInRequest,
+      setState: setSignInRequest,
+      errorFunction() {
+        logout();
+      },
+    });
+  };
+
+  // Effects
+  useEffect(() => {
+    if (accessToken) {
+      getAccountDetails();
+    }
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <AuthUserContext.Provider
