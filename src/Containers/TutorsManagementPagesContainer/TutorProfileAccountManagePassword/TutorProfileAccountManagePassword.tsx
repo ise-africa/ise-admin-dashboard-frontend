@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import classes from "./TutorProfileAccountManagePassword.module.css";
 import ChangeEmailComformedModalBody from "./ChangeEmailComformedModalBody";
 import AcceptedModal from "../../../Components/Modals/AcceptedModal/AcceptedModal";
@@ -8,22 +8,48 @@ import Button from "../../../Components/Button/Button";
 import ChangePasswordModal from "./ChangeEmailModalWarning";
 import { AppContext } from "../../../Context/AppContext";
 import { useParams } from "react-router-dom";
+import { inputChangeHandler } from "../../../HelperFunctions/inputChangeHandler";
 
-const TutorProfileAccountManagePassword = () => {
+type TutorProfileAccountManagePasswordType = {
+  tutor: any;
+};
+
+const TutorProfileAccountManagePassword = ({
+  tutor,
+}: TutorProfileAccountManagePasswordType) => {
   // States
-  const [displayChangePasswordModal, setDisplayChangePasswordModal] = useState(false);
+  const [displayChangePasswordModal, setDisplayChangePasswordModal] =
+    useState(false);
   const [displayEmailChangeConfirmModal, setDisplayEmailChangeConfirmModal] =
     useState(false);
+  const [tutorDetails, setTutorDetails] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  });
 
   // Context
-  const { tutors } = useContext(AppContext)
+  const { tutors } = useContext(AppContext);
 
   // Router
-  const { TutorId } = useParams()
+  const { TutorId } = useParams();
 
   const activeAdmin = tutors.find((data) => {
-    return data.tutorFullName.replace(' ', '-').toLowerCase() === TutorId
-  })
+    return data.tutorFullName.replace(" ", "-").toLowerCase() === TutorId;
+  });
+
+  // Effects
+  useEffect(() => {
+    if (tutor) {
+      setTutorDetails({
+        email: tutor?.email,
+        first_name: tutor?.first_name,
+        last_name: tutor?.last_name,
+        password: tutor?.password,
+      });
+    }
+  }, [tutor]);
 
   return (
     <ProfileSectionContainer
@@ -67,25 +93,37 @@ const TutorProfileAccountManagePassword = () => {
           isRequired
           type="text"
           label="First name"
-          placeholder={activeAdmin?.tutorFirstName}
+          placeholder={tutorDetails?.first_name}
+          name="first_name"
+          value={tutorDetails?.first_name}
+          onChange={(e) => inputChangeHandler(e, setTutorDetails)}
         />
         <Input
           isRequired
           type="text"
           label="Last name"
-          placeholder={activeAdmin?.tutorLastName}
+          placeholder={tutorDetails?.last_name}
+          name="last_name"
+          value={tutorDetails?.last_name}
+          onChange={(e) => inputChangeHandler(e, setTutorDetails)}
         />
         <Input
           isRequired
           type="email"
           label="Email address"
-          placeholder={activeAdmin?.emailAddress}
+          placeholder={tutorDetails?.email}
+          name="email"
+          value={tutorDetails?.email}
+          onChange={(e) => inputChangeHandler(e, setTutorDetails)}
         />
         <Input
           isRequired
           type="password"
           label="Password"
-          placeholder={activeAdmin?.password}
+          placeholder={tutorDetails?.password}
+          name="password"
+          value={tutorDetails?.password}
+          onChange={(e) => inputChangeHandler(e, setTutorDetails)}
         />
 
         <Button

@@ -1,0 +1,19 @@
+.container {
+  border-radius: 10px;
+  background: var(--white);
+  padding: 24px;
+}
+
+.header {
+  font-family: Archivo;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 36px;
+  text-align: left;
+  color: var(--grey);
+  border: 1px solid var(--grey3);
+}
+
+.chart {
+  border: 2px solid red;
+}

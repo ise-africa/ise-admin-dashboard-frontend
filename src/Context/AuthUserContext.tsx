@@ -1,12 +1,19 @@
 import axios from "axios";
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { SetURLSearchParams } from "react-router-dom";
 import { backend_url } from "../Utilities/global";
+import { requestHandler2 } from "../HelperFunctions/requestHandler";
 
 export type requestType = {
   isLoading: boolean;
-  data: null | any[] | string;
+  data: null | any;
   error: null | any;
 };
 
@@ -23,11 +30,9 @@ type AuthUserContextValueType = {
   >;
   searchParams: URLSearchParams;
   setSearchParams: SetURLSearchParams;
-  fetchCountries: () => void;
-  countriesRequestObject: requestType;
-  setCountriesRequestObject: Dispatch<SetStateAction<requestType>>;
   signInRequest: requestType;
   signIn: () => void;
+  logout: () => void;
 };
 
 type AuthUserContextProviderTypes = {
@@ -49,12 +54,6 @@ const AuthUserContextProvider = ({
     email: null,
     password: null,
   });
-  const [countriesRequestObject, setCountriesRequestObject] =
-    useState<requestType>({
-      isLoading: false,
-      data: null,
-      error: null,
-    });
 
   // Query Params
   const [searchParams, setSearchParams] = useSearchParams();
@@ -69,32 +68,7 @@ const AuthUserContextProvider = ({
 
   //   Utils
   const redirectRoute = location.state || "/dashboard";
-
-  // Requests
-  const fetchCountries = () => {
-    setCountriesRequestObject({
-      isLoading: true,
-      data: null,
-      error: null,
-    });
-    axios
-      .get(`https://restcountries.com/v3.1/all?fields=name`)
-      .then((res) => {
-        setCountriesRequestObject({
-          isLoading: false,
-          data: res.data,
-          error: null,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        setCountriesRequestObject({
-          isLoading: false,
-          data: null,
-          error: err?.response?.data?.message,
-        });
-      });
-  };
+  const accessToken = localStorage.getItem("iseAdminAccessToken");
 
   const signIn = () => {
     setSignInRequest({ isLoading: true, data: null, error: null });
@@ -105,16 +79,14 @@ const AuthUserContextProvider = ({
           password: userLoginInfo.password,
         })
         .then((res) => {
+          localStorage.setItem("iseAdminAccessToken", res.data?.accessToken);
+          localStorage.setItem("iseAdminRefreshToken", res.data?.refreshToken);
           setSignInRequest({
             data: res.data,
             error: null,
             isLoading: false,
           });
           navigate(redirectRoute);
-          localStorage.setItem("iseAdminAccessToken", res.data?.accessToken);
-          localStorage.setItem("iseAdminRefreshToken", res.data?.refreshToken);
-
-          //   getUser();
         })
         .catch((err) => {
           localStorage.setItem(
@@ -141,6 +113,35 @@ const AuthUserContextProvider = ({
         });
   };
 
+  const logout = () => {
+    localStorage.removeItem("iseAdminAccessToken");
+    localStorage.removeItem("iseAdminRefreshToken");
+
+    navigate("/sign-in", { state: location.pathname });
+  };
+
+  const getAccountDetails = () => {
+    requestHandler2({
+      url: `${backend_url}/api/ise/v1/admin/my-profile`,
+      method: "GET",
+      setNotificationsFailure: true,
+      state: signInRequest,
+      setState: setSignInRequest,
+      errorFunction() {
+        logout();
+      },
+    });
+  };
+
+  // Effects
+  useEffect(() => {
+    if (accessToken) {
+      getAccountDetails();
+    }
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <AuthUserContext.Provider
       value={{
@@ -148,11 +149,9 @@ const AuthUserContextProvider = ({
         setUserLoginInfo,
         searchParams,
         setSearchParams,
-        fetchCountries,
-        countriesRequestObject,
-        setCountriesRequestObject,
         signInRequest,
         signIn,
+        logout,
       }}
     >
       {children}

@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ErrorPage from "./Containers/404Page/404Page";
 import Support from "./Pages/Support";
@@ -35,15 +34,16 @@ import ViewBlogPostPage from "./Pages/ViewBlogPostPage";
 import Dashboard from "./Pages/Dashboard";
 import SignInPage from "./Pages/SignInPage";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
+import RevenueDashboard from "./Pages/RevenuieDashboard";
 
 function App() {
   return (
     <Routes>
       <Route path="*" element={<ErrorPage />} />
-      <Route path="/" element={<Navigate to="/dashboard"></Navigate>} />
       <Route path="/sign-in" element={<SignInPage />} />
 
       <Route element={<RequireAuth />}>
+        <Route path="/" element={<Navigate to="/dashboard"></Navigate>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/users/admins" element={<AdminsManagementPage />} />
         <Route path="/users/admins/:AdminId" element={<AdminProfilePage />} />
@@ -66,6 +66,8 @@ function App() {
           path="/users/students/add-student"
           element={<AddStudentPage />}
         />
+
+        <Route path="/analytics/revenue" element={<RevenueDashboard />} />
 
         <Route path="/schools" element={<SchoolManagementPage />} />
         <Route path="/schools/add-school" element={<AddSchoolsPage />} />

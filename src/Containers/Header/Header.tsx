@@ -1,19 +1,23 @@
 import classes from "./Header.module.css";
-import amirahTemi from "../../Assets/Images/amirahTemi.svg";
 import iseLogo from "../../Assets/Images/iseLogo.svg";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import HeaderSideNav from "../HeaderSideNav/HeaderSideNav";
 import { useNavigate } from "react-router-dom";
+import { AuthUserContext } from "../../Context/AuthUserContext";
+import { capitalize } from "../../HelperFunctions/capitalize";
 
 type HeaderTypes = {
   closeSideNavProp: boolean | undefined;
 };
 
 const Header = ({ closeSideNavProp }: HeaderTypes) => {
+  // COntext
+  const { signInRequest } = useContext(AuthUserContext);
+
   // Refs
   const sideNav = useRef<null | HTMLDivElement>(null);
 
-  // Router 
+  // Router
   const navigate = useNavigate();
 
   // Utils
@@ -31,7 +35,14 @@ const Header = ({ closeSideNavProp }: HeaderTypes) => {
 
   return (
     <section className={classes.container}>
-      <img src={iseLogo} onClick={() => { navigate('/home ') }} alt="Ise" className={classes.logo} />
+      <img
+        src={iseLogo}
+        onClick={() => {
+          navigate("/home ");
+        }}
+        alt="Ise"
+        className={classes.logo}
+      />
       {!closeSideNavProp && (
         <div className={classes.inputSection}>
           <input type="text" placeholder="Search" />
@@ -55,7 +66,14 @@ const Header = ({ closeSideNavProp }: HeaderTypes) => {
       {closeSideNavProp && (
         <>
           <div>
-            <img src={iseLogo} alt="Ise" onClick={() => { navigate('/home ') }} className={classes.logoHeader} />
+            <img
+              src={iseLogo}
+              alt="Ise"
+              onClick={() => {
+                navigate("/home ");
+              }}
+              className={classes.logoHeader}
+            />
           </div>
           <div className={classes.inputSection}>
             <input type="text" placeholder="Search" />
@@ -96,8 +114,10 @@ const Header = ({ closeSideNavProp }: HeaderTypes) => {
           </svg>
           <div></div>
         </div>
-        <p>Amirah Oyegoke</p>
-        <img src={amirahTemi} alt="User" />
+        <p>
+          {capitalize(signInRequest?.data?.admin?.first_name)}{" "}
+          {capitalize(signInRequest?.data?.admin?.last_name)}
+        </p>
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -98,14 +98,14 @@
 }
 
 .white {
-  color: var(--black);
+  color: var(--purple);
   background: var(--white);
   border: none;
 }
 
 .yellow {
   color: var(--black);
-  background: #FFD029;
+  background: #ffd029;
   border: none;
 }
 

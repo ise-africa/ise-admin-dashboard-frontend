@@ -1,0 +1,15 @@
+.container {
+  border-radius: 10px;
+  background: var(--white);
+}
+
+.header {
+  padding: 32px 24px 10px 24px;
+  font-family: Archivo;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 36px;
+  text-align: left;
+  color: var(--grey);
+  border-bottom: 1px solid var(--grey3);
+}

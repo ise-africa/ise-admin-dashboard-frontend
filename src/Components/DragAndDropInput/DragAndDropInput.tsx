@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import { validateFile, FileValidationResult } from "../../Utilities/fileSizeValidation";
+import React, { ChangeEvent, useState } from "react";
+import {
+  validateFile,
+  FileValidationResult,
+} from "../../Utilities/fileSizeValidation";
 import classes from "./DragAndDropInput.module.css";
 
 type DragAndDropInputProps = {
@@ -8,6 +11,8 @@ type DragAndDropInputProps = {
   labelText?: string;
   performFIleValidation?: boolean;
   onFileValid?: (file: File) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  value?: File | null;
 };
 
 const DragAndDropInput = ({
@@ -16,8 +21,11 @@ const DragAndDropInput = ({
   labelText = "Attach file",
   performFIleValidation = false,
   onFileValid,
+  onChange,
+  value,
 }: DragAndDropInputProps) => {
   const [invalid, setInvalid] = useState(false);
+  const [file, setFile] = useState<File | null>(value as File);
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -50,22 +58,52 @@ const DragAndDropInput = ({
     <div className={classes.container}>
       <label>{labelText}</label>
       <div
-        className={`${classes.dropContainer} ${invalid ? classes.invalid : ""
-          }`}
+        className={`${classes.dropContainer} ${invalid ? classes.invalid : ""}`}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
-        <span>Drag and drop file to attach it</span>
-        <span>or</span>
-        <label htmlFor="browseFile">
-          <span>Browse for a file...</span>
-          <input
-            type="file"
-            name="browse-file"
-            id="browseFile"
-            accept={acceptedFileTypes}
-          />
-        </label>
+        {!file ? (
+          <>
+            <span>Drag and drop file to attach it</span>
+            <span>or</span>
+            <label htmlFor="browseFile">
+              <span>Browse for a file...</span>
+              <input
+                type="file"
+                name="browse-file"
+                id="browseFile"
+                accept={acceptedFileTypes}
+                onChange={(e) => {
+                  setFile((e.target.files as FileList)[0] as File);
+                  if (onChange) {
+                    onChange(e);
+                  }
+                }}
+              />
+            </label>
+          </>
+        ) : (
+          <>
+            <span>{file?.name}</span>
+            <span>or</span>
+
+            <label htmlFor="browseFile">
+              <span>Change this file...</span>
+              <input
+                type="file"
+                name="browse-file"
+                id="browseFile"
+                accept={acceptedFileTypes}
+                onChange={(e) => {
+                  setFile((e.target.files as FileList)[0] as File);
+                  if (onChange) {
+                    onChange(e);
+                  }
+                }}
+              />
+            </label>
+          </>
+        )}
       </div>
       {invalid && (
         <span className={classes.errorMessage}>

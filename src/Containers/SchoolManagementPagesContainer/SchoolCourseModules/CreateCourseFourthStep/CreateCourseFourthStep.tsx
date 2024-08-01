@@ -2,13 +2,20 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Button from "../../../../Components/Button/Button";
 import classes from "../CreateCourseFirstStep/CreateCourseFirstStep.module.css";
 import SchoolCreatingLayout from "../../../../Components/SchoolCreatingLayout/SchoolCreatingLayout";
-import schoolImage from '../../../../Assets/Images/courseImage.svg'
-import { useState } from "react";
+import schoolImage from "../../../../Assets/Images/courseImage.svg";
+import { useEffect, useState } from "react";
 import AcceptedModal from "../../../../Components/Modals/AcceptedModal/AcceptedModal";
 import CancelSchoolCreationModal from "../../CreateSchoolPreview/PreviewModals/CancelSchoolCreationModal";
 import CancelSchoolSuccessfulModal from "../../CreateSchoolPreview/PreviewModals/CancelSchoolSuccessfulModal";
 import SchoolCreatedSuccessfulModal from "../../CreateSchoolPreview/PreviewModals/SchoolCreatedSuccessfulModal";
-import cancelSvg from '../../../../Assets/Images/CancelSchoolCreationImage.svg'
+import cancelSvg from "../../../../Assets/Images/CancelSchoolCreationImage.svg";
+import { useCourseById } from "../../../../Hooks/useCourse";
+import Loader from "../../../../Components/Loader/Loader";
+import moment from "moment";
+import { formatAmountWithCommas2dp } from "../../../../HelperFunctions/amountToString";
+import { requestHandler2 } from "../../../../HelperFunctions/requestHandler";
+import { backend_url } from "../../../../Utilities/global";
+import { requestType } from "../../../../Context/AuthUserContext";
 
 type CreateCourseFourthStepProp = {
   editCohort?: boolean;
@@ -28,7 +35,7 @@ type CreateCourseFourthStepProp = {
   cohortDuration?: string;
   cohortTutor?: string;
   cohortPrice?: string;
-}
+};
 
 const CreateCourseFourthStep = ({
   editCohort,
@@ -49,33 +56,80 @@ const CreateCourseFourthStep = ({
   cohortTutor,
   cohortPrice,
 }: CreateCourseFourthStepProp) => {
-
   // Router
   const navigate = useNavigate();
-  const { SchoolId, CourseId, CohortId } = useParams()
-
+  const { SchoolId, CourseId, CohortId } = useParams();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const courseId = searchParams?.get("courseId");
 
-  const [displayCancelSchoolCreationModal, setDisplayCancelSchoolCreationModal] = useState(false)
-  const [displayCancelSchoolSuccessfulModal, setDisplayCancelSchoolSuccessfulModal] = useState(false)
-  const [displaySchoolCourseUpdateSuccessfulModal, setDisplaySchoolCourseUpdateSuccessfulModal] = useState(false)
-  const [displaySchoolCreatedSuccessfulModal, setDisplaySchoolCreatedSuccessfulModal] = useState(false)
+  const [
+    displayCancelSchoolCreationModal,
+    setDisplayCancelSchoolCreationModal,
+  ] = useState(false);
+  const [
+    displayCancelSchoolSuccessfulModal,
+    setDisplayCancelSchoolSuccessfulModal,
+  ] = useState(false);
+  const [
+    displaySchoolCourseUpdateSuccessfulModal,
+    setDisplaySchoolCourseUpdateSuccessfulModal,
+  ] = useState(false);
+  const [
+    displaySchoolCreatedSuccessfulModal,
+    setDisplaySchoolCreatedSuccessfulModal,
+  ] = useState(false);
+  const [isGettingCourse, setIsGettingCourse] = useState<requestType>({
+    isLoading: false,
+    data: null,
+    error: null,
+  });
+
+  const getCourseById = () => {
+    requestHandler2({
+      method: "GET",
+      url: `${backend_url}/api/ise/v1/admin/course/${courseId}`,
+      state: isGettingCourse,
+      setState: setIsGettingCourse,
+    });
+  };
+
+  const courseData: any = isGettingCourse?.data;
+  const cohort = (courseData as any)?.cohorts[0] || {};
+
+  // Effects
+  useEffect(() => {
+    if (createCourse) {
+      getCourseById();
+    }
+  }, [createCourse]);
+
+  console.log(isGettingCourse, courseData);
+
+  if (isGettingCourse?.isLoading) {
+    return <Loader />;
+  }
+
+  console.log(objectives, "Objectives");
 
   return (
     <>
       {displayCancelSchoolCreationModal && (
         <AcceptedModal
-          onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
+          onClick={() => {
+            setDisplayCancelSchoolCreationModal(false);
+          }}
           body={
             <CancelSchoolCreationModal
               imgSrc={cancelSvg}
               header="Cancel adding course?"
               paragraph="Are you sure you want to discard the course  information? Canceling will discard all entered information and you'll need to start over. Confirm?"
-              onClick={() => { setDisplayCancelSchoolCreationModal(false) }}
+              onClick={() => {
+                setDisplayCancelSchoolCreationModal(false);
+              }}
               onClick2={() => {
-                setDisplayCancelSchoolCreationModal(false)
-                setDisplayCancelSchoolSuccessfulModal(true)
+                setDisplayCancelSchoolCreationModal(false);
+                setDisplayCancelSchoolSuccessfulModal(true);
               }}
             />
           }
@@ -83,15 +137,17 @@ const CreateCourseFourthStep = ({
       )}
       {displayCancelSchoolSuccessfulModal && (
         <AcceptedModal
-          onClick={() => { setDisplayCancelSchoolSuccessfulModal(false) }}
+          onClick={() => {
+            setDisplayCancelSchoolSuccessfulModal(false);
+          }}
           body={
             <CancelSchoolSuccessfulModal
               buttonText="Cancel course"
               header="Course creation canceled. "
               paragraph="Click “Create course” to start again."
               onClick={() => {
-                setDisplayCancelSchoolSuccessfulModal(false)
-                navigate(`/schools/${SchoolId}/add-course?step=1`)
+                setDisplayCancelSchoolSuccessfulModal(false);
+                navigate(`/schools/${SchoolId}/add-course?step=1`);
               }}
             />
           }
@@ -99,15 +155,17 @@ const CreateCourseFourthStep = ({
       )}
       {displaySchoolCourseUpdateSuccessfulModal && (
         <AcceptedModal
-          onClick={() => { setDisplaySchoolCourseUpdateSuccessfulModal(false) }}
+          onClick={() => {
+            setDisplaySchoolCourseUpdateSuccessfulModal(false);
+          }}
           body={
             <CancelSchoolSuccessfulModal
               buttonText="Done"
               header="Course information updated!"
               paragraph="Your edits to the course information have been saved. The changes will reflect on the platform."
               onClick={() => {
-                setDisplaySchoolCourseUpdateSuccessfulModal(false)
-                navigate(`/schools/${SchoolId}/courses`)
+                setDisplaySchoolCourseUpdateSuccessfulModal(false);
+                navigate(`/schools/${SchoolId}/courses`);
               }}
             />
           }
@@ -115,15 +173,17 @@ const CreateCourseFourthStep = ({
       )}
       {displaySchoolCreatedSuccessfulModal && (
         <AcceptedModal
-          onClick={() => { setDisplaySchoolCreatedSuccessfulModal(false) }}
+          onClick={() => {
+            setDisplaySchoolCreatedSuccessfulModal(false);
+          }}
           body={
             <SchoolCreatedSuccessfulModal
               buttonText="Done"
               header="Course cohort created "
-              paragraph="You've successfully created the [Cohort Name] cohort for [Course Name]. The cohort is live and ready to help learners begin their journeys."
+              paragraph={`You've successfully created the ${cohort?.name}  cohort for ${courseData?.name}. The cohort is live and ready to help learners begin their journeys.`}
               onClick2={() => {
-                setDisplaySchoolCreatedSuccessfulModal(false)
-                navigate(`/schools/${SchoolId}/courses`)
+                setDisplaySchoolCreatedSuccessfulModal(false);
+                navigate(`/schools/${SchoolId}/courses`);
               }}
             />
           }
@@ -131,72 +191,91 @@ const CreateCourseFourthStep = ({
       )}
 
       <SchoolCreatingLayout steps={[1, 2, 3, 4]} showProgress={showIndicator}>
-
         <section className={classes.container}>
           <h2>{title || "Review course cohort information"}</h2>
 
           <div className={classes.textSection}>
             <div>
               <span>Name of Course</span>
-              <p>{name || "Talent Acquisition Course"}</p>
+              <p>{name || courseData?.name}</p>
             </div>
             <div>
               <span>Course objectives</span>
               <ul className={classes.listUl}>
-                {objectives.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
+                {objectives
+                  ? objectives?.map((item: any, index) => {
+                      return <li key={index}>{item}</li>;
+                    })
+                  : JSON.parse(courseData?.course_objective)?.map(
+                      (item: any, index: number) => {
+                        return <li key={index}>{item?.value}</li>;
+                      }
+                    )}
               </ul>
             </div>
             <div>
               <span>Course difficulty level</span>
-              <p>{tagline || "Beginner level course"}</p>
+              <p>{tagline || courseData?.difficulty_level}</p>
             </div>
             <div>
               <span>Course description</span>
-              <p>{description || "Our Introduction to Talent Acquisition course is designed for beginners. This course covers fundamental principles, strategies, and best practices in recruiting top talent. Learn how to create effective job postings, conduct interviews, and make informed hiring decisions. Acquire the essential knowledge and tools to excel in your talent acquisition journey."}</p>
+              <p>{description || courseData?.description}</p>
             </div>
             <div>
-              <span>School image</span>
-              <img src={image || schoolImage} alt="School cover" />
+              <span>Course image</span>
+              <img src={image || courseData?.cover_image} alt="School cover" />
             </div>
             <div className={classes.cohort}>
               <h4>Cohort infomation</h4>
               <div className={classes.textSection}>
                 <div>
                   <span>Cohort name</span>
-                  <p>{cohortName || "Talent Acquisition May Cohort"}</p>
+                  <p>{cohortName || cohort?.name}</p>
                 </div>
                 <div>
                   <span>Application deadline</span>
-                  <p>{cohortDeadline || "12 Feb, 2024"}</p>
+                  <p>
+                    {cohortDeadline ||
+                      moment(cohort?.application_deadline || "")?.format(
+                        "Do Mo, YYYY"
+                      )}
+                  </p>
                 </div>
                 <div>
                   <span>Start date</span>
-                  <p>{cohortStart || "12 May, 2024"}</p>
+                  <p>
+                    {cohortStart ||
+                      moment(cohort?.start_date || "")?.format("Do Mo, YYYY")}
+                  </p>
                 </div>
                 <div>
                   <span>Cohort duration</span>
-                  <p>{cohortDuration || "4 months"}</p>
+                  <p>{cohortDuration || cohort?.duration}</p>
                 </div>
                 <div>
                   <span>Cohort tutor</span>
-                  <p>{cohortTutor || "Olawuyi Justus"}</p>
+                  <p>{cohortTutor || cohort?.cohortTutor}</p>
                 </div>
                 <div>
                   <span>Course price </span>
-                  <p>{cohortPrice || "₦110,000"}</p>
+                  <p>
+                    {cohortPrice || formatAmountWithCommas2dp(cohort?.price)}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={`${classes.buttonSection} ${classes.buttonSectionThree}`}>
+          <div
+            className={`${classes.buttonSection} ${classes.buttonSectionThree}`}
+          >
             {showIndicator && (
               <Button
                 type="null"
                 className={classes.canelButton}
-                onClick={() => { setDisplayCancelSchoolCreationModal(true) }}
+                onClick={() => {
+                  setDisplayCancelSchoolCreationModal(true);
+                }}
               >
                 <span>Cancel</span>
               </Button>
@@ -204,7 +283,12 @@ const CreateCourseFourthStep = ({
             {editInformation && (
               <Button
                 type="secondary"
-                onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/edit-course?step=1`) }}
+                onClick={() => {
+                  navigate(
+                    `/schools/${SchoolId}/courses/${CourseId}/edit-course?step=1`
+                  );
+                }}
+                disabled={true}
               >
                 <span>Edit Information</span>
               </Button>
@@ -212,7 +296,11 @@ const CreateCourseFourthStep = ({
             {editCohort && (
               <Button
                 type="secondary"
-                onClick={() => { navigate(`/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}/edit-cohort`) }}
+                onClick={() => {
+                  navigate(
+                    `/schools/${SchoolId}/courses/${CourseId}/cohorts/${CohortId}/edit-cohort`
+                  );
+                }}
               >
                 <span>Edit Cohort</span>
               </Button>
@@ -221,13 +309,17 @@ const CreateCourseFourthStep = ({
               <>
                 <Button
                   type="secondary"
-                  onClick={() => { setSearchParams({ step: "3" }); }}
+                  onClick={() => {
+                    setSearchParams({ step: "3" });
+                  }}
                 >
                   <span>Back</span>
                 </Button>
                 <Button
                   type="primary"
-                  onClick={() => { setDisplaySchoolCourseUpdateSuccessfulModal(true) }}
+                  onClick={() => {
+                    setDisplaySchoolCourseUpdateSuccessfulModal(true);
+                  }}
                 >
                   <span>Update course information</span>
                 </Button>
@@ -237,14 +329,19 @@ const CreateCourseFourthStep = ({
               <>
                 <Button
                   type="secondary"
-                  onClick={() => { setSearchParams({ step: "3" }); }}
+                  onClick={() => {
+                    setSearchParams({ step: "3" });
+                  }}
+                  disabled={true}
                 >
                   <span>Edit Information</span>
                 </Button>
 
                 <Button
                   type="primary"
-                  onClick={() => { setDisplaySchoolCreatedSuccessfulModal(true) }}
+                  onClick={() => {
+                    setDisplaySchoolCreatedSuccessfulModal(true);
+                  }}
                 >
                   <span>Create course</span>
                 </Button>

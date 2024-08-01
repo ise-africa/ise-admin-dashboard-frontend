@@ -48,6 +48,39 @@ const DashboardChart = () => {
       stack: "Apr",
       color: "#664EFE",
     },
+
+    {
+      data: [100],
+      stack: "May",
+      color: "#FDC500",
+    },
+    {
+      data: [300],
+      stack: "May",
+      color: "#664EFE",
+    },
+
+    {
+      data: [500],
+      stack: "June",
+      color: "#FDC500",
+    },
+    {
+      data: [300],
+      stack: "June",
+      color: "#664EFE",
+    },
+
+    {
+      data: [300],
+      stack: "July",
+      color: "#FDC500",
+    },
+    {
+      data: [100],
+      stack: "July",
+      color: "#664EFE",
+    },
   ];
   return (
     <section className={classes.container}>

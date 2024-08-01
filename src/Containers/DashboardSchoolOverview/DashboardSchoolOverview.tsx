@@ -22,7 +22,9 @@ const DashboardSchoolOverview = () => {
       value: "4",
     },
   ];
-  return <Summary data={analyticsOverview} title="School overview" />;
+  return (
+    <Summary data={analyticsOverview} title="School overview" flexBasis="23%" />
+  );
 };
 
 export default DashboardSchoolOverview;

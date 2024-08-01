@@ -8,14 +8,15 @@ export type sideNavItemsType = {
   } | null;
   isVisible: boolean;
   children?: {
-    title: string; route: string;
-  }[]
+    title: string;
+    route: string;
+  }[];
 }[];
 
 export const sideNavItems: sideNavItemsType = [
   {
     title: "Home",
-    route: "/home",
+    route: "/dashboard",
     keywords: ["home"],
     otherOptions: null,
     isVisible: true,
@@ -31,7 +32,7 @@ export const sideNavItems: sideNavItemsType = [
       { title: "Students", route: "/users/students" },
       { title: "Tutors", route: "/users/tutors" },
       { title: "Administrator", route: "/users/admins" },
-    ]
+    ],
   },
 
   {
@@ -40,7 +41,19 @@ export const sideNavItems: sideNavItemsType = [
     keywords: ["analytcs"],
     otherOptions: null,
     isVisible: true,
-    children: [{ title: "Courses curriculum", route: "/courses/courses-curriculum" }, { title: "Feedback", route: "/courses/feedback" }]
+    children: [
+      { title: "Revenue", route: "/analytics/revenue" },
+      { title: "Enrolment", route: "/analytics/enrolment" },
+      { title: "Engagement", route: "/analytics/engagement" },
+    ],
+  },
+
+  {
+    title: "Schools management",
+    route: "/schools",
+    keywords: ["schools"],
+    otherOptions: null,
+    isVisible: true,
   },
 
   {
@@ -49,22 +62,12 @@ export const sideNavItems: sideNavItemsType = [
     keywords: ["contents"],
     otherOptions: null,
     isVisible: true,
-
   },
 
   {
     title: "Blog management",
     route: "/blogs",
     keywords: ["blog"],
-    otherOptions: null,
-    isVisible: true,
-
-  },
-
-  {
-    title: "Schools management",
-    route: "/schools",
-    keywords: ["schools"],
     otherOptions: null,
     isVisible: true,
   },

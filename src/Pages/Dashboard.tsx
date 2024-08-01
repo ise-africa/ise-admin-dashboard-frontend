@@ -1,4 +1,5 @@
 import Layout from "../Components/Layout/Layout";
+import Loader from "../Components/Loader/Loader";
 import DashboardActivityAndRating from "../Containers/DashboardActivityAndRating/DashboardActivityAndRating";
 import DashboardChart from "../Containers/DashboardChart/DashboardChart";
 import DashboardCoursesReview from "../Containers/DashboardCoursesReview/DashboardCoursesReview";
@@ -7,18 +8,30 @@ import DashboardLetsHelp from "../Containers/DashboardLetsHelpAndCreateTutor/Das
 import DashboardNameDisplay from "../Containers/DashboardNameDisplay/DashboardNameDisplay";
 import DashboardQuickAnalytics from "../Containers/DashboardQuickAnalytics/DashboardQuickAnalytics";
 import DashboardSchoolOverview from "../Containers/DashboardSchoolOverview/DashboardSchoolOverview";
+import useDashboard from "../Hooks/useDashboard";
 
 const Dashboard = () => {
+  // Reauests
+  const { isLoading, data } = useDashboard();
+
+  const dashboardData = data?.data;
+
   return (
     <Layout>
-      <DashboardNameDisplay />
-      <DashboardQuickAnalytics />
-      <DashboardSchoolOverview />
-      <DashboardChart />
-      <DashboardLetsHelp />
-      <DashboardCoursesReview />
-      <DashboardActivityAndRating />
-      <DashboardDocumentation />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <DashboardNameDisplay />
+          <DashboardQuickAnalytics data={dashboardData} />
+          <DashboardSchoolOverview />
+          <DashboardChart />
+          <DashboardLetsHelp />
+          <DashboardCoursesReview />
+          <DashboardActivityAndRating />
+          <DashboardDocumentation />
+        </>
+      )}
     </Layout>
   );
 };

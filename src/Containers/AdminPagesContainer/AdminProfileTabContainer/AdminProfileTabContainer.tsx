@@ -4,12 +4,16 @@ import ProfileAccountManagePassword from "../AdminProfileAccountManagePassword/A
 import ProfileAdministrationRole from "../ProfileAdministrationRole/ProfileAdministrationRole";
 import classes from "./AdminProfileTabContainer.module.css";
 
-const AdminProfileTabContainer = () => {
+type AdminProfileTabContainerType = {
+  data: any;
+};
+
+const AdminProfileTabContainer = ({ data }: AdminProfileTabContainerType) => {
   return (
     <section className={classes.container}>
-      <AdminProfileDetails />
-      <ProfileAccountManagePassword />
-      <ProfileAdministrationRole />
+      <AdminProfileDetails data={data} />
+      <ProfileAccountManagePassword data={data} />
+      <ProfileAdministrationRole data={data} />
       <ProfileAccountDeactivation />
     </section>
   );
